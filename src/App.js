@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Test working branch
+          Test working branch pull request
         </a>
       </header>
     </div>
