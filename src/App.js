@@ -30,9 +30,10 @@ function App() {
           git add .
           git commit -m"test"
           git push
+          Tesk 
         </a>
       </header>
-    </div>
+    </div>git 
   );
 }
 
