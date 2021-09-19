@@ -29,6 +29,7 @@ function App() {
           git branch
           git add .
           git commit -m"test"
+          tsdsd
           git push
           Tesk 
           Sahadat
