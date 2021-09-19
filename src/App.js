@@ -16,6 +16,20 @@ function App() {
           rel="noopener noreferrer"
         >
           Test working branch pull request
+          git fetch origin
+          git checkout -b development origin/development
+          git merge main
+          git add .
+          git commit -m"test"
+          git push
+          git branch
+          git checkout working  origin/working
+          it push --set-upstream origin working
+          git fetch origin
+          git branch
+          git add .
+          git commit -m"test"
+          git push
         </a>
       </header>
     </div>
