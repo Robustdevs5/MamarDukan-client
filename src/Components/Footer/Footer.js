@@ -5,12 +5,12 @@ import React from 'react';
 import '../StyledComponent/Footer.css'
 
 const Footer = () => {
-    const noNamed = [
-        {name: "Emergency Dental Care" , link: "/emergency"},
-        {name: "Check Up" , link: "/checkup"},
-        {name: "Treatment of Personal Diseases" , link: "/personal-treatment"},
-        {name: "Tooth Extraction" , link: "/tooth-extract"},
-        {name: "Check Up" , link: "/checkup"},
+    const Shotcut = [
+        {name: "Track your order" , link: "/track-order"},
+        {name: "Terms and Conditions" , link: "/terms"},
+        {name: "Privacy Policy" , link: "/privacy"},
+        {name: "Cookies policy" , link: "/cookies"},
+        {name: "Help Center" , link: "/help"},
     ]
     const ourAddress = [
         {name: "New York - 101010 Hudson" , link: "//google.com/map"},
