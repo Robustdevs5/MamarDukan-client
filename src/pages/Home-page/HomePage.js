@@ -18,7 +18,7 @@ const HomePage = () => {
       <NewProducts />
       <FeaturedProduct />
       <MostViewedProducts />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
