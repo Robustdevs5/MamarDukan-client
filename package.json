@@ -9,10 +9,7 @@
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
-<<<<<<< HEAD
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
-=======
->>>>>>> 5d0af8e85d2fd736561d77394580d6bd4fd2a17c
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.15",
     "@headlessui/react": "^1.4.1",
