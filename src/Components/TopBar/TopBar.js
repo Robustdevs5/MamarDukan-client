@@ -14,7 +14,7 @@ export const TopBar = () => {
       <div class="flex  justify-between items-center sm:w-4/6 w-5/6  ">
         {" "}
         <div class="mx-0 sm:mx-2 hidden sm:block ">
-          <p class="text-lg sm:text-2xl text-white font-bold ">MamurDokan</p>
+          <p class="text-lg sm:text-2xl text-white font-bold ">Mamurdokan</p>
         </div>
         <form action="" class=" sm:w-3/5 w-full h-1/2   flex flex-row">
           <input

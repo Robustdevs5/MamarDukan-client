@@ -27,7 +27,7 @@ const Navbar = () => {
 
     
     return (
-        <div className='mx-auto px-5 bg-gray-800'>
+        <div className='mx-auto px-5 bg-blue-700'>
             <Menu toggle={toggle}/>
             <ToggleMenu isOpen={isOpen} toggle={toggle}/>
         </div>
