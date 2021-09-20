@@ -37,7 +37,7 @@ const Footer = () => {
     ]
     return (
         <div className="">
-            <div className="footer">
+            <div className=" footer ">
                 <div className="Service">
                     <h4 className="title">Shotcut Link</h4>
                     <p>Terms and Conditions</p>

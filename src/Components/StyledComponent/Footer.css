@@ -2,7 +2,6 @@
     background-color: rgb(8, 8, 76);
     height: 400px;
     display: flex;
-    flex-direction: row;
     color: white;
 }
 

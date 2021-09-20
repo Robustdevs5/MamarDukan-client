@@ -33,12 +33,24 @@ const Navbar = ({toggle}) => {
                                 <li key={index} 
                                     className='flex items-center '
                                     onMouseEnter={() => setDropDown(true)}
-                                    onMouseLeave={() => setDropDown(false)}
-                                >
+                                    onMouseLeave={() => setDropDown(false)}>
+                                    
                                     <Link to={item.path} className={item.class}>
-                                    {item.title}
-                                </Link>
-                                {dropDown && <DropdownMenu/>}
+                                        {item.title}
+                                    </Link>
+                                    <svg 
+                                        xmlns="http://www.w3.org/2000/svg" 
+                                        className="h-6 w-6" 
+                                        fill="none" 
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path 
+                                            strokeLinecap="round"
+                                             strokeLinejoin="round" 
+                                             strokeWidth={2} d="M19 9l-7 7-7-7"
+                                        />
+                                    </svg>
+                                    {dropDown && <DropdownMenu/>}
                                 </li>
                                 );
                             }
