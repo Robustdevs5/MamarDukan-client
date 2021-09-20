@@ -10,13 +10,13 @@ function classNames(...classes) {
 }
 export const TopBar = () => {
   return (
-    <div class="bg-blue-800 flex flex-shrink h-20  w-full  pl-0">
-      <div class="flex  justify-between items-center sm:w-4/6 w-5/6 ">
+    <div class="bg-blue-800 flex  h-20  w-full  pl-0">
+      <div class="flex  justify-between items-center sm:w-4/6 w-5/6  ">
         {" "}
-        <div class="mx-0 sm:mx-2 ">
+        <div class="mx-0 sm:mx-2 hidden sm:block ">
           <p class="text-lg sm:text-2xl text-white font-bold ">MamurDokan</p>
         </div>
-        <form action="" class=" w-3/5 h-1/2   flex flex-row">
+        <form action="" class=" sm:w-3/5 w-full h-1/2   flex flex-row">
           <input
             type="text"
             placeholder="Search"
