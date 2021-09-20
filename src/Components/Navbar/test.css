@@ -1,0 +1,23 @@
+h2 {
+    margin-top: 100px;
+    text-align: center;
+    color: red;
+}
+img {
+    height: 250px;
+    width: 400px;
+    border: 2px solid black;
+    display: block;
+    margin: auto;
+}
+.slickk-arrow{
+    color: black;
+}
+.slick-prev {
+    z-index: 100;
+    left: 20px !important;
+}
+.slick-next {
+    z-index: 100;
+    right: 20px !important;
+}
