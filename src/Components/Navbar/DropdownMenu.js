@@ -4,7 +4,7 @@ import {Cloth, Accessories, Brands, NewArrivals} from './MenuItems';
 
 const DropdownMenu = () => {
     return (
-        <div className='inset-16 absolute'>
+        <div className='inset-36 absolute z-50'>
             <div  className="bg-yellow-100  pt-5 pb-8 px-20 space-y-10 grid grid-cols-4 mt-0">
             <div className='pt-10'>
                 <article className='pb-5'>
