@@ -116,49 +116,56 @@ export const Menu = [
     {
         title: "Home",
         path: "/",
-        class: "py-2 px-3 font-medium hover:bg-yellow-100 duration-500 hover:text-gray-800 rounded-lg",
-        toggleClass: 'py-3  px-3 font-medium hover:bg-yellow-100 duration-500 hover:text-gray-800 rounded-lg'
+        class: "py-2 px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+        toggleClass: 'py-3  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg'
     },
     {
         title: "Page",
         path: "/page",
-        class: "py-2  px-3 font-medium hover:bg-yellow-100 duration-500 hover:text-gray-800 rounded-lg",
-        toggleClass: 'py-3  px-3 font-medium hover:bg-yellow-100 duration-500 hover:text-gray-800 rounded-lg'
+        class: "py-2  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+        toggleClass: 'py-3  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg'
     },
     {
         title: "Shop",
         path: "/shop",
-        class: "py-2  px-3 font-medium hover:bg-yellow-100 duration-500 hover:text-gray-800 rounded-lg",
-        toggleClass: 'py-3  px-3 font-medium hover:bg-yellow-100 duration-500 hover:text-gray-800 rounded-lg'
+        class: "py-2  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+        toggleClass: 'py-3  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg'
     },
     {
         title: "Blog",
         path: "/blog",
-        class: "py-2  px-3 font-medium hover:bg-yellow-100 duration-500 hover:text-gray-800 rounded-lg",
-        toggleClass: 'py-3  px-3 font-medium hover:bg-yellow-100 duration-500 hover:text-gray-800 rounded-lg'
+        class: "py-2  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+        toggleClass: 'py-3  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg'
     },
     {
         title: "FAQs",
         path: "/faqs",
-        class: "py-2  px-3 font-medium hover:bg-yellow-100 duration-500 hover:text-gray-800 rounded-lg",
-        toggleClass: 'py-3  px-3 font-medium hover:bg-yellow-100 duration-500 hover:text-gray-800 rounded-lg'
+        class: "py-2  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+        toggleClass: 'py-3  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg'
     },
     {
         title: "Contact",
         path: "/contact",
-        class: "py-2  px-3 font-medium hover:bg-yellow-100 duration-500 hover:text-gray-800 rounded-lg",
-        toggleClass: 'py-3  px-3 font-medium hover:bg-yellow-100 duration-500 hover:text-gray-800 rounded-lg'
+        class: "py-2  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+        toggleClass: 'py-3  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg'
     },
     {
         title: "Sell on Martfury",
         path: "/sell-martfuary",
-        class: "py-2  px-3 font-medium hover:bg-yellow-100 duration-500 hover:text-gray-800 rounded-lg",
-        toggleClass: 'py-3  px-3 font-medium hover:bg-yellow-100 duration-500 hover:text-gray-800 rounded-lg'
+        class: "py-2  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+        toggleClass: 'py-3  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg'
     },
     {
         title: "Track your order",
         path: "/track-order",
-        class: 'py-2 px-4 font-medium bg-yellow-100 duration-300 text-gray-800 rounded-lg',
-        toggleClass: 'py-3 px-3 font-medium bg-yellow-100 text-gray-800 duration-300text-gray-800 rounded-lg'
+        class: 'py-2 px-4 font-medium hover:bg-blue-900 bg-blue-500 duration-300 text-white rounded-lg',
+        toggleClass: 'py-3 px-3 font-medium bg-blue-900 text-white duration-300 text-white rounded-lg'
     }
+];
+
+export const Icon = [
+    { path: "/facebook", icon:'facebook'},
+    { path: "/instagram", icon:'instagram'},
+    { path: "/twitter", icon:'twitter'},
+    { path: "/linkedin", icon:'linkedin'}
 ];
