@@ -54,55 +54,58 @@ export const TopBar = () => {
               <div className="py-1">
                 <Menu.Item>
                   {({ active }) => (
-                    <a
-                      href="/helpCenter"
+                    <Link
+                      to="/helpCenter"
                       className={classNames(
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                         "block px-4 py-2 text-sm"
                       )}
                     >
-                      Help Center
-                    </a>
+                      {" "}
+                      Help center
+                    </Link>
                   )}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
-                    <a
-                      href="/shipping"
+                    <Link
+                      to="/shopping&delivery"
                       className={classNames(
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                         "block px-4 py-2 text-sm"
                       )}
                     >
+                      {" "}
                       Shipping & Delivery
-                    </a>
+                    </Link>
                   )}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
-                    <a
-                      href="return&refunds"
+                    <Link
+                      to="return&refunds"
                       className={classNames(
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                         "block px-4 py-2 text-sm"
                       )}
                     >
+                      {" "}
                       Return & Refunds
-                    </a>
+                    </Link>
                   )}
                 </Menu.Item>
 
                 <Menu.Item>
                   {({ active }) => (
-                    <a
-                      href="payment"
+                    <Link
+                      to="/payment"
                       className={classNames(
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                         "block px-4 py-2 text-sm"
                       )}
                     >
                       Payment
-                    </a>
+                    </Link>
                   )}
                 </Menu.Item>
               </div>
