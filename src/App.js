@@ -1,11 +1,12 @@
 import "./App.css";
 import HomePage from "./pages/Home-page/HomePage";
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   return (
-    <div>
-      <HomePage/>
-    </div>
+    <Router>
+      <HomePage />
+    </Router>
   );
 }
 

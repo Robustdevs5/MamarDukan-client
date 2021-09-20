@@ -1,18 +1,16 @@
-import React from 'react';
-import Footer from '../../Components/Footer/Footer';
-import Header from '../../Components/Header/Header';
-import Navbar from '../../Components/Navbar/Navbar';
-import Slider from '../../Components/Slider/Slider';
+import React from "react";
+import Footer from "../../Components/Footer/Footer";
+import Header from "../../Components/Header/Header";
+import Navbar from "../../Components/Navbar/Navbar";
+import Slider from "../../Components/Slider/Slider";
+import TopBar from "../../Components/TopBar/TopBar";
 
 const HomePage = () => {
-    return (
-        <div>
-            <Header/>
-            <Navbar/>
-            <Slider />
-            <Footer/>
-        </div>
-    );
+  return (
+    <div>
+      <TopBar />
+    </div>
+  );
 };
 
 export default HomePage;
