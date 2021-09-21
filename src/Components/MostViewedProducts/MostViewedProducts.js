@@ -1,9 +1,5 @@
 import React from 'react';
 import Slider from "react-slick";
-<<<<<<< HEAD
-import '../StyledComponent/HomepageProduct.css';
-=======
->>>>>>> 440fe3a9578b84005663d3f89e4a392e936416dc
 import star from "../../images/5star.png";
 import right from "../../images/right.png";
 import left from "../../images/left.png";
