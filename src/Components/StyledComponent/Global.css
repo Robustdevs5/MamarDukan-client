@@ -1,4 +1,49 @@
+<<<<<<< HEAD
+.slick-prev,
+.slick-next {
+  top: 75%;
+  z-index: 99;
+}
+
+/* .slick-dots {
+  bottom: 70%;
+  display: inline-grid !important;
+  left: 5%;
+} */
+
+.slick-dots li button:before {
+  font-size: 15px;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 0.9;
+  color: #4f46e5;
+}
+
+.slick-dots li button:before {
+  color: #fff;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 50px;
+  color: #fff;
+}
+
+.slick-prev {
+  left: 10%;
+}
+
+.slick-next {
+  right: 80%;
+}
+
+.slick-dots li button:before {
+  color: #777;
+}
+=======
 body{
     overflow-x: hidden;
   }
   
+>>>>>>> aaefd70fa715081c5668900d6d3021ade0810c36

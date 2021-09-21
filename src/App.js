@@ -6,6 +6,7 @@ function App() {
     <Router>
       <Switch>
           <Route exact path="/" component={HomePage} />
+          
      </Switch>
     </Router>
   );
