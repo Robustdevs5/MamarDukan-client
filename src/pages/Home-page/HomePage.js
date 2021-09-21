@@ -1,6 +1,5 @@
 import React from "react";
 import FeaturedProduct from "../../Components/FeaturedProduct/FeaturedProduct";
-import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
 import MostViewedProducts from "../../Components/MostViewedProducts/MostViewedProducts";
 import Navbar from "../../Components/Navbar/Navbar";
