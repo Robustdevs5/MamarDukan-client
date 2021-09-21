@@ -6,6 +6,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 import NewProducts from "../../Components/NewProducts/NewProducts";
 import Slider from "../../Components/Slider/Slider";
 import TopBar from "../../Components/TopBar/TopBar";
+import Footer from "../../Components/Footer/Footer";
 
 const HomePage = () => {
   return (
@@ -17,7 +18,7 @@ const HomePage = () => {
       <NewProducts />
       <FeaturedProduct />
       <MostViewedProducts />
-      <Footer />
+      <Footer/>
     </div>
   );
 };
