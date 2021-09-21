@@ -18,17 +18,17 @@ export const Policies = () => {
         <div class={styles.policies_sub_box}>
           <div class={styles.policies_icon}>
             {policy.icon === "directionsrun" ? (
-              <DirectionsRun />
+              <DirectionsRun fontSize="large" />
             ) : policy.icon === "loop" ? (
-              <LoopOutlined />
+              <LoopOutlined fontSize="large" />
             ) : policy.icon === "payment" ? (
-              <Payment />
+              <Payment fontSize="large" />
             ) : policy.icon === "forum" ? (
-              <Forum />
+              <Forum fontSize="large" />
             ) : policy.icon === "redeem" ? (
-              <Redeem />
+              <Redeem fontSize="large" />
             ) : (
-              <Redeem />
+              <Redeem fontSize="large" />
             )}
           </div>
           <h6 class={styles.policies_title}>{policy.title}</h6>

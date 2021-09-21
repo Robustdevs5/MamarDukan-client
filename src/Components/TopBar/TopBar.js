@@ -1,4 +1,8 @@
-import { AccountCircle, ShoppingCart } from "@mui/icons-material";
+import {
+  AccountCircle,
+  ShoppingCart,
+  SupportAgentOutlined,
+} from "@mui/icons-material";
 import React from "react";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
@@ -13,7 +17,7 @@ function classNames(...classes) {
 export const TopBar = () => {
   return (
     <div class="bg-blue-800 flex  h-20  w-full  pl-0">
-      <div class="flex  justify-between items-center sm:w-4/6 w-5/6  ">
+      <div class="flex  justify-between items-center sm:w-4/6 w-4/6  ">
         <div class="mx-0 sm:mx-4 hidden sm:block ">
           <p class="text-lg sm:text-2xl text-white font-bold ">Mamardokan</p>
         </div>
@@ -36,7 +40,7 @@ export const TopBar = () => {
       >
         <div class={styles.topBar_tags}>
           <Link to="/checkout">
-            <ShoppingCart></ShoppingCart>
+            <ShoppingCart fontSize="large"></ShoppingCart>
           </Link>{" "}
         </div>
 
@@ -46,7 +50,8 @@ export const TopBar = () => {
           <Menu as="div" className="relative inline-block text-left">
             <div>
               <Menu.Button class="flex items-center">
-                Customer Care
+                <p class="md:block hidden"> Customer Care</p>
+                <SupportAgentOutlined class="md:hidden block h-10 " />{" "}
                 <ChevronDownIcon
                   className="-mr-1 ml-2  w-5"
                   aria-hidden="true"
@@ -138,7 +143,7 @@ export const TopBar = () => {
 
         {/* Login and Register */}
 
-        <AccountCircle class="h-10 ml-2 "></AccountCircle>
+        <AccountCircle class="h-10 ml-2  hidden sm:block"></AccountCircle>
 
         <div>
           <Link to="/login">
