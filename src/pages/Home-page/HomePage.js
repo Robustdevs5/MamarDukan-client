@@ -16,7 +16,7 @@ const HomePage = () => {
       <TopBar />
       <Header />
       <Navbar />
-      {/* <Slider /> */}
+      <Slider />
       <Policies />
       <NewProducts />
       <FeaturedProduct />
