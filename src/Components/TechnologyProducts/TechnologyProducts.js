@@ -1,16 +1,12 @@
 import React from 'react';
 import Slider from "react-slick";
-<<<<<<< HEAD
-import '../StyledComponent/HomepageProduct.css';
-=======
->>>>>>> 440fe3a9578b84005663d3f89e4a392e936416dc
 import star from "../../images/5star.png";
 import right from "../../images/right.png";
 import left from "../../images/left.png";
 
 
 
-const MostViewedProducts = () => {
+const TechnologyProducts = () => {
 
     function SampleNextArrow(props) {
         const { className, style, onClick } = props;
@@ -42,17 +38,15 @@ const MostViewedProducts = () => {
 
 
     const settings = {
-        className: "center",
-        dots: false,
-        centerMode: true,
+
+        dots: true,
         infinite: true,
-        slidesToShow: 2.5,
-        speed: 500,
-        rows: 2,
-        slidesPerRow: 2,
-        autoplaySpeed: 3000,
+        slidesToShow: 4,
+        slidesToScroll: 1,
         autoplay: true,
-        pauseOnHover: true,
+        speed: 2000,
+        autoplaySpeed: 2000,
+        cssEase: "linear",
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
 
@@ -69,7 +63,7 @@ const MostViewedProducts = () => {
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 2,
                     slidesToScroll: 2,
                     initialSlide: 2
                 }
@@ -90,7 +84,7 @@ const MostViewedProducts = () => {
         <div className="p-2 py-5 my-9">
 
             <div className="px-8 productHeader mx-10 h-14 mb-4 rounded flex bg-gray-300">
-                <h1 className="sm:text-3xl text-gray-800 font-bold py-2">Most viewed Products</h1>
+                <h1 className="sm:text-3xl text-gray-800 font-bold py-2"> Computer & Technology</h1>
 
                 <div className="sm:ml-auto py-4">
                     <a className="hover:text-blue-700 mr-5" href=" ">Special offer</a>
@@ -98,7 +92,7 @@ const MostViewedProducts = () => {
                 </div>
             </div>
 
-            <Slider {...settings} className="px-10">
+            <Slider {...settings} className="px-12">
 
                 <div className="p-1 pl-2 pr-2">
                     <img className="mb-4 rounded cursor-pointer" src="https://images.unsplash.com/photo-1515849430397-7aee921bbea1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="8192" />
@@ -221,4 +215,4 @@ const MostViewedProducts = () => {
     );
 };
 
-export default MostViewedProducts;
+export default TechnologyProducts;

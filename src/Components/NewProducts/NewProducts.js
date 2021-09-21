@@ -1,11 +1,41 @@
 import React from 'react';
 import Slider from "react-slick";
-import '../StyledComponent/HomepageProduct.css';
 import star from "../../images/5star.png";
+import right from "../../images/right.png";
+import left from "../../images/left.png";
 
 
 
 const NewProducts = () => {
+
+    function SampleNextArrow(props) {
+        const { className, style, onClick } = props;
+        return (
+            <div className={className}
+                style={{ ...style, display: "block" }}
+                onClick={onClick} >
+
+                <img className="arrow"
+                    src={right} alt="" />
+
+            </div>
+        );
+    }
+
+    function SamplePrevArrow(props) {
+        const { className, style, onClick } = props;
+        return (
+            <div className={className}
+                style={{ ...style, display: "block" }}
+                onClick={onClick} >
+
+                <img className="arrow"
+                    src={left} alt="" />
+
+            </div>
+        );
+    }
+
 
     var settings = {
         dots: false,
@@ -15,6 +45,9 @@ const NewProducts = () => {
         autoplay: true,
         autoplaySpeed: 2000,
         pauseOnHover: true,
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />,
+
         responsive: [
             {
                 breakpoint: 1024,
@@ -46,10 +79,17 @@ const NewProducts = () => {
 
 
     return (
-        <div className="p-2 mb-5">
-            <h1 className="text-3xl text-gray-800 font-bold py-7 px-4">Deal of the day</h1>
+        <div className="p-2 mb-5 mt-10">
 
-            <Slider {...settings} className="p-1">
+            <div className="px-8 productHeader mx-12 h-14 mb-4 rounded flex bg-gray-300">
+                <h1 className="text-3xl text-gray-800 font-bold py-2">Deal of the day</h1>
+
+                <div className="ml-auto py-4 hover:text-blue-700">
+                    <a href=" ">View all</a>
+                </div>
+            </div>
+
+            <Slider {...settings} className="px-12">
                 <div className="p-1 pl-2 pr-2">
                     <img className="mb-4 rounded cursor-pointer" src="https://i.ibb.co/dGxSgHk/8192.jpg" alt="8192" />
                     <h5 className="text-2xl font-bold text-green-700">$100</h5>
