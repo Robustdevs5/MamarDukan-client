@@ -1,12 +1,8 @@
-import {
-  AccountCircle,
-  ShoppingCart,
-  SupportAgentOutlined,
-} from "@mui/icons-material";
+import { ShoppingCart, SupportAgentOutlined } from "@mui/icons-material";
 import React from "react";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon, SearchIcon } from "@heroicons/react/solid";
+import { ChevronDownIcon, SearchIcon, UserIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
 import styles from "../StyledComponent/TopBar.module.css";
 
@@ -51,9 +47,9 @@ export const TopBar = () => {
             <div>
               <Menu.Button class="flex items-center">
                 <p class="md:block hidden"> Customer Care</p>
-                <SupportAgentOutlined class="md:hidden block h-10 " />{" "}
+                <SupportAgentOutlined class="md:hidden block h-10   fill-current text-white-800 " />{" "}
                 <ChevronDownIcon
-                  className="-mr-1 ml-2  w-5"
+                  className="-mr-1 ml-2  w-5 md:block hidden"
                   aria-hidden="true"
                 />
               </Menu.Button>
@@ -143,7 +139,7 @@ export const TopBar = () => {
 
         {/* Login and Register */}
 
-        <AccountCircle class="h-10 ml-2  hidden sm:block"></AccountCircle>
+        <UserIcon class="h-8 ml-2  hidden sm:block text-white fill-current text-white-600"></UserIcon>
 
         <div>
           <Link to="/login">

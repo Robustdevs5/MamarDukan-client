@@ -13,3 +13,6 @@
 .policies_details {
   @apply text-gray-700;
 }
+.icon_font_size {
+  @apply text-2xl;
+}
