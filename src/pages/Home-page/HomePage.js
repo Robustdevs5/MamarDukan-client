@@ -7,6 +7,7 @@ import NewProducts from "../../Components/NewProducts/NewProducts";
 import Slider from "../../Components/Slider/Slider";
 import TopBar from "../../Components/TopBar/TopBar";
 import Footer from "../../Components/Footer/Footer";
+import { Policies } from "../../Components/Policies/Policies";
 import TechnologyProducts from "../../Components/TechnologyProducts/TechnologyProducts";
 
 const HomePage = () => {
@@ -16,6 +17,7 @@ const HomePage = () => {
       <Header />
       <Navbar />
       <Slider />
+      <Policies />
       <NewProducts />
       <FeaturedProduct />
       <TechnologyProducts />
