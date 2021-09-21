@@ -1,0 +1,15 @@
+.policies_main_box {
+  @apply flex flex-wrap border-2  border-gray-300  bg-gray-50  mx-4 my-8 items-center justify-center;
+}
+.policies_sub_box {
+  @apply p-4  m-4  w-56 text-center;
+}
+.policies_title {
+  @apply text-xl font-medium;
+}
+.policies_icon {
+  @apply text-yellow-500 mb-4;
+}
+.policies_details {
+  @apply text-gray-700;
+}
