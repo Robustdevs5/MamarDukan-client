@@ -1,12 +1,18 @@
 .slick-prev {
     z-index: 100;
-    left: 20px !important;
+    left: 0px !important;
+    top: 35% !important;
 }
+
 .slick-next {
     z-index: 100;
-    right: 20px !important;
+    top: 35% !important;
+    right: 0px !important;
 }
 
-.productCard{
-
+.oi{
+    transition: 0.1s ;
+}
+.oi:hover {
+    transform: scale(1.5);
 }
