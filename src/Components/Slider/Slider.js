@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
@@ -54,3 +55,16 @@ const Sliders = () => {
 };
 
 export default Sliders;
+=======
+import React from "react";
+
+const Slider = () => {
+  return (
+    <div>
+      
+    </div>
+  );
+};
+
+export default Slider;
+>>>>>>> aaefd70fa715081c5668900d6d3021ade0810c36
