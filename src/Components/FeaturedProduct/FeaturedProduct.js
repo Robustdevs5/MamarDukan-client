@@ -18,7 +18,7 @@ const FeaturedProduct = () => {
                 style={{ ...style, display: "block" }}
                 onClick={onClick} >
 
-                <img className="oi"
+                <img className="arrow"
                     src={right} alt="" />
 
             </div>
@@ -32,7 +32,7 @@ const FeaturedProduct = () => {
                 style={{ ...style, display: "block" }}
                 onClick={onClick} >
 
-                <img className="oi"
+                <img className="arrow"
                     src={left} alt="" />
 
             </div>

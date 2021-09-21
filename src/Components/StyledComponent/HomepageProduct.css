@@ -10,9 +10,9 @@
     right: 0px !important;
 }
 
-.oi{
+.arrow{
     transition: 0.1s ;
 }
-.oi:hover {
+.arrow:hover {
     transform: scale(1.5);
 }
