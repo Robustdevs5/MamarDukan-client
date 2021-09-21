@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from "react-slick";
-// import '../StyledComponent/HomepageProduct.css';
+import '../StyledComponent/HomepageProduct.css';
 import star from "../../images/5star.png";
 
 

@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import {Menu} from './MenuItems';
+import {Menu} from '../Menu/MenuItems';
 
 const ToggleMenu = ({isOpen, toggle}) => {
     return (
-        <div className={isOpen ? 'grid grid-rows-4  items-center text-white pb-10': 'hidden'}
+        <div 
+            className={isOpen ? 'grid grid-rows-4  items-center text-white pb-10': 'hidden'}
             onClick={toggle}>
             
             {
