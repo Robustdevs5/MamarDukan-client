@@ -81,7 +81,14 @@ const FeaturedProduct = () => {
 
     return (
         <div className="p-2">
-            <h1 className="text-3xl text-gray-800 font-bold mb-1 py-7 px-4">Featured Product</h1>
+
+            <div className="px-8 productHeader mx-12 h-14 mb-4 rounded flex bg-gray-300">
+                <h1 className="text-3xl text-gray-800 font-bold py-2">Featured Product</h1>
+
+                <div className="ml-auto py-4 hover:text-blue-700">
+                    <a href=" ">View all</a>
+                </div>
+            </div>
 
             <Slider {...settings} className="px-12">
                 <div className="p-1 pl-2 pr-2">

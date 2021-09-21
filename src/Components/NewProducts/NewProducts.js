@@ -79,8 +79,15 @@ const NewProducts = () => {
 
 
     return (
-        <div className="p-2 mb-5">
-            <h1 className="text-3xl text-gray-800 font-bold py-7 px-4">Deal of the day</h1>
+        <div className="p-2 mb-5 mt-10">
+
+            <div className="px-8 productHeader mx-12 h-14 mb-4 rounded flex bg-gray-300">
+                <h1 className="text-3xl text-gray-800 font-bold py-2">Deal of the day</h1>
+
+                <div className="ml-auto py-4 hover:text-blue-700">
+                    <a href=" ">View all</a>
+                </div>
+            </div>
 
             <Slider {...settings} className="px-12">
                 <div className="p-1 pl-2 pr-2">
