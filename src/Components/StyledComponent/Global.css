@@ -4,6 +4,10 @@
   z-index: 99;
 }
 
+body{
+  overflow-x: hidden;
+}
+
 /* .slick-dots {
   bottom: 70%;
   display: inline-grid !important;
