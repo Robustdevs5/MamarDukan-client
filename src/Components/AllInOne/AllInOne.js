@@ -2,7 +2,7 @@ import React from 'react'
 import {Accessories} from '../Navbar/Menu/MenuItems';
 
 
-export default function HomepageMiddle() {
+export default function AllInOne() {
     return (
         <div className="py-12 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

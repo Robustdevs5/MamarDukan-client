@@ -9,7 +9,7 @@ import TopBar from "../../Components/TopBar/TopBar";
 import Footer from "../../Components/Footer/Footer";
 import { Policies } from "../../Components/Policies/Policies";
 import TechnologyProducts from "../../Components/TechnologyProducts/TechnologyProducts";
-import HomepageMiddle from "../../Components/HomePageMiddle/HomePageMiddle";
+import AllInOne from "../../Components/AllInOne/AllInOne";
 import Newsletter from "../../Components/Newsletter/Newsletter";
 
 const HomePage = () => {
@@ -24,7 +24,7 @@ const HomePage = () => {
       <FeaturedProduct />
       <Newsletter/>
       <TechnologyProducts />
-      <HomepageMiddle/>
+      <AllInOne/>
       <MostViewedProducts />
       <Footer />
     </div>
