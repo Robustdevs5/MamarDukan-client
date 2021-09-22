@@ -132,18 +132,6 @@ const CartDropdown = ({ setDropdown }) => {
               View Cart
             </Link>
           </div>
-          <div className="mt-6 flex justify-center text-sm text-center text-gray-500">
-            <p>
-              or{" "}
-              <button
-                type="button"
-                className="text-indigo-600 font-medium hover:text-indigo-500"
-              >
-                Continue Shopping
-                <span aria-hidden="true"> &rarr;</span>
-              </button>
-            </p>
-          </div>
         </div>
       </div>
     </div>
