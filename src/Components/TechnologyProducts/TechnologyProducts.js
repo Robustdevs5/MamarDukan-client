@@ -39,7 +39,7 @@ const TechnologyProducts = () => {
 
     const settings = {
 
-        dots: true,
+        dots: false,
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 1,
@@ -83,7 +83,7 @@ const TechnologyProducts = () => {
     return (
         <div className="p-2 py-5 my-9">
 
-            <div className="px-8 productHeader mx-10 h-14 mb-4 rounded flex bg-gray-300">
+            <div className="px-8 productHeader mx-10 h-14 mb-4 rounded flex bg-gray-100 border">
                 <h1 className="sm:text-3xl text-gray-800 font-bold py-2"> Computer & Technology</h1>
 
                 <div className="sm:ml-auto py-4">

@@ -82,7 +82,7 @@ const FeaturedProduct = () => {
     return (
         <div className="p-2">
 
-            <div className="px-8 productHeader mx-12 h-14 mb-4 rounded flex bg-gray-300">
+            <div className="px-8 productHeader mx-12 h-14 mb-4 rounded flex bg-gray-100 border">
                 <h1 className="text-3xl text-gray-800 font-bold py-2">Featured Product</h1>
 
                 <div className="ml-auto py-4 hover:text-blue-700">

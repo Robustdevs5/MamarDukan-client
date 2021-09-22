@@ -61,7 +61,7 @@ const NewProducts = () => {
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 2,
                     slidesToScroll: 2,
                     initialSlide: 2
                 }
@@ -81,7 +81,7 @@ const NewProducts = () => {
     return (
         <div className="p-2 mb-5 mt-10">
 
-            <div className="px-8 productHeader mx-12 h-14 mb-4 rounded flex bg-gray-300">
+            <div className="px-8 productHeader mx-12 h-14 mb-4 rounded flex bg-gray-100 border">
                 <h1 className="text-3xl text-gray-800 font-bold py-2">Deal of the day</h1>
 
                 <div className="ml-auto py-4 hover:text-blue-700">
