@@ -1,18 +1,20 @@
 import { ShoppingCart, SupportAgentOutlined } from "@mui/icons-material";
-import React from "react";
+import React, { useState } from "react";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon, SearchIcon, UserIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
 import styles from "../StyledComponent/TopBar.module.css";
+import CartDropdown from "./CartDropdown";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export const TopBar = () => {
+const TopBar = () => {
+  const [dropdown, setDropdown] = useState(false);
   return (
-    <div class="bg-blue-800 flex  h-20  w-full  pl-0">
+    <div class="bg-blue-800 flex  h-20  w-full  pl-0 sticky top-0 z-50 ">
       <div class="flex  justify-between items-center sm:w-4/6 w-4/6  ">
         <div class="mx-0 sm:mx-4 hidden sm:block ">
           <p class="text-lg sm:text-2xl text-white font-bold ">Mamardokan</p>
@@ -30,14 +32,17 @@ export const TopBar = () => {
         </form>
       </div>
 
-      <div
-        class="flex justify-end  items-center  flex-grow 
-       "
-      >
-        <div class={styles.topBar_tags}>
-          <Link to="/checkout">
-            <ShoppingCart fontSize="large"></ShoppingCart>
-          </Link>{" "}
+      <div class="flex justify-end  items-center  flex-grow">
+        {/* Add to cart */}
+        <div
+          onMouseEnter={() => setDropdown(true)}
+          onMouseLeave={() => setDropdown(false)}
+        >
+          <div class={styles.topBar_tags}>
+            <Link to="/checkout">
+              <ShoppingCart fontSize="large"></ShoppingCart>
+            </Link>{" "}
+          </div>
         </div>
 
         {/* Customer Care Dropdown */}
@@ -151,6 +156,7 @@ export const TopBar = () => {
           </Link>
         </div>
       </div>
+      {dropdown && <CartDropdown setDropdown={setDropdown} />}
     </div>
   );
 };
