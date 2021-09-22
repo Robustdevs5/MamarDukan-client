@@ -1,7 +1,11 @@
 .footer {
     background-color: rgb(8, 8, 76);
-    height: 400px;
-    display: flex;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: repeat(1, 1fr );
+    grid-auto-rows: 1fr;
+    grid-gap: 2px;
     color: white;
 }
 
@@ -14,10 +18,6 @@
 .iconwrapper{
     display: flex;
     flex-direction: row;
-}
-
-.iconbutton {
-    margin-right: 10%;
 }
 
 .title{
