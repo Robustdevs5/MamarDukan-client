@@ -1,10 +1,10 @@
 import React from 'react';
 import Slider from "react-slick";
 import star from "../../images/5star.png";
-import right from "../../images/right.png";
-import left from "../../images/left.png";
 import { ComputerTechnology } from '../HomepageProductData/HomepageProductData';
 import { Link } from 'react-router-dom';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 
 
@@ -17,8 +17,7 @@ const TechnologyProducts = () => {
                 style={{ ...style, display: "block" }}
                 onClick={onClick} >
 
-                <img className="arrow"
-                    src={right} alt="" />
+                <KeyboardArrowRightIcon className="arrow" color="primary" />
 
             </div>
         );
@@ -31,8 +30,7 @@ const TechnologyProducts = () => {
                 style={{ ...style, display: "block" }}
                 onClick={onClick} >
 
-                <img className="arrow"
-                    src={left} alt="" />
+                <KeyboardArrowLeftIcon className="arrow" color="primary" />
 
             </div>
         );

@@ -4,8 +4,10 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import '../StyledComponent/HomepageProduct.css';
 import star from "../../images/5star.png";
-import right from "../../images/right.png";
-import left from "../../images/left.png";
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { Link } from 'react-router-dom';
+import { FeaturedProducts } from '../HomepageProductData/HomepageProductData';
 
 
 
@@ -18,8 +20,7 @@ const FeaturedProduct = () => {
                 style={{ ...style, display: "block" }}
                 onClick={onClick} >
 
-                <img className="arrow"
-                    src={right} alt="" />
+                <KeyboardArrowRightIcon className="arrow" color="primary" />
 
             </div>
         );
@@ -32,8 +33,7 @@ const FeaturedProduct = () => {
                 style={{ ...style, display: "block" }}
                 onClick={onClick} >
 
-                <img className="arrow"
-                    src={left} alt="" />
+                <KeyboardArrowLeftIcon className="arrow" color="primary" />
 
             </div>
         );
@@ -82,13 +82,25 @@ const FeaturedProduct = () => {
     return (
         <div className="p-2">
 
-            <div className="px-8 productHeader mx-12 h-14 mb-4 rounded flex bg-gray-100 border">
-                <h1 className="text-3xl text-gray-800 font-bold py-2">Featured Product</h1>
-
-                <div className="ml-auto py-4 hover:text-blue-700">
-                    <a href=" ">View all</a>
-                </div>
+            <div className="px-8 mx-10 my-8 rounded bg-gray-100 border">
+                <ul className="md:flex md:justify-between items-center py-2">
+                    <div>
+                        <li>
+                            <h1 className="sm:text-3xl text-gray-800 font-bold py-2 my-4 md:py-2 md:my-0 border-b-2 border-blue-500 md:border-none"> Featured Product</h1>
+                        </li>
+                    </div>
+                    <div className="flex">
+                        {
+                            FeaturedProducts.map((item, index) =>
+                                <li key={index} className="md:px-4">
+                                    <Link to={item.path} className="hover:text-blue-800 mr-3">{item.title}</Link>
+                                </li>
+                            )
+                        }
+                    </div>
+                </ul>
             </div>
+
 
             <Slider {...settings} className="px-12">
                 <div className="p-1 pl-2 pr-2">
