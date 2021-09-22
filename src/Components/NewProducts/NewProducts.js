@@ -1,8 +1,10 @@
 import React from 'react';
 import Slider from "react-slick";
 import star from "../../images/5star.png";
-import right from "../../images/right.png";
-import left from "../../images/left.png";
+import right from "../../images/right2.png";
+import left from "../../images/left2.png";
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 
 
@@ -15,8 +17,8 @@ const NewProducts = () => {
                 style={{ ...style, display: "block" }}
                 onClick={onClick} >
 
-                <img className="arrow"
-                    src={right} alt="" />
+                <KeyboardArrowRightIcon className="arrow" color="primary" />
+
 
             </div>
         );
@@ -29,8 +31,7 @@ const NewProducts = () => {
                 style={{ ...style, display: "block" }}
                 onClick={onClick} >
 
-                <img className="arrow"
-                    src={left} alt="" />
+                <KeyboardArrowLeftIcon className="arrow" color="primary" />
 
             </div>
         );

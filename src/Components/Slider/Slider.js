@@ -50,7 +50,7 @@ const Sliders = () => {
                         <div className="slider-blog-content">
                             <h2>Welcome To Mamur Dukhan</h2>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, deserunt!</p>
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full">Shop Now</button>
+                            <button className="bg-yellow-500 hover:bg-blue-700 text-gray-800 hover:text-blue-50 font-bold py-3 px-6 rounded-full">Shop Now</button>
                         </div>
                     </div>
                 </Slider>
