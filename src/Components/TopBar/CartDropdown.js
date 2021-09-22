@@ -16,7 +16,7 @@ const products = [
       "Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
   },
   {
-    id: 1,
+    id: 2,
     name: "Throwback Hip Bag",
     href: "#",
     color: "Salmon",
@@ -28,7 +28,7 @@ const products = [
       "Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
   },
   {
-    id: 2,
+    id: 3,
     name: "Medium Stuff Satchel",
     href: "#",
     color: "Blue",
@@ -53,12 +53,12 @@ const CartDropdown = ({ setDropdown }) => {
         <div className="flex-1 py-6 overflow-y-auto px-4 sm:px-6 px-2">
           <h4 className="text-lg font-medium text-gray-900">Shopping cart</h4>
 
-          <div className="mt-8 overflow-hidden h-60 overflow-y-scroll">
+          <div className="mt-8 overflow-hidden h-52 overflow-y-scroll">
             <div className="flow-root">
-              <ul role="list" className="-my-6 divide-y divide-gray-200">
+              <ul role="list" className="-my-4 divide-y divide-gray-200">
                 {products.map((product) => (
                   <li key={product.id} className="py-6 flex">
-                    <div className="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
+                    <div className="flex-shrink-0 w-20 h-20 border border-gray-200 rounded-md overflow-hidden">
                       <img
                         src={product.imageSrc}
                         alt={product.imageAlt}
@@ -68,10 +68,10 @@ const CartDropdown = ({ setDropdown }) => {
 
                     <div className="ml-4 flex-1 flex flex-col">
                       <div>
-                        <div className="flex justify-between  font-medium text-gray-900">
-                          <h3>
+                        <div className="flex justify-between  font-medium text-gray-900 text-blue-500">
+                          <p>
                             <a href={product.href}>{product.name}</a>
-                          </h3>
+                          </p>
                           <p className="ml-4">{product.price}</p>
                         </div>
                       </div>
