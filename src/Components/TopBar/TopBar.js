@@ -1,21 +1,25 @@
-import { ShoppingCart } from "@mui/icons-material";
+import { ShoppingCart, SupportAgentOutlined } from "@mui/icons-material";
 import React from "react";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon, SearchIcon } from "@heroicons/react/solid";
+import { ChevronDownIcon, SearchIcon, UserIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
 import styles from "../StyledComponent/TopBar.module.css";
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
+
 export const TopBar = () => {
   return (
     <div class="bg-blue-800 flex  h-20  w-full  pl-0">
-      <div class="flex  justify-between items-center sm:w-4/6 w-5/6  ">
-        {" "}
-        <div class="mx-0 sm:mx-2 hidden sm:block ">
-          <p class="text-lg sm:text-2xl text-white font-bold ">Mamurdokan</p>
+      <div class="flex  justify-between items-center sm:w-4/6 w-4/6  ">
+        <div class="mx-0 sm:mx-4 hidden sm:block ">
+          <p class="text-lg sm:text-2xl text-white font-bold ">Mamardokan</p>
         </div>
+
+        {/* Search box  */}
+
         <form action="" class=" sm:w-3/5 w-full h-1/2   flex flex-row">
           <input
             type="text"
@@ -32,16 +36,20 @@ export const TopBar = () => {
       >
         <div class={styles.topBar_tags}>
           <Link to="/checkout">
-            <ShoppingCart></ShoppingCart>
+            <ShoppingCart fontSize="large"></ShoppingCart>
           </Link>{" "}
-        </div>{" "}
+        </div>
+
+        {/* Customer Care Dropdown */}
+
         <div class={styles.topBar_dropdown}>
           <Menu as="div" className="relative inline-block text-left">
             <div>
-              <Menu.Button>
-                Customer Care
+              <Menu.Button class="flex items-center">
+                <p class="md:block hidden"> Customer Care</p>
+                <SupportAgentOutlined class="md:hidden block h-10   fill-current text-white-800 " />{" "}
                 <ChevronDownIcon
-                  className="-mr-1 ml-2  w-5"
+                  className="-mr-1 ml-2  w-5 md:block hidden"
                   aria-hidden="true"
                 />
               </Menu.Button>
@@ -90,6 +98,7 @@ export const TopBar = () => {
                       </Link>
                     )}
                   </Menu.Item>
+
                   <Menu.Item>
                     {({ active }) => (
                       <Link
@@ -127,12 +136,17 @@ export const TopBar = () => {
             </Transition>
           </Menu>{" "}
         </div>
+
+        {/* Login and Register */}
+
+        <UserIcon class="h-8 ml-2  hidden sm:block text-white fill-current text-white-600"></UserIcon>
+
         <div>
           <Link to="/login">
             <p class={styles.topBar_login_register}>Login </p>{" "}
           </Link>
+
           <Link to="/register">
-            {" "}
             <p class={styles.topBar_login_register}> Register</p>{" "}
           </Link>
         </div>

@@ -3,6 +3,7 @@ import { faEnvelope, faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import '../StyledComponent/Footer.css'
+import FooterCol from './FooterCol';
 
 const Footer = () => {
     const Shotcut = [
@@ -37,44 +38,25 @@ const Footer = () => {
     ]
     return (
         <div className="">
-            <div className=" footer ">
-                <div className="Service">
-                    <h4 className="title">Shotcut Link</h4>
-                    <p>Terms and Conditions</p>
-                    <p>Cookies policy</p>
-                    <p>Privacy Policy</p>
-                </div>
-                <div className="FeatureLink">
-                    <h4 className="title">Feature</h4>
-                    <p>Returns policy</p>
-                    <p>FAQ</p>
-                </div>
-                <div className="Contact">
-                    <h4 className="title">Contact</h4>
-                    <p><FontAwesomeIcon icon={faEnvelope} /> mail@mail.com</p>
-                    <p><FontAwesomeIcon icon={faPhoneAlt} /> +880123456789</p>
-                </div>
-                <div className="Icon">
-                    <div className="Social">
-                        <h4 className="title">Follow Us</h4>
-                            <div className="iconwraper">
-                                <FontAwesomeIcon className="iconbutton" icon={faTwitter} />
-                                <FontAwesomeIcon className="iconbutton" icon={faFacebook} />
-                                <FontAwesomeIcon className="iconbutton" icon={faInstagram} />
-                            </div>
-                    </div>
-                    <div className="PaymentGateway">
-                        <h4 className="title">Payment Method</h4>
-                            <div className="iconwraper">
-                                <FontAwesomeIcon className="iconbutton" icon={faCcVisa} />
-                                <FontAwesomeIcon className="iconbutton" icon={faCcMastercard} />
-                                <FontAwesomeIcon className="iconbutton" icon={faCcPaypal} />
-                            </div>
+            <div className="">
+                <div className="">
+                    <div className="footer">
+                        <FooterCol key={1} menuTitle={"SHOUTCUT"} menuItems={Shotcut}/>
+                        <FooterCol key={2} menuTitle={"OUR LINK"} menuItems={oralHealth}/>
+                        <FooterCol key={3} menuTitle={"SERVICE"} menuItems={services}/>
+                        <FooterCol key={4} menuTitle={"ABOUT US"} menuItems={ourAddress}/>
+                            {/* <div className="Icon"> */}
+                                {/* <div className="PaymentGateway">
+                                    <h4 className="title">Payment Method</h4>
+                                        <div className="iconwraper">
+                                            <FontAwesomeIcon className="iconbutton" icon={faCcVisa} />
+                                            <FontAwesomeIcon className="iconbutton" icon={faCcMastercard} />
+                                            <FontAwesomeIcon className="iconbutton" icon={faCcPaypal} />
+                                        </div>
+                                </div> */}
+                            {/* </div> */}
                     </div>
                 </div>
-            </div>
-            <div className="Trusted">
-
             </div>
             <p className="copyright">Copyright @2021 Robust Devs All rights reserved.</p>
         </div>
