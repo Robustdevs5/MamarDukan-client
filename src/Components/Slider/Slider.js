@@ -20,7 +20,7 @@ const Sliders = () => {
         fade: true
     };
     return (
-        <div className="mx-2 xs:grid-cols-1 md:grid grid-cols-3 gap-2 slider pt-8">
+        <div className="mx-2 xs:grid-cols-1 md:grid grid-cols-3 gap-2 slider pt-4">
             <div class="md:col-span-2 slider-blog">
                 <Slider {...settings}>
                     <div className="sin-slider-blog cursor-pointer">
@@ -57,10 +57,10 @@ const Sliders = () => {
             </div>
             <div className="promotion-post">
                 <div className="pb-2">
-                    <a href="#"><img src={p1} alt="Promotion banner" /></a>
+                    <a href=" "><img src={p1} alt="Promotion banner" /></a>
                 </div>
                 <div>
-                    <a href="#"><img src={p2} alt="Promotion banner" /></a>
+                    <a href=" "><img src={p2} alt="Promotion banner" /></a>
                 </div>
             </div>
         </div>
