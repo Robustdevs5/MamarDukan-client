@@ -1,6 +1,44 @@
-.slick-prev,
-.slick-next {
-  top: 75%;
+.sin-slider-blog {
+  position: relative;
+}
+
+.slider-blog-img {
+  background: black;
+  overflow: hidden;
+}
+
+.slider-blog-img img {
+  object-fit: cover;
+  opacity: 0.4;
+  width: 100%;
+}
+
+.slider-blog-content {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  right: 10%;
+  border: 1px solid gray;
+  width: 350px;
+  padding: 25px;
+  text-align: center;
+}
+
+.slider-blog-content h2 {
+  font-size: 30px;
+  color: #fff;
+  font-weight: 800;
+}
+
+.slider-blog-content p {
+  color: #fff;
+  padding: 15px 0 10px 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+.slider-blog .slick-prev,
+.slider-blog .slick-next {
+  top: 50%;
   z-index: 99;
 }
 
@@ -14,33 +52,64 @@ body{
   left: 5%;
 } */
 
-.slick-dots li button:before {
+.slider-blog .slick-dots li button:before {
   font-size: 15px;
 }
 
-.slick-dots li.slick-active button:before {
+.slider-blog .slick-dots li.slick-active button:before {
   opacity: 0.9;
   color: #4f46e5;
 }
 
-.slick-dots li button:before {
+.slider-blog .slick-dots li button:before {
   color: #fff;
 }
 
-.slick-prev:before,
-.slick-next:before {
+.slider-blog .slick-prev:before,
+.slider-blog .slick-next:before {
   font-size: 50px;
   color: #fff;
+  display:none;
 }
 
-.slick-prev {
-  left: 10%;
+.slider-blog .slick-prev {
+  left: 5% !important;
 }
 
-.slick-next {
-  right: 80%;
+.slider-blog .slick-next {
+  right: 5% !important;
 }
 
-.slick-dots li button:before {
+.slider-blog .slick-dots li button:before {
   color: #777;
+}
+.slider-img img {
+  height: 400px;
+}
+@media (min-width: 320px) and (max-width: 767px) {
+  .slider-blog-content h2 {
+    font-size: 22px;
+    color: #fff;
+    font-weight: 800;
+  }
+
+  .slider-blog-content p {
+    color: #fff;
+    padding: 5px 0 5px 0;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .slider-blog .slick-prev {
+    left: 2% !important;
+  }
+
+  .slider-blog .slick-next {
+    right: 9% !important;
+  }
+  .slider-blog-content {
+    top: 13%;
+  }
+  .promotion-post {
+    padding-top: 40px;
+  }
 }

@@ -1,8 +1,10 @@
 import React from 'react';
 import Slider from "react-slick";
 import star from "../../images/5star.png";
-import right from "../../images/right.png";
-import left from "../../images/left.png";
+import { ComputerTechnology } from '../HomepageProductData/HomepageProductData';
+import { Link } from 'react-router-dom';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 
 
@@ -15,8 +17,7 @@ const TechnologyProducts = () => {
                 style={{ ...style, display: "block" }}
                 onClick={onClick} >
 
-                <img className="arrow"
-                    src={right} alt="" />
+                <KeyboardArrowRightIcon className="arrow" color="primary" />
 
             </div>
         );
@@ -29,8 +30,7 @@ const TechnologyProducts = () => {
                 style={{ ...style, display: "block" }}
                 onClick={onClick} >
 
-                <img className="arrow"
-                    src={left} alt="" />
+                <KeyboardArrowLeftIcon className="arrow" color="primary" />
 
             </div>
         );
@@ -39,7 +39,7 @@ const TechnologyProducts = () => {
 
     const settings = {
 
-        dots: true,
+        dots: false,
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 1,
@@ -83,13 +83,23 @@ const TechnologyProducts = () => {
     return (
         <div className="p-2 py-5 my-9">
 
-            <div className="px-8 productHeader mx-10 h-14 mb-4 rounded flex bg-gray-300">
-                <h1 className="sm:text-3xl text-gray-800 font-bold py-2"> Computer & Technology</h1>
-
-                <div className="sm:ml-auto py-4">
-                    <a className="hover:text-blue-700 mr-5" href=" ">Special offer</a>
-                    <a className="hover:text-blue-700" href=" ">View all</a>
-                </div>
+            <div className="px-8 mx-10 my-8 rounded bg-gray-100 border">
+                <ul className="md:flex md:justify-between items-center py-2">
+                    <div>
+                        <li>
+                            <h1 className="sm:text-3xl text-gray-800 font-bold py-2 my-4 md:py-2 md:my-0 border-b-2 border-blue-500 md:border-none"> Computer & Technology</h1>
+                        </li>
+                    </div>
+                    <div className="flex">
+                        {
+                            ComputerTechnology.map((item, index) =>
+                                <li key={index} className="md:px-4">
+                                    <Link to={item.path} className="hover:text-blue-800 mr-3">{item.title}</Link>
+                                </li>
+                            )
+                        }
+                    </div>
+                </ul>
             </div>
 
             <Slider {...settings} className="px-12">
