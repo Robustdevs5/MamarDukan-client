@@ -34,7 +34,6 @@ const NavbarSection = ({ toggle, closeMobileMenu, isOpen }) => {
           />
         </div>
 
-<<<<<<< HEAD
                 <ul className='text-white text-center md:flex hidden'>
                     {
                         Menu.map((item, index) => {
@@ -57,31 +56,6 @@ const NavbarSection = ({ toggle, closeMobileMenu, isOpen }) => {
                                 </li>
                                 );
                             }
-=======
-        <ul className="md:flex text-white text-center hidden">
-          {Menu.map((item, index) => {
-            if (item.title === "Shop") {
-              return (
-                <li
-                  key={index}
-                  className=" flex item-center"
-                  onMouseEnter={() => setDropDown(true)}
-                  onMouseLeave={() => setDropDown(false)}
-                >
-                  <div className="py-5">
-                    <Link to={item.path} className={item.class}>
-                      {item.title}
-                      <FontAwesomeIcon
-                        className="ml-3 text-white"
-                        icon={faCaretDown}
-                      />
-                    </Link>
-                  </div>
-                  {dropDown && <ShopDropDownMenu />}
-                </li>
-              );
-            }
->>>>>>> fd69f8a0b923e9201bc697612019cb69f6202545
 
             if (item.title === "women") {
               return (
