@@ -1,8 +1,20 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
-
+import { Link } from "react-router-dom";
 const products = [
+  {
+    id: 1,
+    name: "Throwback Hip Bag",
+    href: "#",
+    color: "Salmon",
+    price: "$90.00",
+    quantity: 1,
+    imageSrc:
+      "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg",
+    imageAlt:
+      "Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
+  },
   {
     id: 1,
     name: "Throwback Hip Bag",
@@ -33,15 +45,15 @@ const products = [
 const CartDropdown = ({ setDropdown }) => {
   return (
     <div
-      className="   max-width-full absolute  top-20 md:right-20 right-2 z-100"
+      className="   max-width-full absolute  top-20 md:right-20 right-2 z-50 rounded-2 bg-gray-100 "
       onMouseEnter={() => setDropdown(true)}
       onMouseLeave={() => setDropdown(false)}
     >
-      <div className="h-full flex flex-col bg-white shadow-xl ">
+      <div className="h-full flex flex-col  shadow-xl ">
         <div className="flex-1 py-6 overflow-y-auto px-4 sm:px-6 px-2">
           <h4 className="text-lg font-medium text-gray-900">Shopping cart</h4>
 
-          <div className="mt-8">
+          <div className="mt-8 overflow-hidden h-60 overflow-y-scroll">
             <div className="flow-root">
               <ul role="list" className="-my-6 divide-y divide-gray-200">
                 {products.map((product) => (
@@ -105,13 +117,20 @@ const CartDropdown = ({ setDropdown }) => {
           <p className="mt-0.5 text-sm text-gray-500">
             Shipping and taxes calculated at checkout.
           </p>
-          <div className="mt-6">
-            <a
-              href="#"
+          <div className="mt-4 flex justify-between">
+            <Link
+              to="/viewCart"
               className="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
             >
-              Checkout
-            </a>
+              View Cart
+            </Link>
+
+            <Link
+              to="/viewCart"
+              className="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+            >
+              View Cart
+            </Link>
           </div>
           <div className="mt-6 flex justify-center text-sm text-center text-gray-500">
             <p>
