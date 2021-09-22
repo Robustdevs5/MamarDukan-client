@@ -25,7 +25,7 @@ const NavbarSection = ({toggle, closeMobileMenu, isOpen}) => {
                     <FontAwesomeIcon className="text-white" icon={ isOpen  ? faTimes : faBars} />
                 </div>
 
-                <ul className='md:flex text-white text-center hidden'>
+                <ul className='text-white text-center md:flex hidden'>
                     {
                         Menu.map((item, index) => {
                             

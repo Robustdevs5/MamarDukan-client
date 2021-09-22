@@ -1,15 +1,18 @@
 export const ComputerTechnology = [
     {
         title: "Special offer",
-        path: "/specialOffer"
+        path: "/specialOffer",
+        cls: 'md:px-4 border-r-2 border-blue-800'
     },
     {
         title: "Laptop",
-        path: "/laptop"
+        path: "/laptop",
+        cls: 'md:px-4 border-r-2 border-blue-800'
     }, 
     {
         title: "View All",
-        path: "/viewAll"
+        path: "/viewAll",
+        cls: 'md:px-4'
     },
 ];
 
@@ -17,11 +20,13 @@ export const ComputerTechnology = [
 export const NewProduct = [
     {
         title: "Special offer",
-        path: "/specialOffer"
+        path: "/specialOffer",
+        cls: 'md:px-4 border-r-2 border-blue-800'
     },
     {
-        title: "View All",
-        path: "/viewAll"
+        title: "Today offer",
+        path: "/viewAll",
+        cls: 'md:px-4'
     },
      
 ];
@@ -29,11 +34,13 @@ export const NewProduct = [
 export const MostViewedProduct = [
     {
         title: "Special offer",
-        path: "/specialOffer"
+        path: "/specialOffer",
+        cls: 'md:px-4 border-r-2 border-blue-800'
     },
     {
         title: "View All",
-        path: "/viewAll"
+        path: "/viewAll",
+        cls: 'md:px-4'
     },
      
 ];
@@ -42,11 +49,13 @@ export const MostViewedProduct = [
 export const FeaturedProducts = [
     {
         title: "Special offer",
-        path: "/specialOffer"
+        path: "/specialOffer",
+        cls: 'md:px-4 border-r-2 border-blue-800'
     },
     {
         title: "View All",
-        path: "/viewAll"
+        path: "/viewAll",
+        cls: 'md:px-4'
     },
      
 ];

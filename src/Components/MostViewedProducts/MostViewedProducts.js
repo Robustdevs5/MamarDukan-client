@@ -83,20 +83,20 @@ const MostViewedProducts = () => {
 
 
     return (
-        <div className="p-2 py-5 my-9">
+        <div className="px-2 my-20">
 
-            <div className="px-8 mx-10 my-8 rounded bg-gray-100 border">
-                <ul className="md:flex md:justify-between items-center py-2">
+            <div className="px-8 py-5 mb-8 bg-gray-100">
+                <ul className="md:flex md:justify-between items-center md:border-b md:border-blue-300 mb-10">
                     <div>
                         <li>
-                            <h1 className="sm:text-3xl text-gray-800 font-bold py-2 my-4 md:py-2 md:my-0 border-b-2 border-blue-500 md:border-none"> Most viewed Products</h1>
+                            <h1 className="tracking-tighter uppercase sm:text-3xl text-gray-800 font-bold py-2 my-4 md:py-2 md:my-0 border-b-2 border-blue-500 md:border-none"> Most viewed Products</h1>
                         </li>
                     </div>
                     <div className="flex">
                         {
                             MostViewedProduct.map((item, index) =>
-                                <li key={index} className="md:px-4">
-                                    <Link to={item.path} className="hover:text-blue-800 mr-3">{item.title}</Link>
+                                <li key={index} className={item.cls}>
+                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 bg-blue-800 text-white hover:bg-gray-50 hover:text-blue-800 border-2 border-blue-800 duration-300">{item.title}</Link>
                                 </li>
                             )
                         }
