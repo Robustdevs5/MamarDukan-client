@@ -38,31 +38,44 @@ export const Cloth = [
 export const Accessories = [
     {
         title: "Watches",
-        path: "/watches"
+        path: "/watches",
+        description:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. '
+
+    },
+    {
+        title: "Shoes",
+        path: "/shoes",
+        description:'Lorem ipsum, dolor sit amet consectetur adipisicing elit.'
     },
     {
         title: "Wallets",
-        path: "/wallets"
+        path: "/wallets",
+        description:'Lorem ipsum, dolor sit amet consectetur adipisicing elit.'
     },
     {
         title: "Bags",
-        path: "/bags"
+        path: "/bags",
+        description:'Lorem ipsum, dolor sit amet consectetur adipisicing elit.'
     },
     {
         title: "Sunglasses",
-        path: "/sunglasses"
+        path: "/sunglasses",
+        description:'Lorem ipsum, dolor sit amet consectetur adipisicing elit.'
     },
     {
         title: "Sweaters",
-        path: "/sweaters"
+        path: "/sweaters",
+        description:'Lorem ipsum, dolor sit amet consectetur adipisicing elit.'
     },
     {
         title: "Hats",
-        path: "/hats"
+        path: "/hats",
+        description:'Lorem ipsum, dolor sit amet consectetur adipisicing elit.'
     },
     {
         title: "Belts",
-        path: "/belts"
+        path: "/belts",
+        description:'Lorem ipsum, dolor sit amet consectetur adipisicing elit.'
     }
 ];
 

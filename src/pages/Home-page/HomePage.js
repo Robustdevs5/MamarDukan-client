@@ -9,6 +9,8 @@ import TopBar from "../../Components/TopBar/TopBar";
 import Footer from "../../Components/Footer/Footer";
 import { Policies } from "../../Components/Policies/Policies";
 import TechnologyProducts from "../../Components/TechnologyProducts/TechnologyProducts";
+import AllInOne from "../../Components/AllInOne/AllInOne";
+import Newsletter from "../../Components/Newsletter/Newsletter";
 
 const HomePage = () => {
   return (
@@ -20,7 +22,9 @@ const HomePage = () => {
       <Policies />
       <NewProducts />
       <FeaturedProduct />
+      <Newsletter/>
       <TechnologyProducts />
+      <AllInOne/>
       <MostViewedProducts />
       <Footer />
     </div>
