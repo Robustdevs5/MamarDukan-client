@@ -14,27 +14,24 @@ const Footer = () => {
         {name: "Help Center" , link: "/help"},
     ]
     const ourAddress = [
-        {name: "New York - 101010 Hudson" , link: "//google.com/map"},
-        {name: "Yards" , link: "//google.com/map"},
-       
+        {name: "Location" , link: "//google.com/map"},
+        {name: "New York - 101010 Hudson" , link: "//google.com/map"},       
     ]
-    const oralHealth = [
-        {name: "Emergency Dental Care" , link: "/emergency"},
-        {name: "Check Up" , link: "/checkup"},
-        {name: "Treatment of Personal Diseases" , link: "/personal-treatment"},
-        {name: "Tooth Extraction" , link: "/tooth-extract"},
-        {name: "Check Up" , link: "/checkup"},
-        {name: "Check Up" , link: "/checkup"},
-        {name: "Check Up" , link: "/checkup"}
+    const OurLink = [
+        {name: "How To Buy" , link: "/howtobuy"},
+        {name: "Returns & refunds" , link: "/return"},
+        {name: "Join with Affilate" , link: "/affilate"},
+        {name: "Careers" , link: "/career"},
+        {name: "Sell on mamar dukan" , link: "/seller"},
     ]
     const services = [
-        {name: "Emergency Dental Care" , link: "/emergency"},
-        {name: "Check Up" , link: "/checkup"},
-        {name: "Treatment of Personal Diseases" , link: "/personal-treatment"},
-        {name: "Tooth Extraction" , link: "/tooth-extract"},
-        {name: "Check Up" , link: "/checkup"},
-        {name: "Check Up" , link: "/checkup"},
-        {name: "Check Up" , link: "/checkup"}
+        {name: "About Mamar Dukan" , link: "/about"},
+        {name: "Guide" , link: "/Guide"},
+        {name: "FAQ" , link: "/FAQ"},
+        {name: "Contact Us" , link: "/ContactUs"},
+        {name: "Advertise Your Products" , link: "/advertise"},
+        {name: "Investor Relations" , link: "/investor"},
+        {name: "Blog" , link: "/blog"}
     ]
     return (
         <div className="">
@@ -42,19 +39,18 @@ const Footer = () => {
                 <div className="">
                     <div className="footer">
                         <FooterCol key={1} menuTitle={"SHOUTCUT"} menuItems={Shotcut}/>
-                        <FooterCol key={2} menuTitle={"OUR LINK"} menuItems={oralHealth}/>
+                        <FooterCol key={2} menuTitle={"OUR LINK"} menuItems={OurLink}/>
                         <FooterCol key={3} menuTitle={"SERVICE"} menuItems={services}/>
-                        <FooterCol key={4} menuTitle={"ABOUT US"} menuItems={ourAddress}/>
-                            {/* <div className="Icon"> */}
-                                {/* <div className="PaymentGateway">
+                        <FooterCol key={4} menuTitle={"ABOUT US"} menuItems={ourAddress}>
+                        <div className="PaymentGateway">
                                     <h4 className="title">Payment Method</h4>
                                         <div className="iconwraper">
                                             <FontAwesomeIcon className="iconbutton" icon={faCcVisa} />
                                             <FontAwesomeIcon className="iconbutton" icon={faCcMastercard} />
                                             <FontAwesomeIcon className="iconbutton" icon={faCcPaypal} />
                                         </div>
-                                </div> */}
-                            {/* </div> */}
+                                </div>
+                        </FooterCol>
                     </div>
                 </div>
             </div>

@@ -19,7 +19,10 @@
     display: flex;
     flex-direction: row;
 }
-
+.iconbutton {
+    margin-right: 10px;
+    font-size: 40px;
+}
 .title{
     font-weight: bold;
     
