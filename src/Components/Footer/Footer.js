@@ -33,12 +33,14 @@ const Footer = () => {
         {name: "Investor Relations" , link: "/investor"},
         {name: "Blog" , link: "/blog"}
     ]
+
+
     return (
         <div className="">
             <div className="">
                 <div className="">
                     <div className="footer">
-                        <FooterCol key={1} menuTitle={"SHOUTCUT"} menuItems={Shotcut}/>
+                        <FooterCol key={1} menuTitle={"SHOTCUT"} menuItems={Shotcut}/>
                         <FooterCol key={2} menuTitle={"OUR LINK"} menuItems={OurLink}/>
                         <FooterCol key={3} menuTitle={"SERVICE"} menuItems={services}/>
                         <FooterCol key={4} menuTitle={"ABOUT US"} menuItems={ourAddress}>

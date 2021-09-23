@@ -81,7 +81,7 @@ const NewProducts = () => {
     return (
         <div className="px-2 my-20">
 
-            <div className="px-8 py-5 mb-8 bg-gray-100">
+            <div className="px-8 bg-gray-100">
                 <ul className="md:flex md:justify-between items-center md:border-b md:border-blue-300 mb-10">
                     <div>
                         <li>
