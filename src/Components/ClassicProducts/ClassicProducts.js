@@ -3,7 +3,7 @@ import {CloseProducts} from '../Navbar/Menu/MenuItems';
 
 const ClassicProducts = () => {
     return (
-        <div className="mx-auto px-5">
+        <div className="mx-auto">
             <dl className=" space-y-10 mb-8 px-5 bg-white md:space-y-0  md:gap-x-8 md:gap-y-10">
                 <div className="md:grid md:grid-cols-2 py-8 relative items-center">
                    
@@ -12,7 +12,7 @@ const ClassicProducts = () => {
                         
                         CloseProducts.map((item, index) =>
 
-                        <div class="flex p-5 border">
+                        <div class="flex p-5 border rounded">
                             <div class="flex-none w-48 relative">
                                 <img src={item.img} alt="" class="absolute inset-0 w-full h-full object-cover" />
                             </div>
