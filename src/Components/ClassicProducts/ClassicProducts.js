@@ -4,7 +4,7 @@ import {CloseProducts} from '../Navbar/Menu/MenuItems';
 const ClassicProducts = () => {
     return (
         <div className="mx-auto px-5">
-            <dl className=" space-y-10 my-8 px-5 md:space-y-0  md:gap-x-8 md:gap-y-10">
+            <dl className=" space-y-10 mb-8 px-5 bg-white md:space-y-0  md:gap-x-8 md:gap-y-10">
                 <div className="md:grid md:grid-cols-2 py-8 relative items-center">
                    
 
