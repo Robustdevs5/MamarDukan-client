@@ -34,29 +34,28 @@ const NavbarSection = ({ toggle, closeMobileMenu, isOpen }) => {
           />
         </div>
 
-        <ul className="md:flex text-white text-center hidden">
-          {Menu.map((item, index) => {
-            if (item.title === "Shop") {
-              return (
-                <li
-                  key={index}
-                  className=" flex item-center"
-                  onMouseEnter={() => setDropDown(true)}
-                  onMouseLeave={() => setDropDown(false)}
-                >
-                  <div className="py-5">
-                    <Link to={item.path} className={item.class}>
-                      {item.title}
-                      <FontAwesomeIcon
-                        className="ml-3 text-white"
-                        icon={faCaretDown}
-                      />
-                    </Link>
-                  </div>
-                  {dropDown && <ShopDropDownMenu />}
-                </li>
-              );
-            }
+                <ul className='text-white text-center md:flex hidden'>
+                    {
+                        Menu.map((item, index) => {
+                            
+                            if (item.title === "Shop"){
+                                return (
+                                <li key={index} 
+                                    className=' flex item-center'
+                                    onMouseEnter={() => setDropDown(true)}
+                                    onMouseLeave={() => setDropDown(false)}>
+                                        
+                                    <div className='py-5'>
+                                    <Link to={item.path} className={item.class}>
+                                        {item.title}
+                                        <FontAwesomeIcon className="ml-3 text-white" icon={faCaretDown} />
+                                    
+                                    </Link>
+                                    </div>
+                                    {dropDown && <ShopDropDownMenu/>}
+                                </li>
+                                );
+                            }
 
             if (item.title === "women") {
               return (
