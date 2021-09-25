@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from "react-slick";
 import star from "../../images/5star.png";
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
@@ -9,6 +9,16 @@ import { MostViewedProduct } from '../HomepageProductData/HomepageProductData';
 
 
 const MostViewedProducts = () => {
+
+    const [mostViewedProduct, setMostViewedProduct] = useState([]);
+
+    useEffect(() => {
+        fetch(`https://jsonplaceholder.typicode.com/photos`)
+            .then(res => res.json())
+            .then(data => setMostViewedProduct(data.slice(0, 16)))
+    }, [])
+    console.log(mostViewedProduct);
+
 
     function SampleNextArrow(props) {
         const { className, style, onClick } = props;
@@ -107,7 +117,18 @@ const MostViewedProducts = () => {
 
             <Slider {...settings} className="px-10">
 
-                <div className="p-1 pl-2 pr-2">
+                {
+                    mostViewedProduct.map(mostViewedProduct =>
+                        <div className="p-1 pl-2 pr-2">
+                            <img className="mb-4 rounded cursor-pointer" src={mostViewedProduct.url} alt="8192" />
+                            <h5 className="text-2xl font-bold text-green-700">$100</h5>
+                            <h3 className="text-blue-700">Product 101</h3>
+                            <img src={star} style={{ width: '100px', height: '25px' }} alt="" />
+                            <small>Sold: (150)</small>
+                        </div>
+                    )}
+
+                {/* <div className="p-1 pl-2 pr-2">
                     <img className="mb-4 rounded cursor-pointer" src="https://images.unsplash.com/photo-1515849430397-7aee921bbea1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="8192" />
                     <h5 className="text-2xl font-bold text-green-700">$100</h5>
                     <h3 className="text-blue-700">Product 101</h3>
@@ -219,9 +240,7 @@ const MostViewedProducts = () => {
                     <h3 className="text-blue-700">Product 101</h3>
                     <img src={star} style={{ width: '100px', height: '25px' }} alt="" />
                     <small>Sold: (150)</small>
-                </div>
-
-
+                </div> */}
 
             </Slider>
         </div>

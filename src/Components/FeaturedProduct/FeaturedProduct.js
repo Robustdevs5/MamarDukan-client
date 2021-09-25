@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -12,6 +12,17 @@ import { FeaturedProducts } from '../HomepageProductData/HomepageProductData';
 
 
 const FeaturedProduct = () => {
+
+    const [featuredProduct, setFeaturedProduct] = useState([]);
+
+    useEffect(() => {
+        fetch(`https://jsonplaceholder.typicode.com/photos`)
+            .then(res => res.json())
+            .then(data => setFeaturedProduct(data.slice(0, 15)))
+    }, [])
+    console.log(featuredProduct);
+
+
 
     function SampleNextArrow(props) {
         const { className, style, onClick } = props;
@@ -103,7 +114,19 @@ const FeaturedProduct = () => {
 
 
             <Slider {...settings} className="px-12">
-                <div className="p-1 pl-2 pr-2">
+
+                {
+                    featuredProduct.map(featuredProduct =>
+                        <div className="p-1 pl-2 pr-2">
+                            <img className="mb-4 rounded cursor-pointer" src={featuredProduct.url} alt="8192" />
+                            <h5 className="text-2xl font-bold text-green-700">$100</h5>
+                            <h3 className="text-blue-700">Product 101</h3>
+                            <img src={star} style={{ width: '100px', height: '25px' }} alt="" />
+                            <small>Sold: (150)</small>
+                        </div>
+                    )}
+
+                {/* <div className="p-1 pl-2 pr-2">
                     <img className="mb-4 rounded cursor-pointer" src="https://i.ibb.co/dGxSgHk/8192.jpg" alt="8192" />
                     <h5 className="text-2xl font-bold text-green-700">$100</h5>
                     <h3 className="text-blue-700">Product 101</h3>
@@ -186,7 +209,7 @@ const FeaturedProduct = () => {
                     <h3 className="text-blue-700">Product 101</h3>
                     <img src={star} style={{ width: '100px', height: '25px' }} alt="" />
                     <small>Sold: (150)</small>
-                </div>
+                </div> */}
 
             </Slider>
 
