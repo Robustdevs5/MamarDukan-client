@@ -1,6 +1,7 @@
 import HomePage from "./pages/Home-page/HomePage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import AddProduct from "./Components/Admin/addProduct/AddProduct";
+// import AddProduct from "./Components/Admin/addProduct/AddProduct";
+import AddProduct from "./Components/Dashboard/AddProduct/AddProduct";
 import AdminPanel from "./Components/Admin/AdminPanel/AdminPanel";
 import ManageProduct from "./Components/Admin/ManageProduct/ManageProduct";
 import MakeAdmin from "./Components/Admin/MakeAdmin/MakeAdmin";

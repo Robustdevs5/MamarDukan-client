@@ -16,9 +16,9 @@ const FeaturedProduct = () => {
     const [featuredProduct, setFeaturedProduct] = useState([]);
 
     useEffect(() => {
-        fetch(`https://jsonplaceholder.typicode.com/photos`)
+        fetch(`https://mamardukan.herokuapp.com/products`)
             .then(res => res.json())
-            .then(data => setFeaturedProduct(data.slice(0, 15)))
+            .then(data => setFeaturedProduct(data.products))
     }, [])
     console.log(featuredProduct);
 
@@ -119,7 +119,7 @@ const FeaturedProduct = () => {
                     featuredProduct.map(featuredProduct =>
                         <div className="p-1 pl-2 pr-2">
                             <img className="mb-4 rounded cursor-pointer" src={featuredProduct.url} alt="8192" />
-                            <h5 className="text-2xl font-bold text-green-700">$100</h5>
+                            <h5 className="text-2xl font-bold text-green-700">${featuredProduct.price}</h5>
                             <h3 className="text-blue-700">Product 101</h3>
                             <img src={star} style={{ width: '100px', height: '25px' }} alt="" />
                             <small>Sold: (150)</small>

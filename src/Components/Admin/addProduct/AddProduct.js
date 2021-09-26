@@ -7,6 +7,7 @@ import AddProductForm from "./AddProductForm";
 const AddProduct = () => {
   const [info, setInfo] = useState({});
   const [file, setFile] = useState(null);
+  
   const handleBlur = (e) => {
     const newInfo = { ...info };
     newInfo[e.target.name] = e.target.value;

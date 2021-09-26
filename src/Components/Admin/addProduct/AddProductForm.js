@@ -5,6 +5,7 @@ const AddProductForm = ({ handleBlur, handleFileChange, handleSubmit }) => {
     <section className="m-4 ">
       <h1 className="font-bold text-white p-4 text-2xl">Add a new product</h1>
       <div class="  ">
+
         <form
           class=" shadow-md rounded bg-gray-100 p-6 pb-8 mb-4 grid grid-cols-3 gap-4"
           onSubmit={handleSubmit}
@@ -24,6 +25,7 @@ const AddProductForm = ({ handleBlur, handleFileChange, handleSubmit }) => {
               placeholder="Name"
             />
           </div>
+
           <div class="mb-6">
             <label
               class="block text-gray-700 text-sm font-bold mb-2"
@@ -39,6 +41,7 @@ const AddProductForm = ({ handleBlur, handleFileChange, handleSubmit }) => {
               placeholder="Category"
             />
           </div>
+          
           <div class="mb-6">
             <label
               class="block text-gray-700 text-sm font-bold mb-2"
