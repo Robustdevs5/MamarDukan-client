@@ -13,7 +13,6 @@ const AddProduct = () => {
     const handleSubmit = e => {
         const productInfo = {
             name: e.target.name.value,
-            image: e.target.image.value,
             description: e.target.description.value,
             size: e.target.size.value,
             category: e.target.category.value,
@@ -23,11 +22,11 @@ const AddProduct = () => {
             price: e.target.price.value,
             discount: e.target.discount.value,
             brand: e.target.brand.value,
-            imageURL: imageURL
+            img: imageURL
         };
 
 
-        const url = `https://mamardukan.herokuapp.com/products`;
+        const url = `http://localhost:5000/products`;
         fetch(url, {
             method: 'POST',
             headers: {
