@@ -1,6 +1,10 @@
 import React from 'react';
 import img from "../../images/1.jpg";
 import './Deatils.css';
+<<<<<<< HEAD
+=======
+import img from "../../images/1.jpg"
+>>>>>>> cb4841bb70777ae87f9dacc53e1b7040282b3291
 
 const Deatils = () => {
     return (
