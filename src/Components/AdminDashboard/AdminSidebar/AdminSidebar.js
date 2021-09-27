@@ -11,7 +11,7 @@ const AdminSidebar = () => {
     const history = useHistory();
 
     return (
-        <div class=" md:w-1/4  w-screen h-full ">
+        <div class=" md:w-1/6  w-screen h-full">
             <div className="  bg-gray-800 text-white ">
                 <button
                     className="group  bg-gray-500 hover:bg-pink-600 focus:bg-blue-500 border-0 m-4 p-4  rounded-2xl"

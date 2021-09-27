@@ -261,7 +261,7 @@ export const Menu = [
   },
   {
     title: "Dashboard",
-    path: "/addProduct",
+    path: "/dashboard",
     class:
       "py-2  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
     toggleClass:

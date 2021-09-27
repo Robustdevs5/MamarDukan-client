@@ -16,12 +16,13 @@ const AddAdmin = () => {
             </div>
 
             <div className="flex flex-wrap h-screen">
-                <AdminSidebar/>
+                <AdminSidebar />
 
                 <div className="sm:w-3/5 w-screen  p-4">
                     <h1 className="mt-3 text-2xl font-bold text-white m-4 ">
                         Add a new admin
                     </h1>
+
                     <form>
                         <br />
                         <br />
@@ -46,6 +47,7 @@ const AddAdmin = () => {
                             className="shadow  border-0 rounded bg-blue-600 my-6  p-2 text-white focus:ring-2 focus:ring-blue-600"
                         />
                     </form>
+
                 </div>
             </div>
         </div>
