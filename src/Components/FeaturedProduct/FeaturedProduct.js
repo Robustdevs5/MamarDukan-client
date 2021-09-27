@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-=======
-import React, { useEffect, useState } from 'react';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import '../StyledComponent/HomepageProduct.css';
-import star from "../../images/5star.png";
->>>>>>> cb4841bb70777ae87f9dacc53e1b7040282b3291
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import React, { useEffect, useState } from 'react';
