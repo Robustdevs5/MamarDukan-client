@@ -5,6 +5,7 @@ import Header from "../../Components/Header/Header";
 import Deatils from './Deatils';
 import FeaturedProduct from "../FeaturedProduct/FeaturedProduct";
 import Footer from "../Footer/Footer"
+import Writing from './Writing';
 
 const ProductDeatils = () => {
     return (
@@ -13,6 +14,7 @@ const ProductDeatils = () => {
             <Header />
             <Navbar />
             <Deatils />
+            <Writing />
             <FeaturedProduct />
             <Footer />
         </div>
