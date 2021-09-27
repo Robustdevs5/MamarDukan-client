@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import '../StyledComponent/HomepageProduct.css';
-import star from "../../images/5star.png";
+import star from "../../Images/5star.png";
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { Link } from 'react-router-dom';
@@ -12,6 +12,17 @@ import { FeaturedProducts } from '../HomepageProductData/HomepageProductData';
 
 
 const FeaturedProduct = () => {
+
+    const [featuredProduct, setFeaturedProduct] = useState([]);
+
+    useEffect(() => {
+        fetch(`https://mamardukan.herokuapp.com/products`)
+            .then(res => res.json())
+            .then(data => setFeaturedProduct(data.products))
+    }, [])
+    console.log(featuredProduct);
+
+
 
     function SampleNextArrow(props) {
         const { className, style, onClick } = props;
@@ -82,7 +93,7 @@ const FeaturedProduct = () => {
     return (
         <div className="px-2 my-20">
 
-            <div className="px-8 py-5 mb-8 bg-gray-100">
+            <div className="px-8 bg-gray-100">
                 <ul className="md:flex md:justify-between items-center md:border-b md:border-blue-300 mb-10">
                     <div>
                         <li>
@@ -103,7 +114,19 @@ const FeaturedProduct = () => {
 
 
             <Slider {...settings} className="px-12">
-                <div className="p-1 pl-2 pr-2">
+
+                {
+                    featuredProduct.map(featuredProduct =>
+                        <div className="p-1 pl-2 pr-2">
+                            <img className="mb-4 rounded cursor-pointer" src={featuredProduct.url} alt="8192" />
+                            <h5 className="text-2xl font-bold text-green-700">${featuredProduct.price}</h5>
+                            <h3 className="text-blue-700">Product 101</h3>
+                            <img src={star} style={{ width: '100px', height: '25px' }} alt="" />
+                            <small>Sold: (150)</small>
+                        </div>
+                    )}
+
+                {/* <div className="p-1 pl-2 pr-2">
                     <img className="mb-4 rounded cursor-pointer" src="https://i.ibb.co/dGxSgHk/8192.jpg" alt="8192" />
                     <h5 className="text-2xl font-bold text-green-700">$100</h5>
                     <h3 className="text-blue-700">Product 101</h3>
@@ -186,7 +209,7 @@ const FeaturedProduct = () => {
                     <h3 className="text-blue-700">Product 101</h3>
                     <img src={star} style={{ width: '100px', height: '25px' }} alt="" />
                     <small>Sold: (150)</small>
-                </div>
+                </div> */}
 
             </Slider>
 

@@ -14,10 +14,10 @@ function classNames(...classes) {
 const TopBar = () => {
   const [dropdown, setDropdown] = useState(false);
   return (
-    <div className="bg-blue-800 flex  h-20  w-full  pl-0 sticky top-0 z-50 ">
-      <div className="flex  justify-between items-center sm:w-4/6 w-4/6  ">
-        <div className="mx-0 sm:mx-4 hidden sm:block ">
-          <p className="text-lg sm:text-2xl text-white font-bold ">Mamardokan</p>
+    <div class="bg-blue-800 flex  h-20  w-full  pl-0 sticky top-0 z-50 ">
+      <div class="flex  justify-between items-center sm:w-4/6 w-4/6  ">
+        <div class="mx-0 sm:mx-4 hidden sm:block ">
+          <p class="text-lg sm:text-2xl text-white font-bold ">Mamar Dukan</p>
         </div>
 
         {/* Search box  */}

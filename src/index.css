@@ -29,11 +29,13 @@ html, body{
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #efefef  !important;;
+  /* background: #efefef  !important; */
+@apply bg-blue-500;
   border-radius: 5px !important;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(176, 178, 180)  !important;;
+  /* background: rgb(176, 178, 180)  !important; */
+  @apply bg-blue-800;
 }
