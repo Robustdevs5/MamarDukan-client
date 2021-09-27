@@ -8,7 +8,7 @@ const AddProduct = () => {
     const [imageURLStatus, setImageURLStatus] = useState();
     const [dbStatus, setDbStatus] = useState(false);
 
-    // ok
+    // ok go
 
     const handleSubmit = e => {
         const productInfo = {
