@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import Logo from "../../Navbar/Logo/Logo";
-import AdminPanel from '../../Admin/AdminPanel/AdminPanel';
+import AdminSidebar from '../AdminSidebar/AdminSidebar';
+
+
 
 const AddProduct = () => {
 
@@ -9,7 +11,6 @@ const AddProduct = () => {
     const [imageURLStatus, setImageURLStatus] = useState();
     const [dbStatus, setDbStatus] = useState(false);
 
-    // ok go
 
     const handleSubmit = e => {
         const productInfo = {
@@ -78,7 +79,7 @@ const AddProduct = () => {
                 </div>
 
                 <div className="flex  md:flex-row flex-col">
-                    <AdminPanel></AdminPanel>
+                    <AdminSidebar/>
 
                     <section className="m-4 ">
                         <h1 className="font-bold text-white p-4 text-2xl">Add a new product</h1>

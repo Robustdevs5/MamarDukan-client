@@ -2,28 +2,23 @@ import HomePage from "./pages/Home-page/HomePage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import AddProduct from "./Components/Admin/addProduct/AddProduct";
 import AddProduct from "./Components/Dashboard/AddProduct/AddProduct";
-import AdminPanel from "./Components/Admin/AdminPanel/AdminPanel";
-import ManageProduct from "./Components/Admin/ManageProduct/ManageProduct";
-import MakeAdmin from "./Components/Admin/MakeAdmin/MakeAdmin";
+import ManageProduct from "./Components/Dashboard/ManageProduct/ManageProduct";
+import AdminSidebar from "./Components/Dashboard/AdminSidebar/AdminSidebar";
+import AddAdmin from "./Components/Dashboard/AddAdmin/AddAdmin";
 import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
+
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="/admin">
-          <AdminPanel />
-        </Route>
-        <Route path="/addProduct">
-          <AddProduct />
-        </Route>
-        <Route path="/manageProduct">
-          <ManageProduct />
-        </Route>
-        <Route path="/makeAdmin">
-          <MakeAdmin />
-        </Route>
+        
+        <Route exact path="/addProduct" component={AddProduct} />
+        <Route exact path="/adminSidebar" component={AdminSidebar} />
+        <Route exact path="/addAdmin" component={AddAdmin} />
+        <Route exact path="/manageProduct" component={ManageProduct} />
+        
         <Route path="/product">
           <ProductDeatils />
         </Route>
