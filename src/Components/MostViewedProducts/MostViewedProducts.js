@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import Slider from "react-slick";
-import star from "../../Images/5star.png";
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Slider from "react-slick";
+import star from "../../images/5star.png";
 import { MostViewedProduct } from '../HomepageProductData/HomepageProductData';
 
 

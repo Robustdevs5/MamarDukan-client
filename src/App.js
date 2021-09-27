@@ -1,11 +1,13 @@
-import HomePage from "./pages/Home-page/HomePage";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import AdminPanel from "./Components/Admin/AdminPanel/AdminPanel";
+import MakeAdmin from "./Components/Admin/MakeAdmin/MakeAdmin";
+import ManageProduct from "./Components/Admin/ManageProduct/ManageProduct";
+import SIgnIn from "./Components/Authentication/SignIn/SIgnIn";
+import SignUP from "./Components/Authentication/SignUp/SignUP";
 // import AddProduct from "./Components/Admin/addProduct/AddProduct";
 import AddProduct from "./Components/Dashboard/AddProduct/AddProduct";
-import AdminPanel from "./Components/Admin/AdminPanel/AdminPanel";
-import ManageProduct from "./Components/Admin/ManageProduct/ManageProduct";
-import MakeAdmin from "./Components/Admin/MakeAdmin/MakeAdmin";
 import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
+import HomePage from "./pages/Home-page/HomePage";
 
 function App() {
   return (
@@ -26,6 +28,12 @@ function App() {
         </Route>
         <Route path="/product">
           <ProductDeatils />
+        </Route>       
+        <Route path="/login">
+          <SIgnIn />
+        </Route>        
+        <Route path="/register">
+          <SignUP />
         </Route>
       </Switch>
     </Router>

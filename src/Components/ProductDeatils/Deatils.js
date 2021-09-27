@@ -1,6 +1,6 @@
 import React from 'react';
+import img from "../../images/1.jpg";
 import './Deatils.css';
-import img from "../../Images/1.jpg"
 
 const Deatils = () => {
     return (
