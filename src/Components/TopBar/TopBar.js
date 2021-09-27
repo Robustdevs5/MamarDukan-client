@@ -14,31 +14,31 @@ function classNames(...classes) {
 const TopBar = () => {
   const [dropdown, setDropdown] = useState(false);
   return (
-    <div class="bg-blue-800 flex  h-20  w-full  pl-0 sticky top-0 z-50 ">
-      <div class="flex  justify-between items-center sm:w-4/6 w-4/6  ">
-        <div class="mx-0 sm:mx-4 hidden sm:block ">
-          <p class="text-lg sm:text-2xl text-white font-bold ">Mamardokan</p>
+    <div className="bg-blue-800 flex  h-20  w-full  pl-0 sticky top-0 z-50 ">
+      <div className="flex  justify-between items-center sm:w-4/6 w-4/6  ">
+        <div className="mx-0 sm:mx-4 hidden sm:block ">
+          <p className="text-lg sm:text-2xl text-white font-bold ">Mamardokan</p>
         </div>
 
         {/* Search box  */}
 
-        <form action="" class=" sm:w-3/5 w-full h-1/2   flex flex-row">
+        <form action="" className=" sm:w-3/5 w-full h-1/2   flex flex-row">
           <input
             type="text"
             placeholder="Search"
-            class={styles.topBar_search_input}
+            className={styles.topBar_search_input}
           />
-          <SearchIcon class={styles.topBar_search_icon} />
+          <SearchIcon className={styles.topBar_search_icon} />
         </form>
       </div>
 
-      <div class="flex justify-end  items-center  flex-grow">
+      <div className="flex justify-end  items-center  flex-grow">
         {/* Add to cart */}
         <div
           onMouseEnter={() => setDropdown(true)}
           onMouseLeave={() => setDropdown(false)}
         >
-          <div class={styles.topBar_tags}>
+          <div className={styles.topBar_tags}>
             <Link to="/checkout">
               <ShoppingCart fontSize="large"></ShoppingCart>
             </Link>{" "}
@@ -47,12 +47,12 @@ const TopBar = () => {
 
         {/* Customer Care Dropdown */}
 
-        <div class={styles.topBar_dropdown}>
+        <div className={styles.topBar_dropdown}>
           <Menu as="div" className="relative inline-block text-left">
             <div>
-              <Menu.Button class="flex items-center">
-                <p class="md:block hidden"> Customer Care</p>
-                <SupportAgentOutlined class="md:hidden block h-10   fill-current text-white-800 " />{" "}
+              <Menu.Button className="flex items-center">
+                <p className="md:block hidden"> Customer Care</p>
+                <SupportAgentOutlined className="md:hidden block h-10   fill-current text-white-800 " />{" "}
                 <ChevronDownIcon
                   className="-mr-1 ml-2  w-5 md:block hidden"
                   aria-hidden="true"
@@ -144,15 +144,15 @@ const TopBar = () => {
 
         {/* Login and Register */}
 
-        <UserIcon class="h-8 ml-2  hidden sm:block text-white fill-current text-white-600"></UserIcon>
+        <UserIcon className="h-8 ml-2  hidden sm:block text-white fill-current text-white-600"></UserIcon>
 
         <div>
           <Link to="/login">
-            <p class={styles.topBar_login_register}>Login </p>{" "}
+            <p className={styles.topBar_login_register}>Login </p>{" "}
           </Link>
 
           <Link to="/register">
-            <p class={styles.topBar_login_register}> Register</p>{" "}
+            <p className={styles.topBar_login_register}> Register</p>{" "}
           </Link>
         </div>
       </div>

@@ -21,7 +21,7 @@ const Sliders = () => {
     };
     return (
         <div className="mx-2 xs:grid-cols-1 md:grid grid-cols-3 gap-2 slider pt-4">
-            <div class="md:col-span-2 slider-blog">
+            <div className="md:col-span-2 slider-blog">
                 <Slider {...settings}>
                     <div className="sin-slider-blog cursor-pointer">
                         <div className="slider-blog-img">
