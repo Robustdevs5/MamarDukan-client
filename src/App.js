@@ -16,7 +16,7 @@ function App() {
           <AdminPanel />
         </Route>
         <Route path="/addProduct">
-          <AddProduct />
+          {/* <AddProduct /> */}
         </Route>
         <Route path="/manageProduct">
           <ManageProduct />
