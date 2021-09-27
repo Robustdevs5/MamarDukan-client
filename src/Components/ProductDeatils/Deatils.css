@@ -1,0 +1,13 @@
+.Details{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: "P P P P D D";
+}
+
+.right{
+    grid-area: P;
+}
+
+.left {
+    grid-area: D;
+}
