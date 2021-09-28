@@ -41,7 +41,7 @@ button.login-btn span {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 .form-card .form-control {
-  margin-bottom: 12px;
+  margin-bottom: 30px;
 }
 .login-heading {
   font-weight: 700;
