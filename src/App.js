@@ -1,13 +1,16 @@
+import React, { createContext, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import AddAdmin from "./Components/AdminDashboard/AddAdmin/AddAdmin";
+// import AddProduct from "./Components/Admin/addProduct/AddProduct";
 import AddProduct from "./Components/AdminDashboard/AddProduct/AddProduct";
 import AdminPanel from "./Components/AdminDashboard/AdminPanel/AdminPanel";
+import AdminSidebar from './Components/AdminDashboard/AdminSidebar/AdminSidebar';
 import ManageProduct from "./Components/AdminDashboard/ManageProduct/ManageProduct";
 import SIgnIn from "./Components/Authentication/SignIn/SIgnIn";
 import SignUP from "./Components/Authentication/SignUp/SignUP";
 import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
 import HomePage from "./pages/Home-page/HomePage";
-
-
+export const userContext = createContext();
 
 function App() {
   const [user, setUser] = useState({});
