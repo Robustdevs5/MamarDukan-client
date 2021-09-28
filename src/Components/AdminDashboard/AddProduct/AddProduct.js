@@ -24,11 +24,12 @@ const AddProduct = () => {
             price: e.target.price.value,
             discount: e.target.discount.value,
             brand: e.target.brand.value,
+            date: new Date(),
             img: imageURL
         };
 
 
-        const url = `https://mamardukan.herokuapp.com/products`;
+        const url = `http://localhost:5000/products`;
         fetch(url, {
             method: 'POST',
             headers: {
