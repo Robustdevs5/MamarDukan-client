@@ -28,7 +28,7 @@ const AddProduct = () => {
         };
 
 
-        const url = `http://localhost:5000/products`;
+        const url = `https://mamardukan.herokuapp.com/products`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -41,7 +41,7 @@ const AddProduct = () => {
                 setDbStatus(data);
                 if (data) {
                     alert('Product added successfully.')
-                    e.target.reset();
+                    // e.target.reset();
                 }
             })
 

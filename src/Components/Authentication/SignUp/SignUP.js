@@ -50,7 +50,7 @@ const SignUP = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h3 className="login-heading">Create an account</h3>
 
-                    <input type="text" name="name" className="form-control p-5"
+                    <input type="text" name="name" className="form-control "
                         {...register('name', { required: true })} placeholder="Your Name"
                     />
                     {errors.name && errors.name.type === "required" && <span className="error">Name is required</span>}
