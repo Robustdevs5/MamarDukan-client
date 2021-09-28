@@ -1,6 +1,4 @@
-import { faFacebookSquare, faGoogle, faTwitterSquare } from "@fortawesome/free-brands-svg-icons";
-// font awesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
@@ -78,15 +76,7 @@ const SignUP = () => {
                             Login
                         </Link>
                     </p>
-                    <div className="social-login">
-                        <h4>Or Continue With</h4>
-                        <br />
-                        <button className="login-btn">
-                        <span><FontAwesomeIcon icon={faGoogle}/></span> Google</button>
-                        <button className="login-btn">
-                        <span><FontAwesomeIcon icon={faFacebookSquare}/></span>Facebook</button>
-                        <button className="login-btn"><span><FontAwesomeIcon icon={faTwitterSquare} /></span>Twitter</button>                       
-                    </div>
+                    
                 </form>          
             </div>
         <Footer />
