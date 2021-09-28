@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import Logo from "../../Navbar/Logo/Logo";
-import AdminPanel from '../../Admin/AdminPanel/AdminPanel';
+import AdminSidebar from '../AdminSidebar/AdminSidebar';
+
+
 
 const AddProduct = () => {
 
@@ -9,7 +11,6 @@ const AddProduct = () => {
     const [imageURLStatus, setImageURLStatus] = useState();
     const [dbStatus, setDbStatus] = useState(false);
 
-    // ok go
 
     const handleSubmit = e => {
         const productInfo = {
@@ -27,7 +28,7 @@ const AddProduct = () => {
         };
 
 
-        const url = `http://localhost:5000/products`;
+        const url = `https://mamardukan.herokuapp.com/products`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -40,7 +41,7 @@ const AddProduct = () => {
                 setDbStatus(data);
                 if (data) {
                     alert('Product added successfully.')
-                    e.target.reset();
+                    // e.target.reset();
                 }
             })
 
@@ -78,14 +79,14 @@ const AddProduct = () => {
                 </div>
 
                 <div className="flex  md:flex-row flex-col">
-                    <AdminPanel></AdminPanel>
+                    <AdminSidebar/>
 
-                    <section className="m-4 ">
+                    <section className="mx-4">
                         <h1 className="font-bold text-white p-4 text-2xl">Add a new product</h1>
                         <div class="  ">
 
                             <form
-                                class=" shadow-md rounded bg-gray-100 p-6 pb-8 mb-4 grid grid-cols-3 gap-4"
+                                class=" shadow-md rounded bg-blue-100 p-6 pb-8 mb-4 grid grid-cols-3 gap-4"
                                 onSubmit={handleSubmit}
                             >
                                 <div class="mb-4">
@@ -168,7 +169,7 @@ const AddProduct = () => {
                                         Size
                                     </label>
                                     <input
-                                        className="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
+                                        className="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
                                         type="text"
                                         name="size"
                                         placeholder="Size"
@@ -221,10 +222,10 @@ const AddProduct = () => {
                                         class="block text-gray-700 text-sm font-bold mb-2"
                                         for="image"
                                     >
-                                        image
+                                        Image
                                     </label>
                                     <input
-                                        class="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
+                                        class="shadow appearance-none border-1 hover:bg-blue-600 hover:text-gray-50 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
                                         onChange={handleImageUpload}
                                         type="file"
                                         name="image"
@@ -254,9 +255,6 @@ const AddProduct = () => {
                                     </button>
                                 </div>
                             </form>
-                            <p class="text-center text-gray-500 text-xs">
-                                &copy;2020 Acme Corp. All rights reserved.
-                            </p>
                         </div>
                     </section>
                 </div>
