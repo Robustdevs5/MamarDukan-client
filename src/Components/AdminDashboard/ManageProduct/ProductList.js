@@ -26,7 +26,8 @@ const ProductList = (props) => {
             <p>{price}</p>
             <p className="cursor-pointer">
                 {" "}
-                <Edit></Edit> <Delete onClick={handleDelete}></Delete>
+                <Edit></Edit>
+                <Delete onClick={handleDelete}></Delete>
             </p>
         </div>
     );

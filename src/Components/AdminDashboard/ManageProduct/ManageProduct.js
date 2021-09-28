@@ -7,27 +7,15 @@ import ProductList from './ProductList';
 
 const ManageProduct = () => {
 
-    const [products, setProducts] = useState([]);
+    const [product, setProduct] = useState([]);
 
     useEffect(() => {
-        setProducts([
-            {
-                name: "jacket",
-                price: 2341,
-                _id: "sdlg;k",
-            },
-            {
-                name: "shirt",
-                price: 2341,
-                _id: "sdlg;k",
-            },
-            {
-                name: "jeans",
-                price: 2341,
-                _id: "sdlg;k",
-            },
-        ]);
-    }, []);
+        fetch(`https://mamardukan.herokuapp.com/products`)
+            .then(res => res.json())
+            .then(data => setProduct(data.products))
+    }, [])
+    console.log(product);
+
 
     return (
         <div className=" bg-gray-800 ">
@@ -50,9 +38,9 @@ const ManageProduct = () => {
                                 <p>Action</p>
                             </div>
                             <div>
-                                {products.length &&
-                                    products.map((fd) => (
-                                        <ProductList product={fd}></ProductList>
+                                {product.length &&
+                                    product.map((product) => (
+                                        <ProductList product={product}></ProductList>
                                     ))}
                             </div>
                         </div>
