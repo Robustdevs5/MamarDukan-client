@@ -90,8 +90,8 @@ const ManageProduct = () => {
             <div className="flex flex-wrap">
                 <AdminSidebar />
 
-                <div className="sm:w-3/5 w-screen  p-4">
-                    <h1 className="mt-3 text-2xl font-bold text-white m-4 ">
+                <div className="sm:w-3/5 w-screen mx-4">
+                    <h1 className="mt-3 text-2xl font-bold text-white m-2 ">
                         Manage Products
                     </h1>
 

@@ -28,7 +28,7 @@ const AddProduct = () => {
             img: imageURL
         };
 
-        // console.log("hi");
+        
 
         const url = `http://localhost:5000/products`;
         fetch(url, {

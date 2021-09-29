@@ -13,6 +13,7 @@ const SignUP = () => {
 
     const [customerStatus, setCustomerStatus] = useState(true);
     const [vendorStatus, setVendorStatus] = useState(false);
+    const [dbStatus, setDbStatus] = useState(false);
     const [shopUrl, setShopUrl] = useState("");
 
     // React hook form
@@ -20,6 +21,32 @@ const SignUP = () => {
 
     const onSubmit = (data) => {
         console.log(data)
+        const userInfo = {
+            name: data.name,
+            email: data.email,
+            password: data.password,
+            ShopName: data.shopName,
+            ShopUrl: data.shopUrl,
+            PhoneNumber: data.phoneNumber,
+        };
+
+
+        const url = `http://localhost:5000/user/signup`;
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                setDbStatus(data);
+                if (data) {
+                    alert('User added successfully.')
+                    // e.target.reset();
+                }
+            })
     };
 
 
@@ -34,9 +61,11 @@ const SignUP = () => {
     }
 
     const handleShopName = (e) => {
-        setShopUrl(e.target.value)
-        console.log(e.target.value)
+        const url = e.target.value
+        setShopUrl(url.replace(/\s/g, ''))
+        // console.log(url.replace(/\s/g, ''))
     }
+
 
 
 
@@ -125,10 +154,10 @@ const SignUP = () => {
                         {errors.name && errors.name.type === "required" && <small className="error">Shop Url is required</small>}
 
                         <label className="flex items-start py-2">Phone</label>
-                        <input type="number" name="vendorPhone" className="form-control"
-                            {...register('vendorPhone',
+                        <input type="number" name="phoneNumber" className="form-control"
+                            {...register('phoneNumber',
                                 {
-                                    maxLength: { value: 2, message: "error message" }
+                                    maxLength: { value: 11, message: "error message" }
                                 })}
                             placeholder="Phone Number"
                         />
@@ -148,8 +177,8 @@ const SignUP = () => {
                             Login
                         </Link>
                     </p>
-                    
-                </form>          
+
+                </form>
             </div>
             <Footer />
         </>
