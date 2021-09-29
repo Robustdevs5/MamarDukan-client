@@ -161,15 +161,18 @@ const SIgnIn = () => {
                             Create An Account
                         </Link>
                     </p>
-                    <div className="social-login">
-                        <h4>Or Continue With</h4>
-                        <br />
-                        <button onClick={handleGoogleLogin} className="login-btn">
-                        <span><FontAwesomeIcon icon={faGoogle}/></span> Google</button>
-                        <button onClick={handleGitSignIn} className="login-btn">
-                        <span><FontAwesomeIcon icon={faGithub}/></span>Github</button>                      
-                    </div>
+                    
                 </form>
+                <div className="social-login">
+                    <h4>Or Continue With</h4>
+                    <br />
+                    <button onClick={handleGoogleLogin} className="login-btn">
+                        <span><FontAwesomeIcon icon={faGoogle}/></span> Google
+                    </button>
+                    <button onClick={handleGitSignIn} className="login-btn">
+                        <span><FontAwesomeIcon icon={faGithub}/></span>Github
+                    </button>                      
+                </div>
             </div>
             <Footer />
         </>

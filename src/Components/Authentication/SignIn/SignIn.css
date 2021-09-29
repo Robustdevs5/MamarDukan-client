@@ -20,6 +20,9 @@
   position: relative;
   cursor: pointer;
 }
+button.login-btn:hover {
+  border: 1px solid #4f46e5;
+}
 button.login-btn span {
   position: absolute;
   left: 20px;

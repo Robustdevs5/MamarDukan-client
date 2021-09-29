@@ -11,7 +11,7 @@ import '../SignIn/SignIn.css';
 
 const SignUP = () => {
 
-    const [customerStatus, setCustomerStatus] = useState(true);
+    const [customerStatus, setCustomerStatus] = useState (true);
     const [vendorStatus, setVendorStatus] = useState(false);
     const [shopUrl, setShopUrl] = useState("");
 
