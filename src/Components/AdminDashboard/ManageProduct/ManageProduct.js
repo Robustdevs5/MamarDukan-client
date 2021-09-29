@@ -4,7 +4,6 @@ import Logo from '../../Navbar/Logo/Logo';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 import { Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
-import { Link } from 'react-router-dom';
 
 
 const StyledTableCell = withStyles((theme) => ({
@@ -40,7 +39,7 @@ const ManageProduct = () => {
     const [product, setProduct] = useState([]);
     const classes = useStyles();
     const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = useState(2);
+    const [rowsPerPage, setRowsPerPage] = useState(4);
 
     useEffect(() => {
         fetch(`https://mamardukan.herokuapp.com/products`)
@@ -52,7 +51,7 @@ const ManageProduct = () => {
 
     const handleChangeRowsPerPage = (event) => {
         setRowsPerPage(event.target.value);
-        // setPage(0);
+        setPage(0);
     };
     // pagination
     const handleChangePage = (event, newPage) => {
@@ -60,7 +59,27 @@ const ManageProduct = () => {
     };
 
 
-    let i = 1;
+    const deleted = () => {
+        fetch(`https://mamardukan.herokuapp.com/products`)
+            .then(res => res.json())
+            .then(data => setProduct(data.products))
+    }
+
+    const handleDeleteProduct = (id) => {
+        fetch(`https://mamardukan.herokuapp.com/products/${id}`, {
+            method: "DELETE"
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data) {
+                    // alert('Product Deleted')
+                    deleted();
+                }
+            })
+    }
+
+
+    // let i = 1;
 
     return (
         <div className=" bg-gray-800 ">
@@ -77,48 +96,45 @@ const ManageProduct = () => {
                     </h1>
 
 
-                    <div className="">
+                    <div className="w-full">
                         <TableContainer component={Paper}>
                             <Table className={classes.table} aria-label="customized table">
                                 <TableHead>
                                     <TableRow>
-                                        <StyledTableCell>ID</StyledTableCell>
+                                        {/* <StyledTableCell>ID</StyledTableCell> */}
 
                                         <StyledTableCell align="left">Name</StyledTableCell>
                                         <StyledTableCell align="left">Price</StyledTableCell>
-                                        <StyledTableCell align="left">Profit Percentage</StyledTableCell>
-                                        <StyledTableCell align="left">Product Type</StyledTableCell>
+                                        <StyledTableCell align="left">Brand</StyledTableCell>
+                                        <StyledTableCell align="left">Brand</StyledTableCell>
+                                        <StyledTableCell align="left">Category</StyledTableCell>
+                                        <StyledTableCell align="left">color</StyledTableCell>
                                         <StyledTableCell align="left">Action</StyledTableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
                                     {product
                                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                        .map((u) => (
-                                            <StyledTableRow key={u.name} className={classes.tables}>
-                                                <StyledTableCell align="left">{i++}</StyledTableCell>
-                                                <StyledTableCell align="left">{u.name}</StyledTableCell>
-                                                <StyledTableCell align="left">{u.price}</StyledTableCell>
+                                        .map((product) => (
+                                            <StyledTableRow key={product.name} className={classes.tables}>
+                                                {/* <StyledTableCell align="left">{i++}</StyledTableCell> */}
+                                                <StyledTableCell align="left">{product.name}</StyledTableCell>
+                                                <StyledTableCell align="left">{product.price}</StyledTableCell>
                                                 <StyledTableCell align="left">
-                                                    {u.profitPercentage}
+                                                    {product.brand}
                                                 </StyledTableCell>
                                                 <StyledTableCell align="left">
-                                                    {u.productType}
+                                                    <img className="w-12" src={product.img} alt="" />
                                                 </StyledTableCell>
+                                                <StyledTableCell align="left">{product.category}</StyledTableCell>
+                                                <StyledTableCell align="left">{product.color}</StyledTableCell>
 
                                                 <StyledTableCell align="left">
-                                                    <div className="d-flex">
-                                                        {/* <CreateIcon
-                          onClick={() => handleUpdate(u._id)}
-                          className="icon"
-                        /> */}
-
-                                                        <Link to={"/delete/" + u.id}>
-                                                            <Button className="action__btn" variant="danger">
-                                                                Delete
-                                                            </Button>
-                                                        </Link>
-                                                    </div>
+                                                        <button
+                                                            onClick={() => handleDeleteProduct(product._id)}
+                                                            className="p-3 rounded-full bg-blue-400 hover:bg-red-500" >
+                                                            Delete
+                                                        </button>
                                                 </StyledTableCell>
                                             </StyledTableRow>
                                         ))}
@@ -134,6 +150,7 @@ const ManageProduct = () => {
                             page={page}
                             onPageChange={handleChangePage}
                             onRowsPerPageChange={handleChangeRowsPerPage}
+                            checkboxSelection
                         />
 
                     </div>
