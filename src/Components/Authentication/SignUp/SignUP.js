@@ -15,6 +15,7 @@ const SignUP = () => {
     const [vendorStatus, setVendorStatus] = useState(false);
     const [dbStatus, setDbStatus] = useState(false);
     const [shopUrl, setShopUrl] = useState("");
+    const [shopName, setShopName] = useState("");
 
     // React hook form
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -25,10 +26,11 @@ const SignUP = () => {
             name: data.name,
             email: data.email,
             password: data.password,
-            ShopName: data.shopName,
-            ShopUrl: data.shopUrl,
+            ShopName: shopName,
+            ShopUrl: data.shopUrl+shopUrl,
             PhoneNumber: data.phoneNumber,
         };
+        console.log(userInfo)
 
 
         const url = `http://localhost:5000/user/signup`;
@@ -63,6 +65,7 @@ const SignUP = () => {
     const handleShopName = (e) => {
         const url = e.target.value
         setShopUrl(url.replace(/\s/g, ''))
+        setShopName(e.target.value);
         // console.log(url.replace(/\s/g, ''))
     }
 
@@ -140,7 +143,7 @@ const SignUP = () => {
                     {vendorStatus && <div>
 
                         <label className="flex items-start py-2">Shop Name</label>
-                        <input onChange={handleShopName} type="text" name="shopName" className="form-control" placeholder="Shop Name" required
+                        <input onChange={handleShopName} type="text" name="shopName" className="form-control" placeholder="Shop Name"
                         // {...register('shopName', { required: true })} placeholder="Shop Name"
                         />
                         {errors.name && errors.name.type === "required" && <small className="error">Shop Name is required</small>}
