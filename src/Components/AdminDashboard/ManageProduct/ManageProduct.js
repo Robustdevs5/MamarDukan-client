@@ -1,9 +1,10 @@
-import { Button, TableContainer, TablePagination } from '@mui/material';
+import { TableContainer, TablePagination } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import Logo from '../../Navbar/Logo/Logo';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 import { Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
+import { useHistory } from 'react-router';
 
 
 const StyledTableCell = withStyles((theme) => ({
@@ -41,6 +42,7 @@ const ManageProduct = () => {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(4);
 
+    //Fetching Product.............................................
     useEffect(() => {
         fetch(`http://localhost:5000/products`)
             .then(res => res.json())
@@ -48,22 +50,24 @@ const ManageProduct = () => {
     }, [])
     console.log(product);
 
-
+    // pagination........................................................
     const handleChangeRowsPerPage = (event) => {
         setRowsPerPage(event.target.value);
         setPage(0);
     };
-    // pagination
+
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
 
 
+    //Delete...........................................................
     const deleted = () => {
         fetch(`http://localhost:5000/products`)
             .then(res => res.json())
             .then(data => setProduct(data.products))
     }
+
 
     const handleDeleteProduct = (id) => {
         fetch(`http://localhost:5000/products/${id}`, {
@@ -77,6 +81,16 @@ const ManageProduct = () => {
                 }
             })
     }
+
+
+    //Update push.......................................................
+    const history = useHistory();
+    const handleUpdateProduct = (id) => {
+        history.push(`/updateProduct/${id}`);
+    }
+
+
+
 
 
     // let i = 1;
@@ -108,7 +122,8 @@ const ManageProduct = () => {
                                         <StyledTableCell align="left">Brand</StyledTableCell>
                                         <StyledTableCell align="left">Brand</StyledTableCell>
                                         <StyledTableCell align="left">Category</StyledTableCell>
-                                        <StyledTableCell align="left">color</ StyledTableCell>
+                                        <StyledTableCell align="left">Color</ StyledTableCell>
+                                        <StyledTableCell align="left">Size</ StyledTableCell>
                                         <StyledTableCell align="left">Department</ StyledTableCell>
                                         <StyledTableCell align="left">Action</StyledTableCell>
                                     </TableRow>
@@ -129,14 +144,23 @@ const ManageProduct = () => {
                                                 </StyledTableCell>
                                                 <StyledTableCell align="left">{product.category}</StyledTableCell>
                                                 <StyledTableCell align="left">{product.color}</StyledTableCell>
+                                                <StyledTableCell align="left">{product.size}</StyledTableCell>
                                                 <StyledTableCell align="left">{product.department}</StyledTableCell>
 
                                                 <StyledTableCell align="left">
-                                                        <button
-                                                            onClick={() => handleDeleteProduct(product._id)}
-                                                            className="p-3 rounded-full bg-blue-400 hover:bg-red-500" >
-                                                            Delete
-                                                        </button>
+                                                    <button
+                                                        onClick={() => handleUpdateProduct(product._id)}
+                                                        className="p-3 rounded-full bg-blue-400 hover:bg-red-500" >
+                                                        Update
+                                                    </button>
+                                                </StyledTableCell>
+
+                                                <StyledTableCell align="left">
+                                                    <button
+                                                        onClick={() => handleDeleteProduct(product._id)}
+                                                        className="p-3 rounded-full bg-blue-400 hover:bg-red-500" >
+                                                        Delete
+                                                    </button>
                                                 </StyledTableCell>
                                             </StyledTableRow>
                                         ))}

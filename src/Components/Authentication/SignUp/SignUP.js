@@ -132,7 +132,7 @@ const SignUP = () => {
                     <br />
 
                     <div className="flex items-center justify-start py-2">
-                        <input className="cursor-pointer" onChange={handleCustomerChange} type="radio" id="customer" name="user" value="customer" />
+                        <input className="cursor-pointer" onChange={handleCustomerChange} type="radio" id="customer" name="user" value="customer" defaultChecked/>
                         <label className="cursor-pointer px-2" for="customer">I am a customer</label>
                     </div>
                     <div className="flex items-center justify-start py-2">
