@@ -6,14 +6,19 @@ import AddProduct from "./Components/AdminDashboard/AddProduct/AddProduct";
 import AdminPanel from "./Components/AdminDashboard/AdminPanel/AdminPanel";
 import AdminSidebar from './Components/AdminDashboard/AdminSidebar/AdminSidebar';
 import ManageProduct from "./Components/AdminDashboard/ManageProduct/ManageProduct";
+import UpdateProduct from './Components/AdminDashboard/UpdateProduct/UpdateProduct';
 import SIgnIn from "./Components/Authentication/SignIn/SIgnIn";
 import SignUP from "./Components/Authentication/SignUp/SignUP";
 import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
 import HomePage from "./pages/Home-page/HomePage";
 export const userContext = createContext();
 
+
+
 function App() {
+
   const [user, setUser] = useState({});
+
   return (
     <userContext.Provider value={[user, setUser]}>
     <Router>
@@ -28,6 +33,7 @@ function App() {
         <Route exact path="/addAdmin" component={AddAdmin} />
         <Route exact path="/manageProduct" component={ManageProduct} />
         <Route exact path="/product" component={ProductDeatils} />
+        <Route exact path="/updateProduct/:id" component={UpdateProduct} />
 
       </Switch>
     </Router>
