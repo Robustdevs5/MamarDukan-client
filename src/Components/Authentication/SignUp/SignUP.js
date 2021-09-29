@@ -5,7 +5,7 @@ import Footer from '../../Footer/Footer';
 import Header from '../../Header/Header';
 import Navbar from '../../Navbar/Navbar/Navbar';
 import TopBar from '../../TopBar/TopBar';
-import '../SignIn/SignIn.css';
+// import '../SignIn/SignIn.css';
 
 
 
@@ -39,15 +39,16 @@ const SignUP = () => {
     const onSubmit = (data) => {
         console.log(data)
         const passwordsMatch = checkPasswords();
-        
-        if (passwordsMatch) {
             const userInfo = {
                 name: data.name,
                 email: data.email,
                 password: data.password,
                 ShopName: data.ShopName,
-                PhoneNumber: data.PhoneNumber,
+                shopUrl: data.ShopUrl,
+                PhoneNumber: data?.PhoneNumber,
             };
+            
+        if (passwordsMatch) {
             const userSignUp = `http://localhost:5000/user/signup`;
             fetch(userSignUp, {
                 method: 'POST',
@@ -58,14 +59,11 @@ const SignUP = () => {
             })
             .then(async res => await res.json())
             .then(async user => {
-                await alert(user);
-                user ? alert('reg success') : alert("failed");
-                if (user) {
-                    console.log('reg success')
-                } else { console.log("failed") }
+                console.log('user10', user)
+                user ? alert(user.message) : alert("failed")
             })
-            .catch((error) => {
-                alert(error);
+            .catch(error => {
+                alert(error.message);
                 console.log(error);
             });
         } else {
@@ -78,7 +76,7 @@ const SignUP = () => {
 
     const handleCustomerChange = () => {
         setVendorStatus(false);
-        setCustomerStatus(false);
+        setCustomerStatus(true);
     }
 
     const handleVendorChange = () => {
@@ -170,18 +168,18 @@ const SignUP = () => {
                         {errors.name && errors.name.type === "required" && <small className="error">Shop Name is required</small>}
 
                         <label className="flex items-start py-2">Shop Url</label>
-                        <input type="text" name="shopUrl" className="form-control"
-                            {...register('shopUrl', { required: true })}
-                            value={`https://mamardukan.com/${shopUrl}`}
+                        <input type="text" name="ShopUrl" className="form-control"
+                            {...register('ShopUrl', { required: false })}
+                            // value={`https://mamardukan.com/${shopUrl}`}
                             placeholder="Shop Url"
                         />
                         {errors.name && errors.name.type === "required" && <small className="error">Shop Url is required</small>}
 
                         <label className="flex items-start py-2">Phone</label>
-                        <input type="number" name="vendorPhone" className="form-control"
-                            {...register('vendorPhone',
+                        <input type="number" name="PhoneNumber" className="form-control"
+                            {...register('PhoneNumber',
                                 {
-                                    maxLength: { value: 2, message: "error message" }
+                                    maxLength: { value: 11, message: "error message" }
                                 })}
                             placeholder="Phone Number"
                         />
