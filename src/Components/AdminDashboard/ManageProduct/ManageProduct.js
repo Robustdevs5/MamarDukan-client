@@ -42,7 +42,7 @@ const ManageProduct = () => {
     const [rowsPerPage, setRowsPerPage] = useState(4);
 
     useEffect(() => {
-        fetch(`https://mamardukan.herokuapp.com/products`)
+        fetch(`http://localhost:5000/products`)
             .then(res => res.json())
             .then(data => setProduct(data.products))
     }, [])
@@ -60,13 +60,13 @@ const ManageProduct = () => {
 
 
     const deleted = () => {
-        fetch(`https://mamardukan.herokuapp.com/products`)
+        fetch(`http://localhost:5000/products`)
             .then(res => res.json())
             .then(data => setProduct(data.products))
     }
 
     const handleDeleteProduct = (id) => {
-        fetch(`https://mamardukan.herokuapp.com/products/${id}`, {
+        fetch(`http://localhost:5000/products/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())
@@ -108,7 +108,8 @@ const ManageProduct = () => {
                                         <StyledTableCell align="left">Brand</StyledTableCell>
                                         <StyledTableCell align="left">Brand</StyledTableCell>
                                         <StyledTableCell align="left">Category</StyledTableCell>
-                                        <StyledTableCell align="left">color</StyledTableCell>
+                                        <StyledTableCell align="left">color</ StyledTableCell>
+                                        <StyledTableCell align="left">Department</ StyledTableCell>
                                         <StyledTableCell align="left">Action</StyledTableCell>
                                     </TableRow>
                                 </TableHead>
@@ -128,6 +129,7 @@ const ManageProduct = () => {
                                                 </StyledTableCell>
                                                 <StyledTableCell align="left">{product.category}</StyledTableCell>
                                                 <StyledTableCell align="left">{product.color}</StyledTableCell>
+                                                <StyledTableCell align="left">{product.department}</StyledTableCell>
 
                                                 <StyledTableCell align="left">
                                                         <button

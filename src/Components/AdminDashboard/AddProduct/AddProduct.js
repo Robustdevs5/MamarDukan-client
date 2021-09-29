@@ -27,7 +27,7 @@ const AddProduct = () => {
             date: new Date(),
             img: imageURL
         };
-
+console.log(productInfo);
         
 
         const url = `http://localhost:5000/products`;
