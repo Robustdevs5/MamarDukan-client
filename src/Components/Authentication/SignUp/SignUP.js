@@ -14,14 +14,67 @@ const SignUP = () => {
     const [customerStatus, setCustomerStatus] = useState(true);
     const [vendorStatus, setVendorStatus] = useState(false);
     const [shopUrl, setShopUrl] = useState("");
+    const [password, setPassword] = useState();
+    const [confirmPassword, setConfirmPassword] = useState();
 
+    // Checking passwords
+    const handleBlur = (e) => {
+        if (e.target.name === "password") {
+            setPassword(e.target.value);
+        }
+        if (e.target.name === "confirmPassword") {
+            setConfirmPassword(e.target.value);
+        }
+    };
+
+    // Two passwords match
+    const checkPasswords = () => {
+        return password === confirmPassword;
+    };
+
+    
     // React hook form
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = (data) => {
         console.log(data)
+        const passwordsMatch = checkPasswords();
+        
+        if (passwordsMatch) {
+            const userInfo = {
+                name: data.name,
+                email: data.email,
+                password: data.password,
+                ShopName: data.ShopName,
+                PhoneNumber: data.PhoneNumber,
+            };
+            const userSignUp = `http://localhost:5000/user/signup`;
+            fetch(userSignUp, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userInfo)
+            })
+            .then(async res => await res.json())
+            .then(async user => {
+                await alert(user);
+                user ? alert('reg success') : alert("failed");
+                if (user) {
+                    console.log('reg success')
+                } else { console.log("failed") }
+            })
+            .catch((error) => {
+                alert(error);
+                console.log(error);
+            });
+        } else {
+            alert("Your Passwords don't match")
+        };
     };
 
+
+    
 
     const handleCustomerChange = () => {
         setVendorStatus(false);
@@ -67,7 +120,7 @@ const SignUP = () => {
                     )}
                     <input type="password" name="password" className="form-control"
                         {...register('password', { required: true, minLength: 6, pattern: /\d{1}/ })}
-                        placeholder="Your Password"
+                        placeholder="Your Password" onBlur={handleBlur}
                     />
                     {errors.password && (
                         <span className="error">
@@ -83,7 +136,7 @@ const SignUP = () => {
 
                     <input type="password" name="confirmPassword"
                         {...register('confirmPassword', { required: true, minLength: 6, pattern: /\d{1}/ })}
-                        placeholder="Confirm Your Password" className="form-control"
+                        placeholder="Confirm Your Password" className="form-control" onChange={handleBlur}
                     />
                     {errors.confirmPassword && (
                         <span className="error">
