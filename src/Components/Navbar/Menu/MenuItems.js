@@ -260,8 +260,8 @@ export const Menu = [
       "py-3  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
   },
   {
-    title: "Admin panel",
-    path: "/addProduct",
+    title: "Dashboard",
+    path: "/dashboard",
     class:
       "py-2  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
     toggleClass:

@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import '../StyledComponent/HomepageProduct.css';
-import star from "../../images/5star.png";
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import star from "../../images/5star.png";
 import { FeaturedProducts } from '../HomepageProductData/HomepageProductData';
+import '../StyledComponent/HomepageProduct.css';
 
 
 

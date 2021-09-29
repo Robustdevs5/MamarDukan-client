@@ -1,12 +1,12 @@
 import React from 'react';
+import img from "../../images/1.jpg";
 import './Deatils.css';
-import img from "../../images/1.jpg"
 
 const Deatils = () => {
     return (
         <div className="Details">
            <div className="right">
-                <img className="m-auto" src={img}></img>
+                <img className="m-auto" src={img} alt=""/>
            </div>
            <div className="left">
                <h1>Title of Deatils Dukan amet consectetur adipisicing elit</h1> 
@@ -31,7 +31,7 @@ const Deatils = () => {
                 </select>
                 <h3>Price: 500$</h3>
                 <div style={{display: 'flex', border: '1px solid black'}} className="seller">
-                    <img className="w-12 mr-6 " src={img}></img>
+                    <img className="w-12 mr-6 " src={img} alt=""></img>
                     <p>seller</p>
                 </div>
                 <button>Add to Cart</button>
