@@ -5,7 +5,7 @@ import Footer from '../../Footer/Footer';
 import Header from '../../Header/Header';
 import Navbar from '../../Navbar/Navbar/Navbar';
 import TopBar from '../../TopBar/TopBar';
-import '../SignIn/SignIn.css';
+// import '../SignIn/SignIn.css';
 
 
 
@@ -13,48 +13,70 @@ const SignUP = () => {
 
     const [customerStatus, setCustomerStatus] = useState(true);
     const [vendorStatus, setVendorStatus] = useState(false);
-    const [dbStatus, setDbStatus] = useState(false);
     const [shopUrl, setShopUrl] = useState("");
-    const [shopName, setShopName] = useState("");
+    const [password, setPassword] = useState();
+    const [confirmPassword, setConfirmPassword] = useState();
 
+    // Checking passwords
+    const handleBlur = (e) => {
+        if (e.target.name === "password") {
+            setPassword(e.target.value);
+        }
+        if (e.target.name === "confirmPassword") {
+            setConfirmPassword(e.target.value);
+        }
+    };
+
+    // Two passwords match
+    const checkPasswords = () => {
+        return password === confirmPassword;
+    };
+
+    
     // React hook form
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = (data) => {
         console.log(data)
-        const userInfo = {
-            name: data.name,
-            email: data.email,
-            password: data.password,
-            ShopName: shopName,
-            ShopUrl: data.shopUrl+shopUrl,
-            PhoneNumber: data.phoneNumber,
-        };
-        console.log(userInfo)
-
-
-        const url = `http://localhost:5000/user/signup`;
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userInfo)
-        })
-            .then(res => res.json())
-            .then(data => {
-                setDbStatus(data);
-                if (data) {
-                    alert('User added successfully.')
-                    // e.target.reset();
-                }
+        const passwordsMatch = checkPasswords();
+            const userInfo = {
+                name: data.name,
+                email: data.email,
+                password: data.password,
+                ShopName: data.ShopName,
+                shopUrl: data.ShopUrl,
+                PhoneNumber: data?.PhoneNumber,
+            };
+            
+        if (passwordsMatch) {
+            const userSignUp = `http://localhost:5000/user/signup`;
+            fetch(userSignUp, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userInfo)
             })
+            .then(async res => await res.json())
+            .then(async user => {
+                console.log('user10', user)
+                user ? alert(user.message) : alert("failed")
+            })
+            .catch(error => {
+                alert(error.message);
+                console.log(error);
+            });
+        } else {
+            alert("Your Passwords don't match")
+        };
     };
 
 
+    
+
     const handleCustomerChange = () => {
         setVendorStatus(false);
-        setCustomerStatus(false);
+        setCustomerStatus(true);
     }
 
     const handleVendorChange = () => {
@@ -63,12 +85,9 @@ const SignUP = () => {
     }
 
     const handleShopName = (e) => {
-        const url = e.target.value
-        setShopUrl(url.replace(/\s/g, ''))
-        setShopName(e.target.value);
-        // console.log(url.replace(/\s/g, ''))
+        setShopUrl(e.target.value)
+        console.log(e.target.value)
     }
-
 
 
 
@@ -99,7 +118,7 @@ const SignUP = () => {
                     )}
                     <input type="password" name="password" className="form-control"
                         {...register('password', { required: true, minLength: 6, pattern: /\d{1}/ })}
-                        placeholder="Your Password"
+                        placeholder="Your Password" onBlur={handleBlur}
                     />
                     {errors.password && (
                         <span className="error">
@@ -115,7 +134,7 @@ const SignUP = () => {
 
                     <input type="password" name="confirmPassword"
                         {...register('confirmPassword', { required: true, minLength: 6, pattern: /\d{1}/ })}
-                        placeholder="Confirm Your Password" className="form-control"
+                        placeholder="Confirm Your Password" className="form-control" onChange={handleBlur}
                     />
                     {errors.confirmPassword && (
                         <span className="error">
@@ -143,22 +162,22 @@ const SignUP = () => {
                     {vendorStatus && <div>
 
                         <label className="flex items-start py-2">Shop Name</label>
-                        <input onChange={handleShopName} type="text" name="shopName" className="form-control" placeholder="Shop Name"
+                        <input onChange={handleShopName} type="text" name="shopName" className="form-control" placeholder="Shop Name" required
                         // {...register('shopName', { required: true })} placeholder="Shop Name"
                         />
                         {errors.name && errors.name.type === "required" && <small className="error">Shop Name is required</small>}
 
                         <label className="flex items-start py-2">Shop Url</label>
-                        <input type="text" name="shopUrl" className="form-control"
-                            {...register('shopUrl', { required: true })}
-                            value={`https://mamardukan.com/${shopUrl}`}
+                        <input type="text" name="ShopUrl" className="form-control"
+                            {...register('ShopUrl', { required: false })}
+                            // value={`https://mamardukan.com/${shopUrl}`}
                             placeholder="Shop Url"
                         />
                         {errors.name && errors.name.type === "required" && <small className="error">Shop Url is required</small>}
 
                         <label className="flex items-start py-2">Phone</label>
-                        <input type="number" name="phoneNumber" className="form-control"
-                            {...register('phoneNumber',
+                        <input type="number" name="PhoneNumber" className="form-control"
+                            {...register('PhoneNumber',
                                 {
                                     maxLength: { value: 11, message: "error message" }
                                 })}
@@ -180,8 +199,8 @@ const SignUP = () => {
                             Login
                         </Link>
                     </p>
-
-                </form>
+                    
+                </form>          
             </div>
             <Footer />
         </>
