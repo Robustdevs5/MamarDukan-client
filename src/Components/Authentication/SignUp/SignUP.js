@@ -43,10 +43,12 @@ const SignUP = () => {
                 name: data.name,
                 email: data.email,
                 password: data.password,
-                ShopName: data.ShopName,
-                shopUrl: data.ShopUrl,
+                ShopName: data.shopName,
+                ShopUrl: data.shopUrl,
                 PhoneNumber: data?.PhoneNumber,
             };
+        console.log(userInfo)
+
             
         if (passwordsMatch) {
             const userSignUp = `http://localhost:5000/user/signup`;
@@ -168,8 +170,8 @@ const SignUP = () => {
                         {errors.name && errors.name.type === "required" && <small className="error">Shop Name is required</small>}
 
                         <label className="flex items-start py-2">Shop Url</label>
-                        <input type="text" name="ShopUrl" className="form-control"
-                            {...register('ShopUrl', { required: false })}
+                        <input type="text" name="shopUrl" className="form-control"
+                            {...register('shopUrl', { required: false })}
                             // value={`https://mamardukan.com/${shopUrl}`}
                             placeholder="Shop Url"
                         />
