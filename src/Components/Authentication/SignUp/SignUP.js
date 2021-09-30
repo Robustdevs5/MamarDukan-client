@@ -17,9 +17,11 @@ const SignUP = () => {
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
     const [allUser, setAllUser] = useState([]);
+    const [User, setUser] = useState();
     const [test, setTest] = useState();
-    console.log("state",allUser)
-    console.log("state",test)
+    console.log("allUser",allUser)
+    console.log("User",User)
+    console.log("test",test)
 // let i = 0
     useEffect(() => {
         const user = `http://localhost:5000/user`;
@@ -29,10 +31,11 @@ const SignUP = () => {
             console.log("data1", data.allUser.count)
             console.log("data2", data.allUser.user[0].email)
             console.log("data3", data.allUser)
-            
-            for (let i=0; i <= data.allUser.user.length; i++) {
-                setAllUser(data.allUser.user[i].email)
-            }
+            setAllUser(data.allUser.user)
+
+            // data.allUser.user.forEach(function(use) {
+            //     console.log(data.allUser.user)
+            // })
 
         // setAllUser(data.allUser.map(email => {
             //     console.log('email',email)
@@ -44,6 +47,17 @@ const SignUP = () => {
             // })
         })
         
+        // let emails = [];
+        // for (let i=0; i <= allUser.length; i++) {
+        //     setUser(emails)
+        //     console.log('email', emails.email)
+        //     console.log('email2', emails)
+        // }
+        allUser.map(email => {
+            return console.log('map', email.email)
+        })
+
+
         // async function fetchMyAPI() {
         //     const user = `http://localhost:5000/user`;
         //     let response = await fetch(user)
