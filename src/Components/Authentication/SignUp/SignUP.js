@@ -104,13 +104,7 @@ const SignUP = () => {
                 ShopUrl: data.shopUrl,
                 PhoneNumber: data?.PhoneNumber,
             };
-<<<<<<< HEAD
         
-=======
-        console.log(userInfo)
-
-            
->>>>>>> ea823fdfe48d04f19f01aaaee16b64c3b9d88cfe
         if (passwordsMatch) {
             const userSignUp = `http://localhost:5000/user/signup`;
             fetch(userSignUp, {
