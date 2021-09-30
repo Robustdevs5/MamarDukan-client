@@ -79,18 +79,19 @@ const AddProduct = () => {
                 <div className="w-screen h-20 p-6">
                     <Logo />
                 </div>
-                {imageURLStatus && <Alert severity="success">
+
+                {/* {imageURLStatus && <Alert severity="success">
                         <AlertTitle>Success</AlertTitle>
                         This is a success alert — <strong>check it out!</strong>
-                    </Alert>}
+                    </Alert>} */}
 
                 <div className="flex  md:flex-row flex-col">
                     <AdminSidebar />
 
-                    {imageURLStatus && <Alert severity="success">
+                    {/* {imageURLStatus && <Alert severity="success">
                         <AlertTitle>Success</AlertTitle>
                         This is a success alert — <strong>check it out!</strong>
-                    </Alert>}
+                    </Alert>} */}
 
                     <section className="mx-10">
                         <h1 className="font-bold text-white p-4 text-2xl">Add a new product</h1>
@@ -237,7 +238,8 @@ const AddProduct = () => {
                                     </label>
                                     <input
                                         class="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
-                                        type="text"
+                                        type="number"
+                                        min="1"
                                         name="price"
                                         placeholder="price"
                                     />
