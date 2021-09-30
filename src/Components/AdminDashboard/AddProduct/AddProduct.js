@@ -125,9 +125,9 @@ const AddProduct = () => {
                                         Category
                                     </label>
                                     <select className="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600" name="category" id="cars">
-                                        <option value="none">None</option>
-                                        <option value="man">Man</option>
-                                        <option value="women">Women</option>
+                                        <option value="None">None</option>
+                                        <option value="Man">Man</option>
+                                        <option value="Women">Women</option>
                                     </select>
                                     {/* <input
                                         class="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
@@ -145,12 +145,12 @@ const AddProduct = () => {
                                         Department
                                     </label>
                                     <select className="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600" name="department" id="cars">
-                                        <option value="clothing">Clothing</option>
-                                        <option value="grocery">Grocery</option>
-                                        <option value="cooking">Cooking</option>
-                                        <option value="phone">Phone</option>
-                                        <option value="cosmetics">Cosmetics</option>
-                                        <option value="computer">Computer</option>
+                                        <option value="Clothing">Clothing</option>
+                                        <option value="Grocery">Grocery</option>
+                                        <option value="Cooking">Cooking</option>
+                                        <option value="Phone">Phone</option>
+                                        <option value="Cosmetics">Cosmetics</option>
+                                        <option value="Computer">Computer</option>
                                     </select>
                                     {/* <input
                                         class="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
@@ -185,9 +185,17 @@ const AddProduct = () => {
                                     <input
                                         class="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
                                         type="text"
+                                        list="brand" 
                                         name="brand"
                                         placeholder="Brand"
                                     />
+                                    <datalist id="brand">
+                                        <option value="Easy" />
+                                        <option value="Nike" />
+                                        <option value="Adidas" />
+                                        <option value="Zodiac" />
+                                        <option value="Levi's" />
+                                    </datalist>
                                 </div>
 
                                 <div class="mb-6">
@@ -295,7 +303,6 @@ const AddProduct = () => {
                                         type="textarea"
                                         name="description"
                                         placeholder="Description"
-                                        required
                                     />
                                 </div>
                                 <div class="flex items-end justify-end">
