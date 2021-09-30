@@ -11,7 +11,7 @@ import TopBar from '../../TopBar/TopBar';
 
 const SignUP = () => {
 
-    const [customerStatus, setCustomerStatus] = useState(true);
+    const [customerStatus, setCustomerStatus] = useState (true);
     const [vendorStatus, setVendorStatus] = useState(false);
     const [shopUrl, setShopUrl] = useState("");
     const [password, setPassword] = useState();
