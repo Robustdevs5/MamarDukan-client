@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import Footer from '../../Footer/Footer';
 import Header from '../../Header/Header';
 import Navbar from '../../Navbar/Navbar/Navbar';
 import TopBar from '../../TopBar/TopBar';
 // import '../SignIn/SignIn.css';
-
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const SignUP = () => {
@@ -18,16 +19,15 @@ const SignUP = () => {
     const [confirmPassword, setConfirmPassword] = useState();
     const [allUser, setAllUser] = useState([]);
     const [emailStatus, setEmailStatus] = useState(false);
-
+    const [backendRes, setBackendRes] = useState(false);
+    
+    setTimeout(() => setBackendRes(true), 10000)
 
     useEffect(() => {
         const user = `http://localhost:5000/user`;
         fetch(user)
             .then(res => res.json())
             .then(data => {
-                console.log("data1", data.allUser.user)
-                console.log("data2", data.allUser.user[0].email)
-                console.log("data3", data.allUser)
                 let userArray = []
                 for (let i = 0; i < data.allUser.user.length; i++) {
                     userArray.push(data.allUser.user[i])
@@ -55,16 +55,20 @@ const SignUP = () => {
     };
 
 
+    // email check
     const emailCheck = (e) => {
         console.log(allUser.email)
         if (e.target.name === "email") {
             console.log(e.target.value)
             for (let i = 0; i < allUser.length; i++) {
                 if (allUser[i].email === e.target.value) {
-                    setEmailStatus(true)
+                    setEmailStatus(true);
+                    toast.error('Already have an account!', {
+                        position: "bottom-right",
+                    });
                     break;
                 } else {
-                    setEmailStatus(false)
+                    setEmailStatus(false);
                 }
             }
         }
@@ -108,7 +112,9 @@ const SignUP = () => {
                     console.log(error);
                 });
         } else {
-            alert("Your Passwords don't match")
+            toast.error("Your Passwords don't match!", {
+                position: "top-right",
+            });
         };
     };
 
@@ -125,7 +131,6 @@ const SignUP = () => {
 
     const handleShopName = (e) => {
         setShopUrl(e.target.value)
-        console.log(e.target.value)
     }
 
 
@@ -149,8 +154,6 @@ const SignUP = () => {
                     <input type="email" name="email" className="form-control" placeholder="Your Email"
                         {...register('email', { required: true, pattern: /\S+@\S+\.\S+/ })} onChange={emailCheck}
                     />
-                    {emailStatus ? <small className="text-red-600">Already have an account</small> : ''}
-
                     {errors.email && (<span className="error">
                         {errors.email.type === "required" ? "Email is required" : "Your Email pattern is not correct"}
                     </span>
@@ -244,6 +247,7 @@ const SignUP = () => {
                 </form>
             </div>
             <Footer />
+            <ToastContainer />
         </>
     );
 };
