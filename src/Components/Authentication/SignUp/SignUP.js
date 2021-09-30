@@ -17,56 +17,24 @@ const SignUP = () => {
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
     const [allUser, setAllUser] = useState([]);
-    const [User, setUser] = useState();
-    const [test, setTest] = useState();
-    console.log("allUser",allUser)
-    console.log("User",User)
-    console.log("test",test)
-// let i = 0
+    const [emailStatus, setEmailStatus] = useState(false);
+
+
     useEffect(() => {
         const user = `http://localhost:5000/user`;
         fetch(user)
-        .then(res => res.json())
-        .then(data => {
-            console.log("data1", data.allUser.count)
-            console.log("data2", data.allUser.user[0].email)
-            console.log("data3", data.allUser)
-            setAllUser(data.allUser.user)
+            .then(res => res.json())
+            .then(data => {
+                console.log("data1", data.allUser.user)
+                console.log("data2", data.allUser.user[0].email)
+                console.log("data3", data.allUser)
+                let userArray = []
+                for (let i = 0; i < data.allUser.user.length; i++) {
+                    userArray.push(data.allUser.user[i])
+                }
+                setAllUser(userArray)
+            })
 
-            // data.allUser.user.forEach(function(use) {
-            //     console.log(data.allUser.user)
-            // })
-
-        // setAllUser(data.allUser.map(email => {
-            //     console.log('email',email)
-            // }))
-
-            // data.allUser.map((email) => {
-            //     return setAllUser(email.email)
-            //     console.log(email)
-            // })
-        })
-        
-        // let emails = [];
-        // for (let i=0; i <= allUser.length; i++) {
-        //     setUser(emails)
-        //     console.log('email', emails.email)
-        //     console.log('email2', emails)
-        // }
-        allUser.map(email => {
-            return console.log('map', email.email)
-        })
-
-
-        // async function fetchMyAPI() {
-        //     const user = `http://localhost:5000/user`;
-        //     let response = await fetch(user)
-        //     response = await response.json()
-        //     console.log(response)
-        //     setAllUser(response)
-        //   }
-
-        //   fetchMyAPI()
     }, []);
 
 
@@ -88,19 +56,21 @@ const SignUP = () => {
 
 
     const emailCheck = (e) => {
+        console.log(allUser.email)
         if (e.target.name === "email") {
-            setTest(e.target.value)
             console.log(e.target.value)
-        }
-        if (allUser === test) {
-            alert("already have an account")
-        } else {
-            alert("please continue")
+            for (let i = 0; i < allUser.length; i++) {
+                if (allUser[i].email === e.target.value) {
+                    setEmailStatus(true)
+                    break;
+                } else {
+                    setEmailStatus(false)
+                }
+            }
         }
     }
-    // const emailveryfy = () => {
-    //     return allUser ===
-    // }
+
+
 
 
     // React hook form
@@ -109,6 +79,7 @@ const SignUP = () => {
     const onSubmit = (data) => {
         console.log(data)
         const passwordsMatch = checkPasswords();
+        // const emailMatch = emailCheck();
         const userInfo = {
             name: data.name,
             email: data.email,
@@ -177,8 +148,9 @@ const SignUP = () => {
 
                     <input type="email" name="email" className="form-control" placeholder="Your Email"
                         {...register('email', { required: true, pattern: /\S+@\S+\.\S+/ })} onChange={emailCheck}
-
                     />
+                    {emailStatus ? <small className="text-red-600">Already have an account</small> : ''}
+
                     {errors.email && (<span className="error">
                         {errors.email.type === "required" ? "Email is required" : "Your Email pattern is not correct"}
                     </span>
