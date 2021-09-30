@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 import Footer from '../../Footer/Footer';
@@ -16,6 +16,47 @@ const SignUP = () => {
     const [shopUrl, setShopUrl] = useState("");
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
+    const [allUser, setAllUser] = useState([]);
+    const [test, setTest] = useState();
+    console.log("state",allUser)
+    console.log("state",test)
+// let i = 0
+    useEffect(() => {
+        const user = `http://localhost:5000/user`;
+        fetch(user)
+        .then(res => res.json())
+        .then(data => {
+            console.log("data1", data.allUser.count)
+            console.log("data2", data.allUser.user[0].email)
+            console.log("data3", data.allUser)
+            
+            for (let i=0; i <= data.allUser.user.length; i++) {
+                setAllUser(data.allUser.user[i].email)
+            }
+
+        // setAllUser(data.allUser.map(email => {
+            //     console.log('email',email)
+            // }))
+
+            // data.allUser.map((email) => {
+            //     return setAllUser(email.email)
+            //     console.log(email)
+            // })
+        })
+        
+        // async function fetchMyAPI() {
+        //     const user = `http://localhost:5000/user`;
+        //     let response = await fetch(user)
+        //     response = await response.json()
+        //     console.log(response)
+        //     setAllUser(response)
+        //   }
+      
+        //   fetchMyAPI()
+    }, []);
+
+
+
 
     // Checking passwords
     const handleBlur = (e) => {
@@ -33,6 +74,22 @@ const SignUP = () => {
     };
 
     
+    const emailCheck = (e) => {
+        if (e.target.name === "email") {
+            setTest(e.target.value)
+            console.log(e.target.value)
+        }
+        if (allUser === test) {
+            alert("already have an account")
+        } else {
+            alert("please continue")
+        }
+    }
+    // const emailveryfy = () => {
+    //     return allUser ===
+    // }
+    
+
     // React hook form
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -47,9 +104,7 @@ const SignUP = () => {
                 ShopUrl: data.shopUrl,
                 PhoneNumber: data?.PhoneNumber,
             };
-        console.log(userInfo)
-
-            
+        
         if (passwordsMatch) {
             const userSignUp = `http://localhost:5000/user/signup`;
             fetch(userSignUp, {
@@ -73,8 +128,6 @@ const SignUP = () => {
         };
     };
 
-
-    
 
     const handleCustomerChange = () => {
         setVendorStatus(false);
@@ -109,8 +162,9 @@ const SignUP = () => {
                     {errors.name && errors.name.type === "required" && <span className="error">Name is required</span>}
 
 
-                    <input type="email" name="email" className="form-control" placeholder="Your Email"
-                        {...register('email', { required: true, pattern: /\S+@\S+\.\S+/ })}
+                    <input type="email" name="email" className="form-control" placeholder="Your Email" 
+                        {...register('email', { required: true, pattern: /\S+@\S+\.\S+/ }) } onChange={emailCheck}
+                        
                     />
                     {errors.email && (<span className="error">
                         {errors.email.type === "required" ? "Email is required" : "Your Email pattern is not correct"}
