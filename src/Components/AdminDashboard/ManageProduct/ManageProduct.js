@@ -150,7 +150,7 @@ const ManageProduct = () => {
                                                 <StyledTableCell align="left">
                                                     <button
                                                         onClick={() => handleUpdateProduct(product._id)}
-                                                        className="p-3 rounded-full bg-blue-400 hover:bg-red-500" >
+                                                        className="p-3 rounded-full bg-blue-400 hover:bg-blue-800 hover:text-gray-100" >
                                                         Update
                                                     </button>
                                                 </StyledTableCell>
@@ -158,7 +158,7 @@ const ManageProduct = () => {
                                                 <StyledTableCell align="left">
                                                     <button
                                                         onClick={() => handleDeleteProduct(product._id)}
-                                                        className="p-3 rounded-full bg-blue-400 hover:bg-red-500" >
+                                                        className="p-3 rounded-full bg-red-400 hover:bg-red-800 hover:text-gray-100" >
                                                         Delete
                                                     </button>
                                                 </StyledTableCell>
