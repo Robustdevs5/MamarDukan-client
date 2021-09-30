@@ -17,39 +17,45 @@ const SignUP = () => {
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
     const [allUser, setAllUser] = useState([]);
+    const [User, setUser] = useState();
     const [test, setTest] = useState();
-    const [data, setData] = useState([]);
-    // console.log("state",allUser)
-    // console.log("state",test)
-    // let i = 0
+    console.log("allUser",allUser)
+    console.log("User",User)
+    console.log("test",test)
+// let i = 0
     useEffect(() => {
         const user = `http://localhost:5000/user`;
         fetch(user)
-            .then(res => res.json())
-            .then(data => {
-                console.log("data1", data.allUser.user)
-                console.log("data2", data.allUser.user[0].email)
-                console.log("data3", data.allUser)
-                // let abc = data.allUser.user.filter(data => data.email)
-                // setData(abc)
-                let a =[]
-                for (let i=0; i < data.allUser.user.length; i++) {
-                // data.allUser.user.map(data => setData(data[i]))
-                console.log(data.allUser.user[i].email)
-                setData(data.allUser.user[i])
-                }
-                // a.map(a=>setData(a))
-                // setData(a)
+        .then(res => res.json())
+        .then(data => {
+            console.log("data1", data.allUser.count)
+            console.log("data2", data.allUser.user[0].email)
+            console.log("data3", data.allUser)
+            setAllUser(data.allUser.user)
 
-                // setAllUser(data.allUser.map(email => {
-                //     console.log('email',email)
-                // }))
+            // data.allUser.user.forEach(function(use) {
+            //     console.log(data.allUser.user)
+            // })
 
-                // data.allUser.map((email) => {
-                //     return setAllUser(email.email)
-                //     console.log(email)
-                // })
-            })
+        // setAllUser(data.allUser.map(email => {
+            //     console.log('email',email)
+            // }))
+
+            // data.allUser.map((email) => {
+            //     return setAllUser(email.email)
+            //     console.log(email)
+            // })
+        })
+        
+        // let emails = [];
+        // for (let i=0; i <= allUser.length; i++) {
+        //     setUser(emails)
+        //     console.log('email', emails.email)
+        //     console.log('email2', emails)
+        // }
+        allUser.map(email => {
+            return console.log('map', email.email)
+        })
 
 
         // async function fetchMyAPI() {
@@ -62,7 +68,6 @@ const SignUP = () => {
 
         //   fetchMyAPI()
     }, []);
-    console.log(data)
 
 
 
@@ -87,7 +92,7 @@ const SignUP = () => {
             setTest(e.target.value)
             console.log(e.target.value)
         }
-        if (data.email === test) {
+        if (allUser === test) {
             alert("already have an account")
         } else {
             alert("please continue")
