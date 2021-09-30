@@ -11,7 +11,7 @@ import TopBar from '../../TopBar/TopBar';
 
 const SignUP = () => {
 
-    const [customerStatus, setCustomerStatus] = useState(true);
+    const [customerStatus, setCustomerStatus] = useState (true);
     const [vendorStatus, setVendorStatus] = useState(false);
     const [shopUrl, setShopUrl] = useState("");
     const [password, setPassword] = useState();
@@ -100,11 +100,17 @@ const SignUP = () => {
                 name: data.name,
                 email: data.email,
                 password: data.password,
-                ShopName: data.ShopName,
-                shopUrl: data.ShopUrl,
+                ShopName: data.shopName,
+                ShopUrl: data.shopUrl,
                 PhoneNumber: data?.PhoneNumber,
             };
+<<<<<<< HEAD
         
+=======
+        console.log(userInfo)
+
+            
+>>>>>>> ea823fdfe48d04f19f01aaaee16b64c3b9d88cfe
         if (passwordsMatch) {
             const userSignUp = `http://localhost:5000/user/signup`;
             fetch(userSignUp, {
@@ -224,8 +230,8 @@ const SignUP = () => {
                         {errors.name && errors.name.type === "required" && <small className="error">Shop Name is required</small>}
 
                         <label className="flex items-start py-2">Shop Url</label>
-                        <input type="text" name="ShopUrl" className="form-control"
-                            {...register('ShopUrl', { required: false })}
+                        <input type="text" name="shopUrl" className="form-control"
+                            {...register('shopUrl', { required: false })}
                             // value={`https://mamardukan.com/${shopUrl}`}
                             placeholder="Shop Url"
                         />

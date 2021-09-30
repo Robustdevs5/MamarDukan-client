@@ -1,3 +1,4 @@
+import { Alert, AlertTitle } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react';
 import Logo from "../../Navbar/Logo/Logo";
@@ -20,15 +21,13 @@ const AddProduct = () => {
             category: e.target.category.value,
             color: e.target.color.value,
             department: e.target.department.value,
-            seller: e.target.seller.value,
             price: e.target.price.value,
-            discount: e.target.discount.value,
             brand: e.target.brand.value,
             date: new Date(),
             img: imageURL
         };
-console.log(productInfo);
-        
+        console.log(productInfo);
+
 
         const url = `http://localhost:5000/products`;
         fetch(url, {
@@ -63,7 +62,8 @@ console.log(productInfo);
                 setImageURL(response.data.data.display_url);
                 setImageURLStatus(true);
                 if (response) {
-                    alert('Image Uploaded Successfully')
+                    // alert('Image Uploaded Successfully')
+
                 }
             })
             .catch(function (error) {
@@ -79,11 +79,20 @@ console.log(productInfo);
                 <div className="w-screen h-20 p-6">
                     <Logo />
                 </div>
+                {imageURLStatus && <Alert severity="success">
+                        <AlertTitle>Success</AlertTitle>
+                        This is a success alert — <strong>check it out!</strong>
+                    </Alert>}
 
                 <div className="flex  md:flex-row flex-col">
-                    <AdminSidebar/>
+                    <AdminSidebar />
 
-                    <section className="mx-4">
+                    {imageURLStatus && <Alert severity="success">
+                        <AlertTitle>Success</AlertTitle>
+                        This is a success alert — <strong>check it out!</strong>
+                    </Alert>}
+
+                    <section className="mx-10">
                         <h1 className="font-bold text-white p-4 text-2xl">Add a new product</h1>
                         <div class="  ">
 
@@ -103,6 +112,7 @@ console.log(productInfo);
                                         type="text"
                                         name="name"
                                         placeholder="Name"
+                                        required
                                     />
                                 </div>
 
@@ -113,12 +123,17 @@ console.log(productInfo);
                                     >
                                         Category
                                     </label>
-                                    <input
+                                    <select className="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600" name="category" id="cars">
+                                        <option value="none">None</option>
+                                        <option value="man">Man</option>
+                                        <option value="women">Women</option>
+                                    </select>
+                                    {/* <input
                                         class="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
                                         type="text"
                                         name="category"
                                         placeholder="Category"
-                                    />
+                                    /> */}
                                 </div>
 
                                 <div class="mb-6">
@@ -128,14 +143,23 @@ console.log(productInfo);
                                     >
                                         Department
                                     </label>
-                                    <input
+                                    <select className="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600" name="department" id="cars">
+                                        <option value="clothing">Clothing</option>
+                                        <option value="grocery">Grocery</option>
+                                        <option value="cooking">Cooking</option>
+                                        <option value="phone">Phone</option>
+                                        <option value="cosmetics">Cosmetics</option>
+                                        <option value="computer">Computer</option>
+                                    </select>
+                                    {/* <input
                                         class="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
                                         type="text"
                                         name="department"
                                         placeholder="department"
-                                    />
+                                    /> */}
                                 </div>
-                                <div class="mb-4">
+
+                                {/* <div class="mb-4">
                                     <label
                                         class="block text-gray-700 text-sm font-bold mb-2"
                                         for="discount"
@@ -148,7 +172,8 @@ console.log(productInfo);
                                         name="discount"
                                         placeholder="discount"
                                     />
-                                </div>
+                                </div> */}
+
                                 <div class="mb-4">
                                     <label
                                         class="block text-gray-700 text-sm font-bold mb-2"
@@ -163,6 +188,7 @@ console.log(productInfo);
                                         placeholder="Brand"
                                     />
                                 </div>
+
                                 <div class="mb-6">
                                     <label
                                         class="block text-gray-700 text-sm font-bold mb-2"
@@ -170,14 +196,24 @@ console.log(productInfo);
                                     >
                                         Size
                                     </label>
-                                    <input
+                                    <select className="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600" name="size" id="cars">
+                                        <option value="none">None</option>
+                                        <option value="S">S</option>
+                                        <option value="M">M</option>
+                                        <option value="L">L</option>
+                                        <option value="XL">XL</option>
+                                        <option value="XXL">XXL</option>
+                                        <option value="XXL">XXXL</option>
+                                    </select>
+                                    {/* <input
                                         className="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
                                         type="text"
                                         name="size"
                                         placeholder="Size"
-                                    />
+                                    /> */}
                                 </div>
-                                <div class="mb-6">
+
+                                <div class="mb-6 md:mx-32">
                                     <label
                                         class="block text-gray-700 text-sm font-bold mb-2"
                                         for="color"
@@ -185,12 +221,13 @@ console.log(productInfo);
                                         Color
                                     </label>
                                     <input
-                                        class="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
-                                        type="text"
+                                        class="px-2 shadow appearance-none border-0 rounded w-full text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
+                                        type="color"
                                         name="color"
-                                        placeholder="color"
+                                        required
                                     />
                                 </div>
+
                                 <div class="mb-6">
                                     <label
                                         class="block text-gray-700 text-sm font-bold mb-2"
@@ -205,7 +242,8 @@ console.log(productInfo);
                                         placeholder="price"
                                     />
                                 </div>{" "}
-                                <div class="mb-6">
+
+                                {/* <div class="mb-6">
                                     <label
                                         class="block text-gray-700 text-sm font-bold mb-2"
                                         for="seller"
@@ -218,7 +256,8 @@ console.log(productInfo);
                                         name="seller"
                                         placeholder="seller"
                                     />
-                                </div>
+                                </div> */}
+
                                 <div class="mb-6">
                                     <label
                                         class="block text-gray-700 text-sm font-bold mb-2"
@@ -232,8 +271,16 @@ console.log(productInfo);
                                         type="file"
                                         name="image"
                                         placeholder="image"
+                                        required
                                     />
+                                    {imageURLStatus ?
+                                        <small className="text-green-600">Image Uploaded</small>
+                                        :
+                                        <small className="text-red-700">Upload Image</small>
+                                    }
+
                                 </div>{" "}
+
                                 <div class="mb-6">
                                     <label
                                         class="block text-gray-700 text-sm font-bold mb-2"
@@ -246,15 +293,25 @@ console.log(productInfo);
                                         type="textarea"
                                         name="description"
                                         placeholder="Description"
+                                        required
                                     />
                                 </div>
-                                <div class="flex items-center justify-between">
-                                    <button
-                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                <div class="flex items-end justify-end">
+                                    {imageURLStatus ? <button
+                                        class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                         type="submit"
                                     >
-                                        submit
+                                        Submit
                                     </button>
+                                        :
+                                        <button
+                                            class="bg-blue-300 text-white font-bold py-2 px-4 rounded"
+                                            type="submit"
+                                            disabled
+                                        >
+                                            Submit
+                                        </button>
+                                    }
                                 </div>
                             </form>
                         </div>
