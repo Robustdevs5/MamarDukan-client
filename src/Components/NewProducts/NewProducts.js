@@ -1,3 +1,6 @@
+import { faEye, faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faShoppingBag, faChartBar } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import React, { useEffect, useState } from 'react';
@@ -11,6 +14,7 @@ import { NewProduct } from '../HomepageProductData/HomepageProductData';
 const NewProducts = () => {
 
     const [newProduct, setNewProduct] = useState([]);
+    const [toggleMenu, setToggleMenu] = useState(false);
 
     useEffect(() => {
         fetch(`http://localhost:5000/products`)
@@ -112,15 +116,54 @@ const NewProducts = () => {
             </div>
 
 
-            <Slider {...settings} className="px-12">
+
+
+
+            <Slider {...settings} className="px-8">
 
                 {
                     newProduct.map(newProduct =>
                         <div className="p-2">
 
-                            <div className="mb-4 w-40 h-40">
-                                <img className="rounded cursor-pointer h-full w-full" src={newProduct.img} alt="8192" />
+                            <div className="mb-4 w-40 h-40"
+                                onMouseEnter={() => setToggleMenu(true)}
+                                onMouseLeave={() => setToggleMenu(false)}
+                            >
+                                <img className="rounded cursor-pointer h-full w-full"
+                                    src={newProduct.img} alt="8192" />
+
+                                {toggleMenu &&
+                                    <div className="flex bg-gray-50 justify-between px-2">
+
+                                        <button
+                                            className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                        >
+                                            <FontAwesomeIcon icon={faShoppingBag} />
+                                        </button>
+
+                                        <button
+                                            className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                        >
+                                            <FontAwesomeIcon icon={faEye} />
+                                        </button>
+
+                                        <button
+                                            className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                        >
+                                            <FontAwesomeIcon icon={faHeart} />
+                                        </button >
+
+                                        <button
+                                            className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                        >
+                                            <FontAwesomeIcon icon={faChartBar} />
+                                        </button>
+
+                                    </div>
+                                }
+
                             </div>
+
 
                             <div className="flex py-3">
                                 <h5 className="text-base font-bold text-green-700">${newProduct.price}</h5>

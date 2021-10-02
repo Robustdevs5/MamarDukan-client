@@ -75,7 +75,7 @@ const MostViewedProducts = () => {
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 0.5,
                     slidesToScroll: 2,
                     initialSlide: 2
                 }
@@ -83,7 +83,7 @@ const MostViewedProducts = () => {
             {
                 breakpoint: 480,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 0.5,
                     slidesToScroll: 1
                 }
             }
