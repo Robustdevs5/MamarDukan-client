@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import star from "../../images/5star.png";
 import { ComputerTechnology } from '../HomepageProductData/HomepageProductData';
+import { useHistory } from 'react-router';
 
 
 
@@ -89,6 +90,13 @@ const TechnologyProducts = () => {
     };
 
 
+    const history = useHistory();
+    const handleProductClick = (id) =>{
+        history.push(`/product/${id}`);
+    }
+
+
+
 
     return (
         <div className="px-2 my-20">
@@ -104,7 +112,8 @@ const TechnologyProducts = () => {
                         {
                             ComputerTechnology.map((item, index) =>
                                 <li key={index} className={item.cls}>
-                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 bg-blue-800 text-white hover:bg-gray-50 hover:text-blue-800 border-2 border-blue-800 duration-300">{item.title}</Link>
+                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 bg-blue-800 text-white hover:bg-gray-50 hover:text-blue-800 border-2 border-blue-800 duration-300">{item.title}
+                                    </Link>
                                 </li>
                             )
                         }
@@ -120,7 +129,7 @@ const TechnologyProducts = () => {
                         <div className="p-2">
 
                             <div className="mb-4 w-40 h-40">
-                                <img className="rounded cursor-pointer h-full w-full" src={technologyProduct.img} alt="8192" />
+                                <img onClick={() => handleProductClick(technologyProduct._id)} className="rounded cursor-pointer h-full w-full" src={technologyProduct.img} alt="8192" />
                             </div>
 
                             <div className="flex py-3">
@@ -132,7 +141,7 @@ const TechnologyProducts = () => {
                             <hr />
 
                             <div className="py-3">
-                                <p className="text-blue-500 hover:text-yellow-500 cursor-pointer text-sm">Product 101</p>
+                                <p onClick={() => handleProductClick(technologyProduct._id)} className="text-blue-500 hover:text-yellow-500 cursor-pointer text-sm">{technologyProduct.name}</p>
 
                                 <div className="flex">
                                     <img src={star} style={{ width: '60px', height: '15px' }} alt="" />

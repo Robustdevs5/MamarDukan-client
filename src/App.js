@@ -12,6 +12,7 @@ import SignUP from "./Components/Authentication/SignUp/SignUP";
 import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
 import HomePage from "./pages/Home-page/HomePage";
 import axios from "axios";
+import Shop from './Components/Shop/Shop';
 export const userContext = createContext();
 
 const api = axios.create({
@@ -56,8 +57,9 @@ function App() {
         <Route path="/addProduct" component={AddProduct} />
         <Route path="/adminSidebar" component={AdminSidebar} />
         <Route path="/addAdmin" component={AddAdmin} />
+        <Route path="/shop" component={Shop} />
         <Route path="/manageProduct" component={ManageProduct} />
-        <Route path="/product" component={ProductDeatils} />
+        <Route path="/product/:id" component={ProductDeatils} />
         <Route path="/updateProduct/:id" component={UpdateProduct} />
 
       </Switch>

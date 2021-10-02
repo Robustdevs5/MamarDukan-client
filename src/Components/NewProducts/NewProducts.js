@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import star from "../../images/5star.png";
+import { useHistory } from 'react-router';
 import { NewProduct } from '../HomepageProductData/HomepageProductData';
 
 
@@ -93,6 +94,13 @@ const NewProducts = () => {
 
 
 
+    const history = useHistory();
+    const handleProductClick = (id) => {
+        history.push(`/product/${id}`);
+    }
+
+
+
     return (
         <div className="px-2 my-20">
 
@@ -129,7 +137,7 @@ const NewProducts = () => {
                                 onMouseEnter={() => setToggleMenu(true)}
                                 onMouseLeave={() => setToggleMenu(false)}
                             >
-                                <img className="rounded cursor-pointer h-full w-full"
+                                <img onClick={() => handleProductClick(newProduct._id)} className="rounded cursor-pointer h-full w-full"
                                     src={newProduct.img} alt="8192" />
 
                                 {toggleMenu &&
@@ -174,7 +182,8 @@ const NewProducts = () => {
                             <hr />
 
                             <div className="py-3">
-                                <p className="text-blue-500 hover:text-yellow-500 cursor-pointer text-sm">Product 101</p>
+                                <p onClick={() => handleProductClick(newProduct._id)}
+                                className="text-blue-500 hover:text-yellow-500 cursor-pointer text-sm">{newProduct.name}</p>
 
                                 <div className="flex">
                                     <img src={star} style={{ width: '60px', height: '15px' }} alt="" />

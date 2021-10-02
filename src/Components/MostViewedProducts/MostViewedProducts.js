@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import star from "../../images/5star.png";
+import { useHistory } from 'react-router';
 import { MostViewedProduct } from '../HomepageProductData/HomepageProductData';
 
 
@@ -92,6 +93,13 @@ const MostViewedProducts = () => {
 
 
 
+    const history = useHistory();
+    const handleProductClick = (id) => {
+        history.push(`/product/${id}`);
+    }
+
+
+
     return (
         <div className="px-2 my-20">
 
@@ -122,7 +130,7 @@ const MostViewedProducts = () => {
                         <div className="p-2 py-6">
 
                             <div className="mb-4 w-40 h-40">
-                                <img className="rounded cursor-pointer h-full w-full" src={mostViewedProduct.img} alt="8192" />
+                                <img onClick={() => handleProductClick(mostViewedProduct._id)} className="rounded cursor-pointer h-full w-full" src={mostViewedProduct.img} alt="8192" />
                             </div>
 
                             <div className="flex py-3">
@@ -134,7 +142,7 @@ const MostViewedProducts = () => {
                             <hr />
 
                             <div className="py-3">
-                                <p className="text-blue-500 hover:text-yellow-500 cursor-pointer text-sm">Product 101</p>
+                                <p onClick={() => handleProductClick(mostViewedProduct._id)} className="text-blue-500 hover:text-yellow-500 cursor-pointer text-sm">{mostViewedProduct.name}</p>
 
                                 <div className="flex">
                                     <img src={star} style={{ width: '60px', height: '15px' }} alt="" />

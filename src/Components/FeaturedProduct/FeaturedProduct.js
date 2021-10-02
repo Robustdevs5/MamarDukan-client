@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import star from "../../images/5star.png";
 import { FeaturedProducts } from '../HomepageProductData/HomepageProductData';
+import { useHistory } from 'react-router';
 import '../StyledComponent/HomepageProduct.css';
 
 
@@ -90,6 +91,14 @@ const FeaturedProduct = () => {
 
 
 
+    const history = useHistory();
+    const handleProductClick = (id) => {
+        history.push(`/product/${id}`);
+    }
+
+
+
+
     return (
         <div className="px-2 my-20">
 
@@ -120,7 +129,7 @@ const FeaturedProduct = () => {
                         <div className="p-2">
 
                             <div className="mb-4 w-40 h-40">
-                                <img className="rounded cursor-pointer h-full w-full" src={featuredProduct.img} alt="8192" />
+                                <img onClick={() => handleProductClick(featuredProduct._id)} className="rounded cursor-pointer h-full w-full" src={featuredProduct.img} alt="8192" />
                             </div>
 
                             <div className="flex py-3">
@@ -132,7 +141,7 @@ const FeaturedProduct = () => {
                             <hr />
 
                             <div className="py-3">
-                                <p className="text-blue-500 hover:text-yellow-500 cursor-pointer text-sm">Product 101</p>
+                                <p onClick={() => handleProductClick(featuredProduct._id)} className="text-blue-500 hover:text-yellow-500 cursor-pointer text-sm">{featuredProduct.name}</p>
 
                                 <div className="flex">
                                     <img src={star} style={{ width: '60px', height: '15px' }} alt="" />
