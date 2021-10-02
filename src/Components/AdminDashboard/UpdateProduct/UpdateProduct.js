@@ -24,7 +24,7 @@ const UpdateProduct = () => {
 
     const handleSubmit = e => {
 
-        const productInfo = [{
+        const productInfo = {
             name: e.target.name.value || product.name,
             description: e.target.description.value || product.description,
             size: e.target.size.value || product.size,
@@ -34,8 +34,7 @@ const UpdateProduct = () => {
             price: e.target.price.value || product.price,
             brand: e.target.brand.value || product.brand,
             img: imageURL || product.img
-        }];
-
+        };
         console.log(productInfo);
 
 

@@ -1,18 +1,43 @@
 import { ShoppingCart, SupportAgentOutlined } from "@mui/icons-material";
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon, SearchIcon, UserIcon } from "@heroicons/react/solid";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import styles from "../StyledComponent/TopBar.module.css";
 import CartDropdown from "./CartDropdown";
-
+// import { useHistory, useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const TopBar = () => {
   const [dropdown, setDropdown] = useState(false);
+  const [login, SetLogin] = useState()
+console.log('login', login)
+let history = useHistory();
+let location = useLocation();
+let { from } = location.state || { from: { pathname: "/login" } };
+
+
+  useEffect( () => {
+     const loggedInUser =sessionStorage.getItem("user");
+     if (loggedInUser) {
+       const foundUser = JSON.parse(loggedInUser);
+       SetLogin(foundUser.email);
+     }
+    
+   }, [login]);
+   
+
+   const handleLogout = () => {
+    // sessionStorage.clear();
+    // window.localStorage.clear(); //clear all localstorage
+    window.sessionStorage.removeItem("user"); //remove one item
+     history.replace(from);
+  };
+
   return (
     <div class="bg-blue-800 flex  h-20  w-full  pl-0 sticky top-0 z-50 ">
       <div class="flex  justify-between items-center sm:w-4/6 w-4/6  ">
@@ -147,13 +172,17 @@ const TopBar = () => {
         <UserIcon className="h-8 ml-2  hidden sm:block text-white fill-current text-white-600"></UserIcon>
 
         <div>
-          <Link to="/login">
-            <p className={styles.topBar_login_register}>Login </p>{" "}
-          </Link>
+          { login ? <button className={styles.topBar_login_register} onClick={handleLogout}>Logout</button>
+            : <>
+              <Link to="/login">
+                <p className={styles.topBar_login_register}>Login </p>{" "}
+              </Link>
 
-          <Link to="/register">
-            <p className={styles.topBar_login_register}> Register</p>{" "}
-          </Link>
+              <Link to="/register">
+                <p className={styles.topBar_login_register}> Register</p>{" "}
+              </Link>
+            </>
+          }
         </div>
       </div>
       {dropdown && <CartDropdown setDropdown={setDropdown} />}

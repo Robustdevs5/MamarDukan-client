@@ -3,7 +3,7 @@ import { faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
-import React, { useContext } from "react";
+import React, { useContext  } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router";
 import { Link } from 'react-router-dom';
@@ -13,6 +13,8 @@ import Header from '../../Header/Header';
 import Navbar from '../../Navbar/Navbar/Navbar';
 import TopBar from '../../TopBar/TopBar';
 import firebaseConfig from "../firebase.config";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './SignIn.css';
 
 if (!firebase.apps.length) {
@@ -22,7 +24,7 @@ if (!firebase.apps.length) {
 }
 
 const SIgnIn = () => {
-    const [user, setUser] = useContext(userContext);
+    const {user, setUser} = useContext(userContext);
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     const gitProvider = new firebase.auth.GithubAuthProvider();
 
@@ -30,6 +32,10 @@ const SIgnIn = () => {
     let location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
 
+ 
+
+
+    
          // Google sign in
          const handleGoogleLogin = () => {
             firebase
@@ -55,7 +61,7 @@ const SIgnIn = () => {
                 const gitUser = result.user;
                 const { displayName, email, photoURL } = gitUser;
                 handleUser(displayName, email, photoURL, true);
-                sessionStorage.setItem("email", email);
+                sessionStorage.setItem("user", email);
                 sessionStorage.setItem("name", displayName);
                 sessionStorage.setItem("photo", photoURL);
                 handleAuthToken();
@@ -109,8 +115,43 @@ const SIgnIn = () => {
      const { register, handleSubmit, formState: { errors } } = useForm();
 
      const onSubmit = (data) => {
-         console.log(data)
+        const userInfo = {
+            email: data.email,
+            password: data.password
+        };
+        const userSignUp = `http://localhost:5000/user/login`;
+        fetch(userSignUp, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userInfo)
+        })
+            .then(async res => await res.json())
+            .then(async user => {
+                console.log('user10', user)
+                // user ? alert(user.message) : alert("failed")
+                if(user) {
+                    toast.success(user.message, {
+                        position: "bottom-right",
+                    });
+                }
+                sessionStorage.setItem('user', JSON.stringify(user));
+                history.push('/')
+            })
+            .catch(error => {
+                // alert(error.message);
+                // console.log(error);
+                toast.error(error.message, {
+                    position: "bottom-right",
+                });
+            });
+    
      };
+     
+  
+
+
     return (
         <>
             <TopBar />
@@ -120,12 +161,12 @@ const SIgnIn = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h3 className="login-heading">Log In</h3>
                     
-                    <input type="text" name="name" className="form-control"
-                            {...register('name', { required: true })} placeholder="Your Name"
+                    <input type="email" name="email" className="form-control"
+                            {...register('email', { required: true })} placeholder="Your email"
                         />
                     {errors.name && errors.name.type === "required" && <span>Name is required</span>}
-                    <input type="email" name="email" className="form-control" placeholder="Your Email"
-                        {...register('email', { required: true, pattern: /\S+@\S+\.\S+/})}           
+                    <input type="password" name="password" className="form-control" placeholder="Your password"
+                        {...register('password', { required: true})}           
                     />
                     {errors.email && (<span className="error">
                             {errors.email.type === "required" ? "Email is required" : "Your Email pattern is not correct"}
@@ -174,6 +215,7 @@ const SIgnIn = () => {
                     </button>                      
                 </div>
             </div>
+            <ToastContainer />
             <Footer />
         </>
     );
