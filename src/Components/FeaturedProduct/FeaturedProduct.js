@@ -55,7 +55,7 @@ const FeaturedProduct = () => {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 5,
+        slidesToShow: 6,
         slidesToScroll: 4,
         initialSlide: 0,
         nextArrow: <SampleNextArrow />,
@@ -117,12 +117,30 @@ const FeaturedProduct = () => {
 
                 {
                     featuredProduct.map(featuredProduct =>
-                        <div className="p-1 pl-2 pr-2">
-                            <img className="mb-4 rounded cursor-pointer" src={featuredProduct.img} alt="8192" />
-                            <h5 className="text-2xl font-bold text-green-700">${featuredProduct.price}</h5>
-                            <h3 className="text-blue-700">Product 101</h3>
-                            <img src={star} style={{ width: '100px', height: '25px' }} alt="" />
-                            <small>Sold: (150)</small>
+                        <div className="p-2">
+
+                            <div className="mb-4 w-40 h-40">
+                                <img className="rounded cursor-pointer h-full w-full" src={featuredProduct.img} alt="8192" />
+                            </div>
+
+                            <div className="flex py-3">
+                                <h5 className="text-base font-bold text-green-700">${featuredProduct.price}</h5>
+                                <del className="px-4 text-base text-gray-500">10000</del>
+                            </div>
+
+                            <p className="text-gray-700 text-sm">Sold by: <span className="hover:text-blue-500 cursor-pointer"> Mr. Rahim</span></p>
+                            <hr />
+
+                            <div className="py-3">
+                                <p className="text-blue-500 hover:text-yellow-500 cursor-pointer text-sm">Product 101</p>
+
+                                <div className="flex">
+                                    <img src={star} style={{ width: '60px', height: '15px' }} alt="" />
+                                    <p className="text-gray-600 text-xs px-1">(0)</p>
+                                </div>
+
+                                <p className="text-gray-600 text-xs px-1">Sold: 10</p>
+                            </div>
                         </div>
                     )}
 
