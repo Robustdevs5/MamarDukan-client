@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
@@ -8,6 +8,7 @@ import Navbar from '../../Navbar/Navbar/Navbar';
 import TopBar from '../../TopBar/TopBar';
 // import '../SignIn/SignIn.css';
 import 'react-toastify/dist/ReactToastify.css';
+import { userContext } from '../../../App';
 
 
 const SignUP = () => {
@@ -17,22 +18,21 @@ const SignUP = () => {
     const [shopUrl, setShopUrl] = useState("");
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
-    const [allUser, setAllUser] = useState([]);
+    // const [allUser, setAllUser] = useState([]);
     const [emailStatus, setEmailStatus] = useState(false);
-    const [backendRes, setBackendRes] = useState(false);
-    
-    setTimeout(() => setBackendRes(true), 10000)
+    const {allUser, setAllUser} = useContext(userContext);
+    console.log('sign in all user', allUser)
 
     useEffect(() => {
         const user = `http://localhost:5000/user`;
         fetch(user)
             .then(res => res.json())
             .then(data => {
-                let userArray = []
-                for (let i = 0; i < data.allUser.user.length; i++) {
-                    userArray.push(data.allUser.user[i])
-                }
-                setAllUser(userArray)
+                // let userArray = []
+                // for (let i = 0; i < data.allUser.user.length; i++) {
+                //     userArray.push(data.allUser.user[i])
+                // }
+                // setAllUser(userArray)
             })
 
     }, []);
@@ -57,21 +57,21 @@ const SignUP = () => {
 
     // email check
     const emailCheck = (e) => {
-        console.log(allUser.email)
-        if (e.target.name === "email") {
-            console.log(e.target.value)
-            for (let i = 0; i < allUser.length; i++) {
-                if (allUser[i].email === e.target.value) {
-                    setEmailStatus(true);
-                    toast.error('Already have an account!', {
-                        position: "bottom-right",
-                    });
-                    break;
-                } else {
-                    setEmailStatus(false);
-                }
-            }
-        }
+        // console.log(allUser.email)
+        // if (e.target.name === "email") {
+        //     console.log(e.target.value)
+            // for (let i = 0; i < allUser.length; i++) {
+            //     if (allUser[i].email === e.target.value) {
+            //         setEmailStatus(true);
+            //         toast.error('Already have an account!', {
+            //             position: "bottom-right",
+            //         });
+            //         break;
+            //     } else {
+            //         setEmailStatus(false);
+            //     }
+            // }
+        // }
     }
 
 
@@ -94,7 +94,7 @@ const SignUP = () => {
         };
 
         if (passwordsMatch) {
-            const userSignUp = `http://localhost:5000/user/signup`;
+            const userSignUp = `http://localhost:5000/user/anotheruser`;
             fetch(userSignUp, {
                 method: 'POST',
                 headers: {

@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from "../../Components/Header/Header";
 import Navbar from "../../Components/Navbar/Navbar/Navbar";
 import TopBar from "../../Components/TopBar/TopBar";
 import Footer from "../Footer/Footer";
@@ -11,7 +10,6 @@ const ProductDeatils = () => {
     return (
         <>
             <TopBar />
-            <Header />
             <Navbar />
             <div className="container mx-auto">
                 {/* <div className="product-detail">
