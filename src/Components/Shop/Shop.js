@@ -62,33 +62,50 @@ const Shop = () => {
 
             <div className="md:w-1/5 w-screen h-full mt-5 ml-16">
 
-                <div className="px-5 bg-blue-100 text-gray-800 rounded mb-8">
-                    <h1>PRODUCT DEPARTMENT</h1>
+                <div className="px-5 py-5 bg-blue-100 text-gray-800 rounded mb-8">
+                    <h1 className="text-lg mb-5">PRODUCT DEPARTMENT</h1>
                     {
                         uniqDeptName.map(uniqDeptName =>
                             <p>{uniqDeptName}</p>
                         )}
                 </div>
 
-                <div className="px-5 bg-blue-100 text-gray-800 rounded">
-                    <h1>PRODUCT BRAND</h1>
+                <div className="px-5 py-5 bg-blue-100 text-gray-800 rounded">
+                    <h1 className="text-lg mb-5">PRODUCT BRAND</h1>
                     {uniqBrandName.map(uniqBrandName =>
                         <>
-                            <input type="checkbox "
-                                // className="cursor-pointer"
+                            <input type="checkbox"
+                                className="cursor-pointer w-4 h-4"
                                 id={uniqBrandName}
                                 name={uniqBrandName}
                                 value={uniqBrandName}
                             />
+
                             <label for={uniqBrandName} className="px-2 cursor-pointer">
                                 {uniqBrandName}
                             </label>
                             <br />
                         </>
                     )}
-
                 </div>
 
+                <div className="px-5 mt-8 py-5 bg-blue-100 text-gray-800 rounded">
+                    <h1 className="text-lg mb-5">BY PRICE</h1>
+                    <input type="range" name="" id="" min="0" Max="100000" />
+                </div>
+
+                <div className="px-5 mt-8 py-5 bg-blue-100 text-gray-800 rounded">
+                    <h1 className="text-lg mb-5">BY COLOR</h1>
+                    <input type="radio" id="html" name="fav_language" value="" />
+                    <label for="html">HTML</label>
+                    <br />
+                    <input type="radio" id="html" name="fav_language" value="HTML" />
+                    <label for="html">HTML</label>
+                    <input type="radio" id="html" name="fav_language" value="HTML" />
+                    <label for="html">HTML</label>
+                    <input type="radio" id="html" name="fav_language" value="HTML" />
+                    <label for="html">HTML</label>
+                </div>
 
 
 
