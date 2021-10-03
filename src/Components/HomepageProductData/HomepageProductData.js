@@ -11,7 +11,7 @@ export const ComputerTechnology = [
     }, 
     {
         title: "View All",
-        path: "/viewAll",
+        path: "/shop",
         cls: 'md:px-4'
     },
 ];
@@ -25,7 +25,7 @@ export const NewProduct = [
     },
     {
         title: "Today offer",
-        path: "/viewAll",
+        path: "/shop",
         cls: 'md:px-4'
     },
      
@@ -39,7 +39,7 @@ export const MostViewedProduct = [
     },
     {
         title: "View All",
-        path: "/viewAll",
+        path: "/shop",
         cls: 'md:px-4'
     },
      
@@ -54,7 +54,7 @@ export const FeaturedProducts = [
     },
     {
         title: "View All",
-        path: "/viewAll",
+        path: "/shop",
         cls: 'md:px-4'
     },
      

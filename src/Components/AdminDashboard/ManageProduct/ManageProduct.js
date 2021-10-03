@@ -1,6 +1,8 @@
 import { TableContainer, TablePagination } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import Logo from '../../Navbar/Logo/Logo';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 import { Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
@@ -125,7 +127,7 @@ const ManageProduct = () => {
                                         <StyledTableCell align="left">Color</ StyledTableCell>
                                         <StyledTableCell align="left">Size</ StyledTableCell>
                                         <StyledTableCell align="left">Department</ StyledTableCell>
-                                        <StyledTableCell align="left">Action</StyledTableCell>
+                                        <StyledTableCell align="right" className="">Action</StyledTableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -143,23 +145,40 @@ const ManageProduct = () => {
                                                     <img className="w-12" src={product.img} alt="" />
                                                 </StyledTableCell>
                                                 <StyledTableCell align="left">{product.category}</StyledTableCell>
-                                                <StyledTableCell align="left">{product.color}</StyledTableCell>
+                                                <StyledTableCell align="left">
+                                                    <input
+                                                        class="px-1 shadow appearance-none rounded-full w-full leading-tight ring-2 "
+                                                        type="color"
+                                                        value={product.color}
+                                                        disabled
+                                                    />
+
+                                                </StyledTableCell>
                                                 <StyledTableCell align="left">{product.size}</StyledTableCell>
                                                 <StyledTableCell align="left">{product.department}</StyledTableCell>
 
                                                 <StyledTableCell align="left">
                                                     <button
                                                         onClick={() => handleUpdateProduct(product._id)}
-                                                        className="p-3 rounded-full bg-blue-400 hover:bg-red-500" >
-                                                        Update
+                                                        className="p-3 rounded-full bg-blue-400 hover:bg-blue-800 hover:text-gray-100" 
+                                                        >
+                                                        {/* Delete */}
+                                                        <FontAwesomeIcon
+                                                            icon={faEdit}
+                                                        ></FontAwesomeIcon>
+                                                        {/* Update */}
                                                     </button>
                                                 </StyledTableCell>
 
                                                 <StyledTableCell align="left">
                                                     <button
                                                         onClick={() => handleDeleteProduct(product._id)}
-                                                        className="p-3 rounded-full bg-blue-400 hover:bg-red-500" >
-                                                        Delete
+                                                        className="p-3 rounded-full bg-red-400 hover:bg-red-800 hover:text-gray-100" 
+                                                        >
+                                                        {/* Delete */}
+                                                        <FontAwesomeIcon
+                                                            icon={faTrashAlt}
+                                                        ></FontAwesomeIcon>
                                                     </button>
                                                 </StyledTableCell>
                                             </StyledTableRow>

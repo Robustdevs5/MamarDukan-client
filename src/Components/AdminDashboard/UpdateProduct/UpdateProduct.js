@@ -10,6 +10,7 @@ const UpdateProduct = () => {
     const [imageURLStatus, setImageURLStatus] = useState();
     const [dbStatus, setDbStatus] = useState(false);
     const [product, setProduct] = useState([]);
+    console.log('products', product.color)
 
     const { id } = useParams();
 
@@ -19,22 +20,21 @@ const UpdateProduct = () => {
             .then(res => res.json())
             .then(data => setProduct(data.product))
     }, [id])
-console.log(product);
+    console.log(product);
 
 
     const handleSubmit = e => {
+
         const productInfo = {
-            name: e.target.name.value,
-            description: e.target.description.value,
-            size: e.target.size.value,
-            category: e.target.category.value,
-            color: e.target.color.value,
-            department: e.target.department.value,
-            seller: e.target.seller.value,
-            price: e.target.price.value,
-            discount: e.target.discount.value,
-            brand: e.target.brand.value,
-            img: imageURL
+            name: e.target.name.value || product.name,
+            description: e.target.description.value || product.description,
+            size: e.target.size.value || product.size,
+            category: e.target.category.value || product.category,
+            color: e.target.color.value || product.color,
+            department: e.target.department.value || product.department,
+            price: e.target.price.value || product.price,
+            brand: e.target.brand.value || product.brand,
+            img: imageURL || product.img
         };
         console.log(productInfo);
 
@@ -78,6 +78,8 @@ console.log(product);
             });
     }
 
+
+
     return (
         <>
             <div className=" bg-gray-800 ">
@@ -88,8 +90,8 @@ console.log(product);
                 <div className="flex  md:flex-row flex-col">
                     <AdminSidebar />
 
-                    <section className="mx-4">
-                        <h1 className="font-bold text-white p-4 text-2xl">Update product</h1>
+                    <section className="mx-10">
+                        <h1 className="font-bold text-white p-4 text-2xl">Update Product</h1>
                         <div class="  ">
 
                             <form
@@ -107,8 +109,7 @@ console.log(product);
                                         class="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
                                         type="text"
                                         name="name"
-                                        defaultValue ={product.name}
-                                        placeholder={product.name}
+                                        defaultValue={product.name}
                                     />
                                 </div>
 
@@ -117,14 +118,20 @@ console.log(product);
                                         class="block text-gray-700 text-sm font-bold mb-2"
                                         for="category"
                                     >
-                                        Category
+                                        Category: <span className="text-blue-600">{product.category}</span>
                                     </label>
-                                    <input
+                                    <select className="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600" name="category" id="cars">
+
+                                        <option value="None">None</option>
+                                        <option value="Man">Man</option>
+                                        <option value="Women">Women</option>
+                                    </select>
+                                    {/* <input
                                         class="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
                                         type="text"
                                         name="category"
                                         placeholder="Category"
-                                    />
+                                    /> */}
                                 </div>
 
                                 <div class="mb-6">
@@ -132,29 +139,24 @@ console.log(product);
                                         class="block text-gray-700 text-sm font-bold mb-2"
                                         for="department"
                                     >
-                                        Department
+                                        Department: <span className="text-blue-600">{product.department}</span>
                                     </label>
-                                    <input
+                                    <select className="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600" name="department" id="cars">
+                                        <option value="Clothing">Clothing</option>
+                                        <option value="Grocery">Grocery</option>
+                                        <option value="Cooking">Cooking</option>
+                                        <option value="Phone">Phone</option>
+                                        <option value="Cosmetics">Cosmetics</option>
+                                        <option value="Computer">Computer</option>
+                                    </select>
+                                    {/* <input
                                         class="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
                                         type="text"
                                         name="department"
                                         placeholder="department"
-                                    />
+                                    /> */}
                                 </div>
-                                <div class="mb-4">
-                                    <label
-                                        class="block text-gray-700 text-sm font-bold mb-2"
-                                        for="discount"
-                                    >
-                                        Discount
-                                    </label>
-                                    <input
-                                        class="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
-                                        type="text"
-                                        name="discount"
-                                        placeholder="discount"
-                                    />
-                                </div>
+
                                 <div class="mb-4">
                                     <label
                                         class="block text-gray-700 text-sm font-bold mb-2"
@@ -165,25 +167,44 @@ console.log(product);
                                     <input
                                         class="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
                                         type="text"
+                                        list="brand"
                                         name="brand"
-                                        placeholder="Brand"
+                                        defaultValue={product.brand}
                                     />
+                                    <datalist id="brand">
+                                        <option value="Easy" />
+                                        <option value="Nike" />
+                                        <option value="Adidas" />
+                                        <option value="Zodiac" />
+                                        <option value="Levi's" />
+                                    </datalist>
                                 </div>
+
                                 <div class="mb-6">
                                     <label
                                         class="block text-gray-700 text-sm font-bold mb-2"
                                         for="size"
                                     >
-                                        Size
+                                        Size: <span className="text-blue-600">{product.size}</span>
                                     </label>
-                                    <input
+                                    <select className="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600" name="size" id="cars">
+                                        <option value="none">None</option>
+                                        <option value="S">S</option>
+                                        <option value="M">M</option>
+                                        <option value="L">L</option>
+                                        <option value="XL">XL</option>
+                                        <option value="XXL">XXL</option>
+                                        <option value="XXL">XXXL</option>
+                                    </select>
+                                    {/* <input
                                         className="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
                                         type="text"
                                         name="size"
                                         placeholder="Size"
-                                    />
+                                    /> */}
                                 </div>
-                                <div class="mb-6">
+
+                                <div class="mb-6 md:mx-32">
                                     <label
                                         class="block text-gray-700 text-sm font-bold mb-2"
                                         for="color"
@@ -191,12 +212,15 @@ console.log(product);
                                         Color
                                     </label>
                                     <input
-                                        class="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
-                                        type="text"
+                                        class="px-2 shadow appearance-none border-0 rounded w-full text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
+                                        type="color"
                                         name="color"
-                                        placeholder="color"
+                                        // defaultValue={product.color}
+                                        defaultValue={product.color}
+                                        // value={product.color}
                                     />
                                 </div>
+
                                 <div class="mb-6">
                                     <label
                                         class="block text-gray-700 text-sm font-bold mb-2"
@@ -206,12 +230,14 @@ console.log(product);
                                     </label>
                                     <input
                                         class="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
-                                        type="text"
+                                        type="number"
+                                        min="1"
                                         name="price"
-                                        placeholder="price"
+                                        defaultValue={product.price}
                                     />
                                 </div>{" "}
-                                <div class="mb-6">
+
+                                {/* <div class="mb-6">
                                     <label
                                         class="block text-gray-700 text-sm font-bold mb-2"
                                         for="seller"
@@ -224,7 +250,8 @@ console.log(product);
                                         name="seller"
                                         placeholder="seller"
                                     />
-                                </div>
+                                </div> */}
+
                                 <div class="mb-6">
                                     <label
                                         class="block text-gray-700 text-sm font-bold mb-2"
@@ -237,9 +264,16 @@ console.log(product);
                                         onChange={handleImageUpload}
                                         type="file"
                                         name="image"
-                                        placeholder="image"
                                     />
+                                    {imageURLStatus ?
+                                        <small className="text-green-600">Image Uploaded</small>
+                                        :
+                                        <small className="text-red-700">Upload Image</small>
+                                    }
+                                    <img className="w-12 mx-36" src={product.img} alt="" />
+
                                 </div>{" "}
+
                                 <div class="mb-6">
                                     <label
                                         class="block text-gray-700 text-sm font-bold mb-2"
@@ -251,15 +285,15 @@ console.log(product);
                                         class="shadow appearance-none h-24 border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
                                         type="textarea"
                                         name="description"
-                                        placeholder="Description"
+                                        defaultValue={product.description}
                                     />
                                 </div>
-                                <div class="flex items-center justify-between">
+                                <div class="flex items-end justify-end">
                                     <button
-                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                        class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                         type="submit"
                                     >
-                                        submit
+                                        Submit
                                     </button>
                                 </div>
                             </form>

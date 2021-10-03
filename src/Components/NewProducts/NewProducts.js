@@ -1,9 +1,13 @@
+import { faEye, faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faShoppingBag, faChartBar } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import star from "../../images/5star.png";
+import { useHistory } from 'react-router';
 import { NewProduct } from '../HomepageProductData/HomepageProductData';
 
 
@@ -11,11 +15,12 @@ import { NewProduct } from '../HomepageProductData/HomepageProductData';
 const NewProducts = () => {
 
     const [newProduct, setNewProduct] = useState([]);
+    const [toggleMenu, setToggleMenu] = useState(false);
 
     useEffect(() => {
-        fetch(`https://jsonplaceholder.typicode.com/photos`)
+        fetch(`http://localhost:5000/products`)
             .then(res => res.json())
-            .then(data => setNewProduct(data.slice(0,15)))
+            .then(data => setNewProduct(data.products))
     }, [])
     console.log(newProduct);
 
@@ -51,7 +56,7 @@ const NewProducts = () => {
     var settings = {
         dots: false,
         infinite: true,
-        slidesToShow: 4,
+        slidesToShow: 6,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
@@ -89,6 +94,13 @@ const NewProducts = () => {
 
 
 
+    const history = useHistory();
+    const handleProductClick = (id) => {
+        history.push(`/product/${id}`);
+    }
+
+
+
     return (
         <div className="px-2 my-20">
 
@@ -112,16 +124,74 @@ const NewProducts = () => {
             </div>
 
 
-            <Slider {...settings} className="px-12">
+
+
+
+            <Slider {...settings} className="px-8">
 
                 {
                     newProduct.map(newProduct =>
-                        <div className="p-1 pl-2 pr-2">
-                            <img className="mb-4 rounded cursor-pointer" src={newProduct.url} alt="8192" />
-                            <h5 className="text-2xl font-bold text-green-700">$100</h5>
-                            <h3 className="text-blue-700">Product 101</h3>
-                            <img src={star} style={{ width: '100px', height: '25px' }} alt="" />
-                            <small>Sold: (150)</small>
+                        <div className="p-2">
+
+                            <div className="mb-4 w-40 h-40"
+                                onMouseEnter={() => setToggleMenu(true)}
+                                onMouseLeave={() => setToggleMenu(false)}
+                            >
+                                <img onClick={() => handleProductClick(newProduct._id)} className="rounded cursor-pointer h-full w-full"
+                                    src={newProduct.img} alt="8192" />
+
+                                {toggleMenu &&
+                                    <div className="flex bg-gray-50 justify-between px-2">
+
+                                        <button
+                                            className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                        >
+                                            <FontAwesomeIcon icon={faShoppingBag} />
+                                        </button>
+
+                                        <button
+                                            className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                        >
+                                            <FontAwesomeIcon icon={faEye} />
+                                        </button>
+
+                                        <button
+                                            className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                        >
+                                            <FontAwesomeIcon icon={faHeart} />
+                                        </button >
+
+                                        <button
+                                            className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                        >
+                                            <FontAwesomeIcon icon={faChartBar} />
+                                        </button>
+
+                                    </div>
+                                }
+
+                            </div>
+
+
+                            <div className="flex py-3">
+                                <h5 className="text-base font-bold text-green-700">${newProduct.price}</h5>
+                                <del className="px-4 text-base text-gray-500">10000</del>
+                            </div>
+
+                            <p className="text-gray-700 text-sm">Sold by: <span className="hover:text-blue-500 cursor-pointer"> Mr. Rahim</span></p>
+                            <hr />
+
+                            <div className="py-3">
+                                <p onClick={() => handleProductClick(newProduct._id)}
+                                className="text-blue-500 hover:text-yellow-500 cursor-pointer text-sm">{newProduct.name}</p>
+
+                                <div className="flex">
+                                    <img src={star} style={{ width: '60px', height: '15px' }} alt="" />
+                                    <p className="text-gray-600 text-xs px-1">(0)</p>
+                                </div>
+
+                                <p className="text-gray-600 text-xs px-1">Sold: 10</p>
+                            </div>
                         </div>
                     )}
 

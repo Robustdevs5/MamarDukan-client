@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import star from "../../images/5star.png";
+import { useHistory } from 'react-router';
 import { MostViewedProduct } from '../HomepageProductData/HomepageProductData';
 
 
@@ -13,9 +14,9 @@ const MostViewedProducts = () => {
     const [mostViewedProduct, setMostViewedProduct] = useState([]);
 
     useEffect(() => {
-        fetch(`https://jsonplaceholder.typicode.com/photos`)
+        fetch(`http://localhost:5000/products`)
             .then(res => res.json())
-            .then(data => setMostViewedProduct(data.slice(0, 16)))
+            .then(data => setMostViewedProduct(data.products))
     }, [])
     console.log(mostViewedProduct);
 
@@ -52,7 +53,7 @@ const MostViewedProducts = () => {
         dots: false,
         centerMode: true,
         infinite: true,
-        slidesToShow: 2.5,
+        slidesToShow: 3,
         speed: 500,
         rows: 2,
         slidesPerRow: 2,
@@ -92,6 +93,13 @@ const MostViewedProducts = () => {
 
 
 
+    const history = useHistory();
+    const handleProductClick = (id) => {
+        history.push(`/product/${id}`);
+    }
+
+
+
     return (
         <div className="px-2 my-20">
 
@@ -119,12 +127,30 @@ const MostViewedProducts = () => {
 
                 {
                     mostViewedProduct.map(mostViewedProduct =>
-                        <div className="p-1 pl-2 pr-2">
-                            <img className="mb-4 rounded cursor-pointer" src={mostViewedProduct.url} alt="8192" />
-                            <h5 className="text-2xl font-bold text-green-700">$100</h5>
-                            <h3 className="text-blue-700">Product 101</h3>
-                            <img src={star} style={{ width: '100px', height: '25px' }} alt="" />
-                            <small>Sold: (150)</small>
+                        <div className="p-2 py-6">
+
+                            <div className="mb-4 w-40 h-40">
+                                <img onClick={() => handleProductClick(mostViewedProduct._id)} className="rounded cursor-pointer h-full w-full" src={mostViewedProduct.img} alt="8192" />
+                            </div>
+
+                            <div className="flex py-3">
+                                <h5 className="text-base font-bold text-green-700">${mostViewedProduct.price}</h5>
+                                <del className="px-4 text-base text-gray-500">10000</del>
+                            </div>
+
+                            <p className="text-gray-700 text-sm">Sold by: <span className="hover:text-blue-500 cursor-pointer"> Mr. Rahim</span></p>
+                            <hr />
+
+                            <div className="py-3">
+                                <p onClick={() => handleProductClick(mostViewedProduct._id)} className="text-blue-500 hover:text-yellow-500 cursor-pointer text-sm">{mostViewedProduct.name}</p>
+
+                                <div className="flex">
+                                    <img src={star} style={{ width: '60px', height: '15px' }} alt="" />
+                                    <p className="text-gray-600 text-xs px-1">(0)</p>
+                                </div>
+
+                                <p className="text-gray-600 text-xs px-1">Sold: 10</p>
+                            </div>
                         </div>
                     )}
 
