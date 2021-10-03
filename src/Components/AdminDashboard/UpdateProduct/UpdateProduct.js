@@ -10,6 +10,7 @@ const UpdateProduct = () => {
     const [imageURLStatus, setImageURLStatus] = useState();
     const [dbStatus, setDbStatus] = useState(false);
     const [product, setProduct] = useState([]);
+    console.log('products', product.color)
 
     const { id } = useParams();
 
@@ -214,6 +215,7 @@ const UpdateProduct = () => {
                                         class="px-2 shadow appearance-none border-0 rounded w-full text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
                                         type="color"
                                         name="color"
+                                        // defaultValue={product.color}
                                         defaultValue={product.color}
                                     />
                                 </div>

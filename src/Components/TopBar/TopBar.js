@@ -15,10 +15,10 @@ function classNames(...classes) {
 const TopBar = () => {
   const [dropdown, setDropdown] = useState(false);
   const [login, SetLogin] = useState()
-console.log('login', login)
-let history = useHistory();
-let location = useLocation();
-let { from } = location.state || { from: { pathname: "/login" } };
+  console.log('login', login)
+  let history = useHistory();
+  let location = useLocation();
+  let { from } = location.state || { from: { pathname: "/login" } };
 
 
   useEffect( () => {
