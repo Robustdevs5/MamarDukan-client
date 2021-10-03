@@ -269,7 +269,7 @@ export const Menu = [
   },
   {
     title: "Track your order",
-    path: "/track-order",
+    path: "/trackOrder",
     class:
       "py-2 px-4 font-medium hover:bg-blue-500 bg-blue-800 duration-300 text-white rounded-lg",
     toggleClass:

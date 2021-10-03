@@ -12,6 +12,8 @@ import SignUP from "./Components/Authentication/SignUp/SignUP";
 import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
 import HomePage from "./pages/Home-page/HomePage";
 import axios from "axios";
+import Shop from './Components/Shop/Shop';
+import TrackOrder from './Components/TrackOrder/TrackOrder';
 export const userContext = createContext();
 
 const api = axios.create({
@@ -23,45 +25,47 @@ function App() {
   const [products, setProducts] = useState([])
   const [orders, setOrders] = useState([])
   const [user, setUser] = useState({});
-  
+
 
   useEffect(() => {
     api.get('/user')
-    .then(res => setAllUser(res.data.allUser.user))
+      .then(res => setAllUser(res.data.allUser.user))
   }, [allUser.length]);
 
   useEffect(() => {
     api.get('/products')
-    .then(data => {setProducts(data.data.products)})
+      .then(data => { setProducts(data.data.products) })
   }, [products.length])
 
   useEffect(() => {
     api.get('/orders')
-    .then(data => {setOrders(data.data.orders)})
+      .then(data => { setOrders(data.data.orders) })
   }, [orders.length])
 
 
-    const contextData = {allUser, setAllUser, products, setProducts, orders, setOrders, user, setUser }
-    // console.log(';contextAPi', contextData)
+  const contextData = { allUser, setAllUser, products, setProducts, orders, setOrders, user, setUser }
+  // console.log(';contextAPi', contextData)
 
   return (
     <userContext.Provider value={contextData}>
-    <Router>
-      <Switch>
+      <Router>
+        <Switch>
 
-        <Route exact path="/" component={HomePage} />
-        <Route path="/login" component={SIgnIn} />
-        <Route path="/register" component={SignUP} />
-        <Route path="/dashboard" component={AdminPanel} />
-        <Route path="/addProduct" component={AddProduct} />
-        <Route path="/adminSidebar" component={AdminSidebar} />
-        <Route path="/addAdmin" component={AddAdmin} />
-        <Route path="/manageProduct" component={ManageProduct} />
-        <Route path="/product" component={ProductDeatils} />
-        <Route path="/updateProduct/:id" component={UpdateProduct} />
+          <Route exact path="/" component={HomePage} />
+          <Route path="/login" component={SIgnIn} />
+          <Route path="/register" component={SignUP} />
+          <Route path="/dashboard" component={AdminPanel} />
+          <Route path="/addProduct" component={AddProduct} />
+          <Route path="/adminSidebar" component={AdminSidebar} />
+          <Route path="/addAdmin" component={AddAdmin} />
+          <Route path="/shop" component={Shop} />
+          <Route path="/trackOrder" component={TrackOrder} />
+          <Route path="/manageProduct" component={ManageProduct} />
+          <Route path="/product/:id" component={ProductDeatils} />
+          <Route path="/updateProduct/:id" component={UpdateProduct} />
 
-      </Switch>
-    </Router>
+        </Switch>
+      </Router>
     </userContext.Provider>
   );
 }

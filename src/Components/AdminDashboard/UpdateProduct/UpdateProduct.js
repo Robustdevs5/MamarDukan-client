@@ -217,6 +217,7 @@ const UpdateProduct = () => {
                                         name="color"
                                         // defaultValue={product.color}
                                         defaultValue={product.color}
+                                        // value={product.color}
                                     />
                                 </div>
 
