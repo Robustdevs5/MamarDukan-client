@@ -10,6 +10,7 @@ import UpdateProduct from './Components/AdminDashboard/UpdateProduct/UpdateProdu
 import SIgnIn from "./Components/Authentication/SignIn/SIgnIn";
 import SignUP from "./Components/Authentication/SignUp/SignUP";
 import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
+import Contact from './pages/Contact-page/Contact';
 import HomePage from "./pages/Home-page/HomePage";
 export const userContext = createContext();
 
@@ -34,6 +35,7 @@ function App() {
         <Route exact path="/manageProduct" component={ManageProduct} />
         <Route exact path="/product" component={ProductDeatils} />
         <Route exact path="/updateProduct/:id" component={UpdateProduct} />
+        <Route exact path="/contact" component={Contact} />
 
       </Switch>
     </Router>
