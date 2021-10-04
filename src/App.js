@@ -13,6 +13,7 @@ import SignUP from "./Components/Authentication/SignUp/SignUP";
 import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
 import Shop from './Components/Shop/Shop';
 import TrackOrder from './Components/TrackOrder/TrackOrder';
+import Blogs from "./pages/Blog-page/Blogs";
 import Contact from './pages/Contact-page/Contact';
 import HomePage from "./pages/Home-page/HomePage";
 export const userContext = createContext();
@@ -65,6 +66,7 @@ function App() {
           <Route path="/product/:id" component={ProductDeatils} />
           <Route path="/updateProduct/:id" component={UpdateProduct} />
           <Route path="/contact" component={Contact} />
+          <Route path="/blog" component={Blogs} />
 
         </Switch>
       </Router>
