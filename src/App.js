@@ -13,12 +13,9 @@ import SignUP from "./Components/Authentication/SignUp/SignUP";
 import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
 import Shop from './Components/Shop/Shop';
 import TrackOrder from './Components/TrackOrder/TrackOrder';
-<<<<<<< HEAD
-import LoginPanel from './Components/Authentication/LoginPanel/LoginPanel';
-=======
 import Contact from './pages/Contact-page/Contact';
 import HomePage from "./pages/Home-page/HomePage";
->>>>>>> bcac01c54bb65e0f9abb3c01cd8f5033fd1b861f
+import LoginPanel from "./Components/Authentication/LoginPanel/LoginPanel";
 export const userContext = createContext();
 
 const api = axios.create({
