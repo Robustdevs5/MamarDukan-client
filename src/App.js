@@ -14,6 +14,7 @@ import HomePage from "./pages/Home-page/HomePage";
 import axios from "axios";
 import Shop from './Components/Shop/Shop';
 import TrackOrder from './Components/TrackOrder/TrackOrder';
+import LoginPanel from './Components/Authentication/LoginPanel/LoginPanel';
 export const userContext = createContext();
 
 const api = axios.create({
@@ -25,7 +26,7 @@ function App() {
   const [products, setProducts] = useState([])
   const [orders, setOrders] = useState([])
   const [user, setUser] = useState({});
-
+  const [loggedInUser, setLoggedInUser] = useState([])
 
   useEffect(() => {
     api.get('/user')
@@ -43,7 +44,7 @@ function App() {
   }, [orders.length])
 
 
-  const contextData = { allUser, setAllUser, products, setProducts, orders, setOrders, user, setUser }
+  const contextData = {loggedInUser, setLoggedInUser, allUser, setAllUser, products, setProducts, orders, setOrders, user, setUser }
   // console.log(';contextAPi', contextData)
 
   return (
@@ -54,7 +55,7 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route path="/login" component={SIgnIn} />
           <Route path="/register" component={SignUP} />
-          <Route path="/dashboard" component={AdminPanel} />
+          <Route path="/dashboard" component={LoginPanel} />
           <Route path="/addProduct" component={AddProduct} />
           <Route path="/adminSidebar" component={AdminSidebar} />
           <Route path="/addAdmin" component={AddAdmin} />
