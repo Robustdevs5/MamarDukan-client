@@ -12,6 +12,8 @@ import SIgnIn from "./Components/Authentication/SignIn/SIgnIn";
 import SignUP from "./Components/Authentication/SignUp/SignUP";
 import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
 import Shop from './Components/Shop/Shop';
+import FAQS from './Components/ShopingCart/FAQS';
+import ShopingCart from './Components/ShopingCart/ShopingCart';
 import TrackOrder from './Components/TrackOrder/TrackOrder';
 import Blogs from "./pages/Blog-page/Blogs";
 import Contact from './pages/Contact-page/Contact';
@@ -27,7 +29,7 @@ function App() {
   const [products, setProducts] = useState([])
   const [orders, setOrders] = useState([])
   const [user, setUser] = useState({});
-
+  const [loggedInUser, setLoggedInUser] = useState([])
 
   useEffect(() => {
     api.get('/user')
@@ -45,7 +47,7 @@ function App() {
   }, [orders.length])
 
 
-  const contextData = { allUser, setAllUser, products, setProducts, orders, setOrders, user, setUser }
+  const contextData = {loggedInUser, setLoggedInUser, allUser, setAllUser, products, setProducts, orders, setOrders, user, setUser }
   // console.log(';contextAPi', contextData)
 
   return (
@@ -67,9 +69,10 @@ function App() {
           <Route path="/updateProduct/:id" component={UpdateProduct} />
           <Route path="/contact" component={Contact} />
           <Route path="/blog" component={Blogs} />
-
-        </Switch>
-      </Router>
+        <Route exact path="/cart" component={ShopingCart} />
+        <Route exact path="/faqs" component={FAQS} />
+      </Switch>
+    </Router>
     </userContext.Provider>
   );
 }

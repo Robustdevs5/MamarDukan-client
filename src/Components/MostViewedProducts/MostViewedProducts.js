@@ -138,7 +138,7 @@ const MostViewedProducts = () => {
                                 <del className="px-4 text-base text-gray-500">10000</del>
                             </div>
 
-                            <p className="text-gray-700 text-sm">Sold by: <span className="hover:text-blue-500 cursor-pointer"> Mr. Rahim</span></p>
+                            <p className="text-gray-700 text-sm mb-2">Sold by: <span className="hover:text-blue-500 cursor-pointer"> Mr. Rahim</span></p>
                             <hr />
 
                             <div className="py-3">

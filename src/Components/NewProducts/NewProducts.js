@@ -130,8 +130,8 @@ const NewProducts = () => {
             <Slider {...settings} className="px-8">
 
                 {
-                    newProduct.map(newProduct =>
-                        <div className="p-2">
+                    newProduct.map((newProduct, index) =>
+                        <div key={index} className="p-2">
 
                             <div className="mb-4 w-40 h-40"
                                 onMouseEnter={() => setToggleMenu(true)}
@@ -140,36 +140,40 @@ const NewProducts = () => {
                                 <img onClick={() => handleProductClick(newProduct._id)} className="rounded cursor-pointer h-full w-full"
                                     src={newProduct.img} alt="8192" />
 
-                                {toggleMenu &&
-                                    <div className="flex bg-gray-50 justify-between px-2">
 
-                                        <button
-                                            className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                        >
-                                            <FontAwesomeIcon icon={faShoppingBag} />
-                                        </button>
+                                <div
+                                    className={toggleMenu ? "block" : "hidden"}
+                                >
+                                    {/* {toggleMenu && */}
+                                        <div className="flex bg-gray-50 justify-between px-2">
 
-                                        <button
-                                            className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                        >
-                                            <FontAwesomeIcon icon={faEye} />
-                                        </button>
+                                            <button
+                                                className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                            >
+                                                <FontAwesomeIcon icon={faShoppingBag} />
+                                            </button>
 
-                                        <button
-                                            className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                        >
-                                            <FontAwesomeIcon icon={faHeart} />
-                                        </button >
+                                            <button
+                                                className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                            >
+                                                <FontAwesomeIcon icon={faEye} />
+                                            </button>
 
-                                        <button
-                                            className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                        >
-                                            <FontAwesomeIcon icon={faChartBar} />
-                                        </button>
+                                            <button
+                                                className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                            >
+                                                <FontAwesomeIcon icon={faHeart} />
+                                            </button >
 
-                                    </div>
-                                }
+                                            <button
+                                                className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                            >
+                                                <FontAwesomeIcon icon={faChartBar} />
+                                            </button>
 
+                                        </div>
+                                    {/* } */}
+                                </div>
                             </div>
 
 
@@ -178,12 +182,12 @@ const NewProducts = () => {
                                 <del className="px-4 text-base text-gray-500">10000</del>
                             </div>
 
-                            <p className="text-gray-700 text-sm">Sold by: <span className="hover:text-blue-500 cursor-pointer"> Mr. Rahim</span></p>
+                            <p className="text-gray-700 text-sm mb-2">Sold by: <span className="hover:text-blue-500 cursor-pointer"> Mr. Rahim</span></p>
                             <hr />
 
                             <div className="py-3">
                                 <p onClick={() => handleProductClick(newProduct._id)}
-                                className="text-blue-500 hover:text-yellow-500 cursor-pointer text-sm">{newProduct.name}</p>
+                                    className="text-blue-500 hover:text-yellow-500 cursor-pointer text-sm">{newProduct.name}</p>
 
                                 <div className="flex">
                                     <img src={star} style={{ width: '60px', height: '15px' }} alt="" />
