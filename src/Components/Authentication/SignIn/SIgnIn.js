@@ -3,7 +3,7 @@ import { faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
-import React, { useContext  } from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router";
 import { Link } from 'react-router-dom';
@@ -15,140 +15,167 @@ import firebaseConfig from "../firebase.config";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './SignIn.css';
+import { useEffect, useState } from 'react';
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
-}else {
+} else {
     firebase.app();
 }
 
+
+
 const SIgnIn = () => {
-    const {user, setUser} = useContext(userContext);
+
+    const { user, setUser } = useContext(userContext);
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     const gitProvider = new firebase.auth.GithubAuthProvider();
+    const [customerStatus, setCustomerStatus] = useState(true);
+    const [vendorStatus, setVendorStatus] = useState(false);
+    const [superAdminStatus, setSuperAdminStatus] = useState(false);
+    const [adminStatus, setAdminStatus] = useState(false);
 
     let history = useHistory();
     let location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
 
- 
 
 
-    
-         // Google sign in
-         const handleGoogleLogin = () => {
-            firebase
-                .auth()
-                .signInWithPopup(googleProvider)
-                .then((result) => {
-                    const googleUser = result.user;
-                    const { displayName, email, photoURL } = googleUser;
-                    handleUser(displayName, email, photoURL, true);
-                    sessionStorage.setItem("email", email);
-                    sessionStorage.setItem("name", displayName);
-                    sessionStorage.setItem("photo", photoURL);
-                    handleAuthToken();
-                })
-                .catch((error) => {
-                    handleErrorMessage(error);
-                });
-        };
 
-        // Github sign in
-        const handleGitSignIn = () => {
-            firebase.auth().signInWithPopup(gitProvider).then((result) => {
-                const gitUser = result.user;
-                const { displayName, email, photoURL } = gitUser;
+
+    // Google sign in
+    const handleGoogleLogin = () => {
+        firebase
+            .auth()
+            .signInWithPopup(googleProvider)
+            .then((result) => {
+                const googleUser = result.user;
+                const { displayName, email, photoURL } = googleUser;
                 handleUser(displayName, email, photoURL, true);
-                sessionStorage.setItem("user", email);
+                sessionStorage.setItem("email", email);
                 sessionStorage.setItem("name", displayName);
                 sessionStorage.setItem("photo", photoURL);
                 handleAuthToken();
-            }).catch((error) => {
+            })
+            .catch((error) => {
                 handleErrorMessage(error);
             });
-          }
-    
-        // handles setting auth token in the session storage
-        const handleAuthToken = () => {
-            firebase
-                .auth()
-                .currentUser.getIdToken(true)
-                .then(function (idToken) {
-                    sessionStorage.setItem("token", idToken);
-                    history.replace(from);
-                })
-                .catch(function (error) {
-                    handleErrorMessage(error);
-                });
-        };
-    
-        // handles user info
-        const handleUser = (name, email, photoURL, whetherLoggedIn) => {
-            const newUser = { ...user };
-            if (name !== undefined) {
-                newUser.name = name;
-            }
-            if (email !== undefined) {
-                newUser.email = email;
-            }
-            if (photoURL !== undefined) {
-                newUser.photoURL = photoURL;
-            }
-            if (whetherLoggedIn !== undefined) {
-                newUser.isLoggedIn = true;
-            }
-            setUser(newUser);
+    };
+
+    // Github sign in
+    const handleGitSignIn = () => {
+        firebase.auth().signInWithPopup(gitProvider).then((result) => {
+            const gitUser = result.user;
+            const { displayName, email, photoURL } = gitUser;
+            handleUser(displayName, email, photoURL, true);
+            sessionStorage.setItem("user", email);
+            sessionStorage.setItem("name", displayName);
+            sessionStorage.setItem("photo", photoURL);
             handleAuthToken();
-        };
+        }).catch((error) => {
+            handleErrorMessage(error);
+        });
+    }
 
-        // handles error message
-        const handleErrorMessage = (error) => {
-            const errorMessage = error.message;
-            const newUser = { ...user };
-            newUser.error = errorMessage;
-            setUser(newUser);
-        };
+    // handles setting auth token in the session storage
+    const handleAuthToken = () => {
+        firebase
+            .auth()
+            .currentUser.getIdToken(true)
+            .then(function (idToken) {
+                sessionStorage.setItem("token", idToken);
+                history.replace(from);
+            })
+            .catch(function (error) {
+                handleErrorMessage(error);
+            });
+    };
 
-     // React hook form
-     const { register, handleSubmit, formState: { errors } } = useForm();
+    // handles user info
+    const handleUser = (name, email, photoURL, whetherLoggedIn) => {
+        const newUser = { ...user };
+        if (name !== undefined) {
+            newUser.name = name;
+        }
+        if (email !== undefined) {
+            newUser.email = email;
+        }
+        if (photoURL !== undefined) {
+            newUser.photoURL = photoURL;
+        }
+        if (whetherLoggedIn !== undefined) {
+            newUser.isLoggedIn = true;
+        }
+        setUser(newUser);
+        handleAuthToken();
+    };
 
-     const onSubmit = (data) => {
+    // handles error message
+    const handleErrorMessage = (error) => {
+        const errorMessage = error.message;
+        const newUser = { ...user };
+        newUser.error = errorMessage;
+        setUser(newUser);
+    };
+
+    // React hook form
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const onSubmit = (data) => {
+
         const userInfo = {
             email: data.email,
             password: data.password
         };
-        const userSignUp = `http://localhost:5000/user/login`;
-        fetch(userSignUp, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userInfo)
-        })
-            .then(async res => await res.json())
-            .then(async user => {
-                console.log('user10', user)
-                // user ? alert(user.message) : alert("failed")
-                if(user) {
-                    toast.success(user.message, {
+
+        if (vendorStatus) {
+            const userSignUp = `http://localhost:5000/user/login`;
+            fetch(userSignUp, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userInfo)
+            })
+                .then(async res => await res.json())
+                .then(async user => {
+                    console.log('user10', user)
+                    // user ? alert(user.message) : alert("failed")
+                    if (user) {
+                        toast.success(user.message, {
+                            position: "bottom-right",
+                        });
+                    }
+                    sessionStorage.setItem('user', JSON.stringify(user));
+                    history.push('/')
+                })
+                .catch(error => {
+                    // alert(error.message);
+                    // console.log(error);
+                    toast.error(error.message, {
                         position: "bottom-right",
                     });
-                }
-                sessionStorage.setItem('user', JSON.stringify(user));
-                history.push('/')
-            })
-            .catch(error => {
-                // alert(error.message);
-                // console.log(error);
-                toast.error(error.message, {
-                    position: "bottom-right",
                 });
-            });
-    
-     };
-     
-  
+        }
+        else if (customerStatus) {
+
+
+        }
+
+    };
+
+
+
+    const handleCustomerChange = () => {
+        setVendorStatus(false);
+        setCustomerStatus(true);
+    }
+
+    const handleVendorChange = () => {
+        setCustomerStatus(true);
+        setVendorStatus(true);
+    }
+
 
 
     return (

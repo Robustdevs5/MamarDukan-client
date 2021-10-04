@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 import { AiFillMail } from "react-icons/ai"
 import { BsLockFill } from "react-icons/bs"
+import { userContext } from '../../../App';
 // import '../../StyledComponent/Signup.module.css';
 
 
