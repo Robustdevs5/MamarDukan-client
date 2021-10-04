@@ -18,12 +18,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import './SignIn.css';
 import { useEffect, useState } from 'react';
 
+
+
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 } else {
     firebase.app();
 }
-
 
 
 const SIgnIn = () => {
@@ -119,14 +120,12 @@ const SIgnIn = () => {
         setUser(newUser);
     };
 
-    // React hook form
-    const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const onSubmit = (data) => {
+    const handleSubmit = (e) => {
 
         const userInfo = {
-            email: data.email,
-            password: data.password
+            email: e.target.email.value,
+            password: e.target.password.value
         };
 
         if (vendorStatus) {
@@ -185,20 +184,15 @@ const SIgnIn = () => {
             <Header />
             <Navbar />
             <div className="form-card">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <h3 className="login-heading">Log In</h3>
+                <h3 className="login-heading">Log In</h3>
 
-                    <input type="email" name="email" className="form-control"
-                        {...register('email', { required: true })} placeholder="Your email"
-                    />
-                    {errors.name && errors.name.type === "required" && <span>Name is required</span>}
-                    <input type="password" name="password" className="form-control" placeholder="Your password"
-                        {...register('password', { required: true })}
-                    />
-                    {errors.email && (<span className="error">
-                        {errors.email.type === "required" ? "Email is required" : "Your Email pattern is not correct"}
-                    </span>
-                    )}
+                <form onSubmit={handleSubmit}>
+
+                    <input type="email" name="email" className="form-control" required />
+
+                    <input type="password" name="password" className="form-control" placeholder="Your password" required />
+
+                    {/* <input type="radio" name="customer" id="customer" /> */}
 
                     <div>
                         <div className="flex items-center justify-start py-2">
@@ -235,6 +229,9 @@ const SIgnIn = () => {
                     </p>
 
                 </form>
+
+    
+
                 <div className="social-login">
                     <h4>Or Continue With</h4>
                     <br />
