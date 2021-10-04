@@ -1,0 +1,12 @@
+.Table{
+    height : 100vh ;
+    width : 100vw;
+    background-color : rgb(139, 138, 138)
+
+}
+
+.tableheader > div {
+    display : flex;
+    flex-direction : row;
+    
+}
