@@ -155,68 +155,66 @@ const SIgnIn = () => {
         <>
             <TopBar />
             <Navbar /> 
-            <div className="login-container h-screen">
-                <div className="login-box">
-                    <h2>Login</h2>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        {/* <h3 className="login-heading">Log In</h3>
-                        
-                        <input type="email" name="email" className="form-control"
-                                {...register('email', { required: true })} placeholder="Your email"
-                            />
-                        {errors.name && errors.name.type === "required" && <span>Name is required</span>}
-                        <input type="password" name="password" className="form-control" placeholder="Your password"
-                            {...register('password', { required: true})}           
+            <div className="form-card">
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <h3 className="login-heading">Log In</h3>
+                    
+                    <input type="email" name="email" className="form-control"
+                            {...register('email', { required: true })} placeholder="Your email"
                         />
-                        {errors.email && (<span className="error">
-                                {errors.email.type === "required" ? "Email is required" : "Your Email pattern is not correct"}
-                            </span>
-                        )}
+                    {errors.name && errors.name.type === "required" && <span>Name is required</span>}
+                    <input type="password" name="password" className="form-control" placeholder="Your password"
+                        {...register('password', { required: true})}           
+                    />
+                    {errors.email && (<span className="error">
+                            {errors.email.type === "required" ? "Email is required" : "Your Email pattern is not correct"}
+                        </span>
+                    )}
 
-                        <p className="error">{user.error}</p> */}
-
-                        
-                        <div class="user-box">
-                            <input type="text" name="" required="" />
-                            <label>Username</label>
-                            </div>
-                            <div class="user-box">
-                            <input type="password" name="" required="" />
-                            <label>Password</label>
-                            </div>
-                            <a href="#">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            Submit
-                            </a>
-
-                        {/* <input type="submit" value="Log In" className="submit-button btn"/>
-                        <p>Don' have an account?
-                            <Link
-                                to="/register"
-                                style={{ textDecoration: "underline", paddingLeft:'10px' }}
-                            >
-                                Create An Account
-                            </Link>
-                        </p> */}
-                        
-                    </form>
-                    <div className="social-login">
-                        <h4>Or Continue With</h4>
-                        <br />
-                        <button onClick={handleGoogleLogin} className="login-btn">
-                            <span><FontAwesomeIcon icon={faGoogle}/></span> Google
-                        </button>
-                        <button onClick={handleGitSignIn} className="login-btn">
-                            <span><FontAwesomeIcon icon={faGithub}/></span>Github
-                        </button>                      
+                    <p className="error">{user.error}</p>
+                    <div className="savingPassword">
+                        <input
+                            type="checkbox"
+                            name="save-password"
+                            id="save-password"
+                        />
+                        <label
+                            htmlFor="save-password"
+                            style={{ marginRight: "50px" }}
+                        >
+                            &nbsp;Remember Me
+                        </label>
+                        <Link
+                            to="/login"
+                            style={{ textDecoration: "underline" }}
+                        >
+                            Forgot Password
+                        </Link>
                     </div>
+                    <input type="submit" value="Log In" className="submit-button btn"/>
+                    <p>Don' have an account?
+                        <Link
+                            to="/register"
+                            style={{ textDecoration: "underline", paddingLeft:'10px' }}
+                        >
+                            Create An Account
+                        </Link>
+                    </p>
+                    
+                </form>
+                <div className="social-login">
+                    <h4>Or Continue With</h4>
+                    <br />
+                    <button onClick={handleGoogleLogin} className="login-btn">
+                        <span><FontAwesomeIcon icon={faGoogle}/></span> Google
+                    </button>
+                    <button onClick={handleGitSignIn} className="login-btn">
+                        <span><FontAwesomeIcon icon={faGithub}/></span>Github
+                    </button>                      
                 </div>
             </div>
-            {/* <ToastContainer />
-            <Footer /> */}
+            <ToastContainer />
+            <Footer />
         </>
     );
 };
