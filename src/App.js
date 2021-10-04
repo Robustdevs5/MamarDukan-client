@@ -1,4 +1,5 @@
-import React, { createContext, useState } from 'react';
+import axios from "axios";
+import React, { createContext, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddAdmin from "./Components/AdminDashboard/AddAdmin/AddAdmin";
 // import AddProduct from "./Components/Admin/addProduct/AddProduct";
@@ -12,14 +13,42 @@ import SignUP from "./Components/Authentication/SignUp/SignUP";
 import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
 import FAQS from './Components/ShopingCart/FAQS';
 import ShopingCart from './Components/ShopingCart/ShopingCart';
+import Shop from './Components/Shop/Shop';
+import TrackOrder from './Components/TrackOrder/TrackOrder';
+import LoginPanel from './Components/Authentication/LoginPanel/LoginPanel';
+import Contact from './pages/Contact-page/Contact';
 import HomePage from "./pages/Home-page/HomePage";
 export const userContext = createContext();
 
-
+const api = axios.create({
+  baseURL: `https://mamardukan.herokuapp.com`
+})
 
 function App() {
-
+  const [allUser, setAllUser] = useState([])
+  const [products, setProducts] = useState([])
+  const [orders, setOrders] = useState([])
   const [user, setUser] = useState({});
+  const [loggedInUser, setLoggedInUser] = useState([])
+
+  useEffect(() => {
+    api.get('/user')
+      .then(res => setAllUser(res.data.allUser.user))
+  }, [allUser.length]);
+
+  useEffect(() => {
+    api.get('/products')
+      .then(data => { setProducts(data.data.products) })
+  }, [products.length])
+
+  useEffect(() => {
+    api.get('/orders')
+      .then(data => { setOrders(data.data.orders) })
+  }, [orders.length])
+
+
+  const contextData = {loggedInUser, setLoggedInUser, allUser, setAllUser, products, setProducts, orders, setOrders, user, setUser }
+  // console.log(';contextAPi', contextData)
 
   return (
     <userContext.Provider value={[user, setUser]}>

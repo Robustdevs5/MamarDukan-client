@@ -1,6 +1,5 @@
 import React from "react";
 import FeaturedProduct from "../../Components/FeaturedProduct/FeaturedProduct";
-import Header from "../../Components/Header/Header";
 import MostViewedProducts from "../../Components/MostViewedProducts/MostViewedProducts";
 import Navbar from "../../Components/Navbar/Navbar/Navbar";
 import NewProducts from "../../Components/NewProducts/NewProducts";
@@ -18,7 +17,6 @@ const HomePage = () => {
   return (
     <div>
       <TopBar />
-      <Header />
       <Navbar />
       <Slider />
       <Policies />
