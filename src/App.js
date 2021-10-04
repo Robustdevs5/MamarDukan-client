@@ -11,11 +11,13 @@ import UpdateProduct from './Components/AdminDashboard/UpdateProduct/UpdateProdu
 import SIgnIn from "./Components/Authentication/SignIn/SIgnIn";
 import SignUP from "./Components/Authentication/SignUp/SignUP";
 import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
+import FAQS from './Components/ShopingCart/FAQS';
+import ShopingCart from './Components/ShopingCart/ShopingCart';
 import Shop from './Components/Shop/Shop';
 import TrackOrder from './Components/TrackOrder/TrackOrder';
+import LoginPanel from './Components/Authentication/LoginPanel/LoginPanel';
 import Contact from './pages/Contact-page/Contact';
 import HomePage from "./pages/Home-page/HomePage";
-import LoginPanel from "./Components/Authentication/LoginPanel/LoginPanel";
 export const userContext = createContext();
 
 const api = axios.create({
@@ -49,26 +51,24 @@ function App() {
   // console.log(';contextAPi', contextData)
 
   return (
-    <userContext.Provider value={contextData}>
-      <Router>
-        <Switch>
+    <userContext.Provider value={[user, setUser]}>
+    <Router>
+      <Switch>
 
-          <Route exact path="/" component={HomePage} />
-          <Route path="/login" component={SIgnIn} />
-          <Route path="/register" component={SignUP} />
-          <Route path="/dashboard" component={LoginPanel} />
-          <Route path="/addProduct" component={AddProduct} />
-          <Route path="/adminSidebar" component={AdminSidebar} />
-          <Route path="/addAdmin" component={AddAdmin} />
-          <Route path="/shop" component={Shop} />
-          <Route path="/trackOrder" component={TrackOrder} />
-          <Route path="/manageProduct" component={ManageProduct} />
-          <Route path="/product/:id" component={ProductDeatils} />
-          <Route path="/updateProduct/:id" component={UpdateProduct} />
-          <Route path="/contact" component={Contact} />
-
-        </Switch>
-      </Router>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/login" component={SIgnIn} />
+        <Route exact path="/register" component={SignUP} />
+        <Route exact path="/dashboard" component={AdminPanel} />
+        <Route exact path="/addProduct" component={AddProduct} />
+        <Route exact path="/adminSidebar" component={AdminSidebar} />
+        <Route exact path="/addAdmin" component={AddAdmin} />
+        <Route exact path="/manageProduct" component={ManageProduct} />
+        <Route exact path="/product" component={ProductDeatils} />
+        <Route exact path="/updateProduct/:id" component={UpdateProduct} />
+        <Route exact path="/cart" component={ShopingCart} />
+        <Route exact path="/faqs" component={FAQS} />
+      </Switch>
+    </Router>
     </userContext.Provider>
   );
 }
