@@ -1,4 +1,5 @@
-import React, { createContext, useState, useEffect } from 'react';
+import axios from "axios";
+import React, { createContext, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddAdmin from "./Components/AdminDashboard/AddAdmin/AddAdmin";
 // import AddProduct from "./Components/Admin/addProduct/AddProduct";
@@ -10,10 +11,10 @@ import UpdateProduct from './Components/AdminDashboard/UpdateProduct/UpdateProdu
 import SIgnIn from "./Components/Authentication/SignIn/SIgnIn";
 import SignUP from "./Components/Authentication/SignUp/SignUP";
 import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
-import HomePage from "./pages/Home-page/HomePage";
-import axios from "axios";
 import Shop from './Components/Shop/Shop';
 import TrackOrder from './Components/TrackOrder/TrackOrder';
+import Contact from './pages/Contact-page/Contact';
+import HomePage from "./pages/Home-page/HomePage";
 export const userContext = createContext();
 
 const api = axios.create({
@@ -63,6 +64,7 @@ function App() {
           <Route path="/manageProduct" component={ManageProduct} />
           <Route path="/product/:id" component={ProductDeatils} />
           <Route path="/updateProduct/:id" component={UpdateProduct} />
+          <Route path="/contact" component={Contact} />
 
         </Switch>
       </Router>
