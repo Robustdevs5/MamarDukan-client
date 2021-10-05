@@ -22,14 +22,14 @@ const VendorSingupFrom = () => {
       }
     return (
         <form onSubmit={handleSubmit(handleSignup)} autoComplete="off" className="">
-          <h1>Sign in</h1>
+          <h1>Create an account</h1>
           <div class="social-AuthContainer">
             <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
             <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
           </div>
 
-          <span>or use your account</span>
+          <span>or use your email for registration</span>
            <input type="text" placeholder="Name" />
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />

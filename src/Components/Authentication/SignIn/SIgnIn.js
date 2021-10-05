@@ -139,7 +139,7 @@ const SIgnIn = () => {
             })
                 .then(async res => await res.json())
                 .then(async user => {
-                    console.log('user10', user)
+                    console.log('usesmall0', user)
                     // user ? alert(user.message) : alert("failed")
                     if (user) {
                         toast.success(user.message, {
@@ -182,21 +182,21 @@ const SIgnIn = () => {
         <>
             <TopBar />
             <Navbar /> 
-            <div className="login-container h-screen">
+            <div className="login-container">
                 <div className="login-box">
                     <h2>Login</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         {/* <h3 className="login-heading">Log In</h3>
                         
                         <input type="email" name="email" className="form-control"
-                                {...register('email', { required: true })} placeholder="Your email"
+                                {...register('email', { requiblue: true })} placeholder="Your email"
                             />
-                        {errors.name && errors.name.type === "required" && <span>Name is required</span>}
+                        {errors.name && errors.name.type === "requiblue" && <span>Name is requiblue</span>}
                         <input type="password" name="password" className="form-control" placeholder="Your password"
-                            {...register('password', { required: true})}           
+                            {...register('password', { requiblue: true})}           
                         />
                         {errors.email && (<span className="error">
-                                {errors.email.type === "required" ? "Email is required" : "Your Email pattern is not correct"}
+                                {errors.email.type === "requiblue" ? "Email is requiblue" : "Your Email pattern is not correct"}
                             </span>
                         )}
 
@@ -204,46 +204,79 @@ const SIgnIn = () => {
 
                         
                         <div class="user-box">
-                            <input type="text" name="" required="" />
+                            <input type="text" name="" requiblue="" />
                             <label>Username</label>
-                            </div>
-                            <div class="user-box">
-                            <input type="password" name="" required="" />
+                        </div>
+                        <div class="user-box">
+                            <input type="password" name="" requiblue="" />
                             <label>Password</label>
-                            </div>
-                            <a href="#">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            Submit
+                        </div>
+                        <div className="padding-l-5 flex  justify-between">
+                            <h1 className="text-blue-50 text-center">I'm a</h1>
+                            <label className=" flex items-center cursor-pointer">
+                                <input className="w-6 h-4  cursor-pointer" name="size" type="radio" value="user"  />
+                                <small className="text-blue-50 text-center ">User</small>
+                            </label>
+                            <label className="flex items-center border-l-2 border-blue-400  rounded cursor-pointer">
+                                <input className="w-6 h-4 cursor-pointer" name="size" type="radio" value="vendor"/>
+                                <small className="text-blue-50 text-center ">Vendor</small>
+                            </label>
+                            <label className="flex items-center border-l-2 border-blue-400 rounded cursor-pointer">
+                                <input className="w-6 h-4 cursor-pointer" name="size" type="radio" value="admin" />
+                                <small className="text-blue-50 text-center"> Admin</small>
+                            </label>
+                            <label className="flex items-center border-l-2 border-blue-400 rounded cursor-pointer">
+                                <input className="w-6 h-4 cursor-pointer" name="size" type="radio" value="superAdmin"/>
+                                <small className="text-blue-50 text-center">Super Admin</small>
+                            </label>
+                        </div>
+                            <a href="#" className="submitBtn">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                Submit
                             </a>
 
                         {/* <input type="submit" value="Log In" className="submit-button btn"/>
                         <p>Don' have an account?
                             <Link
                                 to="/register"
-                                style={{ textDecoration: "underline", paddingLeft:'10px' }}
+                                style={{ textDecoration: "underline", paddingLeft:small0px' }}
                             >
                                 Create An Account
                             </Link>
                         </p> */}
                         
                     </form>
-                    <div className="social-login">
-                        <h4>Or Continue With</h4>
-                        <br />
+                    <div className="social-login"> 
+                        <div className="flex justify-between py-5"> 
+                            <h4 className="text-white">Don't have an account?</h4> 
+                            <Link to="/register" style={{color:"#03e9f4"}}>
+                                 Create an account
+                            </Link> 
+                        </div>
                         <button onClick={handleGoogleLogin} className="login-btn">
-                            <span><FontAwesomeIcon icon={faGoogle}/></span> Google
+                            <div className="flex justify-between">
+                                <h1>Google </h1>
+                                <span>
+                                    <FontAwesomeIcon className="text-red-600" icon={faGoogle}/>
+                                </span> 
+                            </div>
                         </button>
                         <button onClick={handleGitSignIn} className="login-btn">
-                            <span><FontAwesomeIcon icon={faGithub}/></span>Github
+                            <div className="flex justify-between">
+                                <h1>Github </h1>
+                                <span>
+                                    <FontAwesomeIcon  icon={faGithub}/>
+                                </span> 
+                            </div>
                         </button>                      
                     </div>
                 </div>
             </div>
-            {/* <ToastContainer />
-            <Footer /> */}
+            <ToastContainer />
+            <Footer />
         </>
     );
 };

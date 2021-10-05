@@ -83,11 +83,12 @@ button.login-btn span {
   padding:0;
   font-family: sans-serif;
   background: linear-gradient(#141e30, #243b55);
+  height: 700px;
 }
 
 .login-box {
   position: absolute;
-  top: 80%;
+  top: 75%;
   left: 50%;
   width: 400px;
   padding: 40px;
@@ -144,11 +145,30 @@ button.login-btn span {
   font-size: 12px;
 }
 
-.login-box form a {
+.login-btn {
+  background-color: #03e8f400;
+  border: 1px solid #03e9f4;
+  border-radius: 10px;
+  padding: 8px 20px;
+  width: 100%;
+  color: #03e9f4;
+  font-weight: 700;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+.login-btn:hover {
+  background-color: #03e8f4;
+  color: black;
+  border: 1px solid #03e9f4;
+  transition: all .5s;
+}
+
+.login-box form .submitBtn {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
-  color: #03e9f4;
+  color: white;
+  background-color: #03e9f4;
   font-size: 16px;
   text-decoration: none;
   text-transform: uppercase;
@@ -158,8 +178,8 @@ button.login-btn span {
   letter-spacing: 4px
 }
 
-.login-box a:hover {
-  background: #03e9f4;
+.login-box .submitBtn:hover {
+  background: #03e8f407;
   color: #fff;
   border-radius: 5px;
 }
