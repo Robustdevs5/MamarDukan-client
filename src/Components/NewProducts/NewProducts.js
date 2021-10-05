@@ -131,12 +131,12 @@ const NewProducts = () => {
 
                 {
                     newProduct.map(newProduct =>
-                        <div className="p-2 md:border hover:border-blue-900 shadow" >
+                        <div className="p-2 md:border cursor-pointer hover:shadow-2xl group hover:border-blue-900 shadow" >
 
-                            <div className="mb-4 w-40 h-40">
+                            <div className="mb-4 w-40 h-40  pb-5">
                                 <img onClick={() => handleProductClick(newProduct._id)} className="rounded cursor-pointer h-full w-full"
                                     src={newProduct.img} alt="8192" />
-                                <div className="flex bg-gray-50 justify-between px-2">
+                                <div className="hover:scale-100 scale-75 flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
 
                                     <button
                                         className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
@@ -163,44 +163,10 @@ const NewProducts = () => {
                                     </button>
 
                                 </div>
-
-                                <div
-                                    className={toggleMenu ? "block" : "hidden"}
-                                >
-                                    {/* {toggleMenu && */}
-                                        <div className="flex bg-gray-50 justify-between px-2">
-
-                                            <button
-                                                className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                            >
-                                                <FontAwesomeIcon icon={faShoppingBag} />
-                                            </button>
-
-                                            <button
-                                                className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                            >
-                                                <FontAwesomeIcon icon={faEye} />
-                                            </button>
-
-                                            <button
-                                                className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                            >
-                                                <FontAwesomeIcon icon={faHeart} />
-                                            </button >
-
-                                            <button
-                                                className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                            >
-                                                <FontAwesomeIcon icon={faChartBar} />
-                                            </button>
-
-                                        </div>
-                                    {/* } */}
-                                </div>
                             </div>
 
 
-                            <div className="flex py-3">
+                            <div className="flex py-3 mt-2">
                                 <h5 className="text-base font-bold text-green-700">${newProduct.price}</h5>
                                 <del className="px-4 text-base text-gray-500">10000</del>
                             </div>
