@@ -4,7 +4,8 @@ import { AiFillMail } from "react-icons/ai"
 import { BsLockFill } from "react-icons/bs"
 import { userContext } from '../../../App';
 // import '../../StyledComponent/Signup.module.css';
-
+import { AiFillGithub } from "react-icons/ai";
+import { FcGoogle } from 'react-icons/fc';
 
 const VendorSingupFrom = () => {
     const {
@@ -24,9 +25,8 @@ const VendorSingupFrom = () => {
         <form onSubmit={handleSubmit(handleSignup)} autoComplete="off" className="">
           <h1>Create an account</h1>
           <div class="social-AuthContainer">
-            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social"><AiFillGithub/></a>
+            <a href="#" class="social"><FcGoogle/></a>
           </div>
 
           <span>or use your email for registration</span>

@@ -1,5 +1,3 @@
-import { faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import React, { useContext } from "react";
@@ -14,6 +12,8 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './SignIn.css';
 import { useState } from 'react';
+import { AiFillGithub } from "react-icons/ai";
+import { FcGoogle } from 'react-icons/fc';
 
 
 
@@ -405,15 +405,16 @@ const SIgnIn = () => {
                             <div className="flex justify-between">
                                 <h1>Google </h1>
                                 <span>
-                                    <FontAwesomeIcon className="text-red-600" icon={faGoogle} />
-                                </span>
+                                    {/* <FontAwesomeIcon className="text-red-600" icon={faGoogle}/> */}
+                                    <FcGoogle/>
+                                </span> 
                             </div>
                         </button>
                         <button onClick={handleGitSignIn} className="login-btn">
                             <div className="flex justify-between">
                                 <h1>Github </h1>
                                 <span>
-                                    <FontAwesomeIcon icon={faGithub} />
+                                <AiFillGithub/>
                                 </span>
                             </div>
                         </button>
