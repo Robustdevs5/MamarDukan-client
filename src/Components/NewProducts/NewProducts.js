@@ -130,16 +130,39 @@ const NewProducts = () => {
             <Slider {...settings} className="px-8">
 
                 {
-                    newProduct.map((newProduct, index) =>
-                        <div key={index} className="p-2">
+                    newProduct.map(newProduct =>
+                        <div className="p-2 md:border hover:border-blue-900 shadow" >
 
-                            <div className="mb-4 w-40 h-40"
-                                onMouseEnter={() => setToggleMenu(true)}
-                                onMouseLeave={() => setToggleMenu(false)}
-                            >
+                            <div className="mb-4 w-40 h-40">
                                 <img onClick={() => handleProductClick(newProduct._id)} className="rounded cursor-pointer h-full w-full"
                                     src={newProduct.img} alt="8192" />
+                                <div className="flex bg-gray-50 justify-between px-2">
 
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faShoppingBag} />
+                                    </button>
+
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faEye} />
+                                    </button>
+
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faHeart} />
+                                    </button >
+
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faChartBar} />
+                                    </button>
+
+                                </div>
 
                                 <div
                                     className={toggleMenu ? "block" : "hidden"}

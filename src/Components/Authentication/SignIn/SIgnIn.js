@@ -9,7 +9,6 @@ import { useHistory, useLocation } from "react-router";
 import { Link } from 'react-router-dom';
 import { userContext } from "../../../App";
 import Footer from '../../Footer/Footer';
-import Header from '../../Header/Header';
 import Navbar from '../../Navbar/Navbar/Navbar';
 import TopBar from '../../TopBar/TopBar';
 import firebaseConfig from "../firebase.config";
@@ -181,70 +180,72 @@ const SIgnIn = () => {
     return (
         <>
             <TopBar />
-            <Header />
             <Navbar />
-            <div className="form-card">
-                <h3 className="login-heading">Log In</h3>
-
-                <form onSubmit={handleSubmit}>
-
-                    <input type="email" name="email" className="form-control" required />
-
-                    <input type="password" name="password" className="form-control" placeholder="Your password" required />
-
-                    {/* <input type="radio" name="customer" id="customer" /> */}
-
-                    <div>
-                        <div className="flex items-center justify-start py-2">
-                            <input className="cursor-pointer" onChange={handleCustomerChange}
-                                type="radio"
-                                id="customer"
-                                name="customer"
-                                value="customer"
-                                defaultChecked
+            <div className="login-container h-screen">
+                <div className="login-box">
+                    <h2>Login</h2>
+                    <form onSubmit={handleSubmit}>
+                        {/* <h3 className="login-heading">Log In</h3>
+                        
+                        <input type="email" name="email" className="form-control"
+                                {...register('email', { required: true })} placeholder="Your email"
                             />
+                        {errors.name && errors.name.type === "required" && <span>Name is required</span>}
+                        <input type="password" name="password" className="form-control" placeholder="Your password"
+                            {...register('password', { required: true})}           
+                        />
+                        {errors.email && (<span className="error">
+                                {errors.email.type === "required" ? "Email is required" : "Your Email pattern is not correct"}
+                            </span>
+                        )}
 
-                            <label className="cursor-pointer px-2" for="customer">I am a Customer</label>
+                        <p className="error">{user.error}</p> */}
+
+
+                        <div class="user-box">
+                            <input type="text" name="" required="" />
+                            <label>Username</label>
                         </div>
-                        <div className="flex items-center justify-start py-2">
-                            <input className="cursor-pointer"
-                                onChange={handleVendorChange}
-                                type="radio"
-                                id="vendor"
-                                name="vendor"
-                                value="vendor"
-                            />
-                            <label className="cursor-pointer px-2" for="vendor">I am a Vendor</label>
+                        <div class="user-box">
+                            <input type="password" name="" required="" />
+                            <label>Password</label>
                         </div>
+                        <a href="#">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            Submit
+                        </a>
+
+                        {/* <input type="radio" name="asd" id="asda" />
+                        <label>Password</label> */}
+
+                        {/* <input type="submit" value="Log In" className="submit-button btn"/>
+                        <p>Don' have an account?
+                            <Link
+                                to="/register"
+                                style={{ textDecoration: "underline", paddingLeft:'10px' }}
+                            >
+                                Create An Account
+                            </Link>
+                        </p> */}
+
+                    </form>
+                    <div className="social-login">
+                        <h4>Or Continue With</h4>
+                        <br />
+                        <button onClick={handleGoogleLogin} className="login-btn">
+                            <span><FontAwesomeIcon icon={faGoogle} /></span> Google
+                        </button>
+                        <button onClick={handleGitSignIn} className="login-btn">
+                            <span><FontAwesomeIcon icon={faGithub} /></span>Github
+                        </button>
                     </div>
-
-                    <input type="submit" value="Log In" className="submit-button btn" />
-                    <p>Don' have an account?
-                        <Link
-                            to="/register"
-                            style={{ textDecoration: "underline", paddingLeft: '10px' }}
-                        >
-                            Create An Account
-                        </Link>
-                    </p>
-
-                </form>
-
-    
-
-                <div className="social-login">
-                    <h4>Or Continue With</h4>
-                    <br />
-                    <button onClick={handleGoogleLogin} className="login-btn">
-                        <span><FontAwesomeIcon icon={faGoogle} /></span> Google
-                    </button>
-                    <button onClick={handleGitSignIn} className="login-btn">
-                        <span><FontAwesomeIcon icon={faGithub} /></span>Github
-                    </button>
                 </div>
             </div>
-            <ToastContainer />
-            <Footer />
+            {/* <ToastContainer />
+            <Footer /> */}
         </>
     );
 };

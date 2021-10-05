@@ -19,7 +19,7 @@ const SignUP = () => {
             <Topbar/>
             <Navbar/> 
             {/* <div  className= {isAuthContainerActive ? "AuthContainer right-panel-active" : "AuthContainer"}>  */}
-            <div className='flex justify-center w-screen py-20'>
+            <div className='flex justify-center w-screen h-full py-20'>
                 <div className= {isAuthContainerActive ? "AuthContainer right-panel-active" : "AuthContainer"}>
                         <div class="form-AuthContainer sign-up-AuthContainer">
                             <UserSignUpFrom />
