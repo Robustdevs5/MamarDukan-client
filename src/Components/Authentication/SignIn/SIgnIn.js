@@ -381,17 +381,13 @@ const SIgnIn = () => {
                             <span></span>
                             Submit
                         </a> */}
-                        <input type="submit" className="submitBtn" value="Submit" />
-
-                        {/* <input type="submit" value="Log In" className="submit-button btn"/>
-                        <p>Don' have an account?
-                            <Link
-                                to="/register"
-                                style={{ textDecoration: "underline", paddingLeft:small0px' }}
-                            >
-                                Create An Account
-                            </Link>
-                        </p> */}
+                         <label className="submitBtnAnimation">
+                                <span className="btnAnimation"></span>
+                                <span className="btnAnimation"></span>
+                                <span className="btnAnimation"></span>
+                                <span className="btnAnimation"></span>
+                                <button type="submit" value="Submit">Submit</button>
+                        </label>
 
                     </form>
                     <div className="social-login">
@@ -405,7 +401,6 @@ const SIgnIn = () => {
                             <div className="flex justify-between">
                                 <h1>Google </h1>
                                 <span>
-                                    {/* <FontAwesomeIcon className="text-red-600" icon={faGoogle}/> */}
                                     <FcGoogle/>
                                 </span> 
                             </div>
@@ -414,7 +409,7 @@ const SIgnIn = () => {
                             <div className="flex justify-between">
                                 <h1>Github </h1>
                                 <span>
-                                <AiFillGithub/>
+                                    <AiFillGithub/>
                                 </span>
                             </div>
                         </button>
