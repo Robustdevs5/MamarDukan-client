@@ -163,7 +163,7 @@ button.login-btn span {
   transition: all .5s;
 }
 
-.login-box form .submitBtn {
+.login-box form .submitBtnAnimation {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -175,21 +175,22 @@ button.login-btn span {
   overflow: hidden;
   transition: .5s;
   margin-top: 40px;
-  letter-spacing: 4px
+  letter-spacing: 4px;
+  cursor: pointer;
 }
 
-.login-box .submitBtn:hover {
+.login-box .submitBtnAnimation:hover {
   background: #03e8f407;
   color: #fff;
   border-radius: 5px;
 }
 
-.login-box a span {
+.login-box .btnAnimation {
   position: absolute;
   display: block;
 }
 
-.login-box a span:nth-child(1) {
+.login-box .btnAnimation:nth-child(1) {
   top: 0;
   left: -100%;
   width: 100%;
@@ -207,7 +208,7 @@ button.login-btn span {
   }
 }
 
-.login-box a span:nth-child(2) {
+.login-box .btnAnimation:nth-child(2) {
   top: -100%;
   right: 0;
   width: 2px;
@@ -226,7 +227,7 @@ button.login-btn span {
   }
 }
 
-.login-box a span:nth-child(3) {
+.login-box .btnAnimation:nth-child(3) {
   bottom: 0;
   right: -100%;
   width: 100%;
@@ -245,7 +246,7 @@ button.login-btn span {
   }
 }
 
-.login-box a span:nth-child(4) {
+.login-box .btnAnimation:nth-child(4) {
   bottom: -100%;
   left: 0;
   width: 2px;
