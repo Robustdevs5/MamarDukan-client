@@ -34,7 +34,7 @@ const UserSignUpFrom = () => {
 
     return (
         <form onSubmit={handleSubmit(handleSignup)} autoComplete="off" className="">
-          <h1>Create a Vendor Account</h1>
+          <h1>Vendor Registration form</h1>
           <span>use your email for registration</span>
             <input type="text" placeholder="Name" />
             <input type="email" placeholder="Email" />
