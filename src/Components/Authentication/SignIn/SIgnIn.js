@@ -16,6 +16,8 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './SignIn.css';
 import { useEffect, useState } from 'react';
+import { AiFillGithub } from "react-icons/ai";
+import { FcGoogle } from 'react-icons/fc';
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
@@ -237,16 +239,6 @@ const SIgnIn = () => {
                                 <span></span>
                                 Submit
                             </a>
-
-                        {/* <input type="submit" value="Log In" className="submit-button btn"/>
-                        <p>Don' have an account?
-                            <Link
-                                to="/register"
-                                style={{ textDecoration: "underline", paddingLeft:small0px' }}
-                            >
-                                Create An Account
-                            </Link>
-                        </p> */}
                         
                     </form>
                     <div className="social-login"> 
@@ -260,7 +252,8 @@ const SIgnIn = () => {
                             <div className="flex justify-between">
                                 <h1>Google </h1>
                                 <span>
-                                    <FontAwesomeIcon className="text-red-600" icon={faGoogle}/>
+                                    {/* <FontAwesomeIcon className="text-red-600" icon={faGoogle}/> */}
+                                    <FcGoogle/>
                                 </span> 
                             </div>
                         </button>
@@ -268,7 +261,7 @@ const SIgnIn = () => {
                             <div className="flex justify-between">
                                 <h1>Github </h1>
                                 <span>
-                                    <FontAwesomeIcon  icon={faGithub}/>
+                                    <AiFillGithub/>
                                 </span> 
                             </div>
                         </button>                      
