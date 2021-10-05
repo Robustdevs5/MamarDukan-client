@@ -1,6 +1,6 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useHistory, useLocation } from "react-router";
 import { Link } from 'react-router-dom';
 import { userContext } from "../../../App";
@@ -40,8 +40,6 @@ const SIgnIn = () => {
 
 
 
-
-
     // Google sign in
     const handleGoogleLogin = () => {
         firebase
@@ -51,9 +49,9 @@ const SIgnIn = () => {
                 const googleUser = result.user;
                 const { displayName, email, photoURL } = googleUser;
                 handleUser(displayName, email, photoURL, true);
-                sessionStorage.setItem("email", email);
-                sessionStorage.setItem("name", displayName);
-                sessionStorage.setItem("photo", photoURL);
+                sessionStorage.setItem("user", googleUser);
+                // sessionStorage.setItem("name", displayName);
+                // sessionStorage.setItem("photo", photoURL);
                 handleAuthToken();
             })
             .catch((error) => {
@@ -67,9 +65,9 @@ const SIgnIn = () => {
             const gitUser = result.user;
             const { displayName, email, photoURL } = gitUser;
             handleUser(displayName, email, photoURL, true);
-            sessionStorage.setItem("user", email);
-            sessionStorage.setItem("name", displayName);
-            sessionStorage.setItem("photo", photoURL);
+            sessionStorage.setItem("user", gitUser);
+            // sessionStorage.setItem("name", displayName);
+            // sessionStorage.setItem("photo", photoURL);
             handleAuthToken();
         }).catch((error) => {
             handleErrorMessage(error);
@@ -406,15 +404,15 @@ const SIgnIn = () => {
                                 <h1>Google </h1>
                                 <span>
                                     {/* <FontAwesomeIcon className="text-red-600" icon={faGoogle}/> */}
-                                    <FcGoogle/>
-                                </span> 
+                                    <FcGoogle />
+                                </span>
                             </div>
                         </button>
                         <button onClick={handleGitSignIn} className="login-btn">
                             <div className="flex justify-between">
                                 <h1>Github </h1>
                                 <span>
-                                <AiFillGithub/>
+                                    <AiFillGithub />
                                 </span>
                             </div>
                         </button>

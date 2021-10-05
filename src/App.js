@@ -10,6 +10,7 @@ import ManageProduct from "./Components/AdminDashboard/ManageProduct/ManageProdu
 import UpdateProduct from './Components/AdminDashboard/UpdateProduct/UpdateProduct';
 import SIgnIn from "./Components/Authentication/SignIn/SIgnIn";
 import SignUP from "./Components/Authentication/SignUp/SignUP";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
 import Shop from './Components/Shop/Shop';
 import FAQS from './Components/ShopingCart/FAQS';
@@ -31,23 +32,23 @@ function App() {
   const [user, setUser] = useState({});
   const [loggedInUser, setLoggedInUser] = useState([])
 
-  useEffect(() => {
-    api.get('/user')
-      .then(res => setAllUser(res.data.allUser.user))
-  }, [allUser.length]);
+  // useEffect(() => {
+  //   api.get('/user')
+  //     .then(res => setAllUser(res.data.allUser.user))
+  // }, [allUser.length]);
 
-  useEffect(() => {
-    api.get('/products')
-      .then(data => { setProducts(data.data.products) })
-  }, [products.length])
+  // useEffect(() => {
+  //   api.get('/products')
+  //     .then(data => { setProducts(data.data.products) })
+  // }, [products.length])
 
-  useEffect(() => {
-    api.get('/orders')
-      .then(data => { setOrders(data.data.orders) })
-  }, [orders.length])
+  // useEffect(() => {
+  //   api.get('/orders')
+  //     .then(data => { setOrders(data.data.orders) })
+  // }, [orders.length])
 
 
-  const contextData = {loggedInUser, setLoggedInUser, allUser, setAllUser, products, setProducts, orders, setOrders, user, setUser }
+  const contextData = {loggedInUser, setLoggedInUser, products, setProducts, orders, setOrders, user, setUser }
   // console.log(';contextAPi', contextData)
 
   return (
@@ -58,7 +59,7 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route path="/login" component={SIgnIn} />
           <Route path="/register" component={SignUP} />
-          <Route path="/dashboard" component={AdminPanel} />
+          <PrivateRoute path="/dashboard" component={AdminPanel} />
           <Route path="/addProduct" component={AddProduct} />
           <Route path="/adminSidebar" component={AdminSidebar} />
           <Route path="/addAdmin" component={AddAdmin} />
