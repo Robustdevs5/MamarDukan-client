@@ -11,8 +11,8 @@ const ShopingCart = () => {
       <TopBar />
       <Navbar />
       <Table />
-      <FooterCatagory />
-      <Footer />
+      <div className="m-5"><FooterCatagory />
+      <Footer /></div>
     </div>
   );
 };
