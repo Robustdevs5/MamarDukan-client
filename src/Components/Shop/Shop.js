@@ -17,8 +17,10 @@ const Shop = () => {
 
     const [product, setProduct] = useState([]);
     const [deptProduct, setDeptProduct] = useState([]);
+    const [brandProduct, setBrandProduct] = useState([]);
     const [allProductStatus, setAllProductStatus] = useState(true);
     const [deptProductStatus, setDeptProductStatus] = useState(false);
+    const [brandProductStatus, setBrandProductStatus] = useState(false);
     const [rowsPerPage, setRowsPerPage] = useState(12);
     const [page, setPage] = useState(0);
 
@@ -75,18 +77,42 @@ const Shop = () => {
             .then(data => setDeptProduct(data.result))
         setDeptProductStatus(true)
         setAllProductStatus(false)
+        setBrandProductStatus(false)
     }
     console.log(deptProduct);
 
 
     const handleAllProductClick = () => {
         setDeptProductStatus(false)
+        setBrandProductStatus(false)
         setAllProductStatus(true)
     }
 
     const handleProductClick = (id) => {
         history.push(`/product/${id}`);
     }
+
+
+
+    const handleBrandChange = (brand) => {
+        // let checkBox = document.getElementById(`${brand}`);
+        // var text = document.getElementById("brand");
+
+        fetch(`http://localhost:5000/products/brand?brand=${brand}`)
+            .then(res => res.json())
+            .then(data => setBrandProduct(data.result))
+        setDeptProductStatus(false)
+        setAllProductStatus(false)
+        setBrandProductStatus(true)
+
+        // if (checkBox.checked === true){
+        //     text.style.display = "block";
+        //   } else {
+        //      text.style.display = "none";
+        //   }
+    }
+    console.log(brandProduct);
+
 
 
 
@@ -127,11 +153,13 @@ const Shop = () => {
                         <h1 className="text-lg mb-5">PRODUCT BRAND</h1>
                         {uniqBrandName.map(uniqBrandName =>
                             <div className="flex items-center">
-                                <input type="checkbox"
+                                <input
+                                    onChange={() => handleBrandChange(uniqBrandName)}
                                     className="cursor-pointer hover:text-yellow-400 w-4 h-4"
+                                    name="brand"
                                     id={uniqBrandName}
-                                    name={uniqBrandName}
-                                    value={uniqBrandName}
+                                    type="radio"
+                                    value="1"
                                 />
 
                                 <label for={uniqBrandName} className="px-2 cursor-pointer hover:text-yellow-400">
@@ -221,7 +249,15 @@ const Shop = () => {
                 </div>
 
 
+                {/* {product.length ? "" :
+                    <img
+                    className="w-100"
+                        src="https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif" alt=""
+                    />
+                } */}
+
                 {/* ............................All Product..................... */}
+
                 {allProductStatus &&
                     <div className="px-10 pt-10">
                         <AllProduct />
@@ -275,6 +311,67 @@ const Shop = () => {
                                 rowsPerPageOptions={[]}
                                 component="div"
                                 count={deptProduct.length}
+                                rowsPerPage={rowsPerPage}
+                                page={page}
+                                onPageChange={handleChangePage}
+                                onRowsPerPageChange={handleChangeRowsPerPage}
+                                checkboxSelection
+                            />
+                            : ""
+                        }
+                    </div>
+                </div>}
+
+
+
+
+                {/* ......................Product by Brand.................. */}
+                {brandProductStatus && <div className="px-10 pt-10" id="brand">
+                    <h3 className="mb-4">
+                        <span className="text-lg font-medium">{brandProduct.length} </span>
+                        <span className="text-base text-gray-600"> Products found</span>
+                    </h3>
+
+                    <div className="grid gap-12 grid-cols-4">
+                        {brandProduct
+                            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                            .map(product =>
+                                <div className="p-2">
+
+                                    <div className="mb-4 w-44 h-44">
+                                        <img onClick={() => handleProductClick(product._id)} className="rounded cursor-pointer hover:text-yellow-400 h-full w-full" src={product.img} alt="8192" />
+                                    </div>
+
+                                    <div className="flex py-3">
+                                        <h5 className="text-base font-bold text-green-700">${product.price}</h5>
+                                        <del className="px-4 text-base text-gray-500">10000</del>
+                                    </div>
+
+                                    <p className="text-gray-700 text-sm">Sold by: <span className="hover:text-blue-500 cursor-pointer "> Mr. Rahim</span></p>
+                                    <hr />
+
+                                    <div className="py-3">
+                                        <p onClick={() => handleProductClick(product._id)} className="text-blue-500 hover:text-yellow-500 cursor-pointer text-sm">{product.name}</p>
+
+                                        <div className="flex">
+                                            <img src={star} style={{ width: '60px', height: '15px' }} alt="" />
+                                            <p className="text-gray-600 text-xs px-1">(0)</p>
+                                        </div>
+
+                                        <p className="text-gray-600 text-xs px-1">Sold: 10</p>
+                                    </div>
+                                </div>
+                            )
+                        }
+
+                        <small className="mb-16"></small>
+
+                        {brandProduct.length > 10 ?
+                            <TablePagination
+                                className="flex items-end justify-end"
+                                rowsPerPageOptions={[]}
+                                component="div"
+                                count={brandProduct.length}
                                 rowsPerPage={rowsPerPage}
                                 page={page}
                                 onPageChange={handleChangePage}

@@ -71,7 +71,7 @@ const AllProduct = () => {
             }
 
             <TablePagination
-                className="flex items-end justify-end ms-30"
+                // className="flex items-end justify-end"
                 rowsPerPageOptions={[]}
                 component="div"
                 count={product.length}
