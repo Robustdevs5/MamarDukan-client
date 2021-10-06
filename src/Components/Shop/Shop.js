@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import TopBar from "../../Components/TopBar/TopBar";
 import Navbar from "../../Components/Navbar/Navbar/Navbar";
 import AllProduct from './AllProduct';
-import DepartmentShop from './DepartmentShop';
 import star from "../../images/5star.png";
 import { TablePagination } from '@mui/material';
 import { useHistory } from 'react-router';
+import Footer from '../Footer/Footer'
 // import noUiSlider from 'nouislider';
 // import noUiSlider from 'nouislider/dist/nouislider.mjs';
 // import * as noUiSlider from 'nouislider';
@@ -121,7 +121,7 @@ const Shop = () => {
             <TopBar />
             <Navbar />
 
-            <div className="flex">
+            <div className="flex mb-16">
 
 
                 {/* .......................Shop Sidebar.................. */}
@@ -307,7 +307,7 @@ const Shop = () => {
 
                         {deptProduct.length > 10 ?
                             <TablePagination
-                                className="flex items-end justify-end"
+                                // className=""
                                 rowsPerPageOptions={[]}
                                 component="div"
                                 count={deptProduct.length}
@@ -368,7 +368,7 @@ const Shop = () => {
 
                         {brandProduct.length > 10 ?
                             <TablePagination
-                                className="flex items-end justify-end"
+                                className=""
                                 rowsPerPageOptions={[]}
                                 component="div"
                                 count={brandProduct.length}
@@ -385,7 +385,7 @@ const Shop = () => {
 
             </div>
 
-
+<Footer/>
         </>
     );
 };
