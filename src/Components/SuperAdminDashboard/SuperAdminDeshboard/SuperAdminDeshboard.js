@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SuperAdminPanel = () => {
+const SuperAdminDeshboard = () => {
     return (
         <div>
             Super Admin
@@ -8,4 +8,4 @@ const SuperAdminPanel = () => {
     );
 };
 
-export default SuperAdminPanel;
+export default SuperAdminDeshboard;

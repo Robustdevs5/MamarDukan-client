@@ -34,17 +34,15 @@ const UserSignUpFrom = () => {
 
     return (
         <form onSubmit={handleSubmit(handleSignup)} autoComplete="off" className="">
-			<h1>Create Account</h1>
-			<div class="social-AuthContainer">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-			</div>
-			<span>or use your email for registration</span>
-			<input type="text" placeholder="Name" />
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-			<button>Sign Up</button>
+          <h1>Vendor Registration form</h1>
+          <span>use your email for registration</span>
+            <input type="text" placeholder="Name" />
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <input type="password" placeholder="Confirm Password" />
+            <input type="text" placeholder="Shop name" />
+            <input type="text" placeholder="Shop url" />
+          <button>Sign Up</button>
         </form>
     );
 };
