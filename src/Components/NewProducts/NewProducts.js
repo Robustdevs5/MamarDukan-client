@@ -52,6 +52,7 @@ const NewProducts = () => {
     }
 
 
+
     var settings = {
         dots: false,
         infinite: true,
