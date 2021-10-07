@@ -29,7 +29,7 @@ const Navbar = () => {
     })
 
     return (
-        <div className='mx-auto px-5 bg-blue-700'>
+        <div className='mx-auto px-5 primary_BG_color'>
             <Menu 
                 isOpen={isOpen} 
                 closeMobileMenu={closeMobileMenu} 

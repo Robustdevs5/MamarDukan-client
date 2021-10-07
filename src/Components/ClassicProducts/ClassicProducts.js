@@ -55,7 +55,7 @@ const ClassicProducts = () => {
                                 </div>
                                 <div className="flex space-x-3 mb-4 text-sm font-medium">
                                 <div className="flex-auto flex space-x-3">
-                                    <button className="w-1/2 flex items-center justify-center rounded-md bg-blue-800 text-white" type="submit">{item.BuyNow}</button>
+                                    <button className="w-1/2 flex items-center justify-center rounded-md primary_BTN text-white" type="submit">{item.BuyNow}</button>
                                     <button className="w-1/2 flex items-center justify-center rounded-md border border-gray-300" type="button">{item.AddToBag}</button>
                                 </div>
                                 <button className="flex-none flex items-center justify-center w-9 h-9 rounded-md text-gray-400 border border-gray-300" type="button" aria-label="like">

@@ -41,7 +41,7 @@ const TopBar = () => {
 
 
   return (
-    <div class="bg-blue-800 flex  h-20  w-full  pl-0 sticky top-0 z-50 ">
+    <div class="flex  h-20  w-full  pl-0 sticky top-0 z-50 primary_BG_color">
       <div class="flex  justify-between items-center sm:w-4/6 w-4/6  ">
         <div class="mx-0 sm:mx-4 hidden sm:block ">
           <p class="text-lg sm:text-2xl text-white font-bold ">Mamar Dukan</p>

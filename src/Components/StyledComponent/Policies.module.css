@@ -8,7 +8,8 @@
   @apply text-xl font-medium;
 }
 .policies_icon {
-  @apply text-yellow-500 mb-4;
+  color: #dd2400;
+  @apply mb-4;
 }
 .policies_details {
   @apply text-gray-700;

@@ -207,71 +207,79 @@ export const Menu = [
     title: "Home",
     path: "/",
     class:
-      "py-2 px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+      "py-2 px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
     toggleClass:
-      "py-3  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+      "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
   },
   {
     title: "Page",
     path: "/page",
     class:
-      "py-2  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+      "py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
     toggleClass:
-      "py-3  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+      "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
   },
   {
     title: "Shop",
     path: "/shop",
     class:
-      "py-2  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+      "py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
     toggleClass:
-      "py-3  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+      "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
   },
   {
     title: "men",
     path: "/men",
     class:
-      "py-2  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+      "py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
     toggleClass:
-      "py-3  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+      "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
   },
   {
     title: "women",
     path: "/women",
     class:
-      "py-2  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+      "py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
     toggleClass:
-      "py-3  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+      "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
   },
   {
     title: "Blog",
     path: "/blog",
     class:
-      "py-2  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+      "py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
     toggleClass:
-      "py-3  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+      "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
   },
   {
     title: "FAQs",
     path: "/faqs",
     class:
-      "py-2  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+      "py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
     toggleClass:
-      "py-3  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+      "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
   },
   {
     title: "Dashboard",
     path: "/dashboard",
     class:
-      "py-2  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+      "py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
     toggleClass:
-      "py-3  px-3 font-medium hover:bg-blue-900 duration-500 hover:text-white rounded-lg",
+      "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
+  },
+  {
+    title: "SA Dashboard",
+    path: "/super-admin/dashboard/overview",
+    class:
+      "py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
+    toggleClass:
+      "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
   },
   {
     title: "Track your order",
     path: "/trackOrder",
     class:
-      "py-2 px-4 font-medium hover:bg-blue-500 bg-blue-800 duration-300 text-white rounded-lg",
+      "py-2 px-4 font-medium hover:bg-red-600 bg-gray-900 duration-300 text-white rounded-lg",
     toggleClass:
       "py-3 px-3 font-medium bg-blue-900 text-white duration-300 text-white rounded-lg",
   },

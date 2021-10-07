@@ -23,24 +23,24 @@ html, body, input{
 
  /* width */
  ::-webkit-scrollbar {
-  width: 8px !important;
+  width: 6px !important;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: rgb(251, 251, 251) !important;
+  background: #022335;
 
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  /* background: #efefef  !important; */
-@apply bg-blue-500;
-  border-radius: 5px !important;
+  background: #fff  !important;
+
+  border-radius: 2px !important;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   /* background: rgb(176, 178, 180)  !important; */
-  @apply bg-blue-800;
+  @apply bg-red-900;
 }

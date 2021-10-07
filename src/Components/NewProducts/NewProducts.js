@@ -116,7 +116,7 @@ const NewProducts = () => {
                         {
                             NewProduct.map((item, index) =>
                                 <li key={index} className={item.cls}>
-                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 bg-blue-800 text-white hover:bg-gray-50 hover:text-blue-800 border-2 border-blue-800 duration-300">{item.title}</Link>
+                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 primary_BTN_Outline rounded duration-300">{item.title}</Link>
                                 </li>
                             )
                         }
