@@ -1,9 +1,9 @@
 import { ShoppingCart, SupportAgentOutlined } from "@mui/icons-material";
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon, SearchIcon, UserIcon } from "@heroicons/react/solid";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "../StyledComponent/TopBar.module.css";
 import CartDropdown from "./CartDropdown";
 // import { useHistory, useLocation } from "react-router";
@@ -21,22 +21,24 @@ const TopBar = () => {
   let { from } = location.state || { from: { pathname: "/login" } };
 
 
-  useEffect( () => {
-     const loggedInUser =sessionStorage.getItem("user");
-     if (loggedInUser) {
-       const foundUser = JSON.parse(loggedInUser);
-       SetLogin(foundUser.email);
-     }
-    
-   }, [login]);
-   
+  useEffect(() => {
+    const loggedInUser = sessionStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      SetLogin(foundUser.email);
+    }
 
-   const handleLogout = () => {
+  }, [login]);
+
+
+  const handleLogout = () => {
     // sessionStorage.clear();
     // window.localStorage.clear(); //clear all localstorage
     window.sessionStorage.removeItem("user"); //remove one item
-     history.replace(from);
+    history.replace(from);
   };
+
+
 
   return (
     <div class="flex  h-20  w-full  pl-0 sticky top-0 z-50 primary_BG_color">
@@ -149,7 +151,7 @@ const TopBar = () => {
                   <Menu.Item>
                     {({ active }) => (
                       <Link
-                        to="/payment"
+                        to="/customerService"
                         className={classNames(
                           active
                             ? "bg-gray-100 text-gray-900"
@@ -157,7 +159,7 @@ const TopBar = () => {
                           "block px-4 py-2 text-sm"
                         )}
                       >
-                        Payment
+                        Customer Service
                       </Link>
                     )}
                   </Menu.Item>
@@ -172,7 +174,7 @@ const TopBar = () => {
         <UserIcon className="h-8 ml-2  hidden sm:block text-white fill-current text-white-600"></UserIcon>
 
         <div>
-          { login ? <button className={styles.topBar_login_register} onClick={handleLogout}>Logout</button>
+          {login ? <button className={styles.topBar_login_register} onClick={handleLogout}>Logout</button>
             : <>
               <Link to="/login">
                 <p className={styles.topBar_login_register}>Login </p>{" "}

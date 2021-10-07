@@ -10,6 +10,7 @@ import ManageProduct from "./Components/AdminDashboard/ManageProduct/ManageProdu
 import UpdateProduct from './Components/AdminDashboard/UpdateProduct/UpdateProduct';
 import SIgnIn from "./Components/Authentication/SignIn/SIgnIn";
 import SignUP from "./Components/Authentication/SignUp/SignUP";
+import CustomerService from "./Components/CustomerService/CustomerService";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
 import Shop from './Components/Shop/Shop';
@@ -79,6 +80,7 @@ function App() {
           <Route path="/adminSidebar" component={AdminSidebar} />
           <Route path="/addAdmin" component={AddAdmin} />
           <Route path="/shop" component={Shop} />
+          <Route path="/customerService" component={CustomerService} />
           <Route path="/trackOrder" component={TrackOrder} />
           <Route path="/manageProduct" component={ManageProduct} />
           <Route path="/product/:id" component={ProductDeatils} />

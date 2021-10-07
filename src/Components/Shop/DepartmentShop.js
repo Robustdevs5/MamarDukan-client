@@ -1,25 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import star from "../../images/5star.png";
 import { TablePagination } from '@mui/material';
 
 
 
-const AllProduct = () => {
+const DepartmentShop = (props) => {
+    console.log(props);
 
-    const [product, setProduct] = useState([]);
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(12);
     const history = useHistory();
-
-
-    //Fetching Product.............................................
-    useEffect(() => {
-        fetch(`http://localhost:5000/products`)
-            .then(res => res.json())
-            .then(data => setProduct(data.products))
-    }, [])
-    console.log(product);
 
 
     // pagination........................................................
@@ -27,7 +18,6 @@ const AllProduct = () => {
         setRowsPerPage(event.target.value);
         setPage(0);
     };
-
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
@@ -37,9 +27,10 @@ const AllProduct = () => {
     }
 
 
+
     return (
         <div className="grid gap-12 grid-cols-4">
-            {product
+            {props
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map(product =>
                     <div className="p-2">
@@ -71,10 +62,10 @@ const AllProduct = () => {
             }
 
             <TablePagination
-                // className="flex items-end justify-end"
+                className="flex items-end justify-end ms-30"
                 rowsPerPageOptions={[]}
                 component="div"
-                count={product.length}
+                count={props.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 onPageChange={handleChangePage}
@@ -85,4 +76,4 @@ const AllProduct = () => {
     );
 };
 
-export default AllProduct;
+export default DepartmentShop;
