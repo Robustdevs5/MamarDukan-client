@@ -1,4 +1,4 @@
-/* .error {
+.error {
   color: red;
   font-size: 12px;
 }
@@ -76,7 +76,9 @@ button.login-btn span {
     padding: 20px 30px;
     margin: 50px auto;
   }
-} */
+}
+
+
 
 .login-container {
   margin:0;

@@ -14,9 +14,9 @@ const TechnologyProducts = () => {
     const [technologyProduct, setTechnologyProduct] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products`)
+        fetch(`http://localhost:5000/products/department?department=Computer`)
             .then(res => res.json())
-            .then(data => setTechnologyProduct(data.products))
+            .then(data => setTechnologyProduct(data.result))
     }, [])
     console.log(technologyProduct);
 

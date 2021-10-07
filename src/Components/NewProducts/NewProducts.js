@@ -38,6 +38,7 @@ const NewProducts = () => {
         );
     }
 
+
     function SamplePrevArrow(props) {
         const { className, style, onClick } = props;
         return (
@@ -50,6 +51,7 @@ const NewProducts = () => {
             </div>
         );
     }
+
 
 
     var settings = {
@@ -130,7 +132,7 @@ const NewProducts = () => {
 
                 {
                     newProduct.map(newProduct =>
-                        <div className="p-2 md:border cursor-pointer hover:shadow-2xl group hover:border-blue-900 shadow">
+                        <div className="p-2 border rounded hover:shadow-2xl group hover:border-blue-900 shadow px-6">
 
                             <div className="mb-4 w-40 h-40  pb-5">
                                 <img onClick={() => handleProductClick(newProduct._id)} className="rounded cursor-pointer h-full w-full"

@@ -356,17 +356,17 @@ const SIgnIn = () => {
                             </label>
 
                             <label className="flex items-center border-l-2 border-blue-400  rounded cursor-pointer">
-                                <input onChange={handleVendorChange} className="w-6 h-4 cursor-pointer" name="size" type="radio" value="vendor" />
+                                <input onChange={handleVendorChange} className="w-6 h-4 cursor-pointer" name="vendor" type="radio" value="vendor" />
                                 <small className="text-blue-50 text-center ">Vendor</small>
                             </label>
 
                             <label className="flex items-center border-l-2 border-blue-400 rounded cursor-pointer">
-                                <input onChange={handleAdminChange} className="w-6 h-4 cursor-pointer" name="size" type="radio" value="admin" />
+                                <input onChange={handleAdminChange} className="w-6 h-4 cursor-pointer" name="admin" type="radio" value="admin" />
                                 <small className="text-blue-50 text-center"> Admin</small>
                             </label>
 
                             <label className="flex items-center border-l-2 border-blue-400 rounded cursor-pointer">
-                                <input onChange={handleSuperAdminChange} className="w-6 h-4 cursor-pointer" name="size" type="radio" value="superAdmin" />
+                                <input onChange={handleSuperAdminChange} className="w-6 h-4 cursor-pointer" name="superAdmin" type="radio" value="superAdmin" />
                                 <small className="text-blue-50 text-center">Super Admin</small>
                             </label>
 
