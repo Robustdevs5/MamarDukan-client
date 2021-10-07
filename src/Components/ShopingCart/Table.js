@@ -10,15 +10,16 @@ const Table = () => {
 
   return (
     <div>
+      <h1 className="text-center m-10 text-bold text-3xl">Shoping Cart</h1>
     <div className="Table px-7 py-10">
       <div className="tablewraper">
         <div className="tableheader">
-          <div className="header bg-gray-400">
-            <h1 className="w-1/5 mx-auto p-4 text-center">One</h1>
-            <h1 className="w-1/5 mx-auto p-4 text-center">Two</h1>
-            <h1 className="w-1/5 mx-auto p-4 text-center">Three</h1>
-            <h1 className="w-1/5 mx-auto p-4 text-center">Four</h1>
-            <h1 className="w-1/5 mx-auto p-4 text-center">five</h1>
+          <div className="header bg-gray-300">
+            <h1 className="w-1/5 mx-auto p-4 text-center">Picture</h1>
+            <h1 className="w-1/5 mx-auto p-4 text-center">Name</h1>
+            <h1 className="w-1/5 mx-auto p-4 text-center">Price</h1>
+            <h1 className="w-1/5 mx-auto p-4 text-center">quantity</h1>
+            <h1 className="w-1/5 mx-auto p-4 text-center">Total</h1>
           </div>
           {
             ShopingCart.map((item, index) => <div className="bg-green-50 mt-2 " key={index} item={item}>
