@@ -5,7 +5,7 @@ import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
 
 const Newsletter = () => {
     return (
-        <div className="bg-blue-700 mx-auto pl-5">
+        <div className="primary_BG_color mx-auto pl-5">
             <dl className=" space-y-10 my-8 p-5 md:space-y-0  md:gap-x-8 md:gap-y-10">
                 <div className="md:grid md:grid-cols-2 py-8 relative items-center">
                     <div>
@@ -24,7 +24,7 @@ const Newsletter = () => {
                                 type='email' placeholder='Email' 
                                 className="px-5 w-80 mr-5 h-10 focus:outline-none rounded "
                             />
-                            <button className='items-center rounded py-2 md:mt-0 mt-2 px-5 bg-blue-900 text-gray-50  hover:bg-blue-800 capitalize font-bold'>
+                            <button className='items-center rounded py-2 md:mt-0 mt-2 px-5 primary_BTN capitalize font-bold'>
                                 <div className='flex items-center'>
                                     <FontAwesomeIcon className="mr-3" icon={faLocationArrow} />
                                     <p>Notify me</p>

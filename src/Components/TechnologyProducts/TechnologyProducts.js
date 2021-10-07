@@ -112,7 +112,7 @@ const TechnologyProducts = () => {
                         {
                             ComputerTechnology.map((item, index) =>
                                 <li key={index} className={item.cls}>
-                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 bg-blue-800 text-white hover:bg-gray-50 hover:text-blue-800 border-2 border-blue-800 duration-300">{item.title}
+                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 primary_BTN duration-300">{item.title}
                                     </Link>
                                 </li>
                             )
@@ -126,7 +126,7 @@ const TechnologyProducts = () => {
 
                 {
                     technologyProduct.map(technologyProduct =>
-                        <div className="p-2">
+                        <div className="p-2 hover:border-red-600 md:border rounded">
 
                             <div className="mb-4 w-40 h-40">
                                 <img onClick={() => handleProductClick(technologyProduct._id)} className="rounded cursor-pointer h-full w-full" src={technologyProduct.img} alt="8192" />

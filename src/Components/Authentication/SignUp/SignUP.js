@@ -5,6 +5,7 @@ import Footer from '../../Footer/Footer';
 import UserSignUpFrom from './UserSignUpFrom';
 import  '../../StyledComponent/Signup.css';
 import VendorSingupFrom from './VendorSingupFrom';
+import Newsletter from '../../Newsletter/Newsletter';
 
 const SignUP = () => {
     const [isAuthContainerActive, setIsAuthContainerActive] = useState(false);
@@ -43,6 +44,7 @@ const SignUP = () => {
                     </div>
                 </div>
             </div>
+            <Newsletter/>
             <Footer/>
         </div>
     );

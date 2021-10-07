@@ -8,7 +8,7 @@ export default function ClothSubMenu() {
     <div className="pt-10">
 
         <article className="pb-5">
-            <p className="py-2 mr-20 font-medium  hover:bg-blue-700 bg-blue-900 duration-50 rounded-lg">
+            <p className="py-2 mr-20 font-medium  hover:bg-red-700 bg-red-600 duration-50 rounded-lg">
             Clothing
             </p>
         </article>

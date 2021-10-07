@@ -45,8 +45,8 @@ body {
 
 .AuthContainer button {
 	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
+	border: 1px solid #dd2400;
+	background-color: #dd2400;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -88,12 +88,15 @@ body {
 	margin: 10px 0;
 	width: 100%;
 	border-radius: 5px;
+	color: #022335;
+	font-weight: 600;
 }
 .AuthContainer input:focus {
-  outline: 1px solid springgreen;
-  transition: ease-in;
-  transition-duration: .5s;
-  /* border: 1px solid springgreen; */
+  outline: none;
+  /* transition: ease-in; */
+  /* transition-duration: .5s; */
+  border: 1px solid #022335;
+  /* color: #022335; */
 }
 
 .AuthContainer {
@@ -168,8 +171,8 @@ body {
 
 .AuthContainer .overlay {
 	background: #FF416C;
-	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	background: -webkit-linear-gradient(to right, #dd2400, #dd2500a1);
+	background: linear-gradient(to right, #dd2400, #dd2600);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;

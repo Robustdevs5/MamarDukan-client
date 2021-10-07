@@ -19,7 +19,7 @@ export default function NewArrivalsSubMenu() {
 
                                     <div className='flex py-3 items-center'>
                                         <p className="p-2  block text-lg font-medium text-left text-blue-900">{item.title}</p>
-                                        <Link to={item.path} className=" ox-5 p-2 bg-yellow-400 block text-gray-900 font-medium text-bold rounded">Shop now </Link>
+                                        <Link to={item.path} className=" text-white ox-5 p-2 hover:bg-red-700 bg-red-800 bloc font-medium text-bold rounded">Shop now </Link>
                                     </div>
                                 </Fragment>
                             );

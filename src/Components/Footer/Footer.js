@@ -37,26 +37,22 @@ const Footer = () => {
 
     return (
         <div className="">
-            <div className="">
-                <div className="">
-                    <div className="footer">
-                        <FooterCol key={1} menuTitle={"SHOTCUT"} menuItems={Shotcut}/>
-                        <FooterCol key={2} menuTitle={"OUR LINK"} menuItems={OurLink}/>
-                        <FooterCol key={3} menuTitle={"SERVICE"} menuItems={services}/>
-                        <FooterCol key={4} menuTitle={"ABOUT US"} menuItems={ourAddress}>
-                        <div className="PaymentGateway">
-                                    <h4 className="title">Payment Method</h4>
-                                        <div className="iconwraper">
-                                            <FontAwesomeIcon className="iconbutton" icon={faCcVisa} />
-                                            <FontAwesomeIcon className="iconbutton" icon={faCcMastercard} />
-                                            <FontAwesomeIcon className="iconbutton" icon={faCcPaypal} />
-                                        </div>
+            <div className="footer">
+                <FooterCol key={1} menuTitle={"SHOTCUT"} menuItems={Shotcut}/>
+                <FooterCol key={2} menuTitle={"OUR LINK"} menuItems={OurLink}/>
+                <FooterCol key={3} menuTitle={"SERVICE"} menuItems={services}/>
+                <FooterCol key={4} menuTitle={"ABOUT US"} menuItems={ourAddress}>
+                <div className="PaymentGateway">
+                            <h4 className="title">Payment Method</h4>
+                                <div className="iconwraper">
+                                    <FontAwesomeIcon className="iconbutton" icon={faCcVisa} />
+                                    <FontAwesomeIcon className="iconbutton" icon={faCcMastercard} />
+                                    <FontAwesomeIcon className="iconbutton" icon={faCcPaypal} />
                                 </div>
-                        </FooterCol>
-                    </div>
-                </div>
+                        </div>
+                </FooterCol>
             </div>
-            <p className="copyright">Copyright @2021 Robust Devs All rights reserved.</p>
+            <p className="copyright">Copyright @2021 Robust Devs All rights reserved.</p>       
         </div>
     );
 };

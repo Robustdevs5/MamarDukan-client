@@ -6,7 +6,7 @@ export default function BrandsSubMenu() {
     return (
         <div>
         <article>
-            <p className="py-2 mr-20 font-medium hover:bg-blue-700 bg-blue-900 duration-500  rounded-lg">
+            <p className="py-2 mr-20 font-medium hover:bg-red-700 bg-red-600 duration-500  rounded-lg">
                 Brands
             </p>
         </article>

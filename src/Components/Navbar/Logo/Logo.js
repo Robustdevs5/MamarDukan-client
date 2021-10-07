@@ -16,9 +16,7 @@ const Logo = ({closeMobileMenu}) => {
             <strong 
                 className='uppercase text-gray-200 font-bold text-lg md:font-extrabold md:text-2xl'>
                 Mamar
-                <span 
-                    className='text-yellow-400'> Dukan
-                 </span>
+                <span  className='text-red-600'> Dukan  </span>
             </strong>
             
         </Link>

@@ -26,8 +26,8 @@ const HomePage = () => {
       <ClassicProducts/>
       <TechnologyProducts />
       <AllInOne/>
-      <Newsletter/>
       <MostViewedProducts />
+      <Newsletter/>
       <Footer />
     </div>
   );
