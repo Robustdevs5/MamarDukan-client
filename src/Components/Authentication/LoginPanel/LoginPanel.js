@@ -23,7 +23,7 @@ const LoginPanel = () => {
 
 
     // useEffect(() => {
-    //     fetch('http://localhost:5000/user/login-user', {
+    //     fetch('https://mamardukan.herokuapp.com/user/login-user', {
     //         method: 'POST',
     //         headers: { 'content-type': 'application/json' },
     //         body: JSON.stringify(user)

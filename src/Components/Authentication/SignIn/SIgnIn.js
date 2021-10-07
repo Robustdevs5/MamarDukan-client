@@ -131,7 +131,7 @@ const SIgnIn = () => {
 
             try {
 
-                const userSignUp = `http://localhost:5000/user/login-user`;
+                const userSignUp = `https://mamardukan.herokuapp.com/user/login-user`;
                 fetch(userSignUp, {
                     method: 'POST',
                     headers: {
@@ -169,7 +169,7 @@ const SIgnIn = () => {
 
             try {
 
-                const userSignUp = `http://localhost:5000/user/login-vendor`;
+                const userSignUp = `https://mamardukan.herokuapp.com/user/login-vendor`;
                 fetch(userSignUp, {
                     method: 'POST',
                     headers: {
@@ -205,7 +205,7 @@ const SIgnIn = () => {
 
             try {
 
-                const userSignUp = `http://localhost:5000/user/login-admin`;
+                const userSignUp = `https://mamardukan.herokuapp.com/user/login-admin`;
                 fetch(userSignUp, {
                     method: 'POST',
                     headers: {
@@ -243,7 +243,7 @@ const SIgnIn = () => {
 
             try {
 
-                const userSignUp = `http://localhost:5000/user/login-super-admin`;
+                const userSignUp = `https://mamardukan.herokuapp.com/user/login-super-admin`;
                 fetch(userSignUp, {
                     method: 'POST',
                     headers: {

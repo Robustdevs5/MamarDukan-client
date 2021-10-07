@@ -29,7 +29,7 @@ const AddProduct = () => {
         console.log(productInfo);
 
 
-        const url = `http://localhost:5000/products`;
+        const url = `https://mamardukan.herokuapp.com/products`;
         fetch(url, {
             method: 'POST',
             headers: {

@@ -66,7 +66,7 @@ const TopBar = () => {
           onMouseLeave={() => setDropdown(false)}
         >
           <div className={styles.topBar_tags}>
-            <Link to="/checkout">
+            <Link to="/cart">
               <ShoppingCart fontSize="large"></ShoppingCart>
             </Link>{" "}
           </div>

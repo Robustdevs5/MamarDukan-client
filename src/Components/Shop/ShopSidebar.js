@@ -7,7 +7,7 @@ const ShopSidebar = () => {
 
     //Fetching Product.............................................
     useEffect(() => {
-        fetch(`http://localhost:5000/products`)
+        fetch(`https://mamardukan.herokuapp.com/products`)
             .then(res => res.json())
             .then(data => setProduct(data.products))
     }, [])

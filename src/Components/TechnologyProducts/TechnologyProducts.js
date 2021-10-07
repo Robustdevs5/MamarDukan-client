@@ -14,7 +14,7 @@ const TechnologyProducts = () => {
     const [technologyProduct, setTechnologyProduct] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/department?department=Computer`)
+        fetch(`https://mamardukan.herokuapp.com/products/department?department=Computer`)
             .then(res => res.json())
             .then(data => setTechnologyProduct(data.result))
     }, [])
