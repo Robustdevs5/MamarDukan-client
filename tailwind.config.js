@@ -823,7 +823,6 @@ module.exports = {
     'disabled',
   ],
   variants: {
-<<<<<<< HEAD
     accessibility: ['responsive', 'focus-within', 'focus'],
     alignContent: ['responsive'],
     alignItems: ['responsive'],
@@ -967,11 +966,6 @@ module.exports = {
     width: ['responsive'],
     wordBreak: ['responsive'],
     zIndex: ['responsive', 'focus-within', 'focus'],
-=======
-    extend: {
-
-    },
->>>>>>> e7fda163ccda2d9feeea1fafc2bd42f2ea6602f5
   },
   plugins: [],
 }
