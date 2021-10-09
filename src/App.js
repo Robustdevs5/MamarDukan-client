@@ -1,10 +1,9 @@
 import axios from "axios";
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddAdmin from "./Components/AdminDashboard/AddAdmin/AddAdmin";
 // import AddProduct from "./Components/Admin/addProduct/AddProduct";
 import AddProduct from "./Components/AdminDashboard/AddProduct/AddProduct";
-import AdminPanel from "./Components/AdminDashboard/AdminPanel/AdminPanel";
 import AdminSidebar from './Components/AdminDashboard/AdminSidebar/AdminSidebar';
 import ManageProduct from "./Components/AdminDashboard/ManageProduct/ManageProduct";
 import UpdateProduct from './Components/AdminDashboard/UpdateProduct/UpdateProduct';
@@ -16,12 +15,17 @@ import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
 import Shop from './Components/Shop/Shop';
 import FAQS from './Components/ShopingCart/FAQS';
 import ShopingCart from './Components/ShopingCart/ShopingCart';
+import './Components/StyledComponent/Global.css';
+import AllProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/AllProducts-SuperAdminDashboard/AllProductsSuperAdminDashboard";
+import OrdersSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Orders-SuperAdminDashboard/OrdersSuperAdminDashboard";
+import ProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/ProductsSuperAdminDashboard";
+import ReviewSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Review-SuperAdminDashboard/ReviewSuperAdminDashboard";
 import SuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminDashboard/SuperAdminDashboard";
 import AdminSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Admin-SuperAdminDashboard/AdminSuperAdminDashboard";
 import CustomerSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Customers-SuperAdminDashboard/CustomerSuperAdminDashboard";
-import VendorSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Vendor-SuperAdminDashboard/VendorSuperAdminDashboard";
 import SuperAdmin from "./Components/SuperAdminDashboard/SuperAdminManageUser/SuperAdmin-SuperAdminDashboard/SuperAdmin";
 import SuperAdminManageUser from "./Components/SuperAdminDashboard/SuperAdminManageUser/SuperAdminManageUser";
+import VendorSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Vendor-SuperAdminDashboard/VendorSuperAdminDashboard";
 // import SuperAdminOverview from "./Components/SuperAdminDashboard/SuperAdminOverview/SuperAdminOverview";
 // import SuperAdminUserOverview from "./Components/SuperAdminDashboard/SuperAdminUserOverview/SuperAdminUserOverview";
 // import ManageSuperAdmin from "./Components/SuperAdminDashboard/ManageSuperAdmin/ManageSuperAdmin";
@@ -30,11 +34,15 @@ import TrackOrder from './Components/TrackOrder/TrackOrder';
 import Blogs from "./pages/Blog-page/Blogs";
 import Contact from './pages/Contact-page/Contact';
 import HomePage from "./pages/Home-page/HomePage";
-import OrdersSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Orders-SuperAdminDashboard/OrdersSuperAdminDashboard";
-import ProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/ProductsSuperAdminDashboard";
-import AllProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/AllProducts-SuperAdminDashboard/AllProductsSuperAdminDashboard";
-import ReviewSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Review-SuperAdminDashboard/ReviewSuperAdminDashboard";
-import './Components/StyledComponent/Global.css'
+<<<<<<< HEAD
+=======
+// import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+>>>>>>> 57c16cfdc3e0796becc48c62564b986c3d002a41
+<<<<<<< HEAD
+=======
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import LoginPanel from "./Components/Authentication/LoginPanel/LoginPanel";
+>>>>>>> 57c16cfdc3e0796becc48c62564b986c3d002a41
 export const userContext = createContext();
 
 const api = axios.create({
@@ -75,7 +83,11 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route path="/login" component={SIgnIn} />
           <Route path="/register" component={SignUP} />
-          <PrivateRoute path="/dashboard" component={AdminPanel} />
+          {/* <PrivateRoute path="/dashboard" component={AdminPanel} /> */}
+          {/* <PrivateRoute path="/dashboard" component={AdminPanel} /> */}
+          <PrivateRoute path="/dashboard">
+            <LoginPanel/>
+          </PrivateRoute>
           <Route path="/addProduct" component={AddProduct} />
           <Route path="/adminSidebar" component={AdminSidebar} />
           <Route path="/addAdmin" component={AddAdmin} />
