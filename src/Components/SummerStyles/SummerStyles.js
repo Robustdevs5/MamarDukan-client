@@ -8,7 +8,7 @@ const SummerStyles = () => {
             
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:static">
                 <div className="sm:max-w-lg">
-                    <h1 className="text-4xl font font-extrabold tracking-tight text-blue-900 sm:text-6xl">
+                    <h1 className="text-4xl font font-extrabold tracking-tight text-gray-800 sm:text-6xl">
                         Summer styles are finally here
                     </h1>
                     <p className="mt-4 text-xl text-gray-500">
@@ -90,7 +90,7 @@ const SummerStyles = () => {
 
                         <Link
                             to="/shop"
-                            className="inline-block text-center bg-blue-600 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-blue-700"
+                            className="inline-block text-center primary_BTN rounded-md py-3 px-8 font-medium text-white hover:bg-blue-700"
                         >
                             Shop Collection
                         </Link>

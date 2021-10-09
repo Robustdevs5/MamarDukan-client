@@ -5,6 +5,7 @@ import Footer from '../../Footer/Footer';
 import UserSignUpFrom from './UserSignUpFrom';
 import  '../../StyledComponent/Signup.css';
 import VendorSingupFrom from './VendorSingupFrom';
+import Newsletter from '../../Newsletter/Newsletter';
 
 const SignUP = () => {
     const [isAuthContainerActive, setIsAuthContainerActive] = useState(false);
@@ -19,7 +20,7 @@ const SignUP = () => {
             <Topbar/>
             <Navbar/> 
             {/* <div  className= {isAuthContainerActive ? "AuthContainer right-panel-active" : "AuthContainer"}>  */}
-            <div className='flex justify-center w-screen py-20'>
+            <div className='flex justify-center w-screen h-full py-20'>
                 <div className= {isAuthContainerActive ? "AuthContainer right-panel-active" : "AuthContainer"}>
                         <div class="form-AuthContainer sign-up-AuthContainer">
                             <UserSignUpFrom />
@@ -43,6 +44,7 @@ const SignUP = () => {
                     </div>
                 </div>
             </div>
+            <Newsletter/>
             <Footer/>
         </div>
     );

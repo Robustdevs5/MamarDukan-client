@@ -15,10 +15,9 @@ import { NewProduct } from '../HomepageProductData/HomepageProductData';
 const NewProducts = () => {
 
     const [newProduct, setNewProduct] = useState([]);
-    const [toggleMenu, setToggleMenu] = useState(false);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products`)
+        fetch(`https://mamardukan.herokuapp.com/products`)
             .then(res => res.json())
             .then(data => setNewProduct(data.products))
     }, [])
@@ -39,6 +38,7 @@ const NewProducts = () => {
         );
     }
 
+
     function SamplePrevArrow(props) {
         const { className, style, onClick } = props;
         return (
@@ -51,6 +51,7 @@ const NewProducts = () => {
             </div>
         );
     }
+
 
 
     var settings = {
@@ -115,7 +116,7 @@ const NewProducts = () => {
                         {
                             NewProduct.map((item, index) =>
                                 <li key={index} className={item.cls}>
-                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 bg-blue-800 text-white hover:bg-gray-50 hover:text-blue-800 border-2 border-blue-800 duration-300">{item.title}</Link>
+                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 primary_BTN_Outline rounded duration-300">{item.title}</Link>
                                 </li>
                             )
                         }
@@ -130,54 +131,43 @@ const NewProducts = () => {
             <Slider {...settings} className="px-8">
 
                 {
-                    newProduct.map((newProduct, index) =>
-                        <div key={index} className="p-2">
+                    newProduct.map(newProduct =>
+                        <div className="p-2 border rounded hover:shadow-2xl group hover:border-blue-900 shadow px-6">
 
-                            <div className="mb-4 w-40 h-40"
-                                onMouseEnter={() => setToggleMenu(true)}
-                                onMouseLeave={() => setToggleMenu(false)}
-                            >
+                            <div className="mb-4 w-40 h-40  pb-5">
                                 <img onClick={() => handleProductClick(newProduct._id)} className="rounded cursor-pointer h-full w-full"
                                     src={newProduct.img} alt="8192" />
+                                <div className="hover:scale-100 scale-75 flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
 
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faShoppingBag} />
+                                    </button>
 
-                                <div
-                                    className={toggleMenu ? "block" : "hidden"}
-                                >
-                                    {/* {toggleMenu && */}
-                                        <div className="flex bg-gray-50 justify-between px-2">
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faEye} />
+                                    </button>
 
-                                            <button
-                                                className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                            >
-                                                <FontAwesomeIcon icon={faShoppingBag} />
-                                            </button>
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faHeart} />
+                                    </button >
 
-                                            <button
-                                                className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                            >
-                                                <FontAwesomeIcon icon={faEye} />
-                                            </button>
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faChartBar} />
+                                    </button>
 
-                                            <button
-                                                className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                            >
-                                                <FontAwesomeIcon icon={faHeart} />
-                                            </button >
-
-                                            <button
-                                                className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                            >
-                                                <FontAwesomeIcon icon={faChartBar} />
-                                            </button>
-
-                                        </div>
-                                    {/* } */}
                                 </div>
                             </div>
 
 
-                            <div className="flex py-3">
+                            <div className="flex py-3 mt-2">
                                 <h5 className="text-base font-bold text-green-700">${newProduct.price}</h5>
                                 <del className="px-4 text-base text-gray-500">10000</del>
                             </div>

@@ -17,7 +17,7 @@ const FeaturedProduct = () => {
     const [featuredProduct, setFeaturedProduct] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products`)
+        fetch(`https://mamardukan.herokuapp.com/products`)
             .then(res => res.json())
             .then(data => setFeaturedProduct(data.products))
     }, [])
@@ -113,7 +113,7 @@ const FeaturedProduct = () => {
                         {
                             FeaturedProducts.map((item, index) =>
                                 <li key={index} className={item.cls}>
-                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 bg-blue-800 text-white hover:bg-gray-50 hover:text-blue-800 border-2 border-blue-800 duration-300">{item.title}</Link>
+                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 primary_BTN  rounded duration-300">{item.title}</Link>
                                 </li>
                             )
                         }

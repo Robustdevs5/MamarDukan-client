@@ -1,9 +1,10 @@
 import React from 'react';
+import VendorSidebar from '../Sidebar/VendorSidebar';
 
 const VendorPanel = () => {
     return (
         <div>
-            <h1>Vendor</h1>
+            <VendorSidebar />
         </div>
     );
 };

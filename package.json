@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.3.0",
+    "@emotion/core": "^11.0.0",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@fortawesome/fontawesome-free": "^5.15.4",
@@ -22,9 +23,11 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.4",
+    "chart.js": "^3.5.1",
     "firebase": "^9.1.0",
     "install": "^0.13.0",
     "react": "^17.0.2",
+    "react-chartjs-2": "^3.0.5",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.16.0",
     "react-icons": "^4.2.0",
@@ -34,6 +37,7 @@
     "react-toastify": "^8.0.3",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.1",
+    "twin.macro": "^2.7.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -47,6 +51,11 @@
       "react-app",
       "react-app/jest"
     ]
+  },
+  "babelMacros": {
+    "twin": {
+      "config": "tailwind.config.js"
+    }
   },
   "browserslist": {
     "production": [

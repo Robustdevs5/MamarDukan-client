@@ -1,22 +1,21 @@
-// font awesome
-import { faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
-import React, { useContext } from "react";
-import { useForm } from "react-hook-form";
+import React, { useContext, useEffect } from "react";
 import { useHistory, useLocation } from "react-router";
 import { Link } from 'react-router-dom';
 import { userContext } from "../../../App";
 import Footer from '../../Footer/Footer';
-import Header from '../../Header/Header';
 import Navbar from '../../Navbar/Navbar/Navbar';
 import TopBar from '../../TopBar/TopBar';
 import firebaseConfig from "../firebase.config";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './SignIn.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { AiFillGithub } from "react-icons/ai";
+import { FcGoogle } from 'react-icons/fc';
+
+
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
@@ -25,13 +24,12 @@ if (!firebase.apps.length) {
 }
 
 
-
 const SIgnIn = () => {
 
     const { user, setUser } = useContext(userContext);
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     const gitProvider = new firebase.auth.GithubAuthProvider();
-    const [customerStatus, setCustomerStatus] = useState(true);
+    const [customerStatus, setCustomerStatus] = useState(false);
     const [vendorStatus, setVendorStatus] = useState(false);
     const [superAdminStatus, setSuperAdminStatus] = useState(false);
     const [adminStatus, setAdminStatus] = useState(false);
@@ -39,8 +37,6 @@ const SIgnIn = () => {
     let history = useHistory();
     let location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
-
-
 
 
 
@@ -53,9 +49,9 @@ const SIgnIn = () => {
                 const googleUser = result.user;
                 const { displayName, email, photoURL } = googleUser;
                 handleUser(displayName, email, photoURL, true);
-                sessionStorage.setItem("email", email);
-                sessionStorage.setItem("name", displayName);
-                sessionStorage.setItem("photo", photoURL);
+                sessionStorage.setItem("user", googleUser);
+                // sessionStorage.setItem("name", displayName);
+                // sessionStorage.setItem("photo", photoURL);
                 handleAuthToken();
             })
             .catch((error) => {
@@ -69,9 +65,9 @@ const SIgnIn = () => {
             const gitUser = result.user;
             const { displayName, email, photoURL } = gitUser;
             handleUser(displayName, email, photoURL, true);
-            sessionStorage.setItem("user", email);
-            sessionStorage.setItem("name", displayName);
-            sessionStorage.setItem("photo", photoURL);
+            sessionStorage.setItem("user", gitUser);
+            // sessionStorage.setItem("name", displayName);
+            // sessionStorage.setItem("photo", photoURL);
             handleAuthToken();
         }).catch((error) => {
             handleErrorMessage(error);
@@ -119,62 +115,201 @@ const SIgnIn = () => {
         setUser(newUser);
     };
 
-    // React hook form
-    const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const onSubmit = (data) => {
+    //////////////Submitting..//////////////
+    async function handleSubmit(e) {
+        e.preventDefault();
 
         const userInfo = {
-            email: data.email,
-            password: data.password
+            email: e.target.email.value,
+            password: e.target.password.value
         };
+        console.log(userInfo);
 
-        if (vendorStatus) {
-            const userSignUp = `http://localhost:5000/user/login`;
-            fetch(userSignUp, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(userInfo)
-            })
-                .then(async res => await res.json())
-                .then(async user => {
-                    console.log('user10', user)
-                    // user ? alert(user.message) : alert("failed")
-                    if (user) {
-                        toast.success(user.message, {
-                            position: "bottom-right",
-                        });
-                    }
-                    sessionStorage.setItem('user', JSON.stringify(user));
-                    history.push('/')
+        //////////////Customer/////////////
+        if (customerStatus) {
+
+            try {
+
+                const userSignUp = `https://mamardukan.herokuapp.com/user/login-user`;
+                fetch(userSignUp, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userInfo)
                 })
-                .catch(error => {
-                    // alert(error.message);
-                    // console.log(error);
-                    toast.error(error.message, {
-                        position: "bottom-right",
-                    });
-                });
+                    .then(async res => await res.json())
+                    .then(async user => {
+                        console.log(user)
+                        // user ? alert(user.message) : alert("failed")
+                        if (user.success) {
+                            toast.success(user.message, {
+                                position: "bottom-right",
+                            });
+                            e.target.reset();
+                            sessionStorage.setItem('user', JSON.stringify(user));
+                            history.push('/');
+                        }
+                        else {
+                            toast.error(user.message, {
+                                position: "bottom-right",
+                            });
+                        }
+
+                    })
+            }
+            catch (e) {
+                alert(e)
+            }
+
         }
-        else if (customerStatus) {
+        ///////////Vendor///////////
+        else if (vendorStatus) {
 
+            try {
 
+                const userSignUp = `https://mamardukan.herokuapp.com/user/login-vendor`;
+                fetch(userSignUp, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userInfo)
+                })
+                    .then(async res => await res.json())
+                    .then(async user => {
+                        console.log(user)
+                        if (user.success) {
+                            toast.success(user.message, {
+                                position: "bottom-right",
+                            });
+                            e.target.reset();
+                            sessionStorage.setItem('user', JSON.stringify(user));
+                            history.push('/');
+                        }
+                        else {
+                            toast.error(user.message, {
+                                position: "bottom-right",
+                            });
+                        }
+                    })
+            }
+            catch (e) {
+                alert(e)
+            }
+
+        }
+        //////////////Admin////////////////////////
+        else if (adminStatus) {
+
+            try {
+
+                const userSignUp = `https://mamardukan.herokuapp.com/user/login-admin`;
+                fetch(userSignUp, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userInfo)
+                })
+                    .then(async res => await res.json())
+                    .then(async user => {
+                        console.log('usesmall0', user.message)
+
+                        if (user.success) {
+                            toast.success(user.message, {
+                                position: "bottom-right",
+                            });
+                            e.target.reset();
+                            sessionStorage.setItem('user', JSON.stringify(user));
+                            history.push('/');
+                        }
+                        else {
+                            toast.error(user.message, {
+                                position: "bottom-right",
+                            });
+                        }
+                    })
+            }
+            catch (e) {
+                alert(e)
+            }
+
+        }
+
+        /////////SuperAdmin////////////
+        else if (superAdminStatus) {
+
+            try {
+
+                const userSignUp = `https://mamardukan.herokuapp.com/user/login-super-admin`;
+                fetch(userSignUp, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userInfo)
+                })
+                    .then(async res => await res.json())
+                    .then(async user => {
+                        console.log('usesmall0', user.message)
+                        if (user.success) {
+                            toast.success(user.message, {
+                                position: "bottom-right",
+                            });
+                            e.target.reset();
+                            sessionStorage.setItem('user', JSON.stringify(user));
+                            history.push('/');
+                        }
+                        else {
+                            toast.error(user.message, {
+                                position: "bottom-right",
+                            });
+                        }
+                    })
+            }
+            catch (e) {
+                alert(e)
+            }
+
+        }
+        else {
+            toast.error("Make sure you have select a role", {
+                position: "bottom-right",
+            });
         }
 
     };
 
 
 
-    const handleCustomerChange = () => {
+    const handleUserChange = () => {
         setVendorStatus(false);
         setCustomerStatus(true);
+        setSuperAdminStatus(false);
+        setAdminStatus(false);
     }
 
     const handleVendorChange = () => {
-        setCustomerStatus(true);
+        setCustomerStatus(false);
         setVendorStatus(true);
+        setSuperAdminStatus(false);
+        setAdminStatus(false);
+    }
+
+    const handleAdminChange = () => {
+        setCustomerStatus(false);
+        setVendorStatus(false);
+        setSuperAdminStatus(false);
+        setAdminStatus(true);
+    }
+
+    const handleSuperAdminChange = () => {
+        setCustomerStatus(false);
+        setVendorStatus(false);
+        setSuperAdminStatus(true);
+        setAdminStatus(false);
     }
 
 
@@ -182,68 +317,101 @@ const SIgnIn = () => {
     return (
         <>
             <TopBar />
-            <Header />
             <Navbar />
-            <div className="form-card">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <h3 className="login-heading">Log In</h3>
-
-                    <input type="email" name="email" className="form-control"
-                        {...register('email', { required: true })} placeholder="Your email"
-                    />
-                    {errors.name && errors.name.type === "required" && <span>Name is required</span>}
-                    <input type="password" name="password" className="form-control" placeholder="Your password"
-                        {...register('password', { required: true })}
-                    />
-                    {errors.email && (<span className="error">
-                        {errors.email.type === "required" ? "Email is required" : "Your Email pattern is not correct"}
-                    </span>
-                    )}
-
-                    <div>
-                        <div className="flex items-center justify-start py-2">
-                            <input className="cursor-pointer" onChange={handleCustomerChange}
-                                type="radio"
-                                id="customer"
-                                name="customer"
-                                value="customer"
-                                defaultChecked
+            <div className="login-container">
+                <div className="login-box">
+                    <h2>Login</h2>
+                    <form onSubmit={handleSubmit}>
+                        {/* <h3 className="login-heading">Log In</h3>
+                        
+                        <input type="email" name="email" className="form-control"
+                                {...register('email', { requiblue: true })} placeholder="Your email"
                             />
+                        {errors.name && errors.name.type === "requiblue" && <span>Name is requiblue</span>}
+                        <input type="password" name="password" className="form-control" placeholder="Your password"
+                            {...register('password', { requiblue: true})}           
+                        />
+                        {errors.email && (<span className="error">
+                                {errors.email.type === "requiblue" ? "Email is requiblue" : "Your Email pattern is not correct"}
+                            </span>
+                        )}
 
-                            <label className="cursor-pointer px-2" for="customer">I am a Customer</label>
+                        <p className="error">{user.error}</p> */}
+
+
+                        <div class="user-box">
+                            <input type="text" name="email" requiblue="" />
+                            <label>Username</label>
                         </div>
-                        <div className="flex items-center justify-start py-2">
-                            <input className="cursor-pointer"
-                                onChange={handleVendorChange}
-                                type="radio"
-                                id="vendor"
-                                name="vendor"
-                                value="vendor"
-                            />
-                            <label className="cursor-pointer px-2" for="vendor">I am a Vendor</label>
+                        <div class="user-box">
+                            <input type="password" name="password" requiblue="" />
+                            <label>Password</label>
                         </div>
+                        <div className="padding-l-5 flex  justify-between">
+                            <h1 className="text-blue-50 text-center">I'm a</h1>
+
+                            <label className=" flex items-center cursor-pointer">
+                                <input onChange={handleUserChange} className="w-6 h-4  cursor-pointer" name="size" type="radio" value="user" />
+                                <small className="text-blue-50 text-center ">user</small>
+                            </label>
+
+                            <label className="flex items-center border-l-2 border-blue-400  rounded cursor-pointer">
+                                <input onChange={handleVendorChange} className="w-6 h-4 cursor-pointer" name="vendor" type="radio" value="vendor" />
+                                <small className="text-blue-50 text-center ">Vendor</small>
+                            </label>
+
+                            <label className="flex items-center border-l-2 border-blue-400 rounded cursor-pointer">
+                                <input onChange={handleAdminChange} className="w-6 h-4 cursor-pointer" name="admin" type="radio" value="admin" />
+                                <small className="text-blue-50 text-center"> Admin</small>
+                            </label>
+
+                            <label className="flex items-center border-l-2 border-blue-400 rounded cursor-pointer">
+                                <input onChange={handleSuperAdminChange} className="w-6 h-4 cursor-pointer" name="superAdmin" type="radio" value="superAdmin" />
+                                <small className="text-blue-50 text-center">Super Admin</small>
+                            </label>
+
+                        </div>
+
+                        {/* <a href="#" className="submitBtn">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            Submit
+                        </a> */}
+                         <label className="submitBtnAnimation">
+                                <span className="btnAnimation"></span>
+                                <span className="btnAnimation"></span>
+                                <span className="btnAnimation"></span>
+                                <span className="btnAnimation"></span>
+                                <button type="submit" value="Submit">Submit</button>
+                        </label>
+
+                    </form>
+                    <div className="social-login">
+                        <div className="flex justify-between py-5">
+                            <h4 className="text-white">Don't have an account?</h4>
+                            <Link to="/register" style={{ color: "#03e9f4" }}>
+                                Create an account
+                            </Link>
+                        </div>
+                        <button onClick={handleGoogleLogin} className="login-btn">
+                            <div className="flex justify-between">
+                                <h1>Google </h1>
+                                <span>
+                                    <FcGoogle/>
+                                </span> 
+                            </div>
+                        </button>
+                        <button onClick={handleGitSignIn} className="login-btn">
+                            <div className="flex justify-between">
+                                <h1>Github </h1>
+                                <span>
+                                    <AiFillGithub/>
+                                </span>
+                            </div>
+                        </button>
                     </div>
-
-                    <input type="submit" value="Log In" className="submit-button btn" />
-                    <p>Don' have an account?
-                        <Link
-                            to="/register"
-                            style={{ textDecoration: "underline", paddingLeft: '10px' }}
-                        >
-                            Create An Account
-                        </Link>
-                    </p>
-
-                </form>
-                <div className="social-login">
-                    <h4>Or Continue With</h4>
-                    <br />
-                    <button onClick={handleGoogleLogin} className="login-btn">
-                        <span><FontAwesomeIcon icon={faGoogle} /></span> Google
-                    </button>
-                    <button onClick={handleGitSignIn} className="login-btn">
-                        <span><FontAwesomeIcon icon={faGithub} /></span>Github
-                    </button>
                 </div>
             </div>
             <ToastContainer />

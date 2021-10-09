@@ -29,7 +29,7 @@ const AddProduct = () => {
         console.log(productInfo);
 
 
-        const url = `http://localhost:5000/products`;
+        const url = `https://mamardukan.herokuapp.com/products`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -149,6 +149,8 @@ const AddProduct = () => {
                                         <option value="Grocery">Grocery</option>
                                         <option value="Cooking">Cooking</option>
                                         <option value="Phone">Phone</option>
+                                        <option value="Bag">Bag</option>
+                                        <option value="Watch">Watch</option>
                                         <option value="Cosmetics">Cosmetics</option>
                                         <option value="Computer">Computer</option>
                                     </select>
