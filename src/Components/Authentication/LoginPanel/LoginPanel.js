@@ -13,40 +13,49 @@ const LoginPanel = () => {
     const [checkAdmin, setCheckAdmin] = useState(false);
 
 
-    const { user, setUser } = useContext(userContext);
-    console.log(user);
+    // const { user, setUser } = useContext(userContext);
+    // console.log(user);
 
 
     useEffect(() => {
-        fetch('https://mamardukan.herokuapp.com/user/login-user', {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ email: user.email, password: user.password })
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (user.success) {
-                    setCheckCustomer(data)
-                }
-            })
-    }, [user])
-    console.log(checkCustomer);
+        const loggedInUser = sessionStorage.getItem("user");
+        if (loggedInUser) {
+            const foundUser = JSON.parse(loggedInUser);
+            if (foundUser.role === "user") {
+                setCheckCustomer(true)
+            }else if (foundUser.role === "admin") {
+                setCheckAdmin(true)
+            }
+        }
+    }, []);
 
 
-    useEffect(() => {
-        fetch('https://mamardukan.herokuapp.com/user/login-admin', {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ email: user.email, password: user.password })
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (user.success) {
-                    setCheckAdmin(data)
-                }
-            })
-    }, [user])
-    console.log(checkAdmin);
+
+    // useEffect(() => {
+    //     const loggedInUser = sessionStorage.getItem("user");
+    //     if (loggedInUser) {
+    //         const foundUser = JSON.parse(loggedInUser);
+    //         if (foundUser.role === "admin") {
+    //             setCheckAdmin(true)
+    //         }
+    //     }
+    // }, []);
+
+
+    // useEffect(() => {
+    //     fetch('https://mamardukan.herokuapp.com/user/login-admin', {
+    //         method: 'POST',
+    //         headers: { 'content-type': 'application/json' },
+    //         body: JSON.stringify({ email: user.email, password: user.password })
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (user.success) {
+    //                 setCheckAdmin(data)
+    //             }
+    //         })
+    // }, [user])
+    // console.log(checkAdmin);
 
 
 
@@ -54,6 +63,8 @@ const LoginPanel = () => {
     return (
         <>
             <h1>asdsdad</h1>
+            <br />
+
             {checkAdmin && <div>
                 <AdminPanel />
             </div>
