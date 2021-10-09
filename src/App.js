@@ -11,7 +11,7 @@ import UpdateProduct from './Components/AdminDashboard/UpdateProduct/UpdateProdu
 import SIgnIn from "./Components/Authentication/SignIn/SIgnIn";
 import SignUP from "./Components/Authentication/SignUp/SignUP";
 import CustomerService from "./Components/CustomerService/CustomerService";
-import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+// import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
 import Shop from './Components/Shop/Shop';
 import FAQS from './Components/ShopingCart/FAQS';
@@ -35,6 +35,8 @@ import ProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Produc
 import AllProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/AllProducts-SuperAdminDashboard/AllProductsSuperAdminDashboard";
 import ReviewSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Review-SuperAdminDashboard/ReviewSuperAdminDashboard";
 import './Components/StyledComponent/Global.css'
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import LoginPanel from "./Components/Authentication/LoginPanel/LoginPanel";
 export const userContext = createContext();
 
 const api = axios.create({
@@ -75,8 +77,12 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route path="/login" component={SIgnIn} />
           <Route path="/register" component={SignUP} />
-          <Route path="/dashboard" component={AdminPanel} />
-          <PrivateRoute path="/addProduct" component={AddProduct} />
+          {/* <PrivateRoute path="/dashboard" component={AdminPanel} /> */}
+          {/* <PrivateRoute path="/dashboard" component={AdminPanel} /> */}
+          <PrivateRoute path="/dashboard">
+            <LoginPanel/>
+          </PrivateRoute>
+          <Route path="/addProduct" component={AddProduct} />
           <Route path="/adminSidebar" component={AdminSidebar} />
           <Route path="/addAdmin" component={AddAdmin} />
           <Route path="/shop" component={Shop} />
