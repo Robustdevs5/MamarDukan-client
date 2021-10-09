@@ -33,6 +33,7 @@ const SIgnIn = () => {
     const [vendorStatus, setVendorStatus] = useState(false);
     const [superAdminStatus, setSuperAdminStatus] = useState(false);
     const [adminStatus, setAdminStatus] = useState(false);
+    const [token, setToken] = useState([]);
 
     let history = useHistory();
     let location = useLocation();
@@ -46,10 +47,11 @@ const SIgnIn = () => {
             .auth()
             .signInWithPopup(googleProvider)
             .then((result) => {
+                handleAuthToken();
                 const googleUser = result.user;
                 const { displayName, email, photoURL } = googleUser;
                 handleUser(displayName, email, photoURL, true);
-                sessionStorage.setItem("user", googleUser);
+                sessionStorage.setItem("user", JSON.stringify(googleUser));
                 // sessionStorage.setItem("name", displayName);
                 // sessionStorage.setItem("photo", photoURL);
                 handleAuthToken();
@@ -65,7 +67,7 @@ const SIgnIn = () => {
             const gitUser = result.user;
             const { displayName, email, photoURL } = gitUser;
             handleUser(displayName, email, photoURL, true);
-            sessionStorage.setItem("user", gitUser);
+            sessionStorage.setItem("user", JSON.stringify(gitUser));
             // sessionStorage.setItem("name", displayName);
             // sessionStorage.setItem("photo", photoURL);
             handleAuthToken();
@@ -81,6 +83,7 @@ const SIgnIn = () => {
             .currentUser.getIdToken(true)
             .then(function (idToken) {
                 sessionStorage.setItem("token", idToken);
+                // setToken(idToken)
                 history.replace(from);
             })
             .catch(function (error) {
@@ -131,7 +134,7 @@ const SIgnIn = () => {
 
             try {
 
-                const userSignUp = `http://localhost:5000/user/login-user`;
+                const userSignUp = `https://mamardukan.herokuapp.com/user/login-user`;
                 fetch(userSignUp, {
                     method: 'POST',
                     headers: {
@@ -169,7 +172,7 @@ const SIgnIn = () => {
 
             try {
 
-                const userSignUp = `http://localhost:5000/user/login-vendor`;
+                const userSignUp = `https://mamardukan.herokuapp.com/user/login-vendor`;
                 fetch(userSignUp, {
                     method: 'POST',
                     headers: {
@@ -205,7 +208,7 @@ const SIgnIn = () => {
 
             try {
 
-                const userSignUp = `http://localhost:5000/user/login-admin`;
+                const userSignUp = `https://mamardukan.herokuapp.com/user/login-admin`;
                 fetch(userSignUp, {
                     method: 'POST',
                     headers: {
@@ -243,7 +246,7 @@ const SIgnIn = () => {
 
             try {
 
-                const userSignUp = `http://localhost:5000/user/login-super-admin`;
+                const userSignUp = `https://mamardukan.herokuapp.com/user/login-super-admin`;
                 fetch(userSignUp, {
                     method: 'POST',
                     headers: {
@@ -321,6 +324,7 @@ const SIgnIn = () => {
             <div className="login-container">
                 <div className="login-box">
                     <h2>Login</h2>
+
                     <form onSubmit={handleSubmit}>
                         {/* <h3 className="login-heading">Log In</h3>
                         
@@ -350,23 +354,23 @@ const SIgnIn = () => {
                         <div className="padding-l-5 flex  justify-between">
                             <h1 className="text-blue-50 text-center">I'm a</h1>
 
-                            <label className=" flex items-center cursor-pointer">
-                                <input onChange={handleUserChange} className="w-6 h-4  cursor-pointer" name="size" type="radio" value="user" />
+                            <label for="user" className=" flex items-center cursor-pointer">
+                                <input onChange={handleUserChange} className="w-6 h-4  cursor-pointer" name="user" type="radio" id='user' value="1" />
                                 <small className="text-blue-50 text-center ">user</small>
                             </label>
 
-                            <label className="flex items-center border-l-2 border-blue-400  rounded cursor-pointer">
-                                <input onChange={handleVendorChange} className="w-6 h-4 cursor-pointer" name="vendor" type="radio" value="vendor" />
+                            <label  for="vendor" className="flex items-center border-l-2 border-blue-400  rounded cursor-pointer">
+                                <input onChange={handleVendorChange} className="w-6 h-4 cursor-pointer" name="vendor" type="radio" id="vendor" value="1" />
                                 <small className="text-blue-50 text-center ">Vendor</small>
                             </label>
 
                             <label className="flex items-center border-l-2 border-blue-400 rounded cursor-pointer">
-                                <input onChange={handleAdminChange} className="w-6 h-4 cursor-pointer" name="admin" type="radio" value="admin" />
+                                <input onChange={handleAdminChange} className="w-6 h-4 cursor-pointer" name="admin" type="radio" value="1" />
                                 <small className="text-blue-50 text-center"> Admin</small>
                             </label>
 
                             <label className="flex items-center border-l-2 border-blue-400 rounded cursor-pointer">
-                                <input onChange={handleSuperAdminChange} className="w-6 h-4 cursor-pointer" name="superAdmin" type="radio" value="superAdmin" />
+                                <input onChange={handleSuperAdminChange} className="w-6 h-4 cursor-pointer" name="superAdmin" type="radio" value="1" />
                                 <small className="text-blue-50 text-center">Super Admin</small>
                             </label>
 
@@ -379,15 +383,17 @@ const SIgnIn = () => {
                             <span></span>
                             Submit
                         </a> */}
-                         <label className="submitBtnAnimation">
-                                <span className="btnAnimation"></span>
-                                <span className="btnAnimation"></span>
-                                <span className="btnAnimation"></span>
-                                <span className="btnAnimation"></span>
-                                <button type="submit" value="Submit">Submit</button>
+                        <label className="submitBtnAnimation">
+                            <span className="btnAnimation"></span>
+                            <span className="btnAnimation"></span>
+                            <span className="btnAnimation"></span>
+                            <span className="btnAnimation"></span>
+                            <button type="submit" value="Submit">Submit</button>
                         </label>
 
                     </form>
+
+
                     <div className="social-login">
                         <div className="flex justify-between py-5">
                             <h4 className="text-white">Don't have an account?</h4>
@@ -399,15 +405,15 @@ const SIgnIn = () => {
                             <div className="flex justify-between">
                                 <h1>Google </h1>
                                 <span>
-                                    <FcGoogle/>
-                                </span> 
+                                    <FcGoogle />
+                                </span>
                             </div>
                         </button>
                         <button onClick={handleGitSignIn} className="login-btn">
                             <div className="flex justify-between">
                                 <h1>Github </h1>
                                 <span>
-                                    <AiFillGithub/>
+                                    <AiFillGithub />
                                 </span>
                             </div>
                         </button>

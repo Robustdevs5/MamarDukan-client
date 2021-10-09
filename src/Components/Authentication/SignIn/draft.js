@@ -118,7 +118,7 @@ const SIgnIn = () => {
             email: data.email,
             password: data.password
         };
-        const userSignUp = `http://localhost:5000/user/login`;
+        const userSignUp = `https://mamardukan.herokuapp.com/user/login`;
         fetch(userSignUp, {
             method: 'POST',
             headers: {

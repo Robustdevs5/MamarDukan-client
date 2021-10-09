@@ -5,7 +5,9 @@ import AllProduct from './AllProduct';
 import star from "../../images/5star.png";
 import { TablePagination } from '@mui/material';
 import { useHistory } from 'react-router';
-import Footer from '../Footer/Footer'
+import Footer from '../Footer/Footer';
+import Newsletter from '../Newsletter/Newsletter';
+
 // import noUiSlider from 'nouislider';
 // import noUiSlider from 'nouislider/dist/nouislider.mjs';
 // import * as noUiSlider from 'nouislider';
@@ -30,7 +32,7 @@ const Shop = () => {
 
     //Fetching Product//////////////////////////////////
     useEffect(() => {
-        fetch(`http://localhost:5000/products`)
+        fetch(`https://mamardukan.herokuapp.com/products`)
             .then(res => res.json())
             .then(data => setProduct(data.products))
     }, [])
@@ -72,7 +74,7 @@ const Shop = () => {
 
 
     const handleDepartmentClick = (dept) => {
-        fetch(`http://localhost:5000/products/department?department=${dept}`)
+        fetch(`https://mamardukan.herokuapp.com/products/department?department=${dept}`)
             .then(res => res.json())
             .then(data => setDeptProduct(data.result))
         setDeptProductStatus(true)
@@ -98,7 +100,7 @@ const Shop = () => {
         // let checkBox = document.getElementById(`${brand}`);
         // var text = document.getElementById("brand");
 
-        fetch(`http://localhost:5000/products/brand?brand=${brand}`)
+        fetch(`https://mamardukan.herokuapp.com/products/brand?brand=${brand}`)
             .then(res => res.json())
             .then(data => setBrandProduct(data.result))
         setDeptProductStatus(false)
@@ -384,8 +386,8 @@ const Shop = () => {
                 </div>}
 
             </div>
-
-<Footer/>
+            <Newsletter />
+            <Footer />
         </>
     );
 };

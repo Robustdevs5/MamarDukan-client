@@ -46,7 +46,7 @@ const ManageProduct = () => {
 
     //Fetching Product.............................................
     useEffect(() => {
-        fetch(`http://localhost:5000/products`)
+        fetch(`https://mamardukan.herokuapp.com/products`)
             .then(res => res.json())
             .then(data => setProduct(data.products))
     }, [])
@@ -65,14 +65,14 @@ const ManageProduct = () => {
 
     //Delete...........................................................
     const deleted = () => {
-        fetch(`http://localhost:5000/products`)
+        fetch(`https://mamardukan.herokuapp.com/products`)
             .then(res => res.json())
             .then(data => setProduct(data.products))
     }
 
 
     const handleDeleteProduct = (id) => {
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://mamardukan.herokuapp.com/products/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())

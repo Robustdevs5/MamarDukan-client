@@ -1,5 +1,5 @@
 import { ShoppingCart, SupportAgentOutlined } from "@mui/icons-material";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon, SearchIcon, UserIcon } from "@heroicons/react/solid";
@@ -8,12 +8,14 @@ import styles from "../StyledComponent/TopBar.module.css";
 import CartDropdown from "./CartDropdown";
 // import { useHistory, useLocation } from "react-router";
 import { useHistory, useLocation } from "react-router";
+import { userContext } from "../../App";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const TopBar = () => {
   const [dropdown, setDropdown] = useState(false);
+  const { user, setUser } = useContext(userContext);
   const [login, SetLogin] = useState()
   console.log('login', login)
   let history = useHistory();
@@ -26,6 +28,7 @@ const TopBar = () => {
     if (loggedInUser) {
       const foundUser = JSON.parse(loggedInUser);
       SetLogin(foundUser.email);
+      setUser(foundUser.email);
     }
 
   }, [login]);
@@ -66,7 +69,7 @@ const TopBar = () => {
           onMouseLeave={() => setDropdown(false)}
         >
           <div className={styles.topBar_tags}>
-            <Link to="/checkout">
+            <Link to="/cart">
               <ShoppingCart fontSize="large"></ShoppingCart>
             </Link>{" "}
           </div>
