@@ -7,6 +7,7 @@ import AddProduct from "./Components/AdminDashboard/AddProduct/AddProduct";
 import AdminSidebar from './Components/AdminDashboard/AdminSidebar/AdminSidebar';
 import ManageProduct from "./Components/AdminDashboard/ManageProduct/ManageProduct";
 import UpdateProduct from './Components/AdminDashboard/UpdateProduct/UpdateProduct';
+import LoginPanel from "./Components/Authentication/LoginPanel/LoginPanel";
 import SIgnIn from "./Components/Authentication/SignIn/SIgnIn";
 import SignUP from "./Components/Authentication/SignUp/SignUP";
 import CustomerService from "./Components/CustomerService/CustomerService";
@@ -34,15 +35,6 @@ import TrackOrder from './Components/TrackOrder/TrackOrder';
 import Blogs from "./pages/Blog-page/Blogs";
 import Contact from './pages/Contact-page/Contact';
 import HomePage from "./pages/Home-page/HomePage";
-<<<<<<< HEAD
-=======
-// import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
->>>>>>> 57c16cfdc3e0796becc48c62564b986c3d002a41
-<<<<<<< HEAD
-=======
-import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
-import LoginPanel from "./Components/Authentication/LoginPanel/LoginPanel";
->>>>>>> 57c16cfdc3e0796becc48c62564b986c3d002a41
 export const userContext = createContext();
 
 const api = axios.create({
