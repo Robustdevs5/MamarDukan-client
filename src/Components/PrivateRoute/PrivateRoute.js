@@ -5,29 +5,27 @@ import { userContext } from '../../App';
 
 const PrivateRoute = ({ children, ...rest }) => {
 
-    // // const [login, SetLogin] = useState()
+    const [login, SetLogin] = useState()
     // const { loggedInUser, setLoggedInUser } = useContext(userContext);
     const { user, setUser } = useContext(userContext);
 
-    // useEffect(() => {
-    //     const user = sessionStorage.getItem("user");
-    //     if (user) {
-    //         const foundUser = JSON.parse(user);
-    //         setLoggedInUser(foundUser.email);
-    //     }
-    //     else{
-    //         setLoggedInUser(null);
-    //     }
-    // }, [loggedInUser]);
+    useEffect(() => {
+        const user = sessionStorage.getItem("user");
+        if (user) {
+            const foundUser = JSON.parse(user);
+            SetLogin(foundUser.email);
+        }
+    }, []);
 
-    console.log(user.email);
+    console.log(login);
+    console.log(user);
 
 
     return (
         <Route
             {...rest}
             render={({ location }) =>
-            user.email ? (
+            login ? (
                     children
                 ) : (
                     <Redirect

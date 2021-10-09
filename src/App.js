@@ -75,8 +75,8 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route path="/login" component={SIgnIn} />
           <Route path="/register" component={SignUP} />
-          <PrivateRoute path="/dashboard" component={AdminPanel} />
-          <Route path="/addProduct" component={AddProduct} />
+          <Route path="/dashboard" component={AdminPanel} />
+          <PrivateRoute path="/addProduct" component={AddProduct} />
           <Route path="/adminSidebar" component={AdminSidebar} />
           <Route path="/addAdmin" component={AddAdmin} />
           <Route path="/shop" component={Shop} />

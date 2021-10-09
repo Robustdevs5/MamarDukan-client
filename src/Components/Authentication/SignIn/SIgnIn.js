@@ -33,6 +33,7 @@ const SIgnIn = () => {
     const [vendorStatus, setVendorStatus] = useState(false);
     const [superAdminStatus, setSuperAdminStatus] = useState(false);
     const [adminStatus, setAdminStatus] = useState(false);
+    const [token, setToken] = useState([]);
 
     let history = useHistory();
     let location = useLocation();
@@ -46,10 +47,11 @@ const SIgnIn = () => {
             .auth()
             .signInWithPopup(googleProvider)
             .then((result) => {
+                handleAuthToken();
                 const googleUser = result.user;
                 const { displayName, email, photoURL } = googleUser;
                 handleUser(displayName, email, photoURL, true);
-                sessionStorage.setItem("user", googleUser);
+                sessionStorage.setItem("user", JSON.stringify(googleUser));
                 // sessionStorage.setItem("name", displayName);
                 // sessionStorage.setItem("photo", photoURL);
                 handleAuthToken();
@@ -65,7 +67,7 @@ const SIgnIn = () => {
             const gitUser = result.user;
             const { displayName, email, photoURL } = gitUser;
             handleUser(displayName, email, photoURL, true);
-            sessionStorage.setItem("user", gitUser);
+            sessionStorage.setItem("user", JSON.stringify(gitUser));
             // sessionStorage.setItem("name", displayName);
             // sessionStorage.setItem("photo", photoURL);
             handleAuthToken();
@@ -81,6 +83,7 @@ const SIgnIn = () => {
             .currentUser.getIdToken(true)
             .then(function (idToken) {
                 sessionStorage.setItem("token", idToken);
+                // setToken(idToken)
                 history.replace(from);
             })
             .catch(function (error) {
@@ -321,6 +324,7 @@ const SIgnIn = () => {
             <div className="login-container">
                 <div className="login-box">
                     <h2>Login</h2>
+
                     <form onSubmit={handleSubmit}>
                         {/* <h3 className="login-heading">Log In</h3>
                         
@@ -379,15 +383,17 @@ const SIgnIn = () => {
                             <span></span>
                             Submit
                         </a> */}
-                         <label className="submitBtnAnimation">
-                                <span className="btnAnimation"></span>
-                                <span className="btnAnimation"></span>
-                                <span className="btnAnimation"></span>
-                                <span className="btnAnimation"></span>
-                                <button type="submit" value="Submit">Submit</button>
+                        <label className="submitBtnAnimation">
+                            <span className="btnAnimation"></span>
+                            <span className="btnAnimation"></span>
+                            <span className="btnAnimation"></span>
+                            <span className="btnAnimation"></span>
+                            <button type="submit" value="Submit">Submit</button>
                         </label>
 
                     </form>
+
+
                     <div className="social-login">
                         <div className="flex justify-between py-5">
                             <h4 className="text-white">Don't have an account?</h4>
@@ -399,15 +405,15 @@ const SIgnIn = () => {
                             <div className="flex justify-between">
                                 <h1>Google </h1>
                                 <span>
-                                    <FcGoogle/>
-                                </span> 
+                                    <FcGoogle />
+                                </span>
                             </div>
                         </button>
                         <button onClick={handleGitSignIn} className="login-btn">
                             <div className="flex justify-between">
                                 <h1>Github </h1>
                                 <span>
-                                    <AiFillGithub/>
+                                    <AiFillGithub />
                                 </span>
                             </div>
                         </button>
