@@ -1,5 +1,5 @@
 import React from 'react';
-import { Line } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 
 const data = {
     labels: [
@@ -73,24 +73,38 @@ const data = {
       position: "bottom"
     },
     scales: {
-      yAxes: [
-        {
-          ticks: {
-            callback: function(value, index, values) {
-              return value + "K";
-            }
+      y: {
+        ticks: {
+          // beginAtZero: true,
+          callback: function(value, index, values) {
+            return value + "K";
           }
+        },
+        grid: {
+          borderColor: 'green',
+          borderWidth: 2,
+          drawBorder: true,
+          drawOnChartArea:false,
+          
         }
-      ]
+        
+      },
+      x: {
+        grid: {
+          borderColor: 'green',
+          borderWidth: 2,
+          drawBorder: true,
+          drawOnChartArea:false,
+        }
+      },
+      
     }
   };
   
 
 const BarCharts = () => {
     return (
-        <div>
-        <Line data={data} options={options} />
-      </div>
+        <Bar data={data} options={options} />
     );
 };
 

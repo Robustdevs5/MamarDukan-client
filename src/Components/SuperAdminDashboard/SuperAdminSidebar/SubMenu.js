@@ -12,7 +12,7 @@ const SubMenu = ({item}) => {
     };
     return (
         <>
-            <Link className="  flex  text-white font-medium justify-between  items-center  p-5 focus:bg-red-600 tracking-tight text-lg  hover:bg-red-600 hover:border-l-4 cursor-pointer"
+            <Link className="  flex  text-white font-medium justify-between  items-center py-4 px-5 focus:bg-red-600 tracking-tight text-lg  hover:bg-red-600 hover:border-l-4 cursor-pointer"
                 to={item.path} 
                 onClick={item.subNav && showSubnav}>
             <div className=' flex items-center'>
@@ -35,7 +35,6 @@ const SubMenu = ({item}) => {
                         <Link to={item.path} 
                             key={index} 
                             className="
-                              bg-gray-800
                                 pl-12
                                 h-12
                                 flex

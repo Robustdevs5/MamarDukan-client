@@ -8,22 +8,23 @@ import {AiOutlineTeam, AiFillTags} from "react-icons/ai";
 import BarChart from './BarChart';
 import PieChart from './PieChart';
 import BarCharts from './BarCharts';
+import FeaturesSuperAdminDashboard from '../Features-SuperAdminDashboard/FeaturesSuperAdminDashboard';
 
 const SuperAdminDashboard = () => {
     return (
-        <div className=" bg-gray-300 ">
+        <div className=" ">
         {/* <div className="w-screen h-20 p-6">
             <Logo />
         </div> */}
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap ">
             <SuperAdminSidebar/>
 
-            <div className="w-9/12">
+            <div className="w-5/6 h-screen overflow-scroll">
                 <TopbarSuperAdminDashboard/>
-                <h1 className="mt-5 text-2xl font-bold  m-2 border-l-4 tracking-tight border-red-600 pl-2 w-52 bg-gray-200">
+                {/* <h1 className="mt-5 text-2xl font-bold  m-2 border-l-4 tracking-tight border-red-600 pl-2 w-52 bg-gray-200">
                     Sales   
-                </h1>
-                <div className="w-full font-medium grid grid-cols-2 md:grid-cols-4 mx-4 mt-5 tracking-tight text-white">
+                </h1> */}
+                <div className="w-full font-medium grid grid-cols-2 md:grid-cols-4 mx-4 -mt-14 tracking-tight text-white">
                     <div className="p-5">
                         <div className='flex items-center justify-between py-2 px-5 shadow-lg' style={{backgroundColor: "#ff5252"}}>
                             <div>
@@ -82,31 +83,26 @@ const SuperAdminDashboard = () => {
                     </div>
                 </div>
 
-                <div className="w-full font-medium grid grid-cols-2 md:grid-cols-2 mx-4 mt-5 tracking-tight text-white " >
+                <div className="w-full font-medium grid grid-cols-1 md:grid-cols-2 mx-4 mt-20 tracking-tight text-white " >
                     <div className="p-5">
-                        <div className='flex items-center justify-between py-2 px-5 bg-gray-800 shadow-lg'>
-                           
-                            <BarChart/>
-                            {/* <BarChart/> */}
-                        </div>
-                    </div>
-                    <div className="p-5 h-80">
-                        <div className='py-2 px-5 shadow-lg bg-gray-50 h-full flex items-center'>
+                        <div className='py-2 px-5 shadow-lg' style={{background: `linear-gradient(90deg,#0c2646 0,#204065 60%,#2a5788)` }}>
                            
                             <BarCharts/>
-                            {/* <PieChart/> */}
                         </div>
                     </div>
-                </div>
-
-                <div className="w-full font-medium grid grid-cols-1 md:grid-cols-1 mx-4 mt-5 tracking-tight text-white " >
-                    <div className="p-5 h-80">
-                        <div className='py-2 px-5 shadow-lg bg-gray-50 h-full'>
+                    <div className="p-5 h-80 ">
+                       <p className=" font-bold border-l-4 tracking-tight border-red-600 p-2 " style={{background: `linear-gradient(90deg,#0c2646 0,#204065 60%,#2a5788)` }}>
+                            Product Actions
+                        </p>
+                        <div className='py-2 px-5 shadow-xl bg-gray-50 h-full flex items-center'>
                            
                             <PieChart/>
+                            
+                            {/* <BarCharts/> */}
                         </div>
                     </div>
                 </div>
+                <FeaturesSuperAdminDashboard/>
 
             </div>
         </div>
