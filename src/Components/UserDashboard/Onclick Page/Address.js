@@ -11,14 +11,14 @@ const Address = () => {
 
 
     return (
-        <>
-            <div className="p-8">
-                <h2 className="py-1">Address Book</h2>
+        <div className="p-10">
+
+            <div className="flex items-center justify-between">
+                <h2 className="font-bold text-2xl my-8">Address Book</h2>
 
                 <button
                     onClick={handleClick}
-                    className="rounded p-2 text-white"
-                    style={{backgroundColor: "#dd2400"}}
+                    className="py-1 px-2 primary_BTN rounded duration-300"
                 >
                     {address ? "Cancel" : "Add new address"}
                 </button>
@@ -27,7 +27,7 @@ const Address = () => {
             <div>
                 {address && <AddressFrom />}
             </div>
-        </>
+        </div>
     );
 };
 

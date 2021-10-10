@@ -90,7 +90,7 @@ const Sidebar = () => {
                         }
                     </ul>
                 </div>
-                <div className="md:w-3/4">
+                <div className="md:w-3/4 mb-6">
                     {active === 'Account' && <AccountInformation />}
                     {active === 'Profile' && <UpdateProfile />}
                     {active === 'Orders' && <Orders />}

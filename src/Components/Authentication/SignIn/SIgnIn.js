@@ -1,19 +1,18 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useState } from "react";
+import { AiFillGithub } from "react-icons/ai";
+import { FcGoogle } from 'react-icons/fc';
 import { useHistory, useLocation } from "react-router";
 import { Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { userContext } from "../../../App";
 import Footer from '../../Footer/Footer';
 import Navbar from '../../Navbar/Navbar/Navbar';
 import TopBar from '../../TopBar/TopBar';
 import firebaseConfig from "../firebase.config";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import './SignIn.css';
-import { useState } from 'react';
-import { AiFillGithub } from "react-icons/ai";
-import { FcGoogle } from 'react-icons/fc';
 
 
 
@@ -328,7 +327,6 @@ const SIgnIn = () => {
             <div className="login-container">
                 <div className="login-box">
                     <h2>Login</h2>
-
                     <form onSubmit={handleSubmit}>
                         {/* <h3 className="login-heading">Log In</h3>
                         
