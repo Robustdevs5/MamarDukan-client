@@ -47,7 +47,7 @@ const UpdateProfile = () => {
                 {/* <p className="border-2 text-center p-2 hover:bg-pink-500 cursor-pointer "> Update</p> */}
 
                 <input type="submit" value="Update"
-                    className="p-3 primary_BTN_Outline rounded duration-300 w-full"
+                    className="p-3 primary_BTN_Outline rounded duration-300 w-full cursor-pointer"
                 />
             </form>
         </div>

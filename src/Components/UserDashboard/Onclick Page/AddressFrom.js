@@ -19,22 +19,19 @@ const AddressFrom = () => {
             <form onClick={handleSubmit}>
 
                 <h3 className="py-2">Full Name :</h3>
-                <input placeholder="Your Name" type="text" name="name"
+                <input placeholder="Your Name" type="text" name="name" required
                     className="border rounded border-gray-400 mb-6 w-full p-3"
-                >
-                </input>
+                />
 
                 <h3 className="py-2">Your Email :</h3>
-                <input placeholder="Your Email" type="email" name="email"
+                <input placeholder="Your Email" type="email" name="email" required
                     className="border rounded border-gray-400 mb-6 w-full p-3"
-                >
-                </input>
+                />
 
                 <h3 className="py-2">Phone :</h3>
-                <input placeholder="Your Phone" type="number" name="phone"
+                <input placeholder="Your Phone" type="number" name="phone" required
                     className="border rounded border-gray-400 mb-6 w-full p-3"
-                >
-                </input>
+                />
 
                 <h3 className="py-2">Division :</h3>
                 <select
@@ -51,19 +48,40 @@ const AddressFrom = () => {
                 </select>
 
                 <h3 className="py-2">City :</h3>
-                <input placeholder="Your City" type="text" name="city"
+                <input placeholder="Your City" type="text" name="city" required
                     className="border rounded border-gray-400 mb-6 w-full p-3"
-                >
-                </input>
+                />
 
                 <h3 className="py-2">Address :</h3>
-                <input placeholder="Your Address" type="text" name="address"
+                <input placeholder="Your Address" type="text" name="address" required
                     className="border rounded border-gray-400 mb-6 w-full p-3"
+                />
+
+                {/* <input type="checkbox" id="def" name="defaultAddress" value="1"
+                    className="w-4 h-4"
+                />
+                <label for="def"
+                    className="mx-2 py-6"
                 >
-                </input>
+                    Use this as default
+                </label> */}
+
+                {/* <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" className="w-4 h-4"/> */}
+
+                {/* <input type="checkbox" name="asdas" id="vehicle1" value="ok"/>
+                <label for="vehicle1"> I have a bike</label> */}
+
+                {/* <input type="checkbox" name="defaultAddress" value="default" required
+                    className="w-4 h-4"
+                />
+                <label for="defaultAddress"> I have a bike</label> */}
+
+                {/* <input type='checkbox' name='thing' value='valuable' id="thing"/><label for="thing">dgdfgdg</label> <label>get an army</label> */}
+
+                <input type="checkbox" class="w-4 h-4 appearance-none checked:bg-blue-600 bg-gray-500 checked:border-transparent"/>
 
                 <input type="submit" value="Submit"
-                    className="p-3 primary_BTN_Outline rounded duration-300 w-full"
+                    className="p-3 primary_BTN_Outline rounded duration-300 w-full cursor-pointer"
                 />
             </form>
 
