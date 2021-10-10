@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { userContext } from '../../../App';
 import AdminPanel from '../../AdminDashboard/AdminPanel/AdminPanel';
 import CustomerPanel from '../../CustomerDashboard/CustomerPanel/CustomerPanel';
 
@@ -12,26 +13,53 @@ const LoginPanel = () => {
     const [checkAdmin, setCheckAdmin] = useState(false);
 
 
+    // const { user, setUser } = useContext(userContext);
+    // console.log(user);
+
+
     useEffect(() => {
         const loggedInUser = sessionStorage.getItem("user");
         if (loggedInUser) {
-            const user = JSON.parse(loggedInUser);
-            setLoggedInUser(user);
+            const foundUser = JSON.parse(loggedInUser);
+            
+            console.log('found user role1', foundUser.role)
+            if (foundUser.role === "user") {
+                console.log('found user role', foundUser.role)
+                setCheckCustomer(true)
+            }else if (foundUser.role === "admin") {
+                console.log('found user role2', foundUser.role)
+                setCheckAdmin(true)
+            }
         }
-    }, [])
-    console.log(checkAdmin);
+    }, []);
+
 
 
     // useEffect(() => {
-    //     fetch('http://localhost:5000/user/login-user', {
+    //     const loggedInUser = sessionStorage.getItem("user");
+    //     if (loggedInUser) {
+    //         const foundUser = JSON.parse(loggedInUser);
+    //         if (foundUser.role === "admin") {
+    //             setCheckAdmin(true)
+    //         }
+    //     }
+    // }, []);
+
+
+    // useEffect(() => {
+    //     fetch('https://mamardukan.herokuapp.com/user/login-admin', {
     //         method: 'POST',
     //         headers: { 'content-type': 'application/json' },
-    //         body: JSON.stringify(user)
+    //         body: JSON.stringify({ email: user.email, password: user.password })
     //     })
     //         .then(res => res.json())
-    //         .then(data => setCheckCustomer(data))
-    // }, [])
-    // console.log(checkCustomer);
+    //         .then(data => {
+    //             if (user.success) {
+    //                 setCheckAdmin(data)
+    //             }
+    //         })
+    // }, [user])
+    // console.log(checkAdmin);
 
 
 
@@ -39,6 +67,8 @@ const LoginPanel = () => {
     return (
         <>
             <h1>asdsdad</h1>
+            <br />
+
             {checkAdmin && <div>
                 <AdminPanel />
             </div>

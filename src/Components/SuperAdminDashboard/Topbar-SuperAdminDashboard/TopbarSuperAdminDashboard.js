@@ -2,12 +2,12 @@ import React from 'react';
 import { MdNotificationsActive } from "react-icons/md";
 import {FcSms } from 'react-icons/fc';
 import {ImSearch} from 'react-icons/im';
-
+import BarChart from '../SuperAdminDashboard/BarChart';
 
 const TopbarSuperAdminDashboard = () => {
     return (
-        <div className=" bg-white w-screen py-3 shadow">
-            <div className="flex flex-wrap mr-10 pr-5 items-center justify-evenly">
+        <div className=" w-full ">
+            <div className="flex flex-wrap items-center justify-between shadow  py-3 sticky top-0 bg-white ">
 
                 <form action="" className="  flex">
                     <input
@@ -43,6 +43,12 @@ const TopbarSuperAdminDashboard = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+            {/* <BarChart/> */}
+            <div className='flex items-center justify-between pt-2 pb-14 px-5 shadow-lg' style={{background: `linear-gradient(90deg,#0c2646 0,#204065 60%,#2a5788)` }}>
+                
+                <BarChart/>
+                {/* <BarChart/> */}
             </div>
         </div>
     );

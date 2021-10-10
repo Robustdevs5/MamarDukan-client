@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { userContext } from '../../../App';
 import Logo from '../../Navbar/Logo/Logo';
 import Navbar from '../../Navbar/Navbar/Navbar';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
@@ -7,6 +8,9 @@ import AdminSidebar from '../AdminSidebar/AdminSidebar';
 
 const AdminPanel = () => {
 
+    const { user, setUser } = useContext(userContext);
+    console.log(user);
+    
 
     return (
         <>

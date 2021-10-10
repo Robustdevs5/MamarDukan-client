@@ -24,7 +24,7 @@ const SignUP = () => {
     console.log('sign in all user', allUser)
 
     useEffect(() => {
-        const user = `http://localhost:5000/user`;
+        const user = `https://mamardukan.herokuapp.com/user`;
         fetch(user)
             .then(res => res.json())
             .then(data => {
@@ -94,7 +94,7 @@ const SignUP = () => {
         };
 
         if (passwordsMatch) {
-            const userSignUp = `http://localhost:5000/user/anotheruser`;
+            const userSignUp = `https://mamardukan.herokuapp.com/user/anotheruser`;
             fetch(userSignUp, {
                 method: 'POST',
                 headers: {

@@ -17,7 +17,7 @@ const FeaturedProduct = () => {
     const [featuredProduct, setFeaturedProduct] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products`)
+        fetch(`https://mamardukan.herokuapp.com/products`)
             .then(res => res.json())
             .then(data => setFeaturedProduct(data.products))
     }, [])

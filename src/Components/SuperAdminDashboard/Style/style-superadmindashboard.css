@@ -1,0 +1,6 @@
+.scrollBar {
+    overflow: hidden;
+}
+.scrollBar:hover {
+    overflow: scroll;
+}

@@ -4,6 +4,8 @@ import TopBar from "../TopBar/TopBar";
 import Navbar from "../Navbar/Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { Link } from 'react-router-dom';
+import Newsletter from '../Newsletter/Newsletter';
+
 
 
 const CustomerService = () => {
@@ -44,7 +46,7 @@ const CustomerService = () => {
                     </div>
                     <hr />
                 </div>
-
+                <Newsletter />
                 <Footer />
             </div>
         </div>
