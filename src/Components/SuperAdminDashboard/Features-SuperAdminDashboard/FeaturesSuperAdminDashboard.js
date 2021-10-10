@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import '../Style/style-superadmindashboard.css'
+import star from '../../../images/5star.png'
+import { BsStarHalf } from 'react-icons/bs';
+
+
+
+
 const FeaturesSuperAdminDashboard = () => {
     const [categories, setCategories] = useState([]);
     //Fetching Product.............................................
@@ -27,29 +33,60 @@ const FeaturesSuperAdminDashboard = () => {
                 }
                 </div>
             </div>
+            
             <div className="p-5">
-            <p className=" font-bold border-l-4 tracking-tight border-red-600 p-2 text-white" style={{background: `linear-gradient(90deg,#0c2646 0,#204065 60%,#2a5788)` }}>
-            Best Products
+                
+               <p className="font-bold border-l-4 tracking-tight border-red-600 p-2 text-white" style={{background: `linear-gradient(90deg,#0c2646 0,#204065 60%,#2a5788)` }}>
+               Best Products
                 </p>
+                <div className="h-96 scrollBar">
                 {
-                    categories.map((items, index) => {
-                        <div key={index} items={items} className='py-2 px-5 shadow-lg'  >
-                            {items.name}
+                    categories.map((item, index) => (
+                        <div key={index} item={item} className='py-2 px-5 shadow-lg flex justify-between hover:bg-gray-400'  >
+                            <div className='h-10'>
+                                 <img  className="rounded cursor-pointer h-full w-full"
+                                    src={item.img} alt="Best Products" />
+                            </div>
+                            <div>
+                                <p>{item.name}</p>
+                                <img src={star} style={{ width: '60px', height: '15px' }} alt="" />
+                            </div>
+                            <div>
+                                <small>520 sales</small>
+                            </div>
                         </div>
-                    })
+                    ))
                 }
-                <div className='py-2 px-5 shadow-lg'  >
-                     Best Products
-                  </div>
+                </div>
             </div>
+            
             <div className="p-5">
-            <p className=" font-bold border-l-4 tracking-tight border-red-600 p-2 text-white" style={{background: `linear-gradient(90deg,#0c2646 0,#204065 60%,#2a5788)` }}>
-            Top Sellers
+                
+               <p className="font-bold border-l-4 tracking-tight border-red-600 p-2 text-white" style={{background: `linear-gradient(90deg,#0c2646 0,#204065 60%,#2a5788)` }}>
+               Top Sellers
                 </p>
-                <div className='py-2 px-5 shadow-lg'>
-                   Top Sellers
-                  </div>
+                <div className="h-96 scrollBar">
+                {
+                    categories.map((item, index) => (
+                        <div key={index} item={item} className='py-2 px-5 shadow-lg flex justify-between hover:bg-gray-400'  >
+                            <div className='h-10'>
+                                 <img  className="rounded cursor-pointer h-full w-full"
+                                    src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMXP2GSt89YvrkgbiSgJyzjue-GlHtCot2jg&usqp=CAU' alt="Best Products" />
+                            </div>
+                            <div>
+                                <p>{item.multiVendorSeller.sellerName}</p>
+                                <small>Seller ID #94256</small>
+                            </div>
+                            <div className='flex items-center text-yellow-600'>
+                                <p>4.5</p>
+                                <small><BsStarHalf/></small>
+                            </div>
+                        </div>
+                    ))
+                }
+                </div>
             </div>
+
         </div>
     );
 };

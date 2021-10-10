@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { userContext } from '../../../App';
 import AdminPanel from '../../AdminDashboard/AdminPanel/AdminPanel';
 import CustomerPanel from '../../CustomerDashboard/CustomerPanel/CustomerPanel';
+import SuperAdminDashboard from '../../SuperAdminDashboard/SuperAdminDashboard/SuperAdminDashboard';
 
 
 
@@ -11,6 +12,7 @@ const LoginPanel = () => {
     const [loggedInUser, setLoggedInUser] = useState([]);
     const [checkCustomer, setCheckCustomer] = useState(false);
     const [checkAdmin, setCheckAdmin] = useState(false);
+    const [superAdmin, setSuperAdmin] = useState(false);
 
 
     // const { user, setUser } = useContext(userContext);
@@ -29,6 +31,9 @@ const LoginPanel = () => {
             }else if (foundUser.role === "admin") {
                 console.log('found user role2', foundUser.role)
                 setCheckAdmin(true)
+            } else if (foundUser.role === "superadmin") {
+                console.log('found user role2', foundUser.role)
+                setSuperAdmin(true)
             }
         }
     }, []);
@@ -66,9 +71,6 @@ const LoginPanel = () => {
 
     return (
         <>
-            <h1>asdsdad</h1>
-            <br />
-
             {checkAdmin && <div>
                 <AdminPanel />
             </div>
@@ -76,6 +78,10 @@ const LoginPanel = () => {
 
             {checkCustomer && <div>
                 <CustomerPanel />
+            </div>
+            }
+            {superAdmin && <div>
+               <SuperAdminDashboard/>
             </div>
             }
         </>
