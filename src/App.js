@@ -32,6 +32,7 @@ import VendorSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdm
 // import ManageSuperAdmin from "./Components/SuperAdminDashboard/ManageSuperAdmin/ManageSuperAdmin";
 // import AddSuperAdmin from "./Components/SuperAdminDashboard/AddSuperAdmin/AddSuperAdmin";
 import TrackOrder from './Components/TrackOrder/TrackOrder';
+import VendorPanel from "./Components/VendorDashboard/VendorPanel/VendorPanel";
 import Blogs from "./pages/Blog-page/Blogs";
 import Contact from './pages/Contact-page/Contact';
 import HomePage from "./pages/Home-page/HomePage";
@@ -103,6 +104,8 @@ function App() {
           <Route path="/super-admin/dashboard/products/overview" component={ProductsSuperAdminDashboard} />
           <Route path="/super-admin/dashboard/all-products/overview" component={AllProductsSuperAdminDashboard} />
           <Route path="/super-admin/dashboard/review/overview" component={ReviewSuperAdminDashboard} />
+          <Route path="/vendor/dashboard/overview" component={VendorPanel}/>
+
       </Switch>
     </Router>
     </userContext.Provider>
