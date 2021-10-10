@@ -30,7 +30,6 @@ const TopBar = () => {
       SetLogin(foundUser.email);
       setUser(foundUser.email);
     }
-
   }, [login]);
 
 
@@ -39,6 +38,11 @@ const TopBar = () => {
     // window.localStorage.clear(); //clear all localstorage
     window.sessionStorage.removeItem("user"); //remove one item
     history.replace(from);
+  };
+
+
+  const handleUserDashboard = () => {
+    history.push('/dashboard');
   };
 
 
@@ -177,17 +181,26 @@ const TopBar = () => {
         <UserIcon className="h-8 ml-2  hidden sm:block text-white fill-current text-white-600"></UserIcon>
 
         <div>
-          {login ? <button className={styles.topBar_login_register} onClick={handleLogout}>Logout</button>
-            : <>
-              <Link to="/login">
-                <p className={styles.topBar_login_register}>Login </p>{" "}
-              </Link>
+          {/* {login ? <button className={styles.topBar_login_register} onClick={handleLogout}>Logout</button>
+            : <> */}
+              {login ?
+                <button className={styles.topBar_login_register} onClick={handleUserDashboard}>{login}</button>
+                :
+                <Link to="/login">
+                  <p className={styles.topBar_login_register}>Login </p>{" "}
+                </Link>
+              }
 
-              <Link to="/register">
-                <p className={styles.topBar_login_register}> Register</p>{" "}
-              </Link>
-            </>
-          }
+              {
+                login ?
+                  <button className={styles.topBar_login_register} onClick={handleLogout}>Logout</button>
+                  :
+                  <Link to="/register">
+                    <p className={styles.topBar_login_register}> Register</p>{" "}
+                  </Link>
+              }
+            {/* </> */}
+          {/* } */}
         </div>
       </div>
       {dropdown && <CartDropdown setDropdown={setDropdown} />}

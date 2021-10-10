@@ -30,5 +30,4 @@ const FAQS = () => {
         </div>
     );
 };
-
 export default FAQS;

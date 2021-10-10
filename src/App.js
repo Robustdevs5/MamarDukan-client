@@ -35,6 +35,7 @@ import ProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Produc
 import AllProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/AllProducts-SuperAdminDashboard/AllProductsSuperAdminDashboard";
 import ReviewSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Review-SuperAdminDashboard/ReviewSuperAdminDashboard";
 import './Components/StyledComponent/Global.css'
+import Dashboard from './Components/UserDashboard/Dashboard'
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import LoginPanel from "./Components/Authentication/LoginPanel/LoginPanel";
 export const userContext = createContext();
@@ -95,6 +96,7 @@ function App() {
           <Route path="/blog" component={Blogs} />
           <Route path="/cart" component={ShopingCart} />
           <Route path="/faqs" component={FAQS} />
+          <Route path="/user/dashboard" component={Dashboard} />
           <Route path="/super-admin/dashboard/overview" component={SuperAdminDashboard}/>
           <Route path="/super-admin/dashboard/manage-user/overview" component={SuperAdminManageUser}/>
           <Route path="/super-admin/dashboard/customers/overview" component={CustomerSuperAdminDashboard}/>
