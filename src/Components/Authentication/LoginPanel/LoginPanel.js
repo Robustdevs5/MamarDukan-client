@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { userContext } from '../../../App';
 import AdminPanel from '../../AdminDashboard/AdminPanel/AdminPanel';
+import Dashboard from '../../UserDashboard/Dashboard';
 import CustomerPanel from '../../CustomerDashboard/CustomerPanel/CustomerPanel';
 
 
@@ -21,12 +22,12 @@ const LoginPanel = () => {
         const loggedInUser = sessionStorage.getItem("user");
         if (loggedInUser) {
             const foundUser = JSON.parse(loggedInUser);
-            
+
             console.log('found user role1', foundUser.role)
             if (foundUser.role === "user") {
                 console.log('found user role', foundUser.role)
                 setCheckCustomer(true)
-            }else if (foundUser.role === "admin") {
+            } else if (foundUser.role === "admin") {
                 console.log('found user role2', foundUser.role)
                 setCheckAdmin(true)
             }
@@ -66,16 +67,13 @@ const LoginPanel = () => {
 
     return (
         <>
-            <h1>asdsdad</h1>
-            <br />
-
             {checkAdmin && <div>
                 <AdminPanel />
             </div>
             }
 
             {checkCustomer && <div>
-                <CustomerPanel />
+                <Dashboard />
             </div>
             }
         </>
