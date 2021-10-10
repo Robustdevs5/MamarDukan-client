@@ -5,25 +5,7 @@ export const SidebarBtn = tw.button`bg-gray-500 hover:bg-red-700 focus:bg-blue-5
 
 // export const Heading = tw.h1`text-red-500 text-3xl p-2`;
 // export const Container = tw.div`max-w-4xl mx-auto p-5 mt-5`;
-// export const SidebarLink = tw.a`
-//     flex
-//     text-white
-//     justify-between
-//     items-center
-//     p-5
-//     text-lg
-//     hover:bg-pink-600
-//     hover:border-l-4
-//     cursor-pointer
-// `;
+export const TableHead = tw.th`
+font-bold  tracking-tight bg-gray-300 p-2 text-gray-800
+`;
 // export const SidebarLabel = tw.span`ml-4 `;
-// export const DropdownLink = styled(Link)`
-//     bg-blue-600
-//     pl-5
-//     flex
-//     items-center
-//     text-red-600
-//     text-lg
-//     hover:bg-blue-900
-//     cursor-pointer 
-// `;

@@ -9,6 +9,7 @@ import BarChart from './BarChart';
 import PieChart from './PieChart';
 import BarCharts from './BarCharts';
 import FeaturesSuperAdminDashboard from '../Features-SuperAdminDashboard/FeaturesSuperAdminDashboard';
+import RecentOrdersSuperAdminDashboard from '../RecentOrders -SuperAdminDashboard/RecentOrdersSuperAdminDashboard';
 
 const SuperAdminDashboard = () => {
     return (
@@ -103,6 +104,7 @@ const SuperAdminDashboard = () => {
                     </div>
                 </div>
                 <FeaturesSuperAdminDashboard/>
+                <RecentOrdersSuperAdminDashboard/>
 
             </div>
         </div>
