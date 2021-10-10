@@ -152,6 +152,7 @@ const SIgnIn = () => {
                             });
                             e.target.reset();
                             sessionStorage.setItem('user', JSON.stringify(user));
+                            setUser(user);
                             history.push('/');
                         }
                         else {
@@ -189,6 +190,7 @@ const SIgnIn = () => {
                             });
                             e.target.reset();
                             sessionStorage.setItem('user', JSON.stringify(user));
+                            setUser(user);
                             history.push('/');
                         }
                         else {
@@ -226,6 +228,7 @@ const SIgnIn = () => {
                             });
                             e.target.reset();
                             sessionStorage.setItem('user', JSON.stringify(user));
+                            setUser(user);
                             history.push('/');
                         }
                         else {
@@ -263,6 +266,7 @@ const SIgnIn = () => {
                             });
                             e.target.reset();
                             sessionStorage.setItem('user', JSON.stringify(user));
+                            setUser(user);
                             history.push('/');
                         }
                         else {
