@@ -354,7 +354,7 @@ const SIgnIn = () => {
                         <div className="padding-l-5 flex  justify-between">
                             <h1 className="text-blue-50 text-center">I'm a</h1>
 
-                            <label for="user" className=" flex items-center cursor-pointer">
+                            {/* <label for="user" className=" flex items-center cursor-pointer">
                                 <input onChange={handleUserChange} className="w-6 h-4  cursor-pointer" name="user" type="radio" id='user' value="1" />
                                 <small className="text-blue-50 text-center ">user</small>
                             </label>
@@ -372,7 +372,19 @@ const SIgnIn = () => {
                             <label className="flex items-center border-l-2 border-blue-400 rounded cursor-pointer">
                                 <input onChange={handleSuperAdminChange} className="w-6 h-4 cursor-pointer" name="superAdmin" type="radio" value="1" />
                                 <small className="text-blue-50 text-center">Super Admin</small>
-                            </label>
+                            </label> */}
+
+                            <input className="w-6 h-4 cursor-pointer" type="radio" id="user" name="fav_language" value="user"/>
+                            <label className="text-blue-50 text-center flex items-center border-l-2 border-blue-400 rounded cursor-pointer" for="user">User</label>
+
+                            <input className="w-6 h-4 cursor-pointer" type="radio" id="vendor" name="fav_language" value="vendor"/>
+                            <label className="text-blue-50 text-center" for="vendor">Vendor</label>
+
+                            <input className="w-6 h-4 cursor-pointer" type="radio" id="vendor" name="fav_language" value="vendor"/>
+                            <label className="text-blue-50 text-center" for="vendor">Vendor</label>
+
+                            <input className="w-6 h-4 cursor-pointer" type="radio" id="vendor" name="fav_language" value="vendor"/>
+                            <label className="text-blue-50 text-center" for="vendor">Vendor</label>
 
                         </div>
 

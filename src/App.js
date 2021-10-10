@@ -35,16 +35,9 @@ import ProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Produc
 import AllProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/AllProducts-SuperAdminDashboard/AllProductsSuperAdminDashboard";
 import ReviewSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Review-SuperAdminDashboard/ReviewSuperAdminDashboard";
 import './Components/StyledComponent/Global.css'
-<<<<<<< HEAD
 import Dashboard from './Components/UserDashboard/Dashboard'
-
-
-
-
-=======
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import LoginPanel from "./Components/Authentication/LoginPanel/LoginPanel";
->>>>>>> 3adb3ceac38e60c51fc1a9b097d907c7f26a87a2
 export const userContext = createContext();
 
 const api = axios.create({
