@@ -1,42 +1,28 @@
 import React from 'react'
-import { Pie, defaults } from 'react-chartjs-2'
+import { Pie, defaults, Bar } from 'react-chartjs-2'
 
 // defaults.global.tooltips.enabled = false
 // defaults.global.legend.position = 'bottom'
 
 const PieChart = () => {
   return (
-      <Pie
+      <Bar
         data={{
             labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
             datasets: [
             {
-              label: 'Computer',
-              data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-              ],
-              borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-              ],
+              label: 'Views',
+              data: [12, 19, 13, 15, 20, 33],
+              backgroundColor: "#6ED3FF",
+              borderColor:"#6ED3FF",
               borderWidth: 1,
             },
-            // {
-            //   label: 'Quantity',
-            //   data: [47, 52, 67, 58, 9, 50],
-            //   backgroundColor: 'orange',
-            // //   borderColor: 'red',
-            // },
+            {
+              label: 'Clicks',
+              data: [47, 52, 67, 58, 9, 50],
+              backgroundColor: '#1497FF',
+            //   borderColor: 'red',
+            },
             
           ],
         }}
@@ -44,15 +30,34 @@ const PieChart = () => {
         width={600}
         options={{
           maintainAspectRatio: false,
-        //   scales: {
-        //     yAxes: [
-        //       {
-        //         ticks: {
-        //           beginAtZero: true,
-        //         },
-        //       },
-        //     ],
-        //   },
+          scales: {
+            y: 
+              {
+                ticks: {
+                  // beginAtZero: true,
+                  callback: function(value, index, values) {
+                    return value + "K";
+                  }
+                },
+                grid: {
+                  borderColor: '#6ED3FF',
+                  borderWidth: 2,
+                  drawBorder: true,
+                  
+                }
+                
+              },
+            x: 
+              {
+                grid: {
+                  borderColor: '#6ED3FF',
+                  borderWidth: 2,
+                  drawBorder: true,
+                  drawOnChartArea:false,
+                }
+              },
+            
+          },
           legend: {
             labels: {
               fontSize: 25,

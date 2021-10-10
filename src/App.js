@@ -20,6 +20,7 @@ import './Components/StyledComponent/Global.css';
 import AllProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/AllProducts-SuperAdminDashboard/AllProductsSuperAdminDashboard";
 import OrdersSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Orders-SuperAdminDashboard/OrdersSuperAdminDashboard";
 import ProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/ProductsSuperAdminDashboard";
+// import ProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/ProductsSuperAdminDashboard";
 import ReviewSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Review-SuperAdminDashboard/ReviewSuperAdminDashboard";
 import SuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminDashboard/SuperAdminDashboard";
 import AdminSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Admin-SuperAdminDashboard/AdminSuperAdminDashboard";
@@ -32,6 +33,7 @@ import VendorSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdm
 // import ManageSuperAdmin from "./Components/SuperAdminDashboard/ManageSuperAdmin/ManageSuperAdmin";
 // import AddSuperAdmin from "./Components/SuperAdminDashboard/AddSuperAdmin/AddSuperAdmin";
 import TrackOrder from './Components/TrackOrder/TrackOrder';
+import Dashboard from './Components/UserDashboard/Dashboard';
 import VendorPanel from "./Components/VendorDashboard/VendorPanel/VendorPanel";
 import Blogs from "./pages/Blog-page/Blogs";
 import Contact from './pages/Contact-page/Contact';
@@ -94,6 +96,7 @@ function App() {
           <Route path="/blog" component={Blogs} />
           <Route path="/cart" component={ShopingCart} />
           <Route path="/faqs" component={FAQS} />
+          <Route path="/user/dashboard" component={Dashboard} />
           <Route path="/super-admin/dashboard/overview" component={SuperAdminDashboard}/>
           <Route path="/super-admin/dashboard/manage-user/overview" component={SuperAdminManageUser}/>
           <Route path="/super-admin/dashboard/customers/overview" component={CustomerSuperAdminDashboard}/>

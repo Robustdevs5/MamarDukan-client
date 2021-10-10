@@ -1,5 +1,5 @@
 import { ShoppingCart, SupportAgentOutlined } from "@mui/icons-material";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon, SearchIcon, UserIcon } from "@heroicons/react/solid";
@@ -8,12 +8,14 @@ import styles from "../StyledComponent/TopBar.module.css";
 import CartDropdown from "./CartDropdown";
 // import { useHistory, useLocation } from "react-router";
 import { useHistory, useLocation } from "react-router";
+import { userContext } from "../../App";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const TopBar = () => {
   const [dropdown, setDropdown] = useState(false);
+  const { user, setUser } = useContext(userContext);
   const [login, SetLogin] = useState()
   console.log('login', login)
   let history = useHistory();
@@ -26,8 +28,8 @@ const TopBar = () => {
     if (loggedInUser) {
       const foundUser = JSON.parse(loggedInUser);
       SetLogin(foundUser.email);
+      setUser(foundUser.email);
     }
-
   }, [login]);
 
 
@@ -36,6 +38,11 @@ const TopBar = () => {
     // window.localStorage.clear(); //clear all localstorage
     window.sessionStorage.removeItem("user"); //remove one item
     history.replace(from);
+  };
+
+
+  const handleUserDashboard = () => {
+    history.push('/dashboard');
   };
 
 
@@ -174,17 +181,26 @@ const TopBar = () => {
         <UserIcon className="h-8 ml-2  hidden sm:block text-white fill-current text-white-600"></UserIcon>
 
         <div>
-          {login ? <button className={styles.topBar_login_register} onClick={handleLogout}>Logout</button>
-            : <>
-              <Link to="/login">
-                <p className={styles.topBar_login_register}>Login </p>{" "}
-              </Link>
+          {/* {login ? <button className={styles.topBar_login_register} onClick={handleLogout}>Logout</button>
+            : <> */}
+              {login ?
+                <button className={styles.topBar_login_register} onClick={handleUserDashboard}>{login}</button>
+                :
+                <Link to="/login">
+                  <p className={styles.topBar_login_register}>Login </p>{" "}
+                </Link>
+              }
 
-              <Link to="/register">
-                <p className={styles.topBar_login_register}> Register</p>{" "}
-              </Link>
-            </>
-          }
+              {
+                login ?
+                  <button className={styles.topBar_login_register} onClick={handleLogout}>Logout</button>
+                  :
+                  <Link to="/register">
+                    <p className={styles.topBar_login_register}> Register</p>{" "}
+                  </Link>
+              }
+            {/* </> */}
+          {/* } */}
         </div>
       </div>
       {dropdown && <CartDropdown setDropdown={setDropdown} />}
