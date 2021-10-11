@@ -8,6 +8,7 @@ import { ToastContainer } from 'react-toastify';
 import OrderDeleteModal from './OrderDeleteModal';
 import { useHistory } from 'react-router';
 import OrderStatusModal from './OrderStatusModal';
+import Jahid from './Jahid';
 
 
 const RecentOrdersSuperAdminDashboard = () => {
@@ -80,6 +81,9 @@ const RecentOrdersSuperAdminDashboard = () => {
 
     return (
         <div className='h-4/5 overflow-scroll mt-8 pb-14'>
+
+            {/* <Jahid /> */}
+
             <Table>
                 <div className="md:p-5 ">
                     <div className=" flex justify-between sticky top-0" style={{ background: `linear-gradient(90deg,#0c2646 0,#204065 60%,#2a5788)` }}>
