@@ -1,17 +1,47 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../Style/style-superadmindashboard.css'
-import star from '../../../images/5star.png'
-import { BsStarHalf } from 'react-icons/bs';
 import { TableBodyData, TableHeadData, TableBodyRow, Table, DashboardTitle } from '../Style/AddSuperAdminStyle';
 import { SidebarData } from './TableTitle';
 import { AiFillDelete, AiFillEdit, AiFillEye } from "react-icons/ai";
 import { ImSearch } from 'react-icons/im';
+import { ToastContainer } from 'react-toastify';
+import OrderDeleteModal from './OrderDeleteModal';
+import { useHistory } from 'react-router';
+import OrderStatusModal from './OrderStatusModal';
 
 
 const RecentOrdersSuperAdminDashboard = () => {
+    const [searchValue, setSearchValue] = useState('');
     const [products, setProducts] = useState([]);
-    const [searchValue, setSearchValue] = useState("");
-    const [filterValue, setFilterValue] = useState([]);
+    const [tableFilter, setTableFilter] = useState([]);
+    const [notFound, setNotFound] = useState(false);
+    const [modalDeleteStatus, setModalDeleteStatus] = useState(false);
+    const [modalUpdateStatus, setModalUpdateStatus] = useState(false);
+    const [deleteId, setDeleteId] = useState(null);
+    const [updateId, setUpdateId] = useState(null);
+
+
+
+
+    const filterData = (e) => {
+        if (e.target.value !== "") {
+            setSearchValue(e.target.value);
+            const filterTable = products.filter(o => Object.keys(o).some(k =>
+                String(o[k]).toLowerCase().includes(e.target.value.toLowerCase()))
+            );
+
+            if (filterTable.length === 0) {
+                setNotFound(true);
+            } else {
+                setNotFound(false);
+            }
+
+            setTableFilter([...filterTable])
+        } else {
+            setSearchValue(e.target.value);
+            setProducts([...products]);
+        }
+    }
 
 
     useEffect(() => {
@@ -22,21 +52,28 @@ const RecentOrdersSuperAdminDashboard = () => {
                 setProducts(data.products)
             )
     }, [])
-    console.log(products);
+    // console.log(products);
 
 
+    // Delete...........................................................
+    const deleted = () => {
+        fetch(`https://mamardukan.herokuapp.com/products`)
+            .then(res => res.json())
+            .then(data => setProducts(data.products))
+    }
 
-    const handleChange = (e) => {
-        if (e.target.value != "") {
-            setSearchValue(e.target.value);
-            // const searchProduct = products.filter(o => Object.Keys(o).some(k => String(o[k]).toLowerCase().includes((e.target.value).toLowerCase())));
-            // setFilterValue([...searchProduct]);
-            const searchProduct = products.filter(o => Object.Keys(o).some(k => String(o[k]).toLowerCase().includes((e.target.value).toLowerCase())))
-            setFilterValue([...searchProduct]);
-        } else {
-            setSearchValue(e.target.value);
-            setProducts([...products])
-        }
+
+    //Update push.......................................................
+    const handleUpdate = (id) => {
+        setModalUpdateStatus(true);
+        setUpdateId(id)
+    }
+
+
+    //Delete...............................................
+    const handleDelete = (id) => {
+        setModalDeleteStatus(true);
+        setDeleteId(id)
     }
 
 
@@ -51,7 +88,7 @@ const RecentOrdersSuperAdminDashboard = () => {
                         </DashboardTitle>
                         <form action="" className=" flex items-center">
                             <input
-                                onChange={handleChange}
+                                onChange={filterData}
                                 type="text"
                                 placeholder="Search"
                                 className="ml-2 rounded-l-full w-full h-7  pl-2 sm:px-5 text-gray-900 leading-tight outline-none border-none"
@@ -75,9 +112,11 @@ const RecentOrdersSuperAdminDashboard = () => {
                             }
                         </tr>
                     </thead>
+
                     <tbody>
+
                         {searchValue.length > 0 ?
-                            filterValue.map((item, index) => {
+                            tableFilter.map((item, index) => {
                                 return <TableBodyRow item={item} key={index} >
 
                                     <TableBodyData>{item.color}</TableBodyData>
@@ -95,13 +134,24 @@ const RecentOrdersSuperAdminDashboard = () => {
                                     <TableBodyData>${item.price}</TableBodyData>
                                     <TableBodyData>{item.size}</TableBodyData>
                                     <TableBodyData>{(new Date(item.date).toLocaleDateString())}</TableBodyData>
-                                    <TableBodyData>{item.color}</TableBodyData>
+                                    {/* <TableBodyData>{item.color}</TableBodyData> */}
+                                    <TableBodyData>{item.status || "Pending"}</TableBodyData>
                                     <TableBodyData>{item.multiVendorSeller.sellerName}</TableBodyData>
                                     <TableBodyData>
                                         <div className='flex items-center text-2xl'>
                                             <button className='text-blue-800 p-1 hover:bg-gray-900 rounded-full hover:text-gray-50'><AiFillEye /></button>
-                                            <button className='text-yellow-400 p-1 hover:bg-gray-900 rounded-full '><AiFillEdit /></button>
-                                            <button className='text-pink-700 p-1 hover:bg-gray-900 rounded-full '><AiFillDelete /></button>
+
+                                            <button
+                                                onClick={() => handleUpdate(item._id)}
+                                                className='text-yellow-400 p-1 hover:bg-gray-900 rounded-full '>
+                                                <AiFillEdit />
+                                            </button>
+
+                                            <button
+                                                onClick={() => handleDelete(item._id)}
+                                                className='text-pink-700 p-1 hover:bg-gray-900 rounded-full '>
+                                                <AiFillDelete />
+                                            </button>
                                         </div>
                                     </TableBodyData>
                                 </TableBodyRow>
@@ -125,21 +175,50 @@ const RecentOrdersSuperAdminDashboard = () => {
                                     <TableBodyData>${item.price}</TableBodyData>
                                     <TableBodyData>{item.size}</TableBodyData>
                                     <TableBodyData>{(new Date(item.date).toLocaleDateString())}</TableBodyData>
-                                    <TableBodyData>{item.color}</TableBodyData>
+                                    {/* <TableBodyData>{item.color}</TableBodyData> */}
+                                    <TableBodyData>{item.status || "Pending"}</TableBodyData>
                                     <TableBodyData>{item.multiVendorSeller.sellerName}</TableBodyData>
                                     <TableBodyData>
                                         <div className='flex items-center text-2xl'>
                                             <button className='text-blue-800 p-1 hover:bg-gray-900 rounded-full hover:text-gray-50'><AiFillEye /></button>
-                                            <button className='text-yellow-400 p-1 hover:bg-gray-900 rounded-full '><AiFillEdit /></button>
-                                            <button className='text-pink-700 p-1 hover:bg-gray-900 rounded-full '><AiFillDelete /></button>
+
+                                            <button
+                                                onClick={() => handleUpdate(item._id)}
+                                                className='text-yellow-400 p-1 hover:bg-gray-900 rounded-full '>
+                                                <AiFillEdit />
+                                            </button>
+
+                                            <button
+                                                onClick={() => handleDelete(item._id)}
+                                                className='text-pink-700 p-1 hover:bg-gray-900 rounded-full '>
+                                                <AiFillDelete />
+                                            </button>
                                         </div>
                                     </TableBodyData>
                                 </TableBodyRow>
                             })
                         }
+
                     </tbody>
+                    {notFound && <p className="text-red-600 p-4 flex items-center justify-center">No product found!</p>}
+
                 </div>
             </Table>
+
+            {modalDeleteStatus && <OrderDeleteModal
+                setModalDeleteStatus={setModalDeleteStatus}
+                deleteId={deleteId}
+                deleted={deleted}
+            />}
+
+            {modalUpdateStatus && <OrderStatusModal
+                setModalUpdateStatus={setModalUpdateStatus}
+                updateId={updateId}
+                deleted={deleted}
+            />}
+
+
+            <ToastContainer />
         </div>
     );
 };
