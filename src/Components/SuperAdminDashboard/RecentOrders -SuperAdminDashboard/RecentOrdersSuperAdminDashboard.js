@@ -9,7 +9,22 @@ import { ImSearch } from 'react-icons/im';
 
 
 const RecentOrdersSuperAdminDashboard = () => {
+    const [searchValue, setSearchValue] = useState('');
     const [products, setProducts] = useState([]);
+    const [tableFilter, setTableFilter] = useState([]);
+
+    const filterData = (e) => {
+        if (e.target.value != "") {
+            setSearchValue(e.target.value);
+            const filterTable = products.filter(o=>Object.keys(o).some(k=>
+                String(o[k]).toLowerCase().includes(e.target.value.toLowerCase()))
+            );
+            setTableFilter([...filterTable])
+        } else {
+            setSearchValue(e.target.value);
+            setProducts([...products]);
+        }
+    }
 
     useEffect(() => {
         // fetch(`http://mamardukan.herokuapp.com/orders`)
@@ -30,6 +45,7 @@ const RecentOrdersSuperAdminDashboard = () => {
                         </DashboardTitle>
                         <form action="" className=" flex items-center">
                             <input
+                            onChange={filterData}
                                 type="text"
                                 placeholder="Search"
                                 className="ml-2 rounded-l-full w-full h-7  pl-2 sm:px-5 text-gray-900 leading-tight outline-none border-none"
@@ -54,8 +70,37 @@ const RecentOrdersSuperAdminDashboard = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            products.map((item, index) => {
+                        { searchValue.length > 0 ?
+                                tableFilter.map((item, index) => {
+                                    return <TableBodyRow item={item} key={index} >
+                                    
+                                        <TableBodyData>{item.color}</TableBodyData>
+                                        <TableBodyData>
+                                            <div className='flex px-5 items-center'>
+                                                <div className='h-10 px-5'>
+                                                    <img  className="rounded cursor-pointer h-full w-full"
+                                                        src={item.img} alt="Best Products" />
+                                                </div>
+                                                <p>{item.name}</p>
+                                            </div>
+                                        </TableBodyData>
+
+                                        <TableBodyData>3</TableBodyData>
+                                        <TableBodyData>${item.price}</TableBodyData>
+                                        <TableBodyData>{item.size}</TableBodyData>
+                                        <TableBodyData>{(new Date(item.date).toLocaleDateString())}</TableBodyData>
+                                        <TableBodyData>{item.color}</TableBodyData>
+                                        <TableBodyData>{item.multiVendorSeller.sellerName}</TableBodyData>
+                                        <TableBodyData>
+                                            <div className='flex items-center text-2xl'>
+                                                <button className='text-blue-800 p-1 hover:bg-gray-900 rounded-full hover:text-gray-50'><AiFillEye/></button>
+                                                <button className='text-yellow-400 p-1 hover:bg-gray-900 rounded-full '><AiFillEdit/></button>
+                                                <button className='text-pink-700 p-1 hover:bg-gray-900 rounded-full '><AiFillDelete/></button>
+                                            </div>
+                                        </TableBodyData>
+                                    </TableBodyRow>
+                                })
+                        :  products.map((item, index) => {
                                 return <TableBodyRow item={item} key={index} >
                                    
                                     <TableBodyData>{item.color}</TableBodyData>
