@@ -7,9 +7,10 @@ import { RiArrowUpSFill, RiArrowDownSFill , RiExchangeDollarLine} from "react-ic
 import {AiOutlineTeam, AiFillTags} from "react-icons/ai";
 import BarChart from './BarChart';
 import PieChart from './PieChart';
-import BarCharts from './BarCharts';
+import BarCharts from '../Products-SuperAdminDashboard/Orders-SuperAdminDashboard/BarCharts';
 import FeaturesSuperAdminDashboard from '../Features-SuperAdminDashboard/FeaturesSuperAdminDashboard';
 import RecentOrdersSuperAdminDashboard from '../RecentOrders -SuperAdminDashboard/RecentOrdersSuperAdminDashboard';
+import { DashboardContainer } from '../Style/AddSuperAdminStyle';
 
 const SuperAdminDashboard = () => {
     return (
@@ -17,10 +18,10 @@ const SuperAdminDashboard = () => {
         {/* <div className="w-screen h-20 p-6">
             <Logo />
         </div> */}
-        <div className="flex flex-wrap ">
+        <DashboardContainer>
             <SuperAdminSidebar/>
 
-            <div className="w-5/6 h-screen scrollBar">
+            <div className="md:w-5/6 w-full h-screen scrollBar">
                 <TopbarSuperAdminDashboard/>
                 {/* <h1 className="mt-5 text-2xl font-bold  m-2 border-l-4 tracking-tight border-red-600 pl-2 w-52 bg-gray-200">
                     Sales   
@@ -107,7 +108,7 @@ const SuperAdminDashboard = () => {
                 <RecentOrdersSuperAdminDashboard/>
 
             </div>
-        </div>
+        </DashboardContainer>
     </div>
     );
 };

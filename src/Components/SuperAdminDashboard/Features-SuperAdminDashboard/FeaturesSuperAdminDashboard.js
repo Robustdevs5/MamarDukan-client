@@ -18,7 +18,7 @@ const FeaturesSuperAdminDashboard = () => {
 
     return (
         <div className='w-full font-medium grid grid-cols-1 md:grid-cols-3 mx-4 mt-20 tracking-tight '>
-            <div className="p-5">
+            <div className="md:px-5 py-5">
                 
                <p className="font-bold border-l-4 tracking-tight border-red-600 p-2 text-white" style={{background: `linear-gradient(90deg,#0c2646 0,#204065 60%,#2a5788)` }}>
                Top Categories
@@ -34,7 +34,7 @@ const FeaturesSuperAdminDashboard = () => {
                 </div>
             </div>
             
-            <div className="p-5">
+            <div className="md:px-5 py-5">
                 
                <p className="font-bold border-l-4 tracking-tight border-red-600 p-2 text-white" style={{background: `linear-gradient(90deg,#0c2646 0,#204065 60%,#2a5788)` }}>
                Best Products
@@ -60,7 +60,7 @@ const FeaturesSuperAdminDashboard = () => {
                 </div>
             </div>
             
-            <div className="p-5">
+            <div className="md:px-5 py-5">
                 
                <p className="font-bold border-l-4 tracking-tight border-red-600 p-2 text-white" style={{background: `linear-gradient(90deg,#0c2646 0,#204065 60%,#2a5788)` }}>
                Top Sellers
