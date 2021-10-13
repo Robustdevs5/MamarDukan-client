@@ -34,6 +34,13 @@ import VendorSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdm
 // import AddSuperAdmin from "./Components/SuperAdminDashboard/AddSuperAdmin/AddSuperAdmin";
 import TrackOrder from './Components/TrackOrder/TrackOrder';
 import Dashboard from './Components/UserDashboard/Dashboard';
+import VendorAddProduct from "./Components/VendorDashboard/VendorAddProduct/VendorAddProduct";
+import VendorAllProducts from "./Components/VendorDashboard/VendorAllProducts/VendorAllProducts";
+import VendorProductOverview from "./Components/VendorDashboard/VendorAllProducts/VendorProductOverview";
+import VendorCustomer from "./Components/VendorDashboard/VendorCustomer/VendorCustomer";
+import VendorCustomerOverview from "./Components/VendorDashboard/VendorCustomer/VendorCustomerOverview";
+import VendorOrderOverview from "./Components/VendorDashboard/VendorOrders/VendorOrderOverview";
+import VendorOrders from "./Components/VendorDashboard/VendorOrders/VendorOrders";
 import VendorPanel from "./Components/VendorDashboard/VendorPanel/VendorPanel";
 import Blogs from "./pages/Blog-page/Blogs";
 import Contact from './pages/Contact-page/Contact';
@@ -108,6 +115,13 @@ function App() {
           <Route path="/super-admin/dashboard/all-products/overview" component={AllProductsSuperAdminDashboard} />
           <Route path="/super-admin/dashboard/review/overview" component={ReviewSuperAdminDashboard} />
           <Route path="/vendor/dashboard/overview" component={VendorPanel}/>
+          <Route path="/vendor/dashboard/products" component={VendorAllProducts}/>
+          <Route path="/vendor/dashboard/customers" component={VendorCustomer}/>
+          <Route path="/vendor/dashboard/orders" component={VendorOrders}/>
+          <Route path="/vendor/dashboard/addProduct" component={VendorAddProduct}/>
+          <Route path="/vendor/dashboard/customers-overview" component={VendorCustomerOverview}/>
+          <Route path="/vendor/dashboard/products-overview" component={VendorProductOverview}/>
+          <Route path="/vendor/dashboard/order-overview" component={VendorOrderOverview}/>
 
       </Switch>
     </Router>
