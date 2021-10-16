@@ -35,14 +35,14 @@ const Sidebar = () => {
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2">
-            <div className="w-1/3 ">
+            <div className="">
                 <ul>
                     {
                         button.map((item, index) => <li className="cursor-pointer p-4 font-bold	border-2 hover:bg-red-50" onClick={() => setActive(`${item.Title}`)} key={index} item={item}>{item.name}</li>)
                     }
                 </ul>
             </div>
-            <div className="w-2/3">
+            <div className="">
                 {active === 'Account' && <AccountInformation />}
                 {active === 'Profile' && <UpdateProfile />}
                 {active === 'Orders' && <Orders />}

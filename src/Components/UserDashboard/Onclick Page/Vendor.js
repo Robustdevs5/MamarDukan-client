@@ -5,11 +5,11 @@ const Vendor = () => {
         <div className="p-8">
             <h1 className="text-2xl font-bold">Become A Vendor</h1>
             <h3 className='py-1'>Shop Name :</h3>
-            <input className='border-2'></input>
+            <input placeholder="Your Name" type="text" className="border-2 border-black mb-6 w-full p-4"></input>
             <h3 className='py-1'>Shop URL :</h3> 
-            <input className='border-2'></input>
+            <input placeholder="Your Name" type="text" className="border-2 border-black mb-6 w-full p-4"></input>
             <h3 className='py-1'>Phone Number :</h3>
-            <input className='border-2'></input><br />
+            <input placeholder="Your Name" type="text" className="border-2 border-black mb-6 w-full p-4"></input>
             <p className="border-2 text-center p-2 hover:bg-pink-500 cursor-pointer "> Update</p>
         </div>
     );
