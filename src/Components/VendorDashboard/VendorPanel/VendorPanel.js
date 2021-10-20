@@ -1,8 +1,11 @@
 import React from 'react';
 import DashboardLineChart from '../VendorChart/DashboardLineChart';
+import VendorSalesReport from '../VendorChart/VendorSalesReport';
+import VendorRecentOrders from '../VendorOrders/VendorRecentOrders';
 import VendorSidebar from '../VendorSidebar/VendorSidebar';
 import VendorNavbar from '../VendorTopbar/VendorNavbar';
 import VendorTopbar from '../VendorTopbar/VendorTopbar';
+import VendorDashboardProduct from './VendorDashboardProduct';
 
 const VendorPanel = () => {
     return (
@@ -16,6 +19,10 @@ const VendorPanel = () => {
                     <VendorNavbar />
                     <VendorTopbar />
                     <DashboardLineChart />
+                    <VendorRecentOrders />
+                    <VendorDashboardProduct />
+                    <VendorSalesReport />
+                    
                 </div>
             </div>
         </div>

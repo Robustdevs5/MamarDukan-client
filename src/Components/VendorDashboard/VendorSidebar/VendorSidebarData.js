@@ -59,6 +59,26 @@ export const SidebarData = [
     ]
   },
   {
+    title: 'Stock',
+    path: '',
+    icon: <FaIcons.FaCartPlus />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
+
+    subNav: [
+      {
+        title: 'Stock Overview',
+        path: '/vendor/dashboard/stock-overview',
+        icon: <IoIcons.IoIosPaper />
+      },
+      {
+        title: 'Stock Status',
+        path: '/vendor/dashboard/stock-status',
+        icon: <IoIcons.IoIosPaper />
+      }
+    ]
+  },
+  {
     title: 'Orders',
     path: '',
     icon: <AiIcons.AiFillHome />,
@@ -68,47 +88,30 @@ export const SidebarData = [
     subNav: [
       {
         title: 'Order Overview',
-        path: '/dashboard/overview/order-overview',
+        path: '/vendor/dashboard/order-overview',
         icon: <IoIcons.IoIosPaper />
       },
       {
-        title: 'Order Review',
-        path: '/dashboard/overview/orders',
+        title: 'Orders',
+        path: '/vendor/dashboard/orders',
         icon: <IoIcons.IoIosPaper />
       }
     ]
   },
   {
     title: 'Reports',
-    path: '',
+    path: '/vendor/dashboard/reports',
     icon: <IoIcons.IoIosPaper />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
-
-    subNav: [
-      {
-        title: 'Reports',
-        path: 'vendor/dashboard/reports',
-        icon: <IoIcons.IoIosPaper />,
-        cName: 'sub-nav'
-      }
-    ]
   },
   {
     title: 'Messages',
-    path: '',
+    path: '/vendor/dashboard/messages/',
     icon: <FaIcons.FaEnvelopeOpenText />,
 
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
-
-    subNav: [
-      {
-        title: 'Message',
-        path: 'vendor/dashboard/messages/',
-        icon: <IoIcons.IoIosPaper />
-      },
-    ]
   },
   {
     title: 'Support',
