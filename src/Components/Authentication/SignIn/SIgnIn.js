@@ -1,19 +1,18 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useState } from "react";
+import { AiFillGithub } from "react-icons/ai";
+import { FcGoogle } from 'react-icons/fc';
 import { useHistory, useLocation } from "react-router";
 import { Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { userContext } from "../../../App";
 import Footer from '../../Footer/Footer';
 import Navbar from '../../Navbar/Navbar/Navbar';
 import TopBar from '../../TopBar/TopBar';
 import firebaseConfig from "../firebase.config";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import './SignIn.css';
-import { useState } from 'react';
-import { AiFillGithub } from "react-icons/ai";
-import { FcGoogle } from 'react-icons/fc';
 
 
 
@@ -152,6 +151,7 @@ const SIgnIn = () => {
                             });
                             e.target.reset();
                             sessionStorage.setItem('user', JSON.stringify(user));
+                            setUser(user);
                             history.push('/');
                         }
                         else {
@@ -189,6 +189,7 @@ const SIgnIn = () => {
                             });
                             e.target.reset();
                             sessionStorage.setItem('user', JSON.stringify(user));
+                            setUser(user);
                             history.push('/');
                         }
                         else {
@@ -226,6 +227,7 @@ const SIgnIn = () => {
                             });
                             e.target.reset();
                             sessionStorage.setItem('user', JSON.stringify(user));
+                            setUser(user);
                             history.push('/');
                         }
                         else {
@@ -263,6 +265,7 @@ const SIgnIn = () => {
                             });
                             e.target.reset();
                             sessionStorage.setItem('user', JSON.stringify(user));
+                            setUser(user);
                             history.push('/');
                         }
                         else {
@@ -324,7 +327,6 @@ const SIgnIn = () => {
             <div className="login-container">
                 <div className="login-box">
                     <h2>Login</h2>
-
                     <form onSubmit={handleSubmit}>
                         {/* <h3 className="login-heading">Log In</h3>
                         
@@ -351,10 +353,10 @@ const SIgnIn = () => {
                             <input type="password" name="password" requiblue="" />
                             <label>Password</label>
                         </div>
-                        <div className="padding-l-5 flex  justify-between">
-                            <h1 className="text-blue-50 text-center">I'm a</h1>
+                        <div className="padding-l-5 flex  justify-between text-sm">
+                            <h1 className="text-blue-50 text-center">I'm</h1>
 
-                            <label for="user" className=" flex items-center cursor-pointer">
+                            {/* <label for="user" className=" flex items-center cursor-pointer">
                                 <input onChange={handleUserChange} className="w-6 h-4  cursor-pointer" name="user" type="radio" id='user' value="1" />
                                 <small className="text-blue-50 text-center ">user</small>
                             </label>
@@ -372,8 +374,36 @@ const SIgnIn = () => {
                             <label className="flex items-center border-l-2 border-blue-400 rounded cursor-pointer">
                                 <input onChange={handleSuperAdminChange} className="w-6 h-4 cursor-pointer" name="superAdmin" type="radio" value="1" />
                                 <small className="text-blue-50 text-center">Super Admin</small>
-                            </label>
+                            </label> */}
 
+                            <div className="">
+                                <input
+                                    className="w-6 h-4 cursor-pointer"
+                                    onChange={handleUserChange}
+                                    type="radio" id="user" name="fav_language" value="user" />
+                                <label className="text-blue-50 text-center border-blue-400 rounded cursor-pointer" for="user">User</label>
+                            </div>
+                            <div className="flex items-center border-l-2 border-blue-400">
+                                <input
+                                    className="w-6 h-4 cursor-pointer"
+                                    onChange={handleVendorChange}
+                                    type="radio" id="vendor" name="fav_language" value="vendor" />
+                                <label className="text-blue-50 text-center" for="vendor">Vendor</label>
+                            </div>
+                            <div className="flex items-center border-l-2 border-blue-400">
+                                <input
+                                    className="w-6 h-4 cursor-pointer"
+                                    onChange={handleAdminChange}
+                                    type="radio" id="admin" name="fav_language" value="admin" />
+                                <label className="text-blue-50 text-center" for="admin">Admin</label>
+                            </div>
+                            <div className="flex items-center border-l-2 border-blue-400">
+                                <input
+                                    className="w-6 h-4 cursor-pointer"
+                                    onChange={handleSuperAdminChange}
+                                    type="radio" id="superAdmin" name="fav_language" value="superAdmin" />
+                                <label className="text-blue-50 text-center" for="superAdmin">Super Admin</label>
+                            </div>
                         </div>
 
                         {/* <a href="#" className="submitBtn">

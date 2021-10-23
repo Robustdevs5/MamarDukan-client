@@ -82,7 +82,7 @@ export const SidebarData = [
   },
   {
     title: 'Orders',
-    path: '/dashboard/Orders/overview',
+    path: '/super-admin/dashboard/orders/overview',
     icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -90,7 +90,7 @@ export const SidebarData = [
     subNav: [
       {
         title: 'Order Overview',
-        path: '/dashboard/overview/manage-users',
+        path: '/super-admin/dashboard/orders/overview',
         icon: <IoIcons.IoIosPaper />
       },
       {

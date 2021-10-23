@@ -1,26 +1,86 @@
 import React from 'react';
-import {OrderDetails} from './OrderAPI';
+import { OrderDetails } from './OrderAPI';
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
+
+
+
+const StyledTableCell = withStyles((theme) => ({
+    head: {
+        backgroundColor: theme.palette.common.white,
+        color: theme.palette.common.black,
+    },
+    body: {
+        fontSize: 14,
+    },
+}))(TableCell);
+
+
+const StyledTableRow = withStyles((theme) => ({
+    root: {
+        "&:nth-of-type(odd)": {
+            backgroundColor: theme.palette.action.hover,
+        },
+    },
+}))(TableRow);
+
+
+const useStyles = makeStyles({
+    table: {
+        minWidth: 700,
+    },
+});
+
+
+
+
 
 const Orders = () => {
+
+    const classes = useStyles();
+
+
+
     return (
-        <div>
-            <h1>Orders</h1>
-                <div className="tableheader">
-                    <div className="header bg-gray-300">
-                        <h1 className="w-1/5 mx-auto p-4 text-center">Picture</h1>
-                        <h1 className="w-1/5 mx-auto p-4 text-center">Name</h1>
-                        <h1 className="w-1/5 mx-auto p-4 text-center">Price</h1>
-                        <h1 className="w-1/5 mx-auto p-4 text-center">quantity</h1>
-                    </div>
-                    {
-                        OrderDetails.map((item, index) => <div className="bg-green-50 mt-2 " key={index} item={item}>
-                        <h1 className="w-1/5 mx-auto my-auto text-center"> {item.ID}</h1>
-                        <p className='w-1/5 mx-auto my-auto text-center'>{item.Date}</p>
-                        <p className='w-1/5 mx-auto my-auto text-center'>{item.Price}</p>
-                        <p className='w-1/5 mx-auto my-auto text-center'>{item.Status}</p>
-                        </div>)
-                    }
-                </div>
+        <div className="p-8">
+            <h1 className="font-bold text-2xl my-8">Orders</h1>
+
+            <div>
+                <TableContainer component={Paper}>
+                    <Table className={classes.table} aria-label="customized table">
+                        <TableHead>
+                            <TableRow>
+                                {/* <StyledTableCell>ID</StyledTableCell> */}
+
+                                <StyledTableCell align="left">Order Id</StyledTableCell>
+                                <StyledTableCell align="left">Name</StyledTableCell>
+                                <StyledTableCell align="left">Date</StyledTableCell>
+                                <StyledTableCell align="left">Price</StyledTableCell>
+                                <StyledTableCell align="left">Status</StyledTableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {OrderDetails
+                                // .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                .map((item) => (
+                                    <StyledTableRow key={item.name} className={classes.tables}>
+                                        {/* <StyledTableCell align="left">{i++}</StyledTableCell> */}
+                                        <StyledTableCell align="left">{item.ID}
+                                        </StyledTableCell>
+                                        <StyledTableCell align="left">{item.Name || "Product 101"}
+                                        </StyledTableCell>
+                                        <StyledTableCell align="left">{item.Date}
+                                        </StyledTableCell>
+                                        <StyledTableCell align="left">{item.Price}
+                                        </StyledTableCell>
+                                        <StyledTableCell align="left">{item.Status}</StyledTableCell>
+                                    </StyledTableRow>
+                                ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+
+            </div>
         </div>
     );
 };

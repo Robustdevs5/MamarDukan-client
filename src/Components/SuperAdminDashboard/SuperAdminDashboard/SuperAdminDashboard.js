@@ -7,8 +7,10 @@ import { RiArrowUpSFill, RiArrowDownSFill , RiExchangeDollarLine} from "react-ic
 import {AiOutlineTeam, AiFillTags} from "react-icons/ai";
 import BarChart from './BarChart';
 import PieChart from './PieChart';
-import BarCharts from './BarCharts';
+import BarCharts from '../Products-SuperAdminDashboard/Orders-SuperAdminDashboard/BarCharts';
 import FeaturesSuperAdminDashboard from '../Features-SuperAdminDashboard/FeaturesSuperAdminDashboard';
+import RecentOrdersSuperAdminDashboard from '../RecentOrders -SuperAdminDashboard/RecentOrdersSuperAdminDashboard';
+import { DashboardContainer } from '../Style/AddSuperAdminStyle';
 
 const SuperAdminDashboard = () => {
     return (
@@ -16,15 +18,15 @@ const SuperAdminDashboard = () => {
         {/* <div className="w-screen h-20 p-6">
             <Logo />
         </div> */}
-        <div className="flex flex-wrap ">
+        <DashboardContainer>
             <SuperAdminSidebar/>
 
-            <div className="w-5/6 h-screen overflow-scroll">
+            <div className="md:w-5/6 w-full h-screen scrollBar">
                 <TopbarSuperAdminDashboard/>
                 {/* <h1 className="mt-5 text-2xl font-bold  m-2 border-l-4 tracking-tight border-red-600 pl-2 w-52 bg-gray-200">
                     Sales   
                 </h1> */}
-                <div className="w-full font-medium grid grid-cols-2 md:grid-cols-4 mx-4 -mt-14 tracking-tight text-white">
+                <div className="w-full font-medium grid grid-cols-2 md:grid-cols-4 -mt-14 tracking-tight text-white">
                     <div className="p-5">
                         <div className='flex items-center justify-between py-2 px-5 shadow-lg' style={{backgroundColor: "#ff5252"}}>
                             <div>
@@ -103,9 +105,10 @@ const SuperAdminDashboard = () => {
                     </div>
                 </div>
                 <FeaturesSuperAdminDashboard/>
+                <RecentOrdersSuperAdminDashboard/>
 
             </div>
-        </div>
+        </DashboardContainer>
     </div>
     );
 };

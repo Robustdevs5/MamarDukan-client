@@ -1,43 +1,51 @@
 import axios from "axios";
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddAdmin from "./Components/AdminDashboard/AddAdmin/AddAdmin";
 // import AddProduct from "./Components/Admin/addProduct/AddProduct";
 import AddProduct from "./Components/AdminDashboard/AddProduct/AddProduct";
-import AdminPanel from "./Components/AdminDashboard/AdminPanel/AdminPanel";
 import AdminSidebar from './Components/AdminDashboard/AdminSidebar/AdminSidebar';
 import ManageProduct from "./Components/AdminDashboard/ManageProduct/ManageProduct";
 import UpdateProduct from './Components/AdminDashboard/UpdateProduct/UpdateProduct';
+import LoginPanel from "./Components/Authentication/LoginPanel/LoginPanel";
 import SIgnIn from "./Components/Authentication/SignIn/SIgnIn";
 import SignUP from "./Components/Authentication/SignUp/SignUP";
 import CustomerService from "./Components/CustomerService/CustomerService";
-// import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
 import Shop from './Components/Shop/Shop';
 import FAQS from './Components/ShopingCart/FAQS';
 import ShopingCart from './Components/ShopingCart/ShopingCart';
+import './Components/StyledComponent/Global.css';
+import AllProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/AllProducts-SuperAdminDashboard/AllProductsSuperAdminDashboard";
+import OrdersSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Orders-SuperAdminDashboard/OrdersSuperAdminDashboard";
+import ProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/ProductsSuperAdminDashboard";
+// import ProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/ProductsSuperAdminDashboard";
+import ReviewSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Review-SuperAdminDashboard/ReviewSuperAdminDashboard";
+import Report from "./Components/SuperAdminDashboard/Report/Report";
 import SuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminDashboard/SuperAdminDashboard";
 import AdminSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Admin-SuperAdminDashboard/AdminSuperAdminDashboard";
 import CustomerSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Customers-SuperAdminDashboard/CustomerSuperAdminDashboard";
-import VendorSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Vendor-SuperAdminDashboard/VendorSuperAdminDashboard";
 import SuperAdmin from "./Components/SuperAdminDashboard/SuperAdminManageUser/SuperAdmin-SuperAdminDashboard/SuperAdmin";
 import SuperAdminManageUser from "./Components/SuperAdminDashboard/SuperAdminManageUser/SuperAdminManageUser";
+import VendorSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Vendor-SuperAdminDashboard/VendorSuperAdminDashboard";
 // import SuperAdminOverview from "./Components/SuperAdminDashboard/SuperAdminOverview/SuperAdminOverview";
 // import SuperAdminUserOverview from "./Components/SuperAdminDashboard/SuperAdminUserOverview/SuperAdminUserOverview";
 // import ManageSuperAdmin from "./Components/SuperAdminDashboard/ManageSuperAdmin/ManageSuperAdmin";
 // import AddSuperAdmin from "./Components/SuperAdminDashboard/AddSuperAdmin/AddSuperAdmin";
 import TrackOrder from './Components/TrackOrder/TrackOrder';
+import Dashboard from './Components/UserDashboard/Dashboard';
+import VendorAddProduct from "./Components/VendorDashboard/VendorAddProduct/VendorAddProduct";
+import VendorAllProducts from "./Components/VendorDashboard/VendorAllProducts/VendorAllProducts";
+import VendorProductOverview from "./Components/VendorDashboard/VendorAllProducts/VendorProductOverview";
+import VendorCustomer from "./Components/VendorDashboard/VendorCustomer/VendorCustomer";
+import VendorCustomerOverview from "./Components/VendorDashboard/VendorCustomer/VendorCustomerOverview";
+import VendorOrderOverview from "./Components/VendorDashboard/VendorOrders/VendorOrderOverview";
+import VendorOrders from "./Components/VendorDashboard/VendorOrders/VendorOrders";
+import VendorPanel from "./Components/VendorDashboard/VendorPanel/VendorPanel";
 import Blogs from "./pages/Blog-page/Blogs";
 import Contact from './pages/Contact-page/Contact';
 import HomePage from "./pages/Home-page/HomePage";
-import OrdersSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Orders-SuperAdminDashboard/OrdersSuperAdminDashboard";
-import ProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/ProductsSuperAdminDashboard";
-import AllProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/AllProducts-SuperAdminDashboard/AllProductsSuperAdminDashboard";
-import ReviewSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Review-SuperAdminDashboard/ReviewSuperAdminDashboard";
-import './Components/StyledComponent/Global.css'
-import UserDashboard from './Components/UserDashboard/Dashboard'
-import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
-import LoginPanel from "./Components/Authentication/LoginPanel/LoginPanel";
 export const userContext = createContext();
 
 const api = axios.create({
@@ -96,8 +104,9 @@ function App() {
           <Route path="/blog" component={Blogs} />
           <Route path="/cart" component={ShopingCart} />
           <Route path="/faqs" component={FAQS} />
-          <Route path="/user/dashboard" component={UserDashboard} />
+          <Route path="/user/dashboard" component={Dashboard} />
           <Route path="/super-admin/dashboard/overview" component={SuperAdminDashboard}/>
+          <Route path="/reports/reports1" component={Report}/>
           <Route path="/super-admin/dashboard/manage-user/overview" component={SuperAdminManageUser}/>
           <Route path="/super-admin/dashboard/customers/overview" component={CustomerSuperAdminDashboard}/>
           <Route path="/super-admin/dashboard/admin/overview" component={AdminSuperAdminDashboard}/>
@@ -107,6 +116,15 @@ function App() {
           <Route path="/super-admin/dashboard/products/overview" component={ProductsSuperAdminDashboard} />
           <Route path="/super-admin/dashboard/all-products/overview" component={AllProductsSuperAdminDashboard} />
           <Route path="/super-admin/dashboard/review/overview" component={ReviewSuperAdminDashboard} />
+          <Route path="/vendor/dashboard/overview" component={VendorPanel}/>
+          <Route path="/vendor/dashboard/products" component={VendorAllProducts}/>
+          <Route path="/vendor/dashboard/customers" component={VendorCustomer}/>
+          <Route path="/vendor/dashboard/orders" component={VendorOrders}/>
+          <Route path="/vendor/dashboard/addProduct" component={VendorAddProduct}/>
+          <Route path="/vendor/dashboard/customers-overview" component={VendorCustomerOverview}/>
+          <Route path="/vendor/dashboard/products-overview" component={VendorProductOverview}/>
+          <Route path="/vendor/dashboard/order-overview" component={VendorOrderOverview}/>
+
       </Switch>
     </Router>
     </userContext.Provider>

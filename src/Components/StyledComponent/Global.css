@@ -116,8 +116,7 @@ body {
 /* Background color */
 .primary_BG_color {
   background-color: #022335;
-};
-
+}
 
 /* primary color */
 
@@ -130,13 +129,11 @@ body {
   color: #fff;
   background-color: #dd2400;
   border: 1px solid #dd2400;
-  
 }
 .primary_BTN:hover {
   color: #dd2400;
   background-color: #fff;
   border: 1px solid #dd2400;
-  
 }
 .primary_BTN_Outline {
   color: #dd2400;
@@ -147,4 +144,7 @@ body {
   background-color: #dd2500;
   color: #fff;
   border: 1px solid #dd2400;
+}
+.side-link a:active {
+  color: #fff;
 }

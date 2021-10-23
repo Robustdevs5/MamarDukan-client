@@ -1,12 +1,11 @@
 import React from 'react';
+import { FcSms } from 'react-icons/fc';
+import { ImSearch } from 'react-icons/im';
 import { MdNotificationsActive } from "react-icons/md";
-import {FcSms } from 'react-icons/fc';
-import {ImSearch} from 'react-icons/im';
-import BarChart from '../SuperAdminDashboard/BarChart';
 
-const TopbarSuperAdminDashboard = () => {
+const VendorNavbar = () => {
     return (
-        <div className=" w-full ">
+        <div className="w-full mb-5">
             <div className="flex flex-wrap items-center justify-between shadow  py-3 sticky top-0 bg-white ">
 
                 <form action="" className=" flex">
@@ -25,7 +24,7 @@ const TopbarSuperAdminDashboard = () => {
                 <div className="flex md:mt-0 mt-4">
                     <div className="flex items-center border rounded-full border-red-300 py-1 px-2">
                         <img src="https://simgbb.com/avatar/wNhFXn8SYdNf.png" alt="placeholder" className='h-8 rounded-full mr-2' />
-                        <strong>Juned Ahmed</strong>
+                        <strong>Sahadat Hossain</strong>
                     </div>
                     <div className="flex">
                         
@@ -44,14 +43,8 @@ const TopbarSuperAdminDashboard = () => {
                     </div>
                 </div>
             </div>
-            {/* <BarChart/> */}
-            <div className='flex items-center justify-between pt-2 pb-14 px-5 shadow-lg' style={{background: `linear-gradient(90deg,#0c2646 0,#204065 60%,#2a5788)` }}>
-                
-                <BarChart/>
-                {/* <BarChart/> */}
-            </div>
         </div>
     );
 };
 
-export default TopbarSuperAdminDashboard;
+export default VendorNavbar;
