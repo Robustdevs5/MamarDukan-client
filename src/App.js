@@ -40,9 +40,13 @@ import VendorAllProducts from "./Components/VendorDashboard/VendorAllProducts/Ve
 import VendorProductOverview from "./Components/VendorDashboard/VendorAllProducts/VendorProductOverview";
 import VendorCustomer from "./Components/VendorDashboard/VendorCustomer/VendorCustomer";
 import VendorCustomerOverview from "./Components/VendorDashboard/VendorCustomer/VendorCustomerOverview";
+import VendorMessage from "./Components/VendorDashboard/VendorMessage/VendorMessage";
 import VendorOrderOverview from "./Components/VendorDashboard/VendorOrders/VendorOrderOverview";
 import VendorOrders from "./Components/VendorDashboard/VendorOrders/VendorOrders";
 import VendorPanel from "./Components/VendorDashboard/VendorPanel/VendorPanel";
+import VendorReport from "./Components/VendorDashboard/VendorReport/VendorReport";
+import VendorStockOverview from "./Components/VendorDashboard/VendorStock/VendorStockOverview";
+import VendorStockStatus from "./Components/VendorDashboard/VendorStock/VendorStockStatus";
 import Blogs from "./pages/Blog-page/Blogs";
 import Contact from './pages/Contact-page/Contact';
 import HomePage from "./pages/Home-page/HomePage";
@@ -124,6 +128,10 @@ function App() {
           <Route path="/vendor/dashboard/customers-overview" component={VendorCustomerOverview}/>
           <Route path="/vendor/dashboard/products-overview" component={VendorProductOverview}/>
           <Route path="/vendor/dashboard/order-overview" component={VendorOrderOverview}/>
+          <Route path="/vendor/dashboard/stock-overview" component={VendorStockOverview }/>
+          <Route path="/vendor/dashboard/stock-status" component={VendorStockStatus }/>
+          <Route path="/vendor/dashboard/reports" component={VendorReport }/>
+          <Route path="/vendor/dashboard/messages" component={VendorMessage }/>
 
       </Switch>
     </Router>
