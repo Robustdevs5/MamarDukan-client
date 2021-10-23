@@ -1,14 +1,20 @@
-export const ShopingCart = [
-    {
-        pictureUrl : 'https://martfury.botble.com/storage/products/5.jpg',
-        title: 'Smart Watch External',
-        price: '640.64'
-    },{
-        pictureUrl : 'https://martfury.botble.com/storage/products/11.jpg',
-        title: 'Xbox One Wireless Controller Black Color',
-        price: '1,269.00'
-    }
-]
+export const Cart = {
+    products : [
+        {
+            id : 1 ,
+            pictureUrl : 'https://martfury.botble.com/storage/products/5.jpg',
+            title: 'Smart Watch External',
+            price: 640.64 ,
+            qty: 1
+        },{
+            id : 2 ,
+            pictureUrl : 'https://martfury.botble.com/storage/products/11.jpg',
+            title: 'Xbox One Wireless Controller Black Color',
+            price: 1269.00 ,
+            qty: 1
+        }
+    ]
+}
 
 
 export const Catagory = [

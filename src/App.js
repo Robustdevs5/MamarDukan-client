@@ -22,6 +22,7 @@ import OrdersSuperAdminDashboard from "./Components/SuperAdminDashboard/Products
 import ProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/ProductsSuperAdminDashboard";
 // import ProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/ProductsSuperAdminDashboard";
 import ReviewSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Review-SuperAdminDashboard/ReviewSuperAdminDashboard";
+import Report from "./Components/SuperAdminDashboard/Report/Report";
 import SuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminDashboard/SuperAdminDashboard";
 import AdminSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Admin-SuperAdminDashboard/AdminSuperAdminDashboard";
 import CustomerSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Customers-SuperAdminDashboard/CustomerSuperAdminDashboard";
@@ -110,6 +111,7 @@ function App() {
           <Route path="/faqs" component={FAQS} />
           <Route path="/user/dashboard" component={Dashboard} />
           <Route path="/super-admin/dashboard/overview" component={SuperAdminDashboard}/>
+          <Route path="/reports/reports1" component={Report}/>
           <Route path="/super-admin/dashboard/manage-user/overview" component={SuperAdminManageUser}/>
           <Route path="/super-admin/dashboard/customers/overview" component={CustomerSuperAdminDashboard}/>
           <Route path="/super-admin/dashboard/admin/overview" component={AdminSuperAdminDashboard}/>

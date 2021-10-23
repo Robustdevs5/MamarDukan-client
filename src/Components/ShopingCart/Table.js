@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import {ShopingCart} from "./Data";
+import {Cart} from "./Data";
 import './Table.css'
 import TotalCart from './Totalcart';
 import CupponCart from './CupponCart'
 
-const Table = () => {
-  const [counter, setCounter] = useState(1) 
-  // const increseButton = setCounter(counter + 1)
+const Table = (props) => {
+  const {products} = Cart;
+  const { onAdd , onRemove , cartItems} = props;
+  const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
+  const taxPrice = itemsPrice * 0.05;
+  const shippingPrice = itemsPrice > 2000 ? 0 : 20;
+  const totalPrice = itemsPrice + taxPrice + shippingPrice;
 
   return (
     <div>
@@ -22,19 +26,19 @@ const Table = () => {
             <h1 className="w-1/5 mx-auto p-4 text-center">Total</h1>
           </div>
           {
-            ShopingCart.map((item, index) => <div className="bg-green-50 mt-2 " key={index} item={item}>
+            cartItems.map((item, index) => <div className="bg-green-50 mt-2 " key={index} item={item}>
               <div className="w-1/5 mx-auto my-auto  "><img className="w-20 h-20 my-auto mx-auto py-2" src={item.pictureUrl}  /></div>
               <h1 className="w-1/5 mx-auto my-auto text-center"> {item.title}</h1>
               <p className='w-1/5 mx-auto my-auto text-center'>{item.price}</p>
-              <p className='w-1/5 mx-auto my-auto text-center '><a className="border-2 text-center px-3 py-3"><a className="mr-5 cursor-pointer text-3xl">-</a>{counter}<a className="ml-5 cursor-pointer text-3xl">+</a></a></p>
-              <p className='w-1/5 mx-auto my-auto text-center'>{item.price}</p>
+              <p className='w-1/5 mx-auto my-auto text-center '><a className="border-2 text-center px-3 py-3"><a onClick={() => onRemove(item)} className="mr-5 cursor-pointer text-3xl">-</a>{item.qty}<a onClick={() => onAdd(item)} className="ml-5 cursor-pointer text-3xl">+</a></a></p>
+              <div className='w-1/5 mx-auto my-auto text-center'><p>{item.qty} x {item.price.toFixed(2)}</p></div>
             </div>)
           }
         </div>
       </div>
       <div className="CupponTotal grid grid-cols-1 md:grid-cols-2  mt-10">
         <div className=""><CupponCart /></div>
-        <div className=""><TotalCart /></div>
+        <div className=""><TotalCart totalPrice={totalPrice} taxPrice={taxPrice} itemsPrice={itemsPrice} /></div>
       </div>
     </div>
     
