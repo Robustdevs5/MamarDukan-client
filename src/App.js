@@ -47,6 +47,7 @@ import VendorReport from "./Components/VendorDashboard/VendorReport/VendorReport
 import VendorStockOverview from "./Components/VendorDashboard/VendorStock/VendorStockOverview";
 import VendorStockStatus from "./Components/VendorDashboard/VendorStock/VendorStockStatus";
 import Blogs from "./pages/Blog-page/Blogs";
+import CheckoutPage from "./pages/Checkout-page/CheckoutPage";
 import Contact from './pages/Contact-page/Contact';
 import HomePage from "./pages/Home-page/HomePage";
 export const userContext = createContext();
@@ -130,6 +131,7 @@ function App() {
           <Route path="/vendor/dashboard/stock-status" component={VendorStockStatus }/>
           <Route path="/vendor/dashboard/reports" component={VendorReport }/>
           <Route path="/vendor/dashboard/messages" component={VendorMessage }/>
+          <Route path="/checkout" component={CheckoutPage }/>
 
       </Switch>
     </Router>
