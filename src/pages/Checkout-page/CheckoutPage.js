@@ -3,6 +3,7 @@ import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar/Navbar';
 import TopBar from '../../Components/TopBar/TopBar';
+import CreditCardForm from './CreditCardForm';
 
 const CheckoutPage = () => {
     return (
@@ -11,9 +12,9 @@ const CheckoutPage = () => {
             <Header />
             <Navbar />
 
-        <div className="container p-12 mx-auto">
+        <div className="container p-5 mx-auto">
             <h2 className="mb-4 font-bold md:text-4xl text-center text-heading pb-5">Checkout</h2>
-            <div className="flex flex-col w-full px-0 mx-auto md:flex-row">
+            <div className="flex flex-col w-full px-0 mb-10 mx-auto md:flex-row">
                 <div className="bg-gray-50 p-5 rounded flex flex-col md:w-full">
                     <h2 className="mb-4 font-bold md:text-xl text-heading ">Shipping Address
                     </h2>
@@ -84,33 +85,46 @@ const CheckoutPage = () => {
                                     className="flex items-center w-full px-4 py-3 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-600"
                                     rows="4" placeholder="Notes for delivery"></textarea>
                             </div>
-                            <div className="mt-4">
-                                <button
-                                    className="w-full px-6 py-2 text-blue-200 bg-blue-600 hover:bg-blue-900">Process</button>
-                            </div>
+                            
                         </div>
                     </form>
                     <div className="pt-6 mt-10 border-t border-gray-300">
                         <h2 className="mb-4 font-bold md:text-xl text-heading ">Delivery Method</h2>
-                        <div className="mt-6">
-                                <button className="flex items-center justify-between w-full bg-white rounded-md border-2 border-blue-500 p-4 focus:outline-none">
-                                    <label className="flex items-center">
-                                        <input type="radio" name="radio" className="form-radio h-5 w-5 text-blue-600" checked /><span className="ml-2 text-sm text-gray-700">Standard</span>
-                                    </label>
-                                    <p>4-10 Business Days</p>
-                                    <span className="text-gray-600 text-sm">$18</span>
-                                </button>
-                                <button className="mt-6 flex items-center justify-between w-full bg-white rounded-md border p-4 focus:outline-none">
-                                    <label className="flex items-center">
-                                        <input type="radio" name="radio" className="form-radio h-5 w-5 text-blue-600" /><span className="ml-2 text-sm text-gray-700">Express</span>
-                                    </label>
-                                    <p>2-5 Business Days</p>
-                                    <span className="text-gray-600 text-sm">$26</span>
-                                </button>
-                            </div>
+                        <div className="mt-6 flex space-x-4">
+                            <button className="flex-1 w-full bg-white rounded-md border-2 border-blue-500 p-5 focus:outline-none">
+                                <label className="flex">
+                                    <input type="radio" name="radio" className="form-radio h-5 w-5 text-blue-600" checked /><span className="ml-2 text-sm text-gray-700">Standard</span>
+                                </label>
+                                <p>4-10 Business Days</p>
+                                <span className="text-gray-700 text-sm font-bold">$18</span>
+                            </button>
+                            <button className="flex-1 w-full bg-white rounded-md border p-5 focus:outline-none">
+                                <label className="flex">
+                                    <input type="radio" name="radio" className="form-radio h-5 w-5 text-blue-600" /><span className="ml-2 text-sm text-gray-700">Express</span>
+                                </label>
+                                <p>2-5 Business Days</p>
+                                <span className="text-gray-700 text-sm font-bold">$26</span>
+                            </button>
+                        </div>
                     </div>
                     <div className="pt-6 mt-10 border-t border-gray-300">
                         <h2 className="mb-4 font-bold md:text-xl text-heading ">Payment</h2>
+                        <div className="mt-2">
+                            <label className="inline-flex items-center">
+                                <input type="radio" className="form-radio h-5 w-5" name="accountType" value="personal" checked />
+                                <span className="ml-2">Credit Card</span>
+                                
+                            </label>
+                            <label className="inline-flex items-center ml-6">
+                                <input type="radio" className="form-radio h-5 w-5" name="accountType" value="busines" />
+                                <span className="ml-2">Paypal</span>
+                            </label>
+                            <label className="inline-flex items-center ml-6">
+                                <input type="radio" className="form-radio h-5 w-5" name="accountType" value="etransfer" />
+                                <span className="ml-2">eTransfer</span>
+                            </label>
+                        </div>
+                        <CreditCardForm />
                     </div>
                 </div>
                 <div className="bg-red-600 text-white rounded p-5 flex flex-col w-full ml-0 lg:ml-12 lg:w-4/5">
@@ -122,7 +136,7 @@ const CheckoutPage = () => {
                                 <div className="flex space-x-4">
                                     <div>
                                         <img src="https://source.unsplash.com/user/erondu/1600x900" alt="title"
-                                            className="w-60" />
+                                            className="w-32" />
                                     </div>
                                     <div>
                                         <h2 className="text-xl font-bold">Title</h2>
@@ -140,7 +154,7 @@ const CheckoutPage = () => {
                                 <div className="flex space-x-4">
                                     <div>
                                         <img src="https://source.unsplash.com/collection/190727/1600x900" alt="title"
-                                            className="w-60" />
+                                            className="w-32" />
                                     </div>
                                     <div>
                                         <h2 className="text-xl font-bold">Title</h2>
@@ -169,6 +183,10 @@ const CheckoutPage = () => {
                         <div
                             className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
                             Total<span className="ml-2">$50.00</span></div>
+                        <div className="mt-4">
+                            <button
+                                className="w-full px-6 py-2 text-gray-50 bg-gray-900 hover:bg-red-900">Process</button>
+                        </div>
                     </div>
                 </div>
             </div>
