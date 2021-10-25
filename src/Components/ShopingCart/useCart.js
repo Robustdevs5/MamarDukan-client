@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { userContext } from '../../App';
 import { getStoredCart } from './CartDatabase';
 
 const useCart = products => {
-    const [cart, setCart] = useState([]);
+    // const [cart, setCart] = useState([]);
+    const { cart, setCart } = useContext(userContext);
+    console.log('cart useContext', cart)
 
     useEffect(() => {
 

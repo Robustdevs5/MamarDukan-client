@@ -16,6 +16,7 @@ function classNames(...classes) {
 const TopBar = () => {
   const [dropdown, setDropdown] = useState(false);
   const { user, setUser } = useContext(userContext);
+  const { cart, setCart } = useContext(userContext);
   const [login, SetLogin] = useState()
   console.log('login', login)
   let history = useHistory();
@@ -72,13 +73,20 @@ const TopBar = () => {
           onMouseEnter={() => setDropdown(true)}
           onMouseLeave={() => setDropdown(false)}
         >
-          <div className={styles.topBar_tags}>
+          {/* <div className={styles.topBar_tags}>
             <Link to="/cart">
               <ShoppingCart fontSize="large"></ShoppingCart>
             </Link>{" "}
+          </div> */}
+          <div className={styles.topBar_tags}>
+              <button href="#" className="w-10 h-10 items-center flex justify-center">
+              <ShoppingCart fontSize="large"></ShoppingCart>
+              </button>
+              <strong className="text-gray-100 -ml-2 -mt-6 bg-red-600 rounded-full px-1">
+                {cart.length}
+              </strong>
           </div>
         </div>
-
         {/* Customer Care Dropdown */}
 
         <div className={styles.topBar_dropdown}>

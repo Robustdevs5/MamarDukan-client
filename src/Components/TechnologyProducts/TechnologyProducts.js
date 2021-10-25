@@ -18,7 +18,7 @@ const TechnologyProducts = () => {
             .then(res => res.json())
             .then(data => setTechnologyProduct(data.result))
     }, [])
-    console.log(technologyProduct);
+    // console.log(technologyProduct);
 
 
     function SampleNextArrow(props) {
