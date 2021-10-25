@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {Cart} from "./Data";
 import './Table.css'
 import TotalCart from './Totalcart';
 import CupponCart from './CupponCart'
+import { userContext } from "../../App";
 
 const Table = (props) => {
   const {products} = Cart;
@@ -11,6 +12,9 @@ const Table = (props) => {
   const taxPrice = itemsPrice * 0.05;
   const shippingPrice = itemsPrice > 2000 ? 0 : 20;
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
+
+  
+  const { cart, setCart } = useContext(userContext);
 
   return (
     <div>
@@ -26,12 +30,16 @@ const Table = (props) => {
             <h1 className="w-1/5 mx-auto p-4 text-center">Total</h1>
           </div>
           {
-            cartItems.map((item, index) => <div className="bg-green-50 mt-2 " key={index} item={item}>
-              <div className="w-1/5 mx-auto my-auto  "><img className="w-20 h-20 my-auto mx-auto py-2" src={item.pictureUrl}  /></div>
-              <h1 className="w-1/5 mx-auto my-auto text-center"> {item.title}</h1>
-              <p className='w-1/5 mx-auto my-auto text-center'>{item.price}</p>
-              <p className='w-1/5 mx-auto my-auto text-center '><a className="border-2 text-center px-3 py-3"><a onClick={() => onRemove(item)} className="mr-5 cursor-pointer text-3xl">-</a>{item.qty}<a onClick={() => onAdd(item)} className="ml-5 cursor-pointer text-3xl">+</a></a></p>
-              <div className='w-1/5 mx-auto my-auto text-center'><p>{item.qty} x {item.price.toFixed(2)}</p></div>
+            cart.map((item, index) => <div className="bg-green-50 mt-2 " key={index} item={item}>
+              <div className="w-1/5 mx-auto my-auto  "><img className="w-20 h-20 my-auto mx-auto py-2" src={item.img}  alt=''/></div>
+              <h1 className="w-1/5 mx-auto my-auto text-center"> {item.name}</h1>
+              <p className='w-1/5 mx-auto my-auto text-center'>${item.price}</p>
+              <div className='w-1/5 mx-auto my-auto text-center '>
+                  <button onClick={() => onRemove(item)} className="mr-5 cursor-pointer text-3xl">-</button>
+                    {item.quantity}
+                  <button onClick={() => onAdd(item)} className="ml-5 cursor-pointer text-3xl">+</button>
+              </div>
+              <div className='w-1/5 mx-auto my-auto text-center'><p>{item.quantity} x {item.price.toFixed(2)}</p></div>
             </div>)
           }
         </div>
