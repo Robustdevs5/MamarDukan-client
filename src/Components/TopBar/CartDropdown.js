@@ -3,45 +3,9 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 import { userContext } from "../../App";
-const products = [
-  {
-    id: 1,
-    name: "Throwback Hip Bag",
-    href: "#",
-    color: "Salmon",
-    price: "$90.00",
-    quantity: 1,
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg",
-    imageAlt:
-      "Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
-  },
-  {
-    id: 2,
-    name: "Throwback Hip Bag",
-    href: "#",
-    color: "Salmon",
-    price: "$90.00",
-    quantity: 1,
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg",
-    imageAlt:
-      "Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
-  },
-  {
-    id: 3,
-    name: "Medium Stuff Satchel",
-    href: "#",
-    color: "Blue",
-    price: "$32.00",
-    quantity: 1,
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
-    imageAlt:
-      "Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
-  },
-  // More products...
-];
+import { removeFromDb } from '../ShopingCart/CartDatabase';
+import { toast, ToastContainer } from "react-toastify";
+
 
 const CartDropdown = ({ setDropdown }) => {
   const { cart, setCart } = useContext(userContext);
@@ -55,12 +19,21 @@ const CartDropdown = ({ setDropdown }) => {
     }
     subTotal = subTotal + product.price * product.quantity;
     totalQuantity = totalQuantity + product.quantity;
-}
+  }
 
   const shipping = subTotal > 0 ? 15 : 0;
   const tax = (subTotal + shipping) * 0.10;
   const Total = subTotal + shipping + tax;
 
+
+  const handleRemove = id => {
+    const newCart = cart.filter(product => product._id !== id);
+    setCart(newCart);
+    removeFromDb(id);
+    toast.success("successful product remove", {
+      position: "bottom-right",
+    });
+  }
 
 
   return (
@@ -73,13 +46,13 @@ const CartDropdown = ({ setDropdown }) => {
         <div className="flex-1 py-6 overflow-y-auto px-4 sm:px-6 px-2">
           <h4 className="text-lg font-medium text-gray-900 border-l-4 border-red-600 pl-3">Shopping cart</h4>
           <hr/>
-          <div className="mt-5 px-4 overflow-hidden h-52 overflow-y-scroll">
-            <div className="flow-root">
-              <ul role="list" className="-my-4 divide-y divide-gray-200">
+          <div className="mt-5 px-4 overflow-hidden h-60 overflow-y-scroll">
+            <div className="flow-root  ">
+              <ul className="-my-4 divide-y divide-gray-200 ">
                 
                 {cart.map((product) => (
-                  <li key={product._id} className="py-6 flex">
-                    <div className="flex-shrink-0 w-20 h-20 border border-gray-200 rounded-md overflow-hidden">
+                  <li key={product._id} className="py-2 flex">
+                    <div className="flex-shrink-0 w-14 h-14 border border-gray-200 rounded-md overflow-hidden">
                       <img
                         src={product.img}
                         alt={product.imageAlt}
@@ -89,7 +62,7 @@ const CartDropdown = ({ setDropdown }) => {
 
                     <div className="ml-4 flex-1 flex flex-col">
                       <div>
-                        <div className="flex justify-between  font-medium text-gray-900 text-blue-500">
+                        <div className="flex justify-between  font-medium text-gray-900">
                           <p>
                             <a href={product.href}>{product.name}</a>
                           </p>
@@ -99,16 +72,17 @@ const CartDropdown = ({ setDropdown }) => {
                       <div className="mr-auto">
                         {" "}
                         <p className="mt-1 text-sm text-gray-500 ">
-                          {product.color}
+                          color: {product.color}
                         </p>
                       </div>
                       <div className="flex-1 flex items-end justify-between text-sm">
-                        <p className="text-gray-500">Qty {product.quantity}</p>
+                        <p className="text-gray-500">Quantity: {product.quantity}</p>
 
                         <div className="flex">
                           <button
                             type="button"
                             className="font-medium text-indigo-600 hover:text-indigo-500"
+                            onClick={() => handleRemove(product._id)}
                           >
                             Remove
                           </button>
@@ -122,7 +96,7 @@ const CartDropdown = ({ setDropdown }) => {
           </div>
         </div>
 
-        <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
+        <div className="border-t border-gray-200 py-2 px-4 sm:px-6">
           <div className="flex justify-between text-base font-medium text-gray-900">
             <p>Subtotal</p>
             <p>${subTotal.toFixed(2)}</p>
@@ -162,6 +136,8 @@ const CartDropdown = ({ setDropdown }) => {
           </div>
         </div>
       </div>
+      
+      <ToastContainer />
     </div>
   );
 };

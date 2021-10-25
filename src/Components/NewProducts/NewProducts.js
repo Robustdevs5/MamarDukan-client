@@ -12,50 +12,40 @@ import { NewProductOffer } from '../HomepageProductData/HomepageProductData';
 import { addToDatabaseCart } from '../ShopingCart/CartManager/cartManager';
 import useCart from '../ShopingCart/useCart';
 import { addToDb } from '../ShopingCart/CartDatabase';
+import { toast, ToastContainer } from 'react-toastify';
 
 
 
 const NewProducts = () => {
 
     const [product, setProduct] = useState([]);
-    console.log('tt', product._id)
-    // const [cartProducts, setCartProducts] = useState([]);
     const [cart, setCart] = useCart(product);
-    console.log('cart', cart)
 
     useEffect(() => {
         fetch(`https://mamardukan.herokuapp.com/products`)
             .then(res => res.json())
             .then(data => {
-                // setCartProducts(data.products);
                 setProduct(data.products);
             });
     }, []);
 
-
-//    const Shopping =(product) =>{
-//     console.log('Product added', product);
-//     const newCart = [...cart, product];
-//     setCart(newCart);
-//     addToDatabaseCart(product._Id, 1)
-//    }
-
-   const handleAddToCart = async (newProduct) => {
-    console.log('newProduct', newProduct)
+   const handleAddToCart = (newProduct) => {
     const exists = cart.find(pd => pd._id === newProduct._id);
-    
-    console.log('exists', exists);
     let newCart = [];
-    
-    console.log('newCart', newCart);
     if (exists) {
         const rest = cart.filter(pd => pd._id !== newProduct._id);
         exists.quantity = exists.quantity + 1;
         newCart = [...rest, newProduct];
+        toast.success( "increase "+ exists.quantity + " quantity", {
+            position: "bottom-right",
+        });
     }
     else {
         newProduct.quantity = 1;
         newCart = [...cart, newProduct];
+        toast.success( "Product added", {
+            position: "bottom-right",
+        });
     }
     setCart(newCart);
     // save to local storage (for now)
@@ -230,6 +220,8 @@ const NewProducts = () => {
                     )}
 
             </Slider>
+            
+            <ToastContainer />
 
         </div>
     );
