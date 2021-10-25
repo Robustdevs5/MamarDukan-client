@@ -1,9 +1,6 @@
-
-import React from 'react';
-
-const CreditCardForm = () => {
+export const CreditCardForm = () => {
     return (
-        <form className="justify-center w-full mx-auto" method="post" action>
+        <form className="justify-center w-full mx-auto">
             <div className="mt-4">
                 <div className="w-full">
                     <label for="card-number"
@@ -37,4 +34,34 @@ const CreditCardForm = () => {
     );
 };
 
-export default CreditCardForm;
+export const PaypalForm = () => {
+    return (
+        <form className="justify-center w-full mx-auto">
+            <div className="mt-4">
+                <div className="w-full">
+                    <label for="card-number"
+                        className="block mb-3 text-sm font-semibold text-gray-500">Paypal Number</label>
+                    <input name="card-number" type="text" placeholder="Card Number"
+                        className="h-12 w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                </div>
+            </div>
+        </form>
+
+    );
+};
+
+export const TransferForm = () => {
+    return (
+        <form className="justify-center w-full mx-auto">
+            <div className="mt-4">
+                <div className="w-full">
+                    <label for="number"
+                        className="block mb-3 text-sm font-semibold text-gray-500">eTransfer Number</label>
+                    <input name="number" type="text" placeholder="Number"
+                        className="h-12 w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                </div>
+            </div>
+        </form>
+
+    );
+};

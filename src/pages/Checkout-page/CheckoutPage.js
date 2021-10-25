@@ -1,14 +1,65 @@
-import {useContext} from 'react';
+import {useContext, useState} from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import { userContext } from '../../App';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar/Navbar';
+import { removeFromDb } from '../../Components/ShopingCart/CartDatabase';
 import TopBar from '../../Components/TopBar/TopBar';
-import CreditCardForm from './CreditCardForm';
+import img from '../../images/bn15.jpg';
+import { CreditCardForm, PaypalForm, TransferForm } from './CreditCardForm';
+import { TiDelete } from 'react-icons/ti';
 
 const CheckoutPage = () => {
     
-  const { cart, setCart } = useContext(userContext);
+    const { cart, setCart } = useContext(userContext);
+    const [creditCart, setCreditCart] = useState (false);
+    const [paypal, setPaypal] = useState(false);
+    const [etransfer, setEtransfer] = useState(false);
+
+
+    const handleCreditCart = () => {
+        setCreditCart(true);
+        setPaypal(false);
+        setEtransfer(false);
+    }
+
+    const handlePaypal = () => {
+        setCreditCart(false);
+        setPaypal(true);
+        setEtransfer(false);
+    }
+
+    const handleEtransfer = () => {
+        setCreditCart(false);
+        setPaypal(false);
+        setEtransfer(true);
+    }
+
+    const handleRemove = id => {
+        const newCart = cart.filter(product => product._id !== id);
+        setCart(newCart);
+        removeFromDb(id);
+        toast.success("successful product remove", {
+          position: "bottom-right",
+        });
+      }
+      
+    let totalQuantity = 0;
+    let subTotal = 0;
+
+    for (const product of cart) {
+        if (!product.quantity) {
+            product.quantity = 1;
+        }
+        subTotal = subTotal + product.price * product.quantity;
+        totalQuantity = totalQuantity + product.quantity;
+    }
+
+    const shipping = subTotal > 0 ? 15 : 0;
+    const tax = (subTotal + shipping) * 0.10;
+    const Total = subTotal + shipping + tax;
+    
     return (
         <>
             <TopBar />
@@ -16,7 +67,10 @@ const CheckoutPage = () => {
             <Navbar />
 
         <div className="container p-5 mx-auto">
-            <h2 className="mb-4 font-bold md:text-4xl text-center text-heading pb-5">Checkout</h2>
+            <div className="h-40 w-full absolute">
+                <img src={img} alt="title" className="w-full h-full opacity-30 " />
+            </div>
+            <h2 className=" relative  my-14 font-bold md:text-4xl text-center text-heading pb-5 capitalize">Checkout</h2>
             <div className="flex flex-col w-full px-0 mb-10 mx-auto md:flex-row">
                 <div className="bg-gray-50 p-5 rounded flex flex-col md:w-full">
                     <h2 className="mb-4 font-bold md:text-xl text-heading ">Shipping Address
@@ -94,14 +148,14 @@ const CheckoutPage = () => {
                     <div className="pt-6 mt-10 border-t border-gray-300">
                         <h2 className="mb-4 font-bold md:text-xl text-heading ">Delivery Method</h2>
                         <div className="mt-6 flex space-x-4">
-                            <button className="flex-1 w-full bg-white rounded-md border-2 border-blue-500 p-5 focus:outline-none">
+                            <button className="flex-1 text-left w-full bg-white rounded-md border-2 border-blue-500 p-5 focus:outline-none">
                                 <label className="flex">
                                     <input type="radio" name="radio" className="form-radio h-5 w-5 text-blue-600" checked /><span className="ml-2 text-sm text-gray-700">Standard</span>
                                 </label>
                                 <p>4-10 Business Days</p>
                                 <span className="text-gray-700 text-sm font-bold">$18</span>
                             </button>
-                            <button className="flex-1 w-full bg-white rounded-md border p-5 focus:outline-none">
+                            <button className="flex-1 text-left w-full bg-white rounded-md border p-5 focus:outline-none">
                                 <label className="flex">
                                     <input type="radio" name="radio" className="form-radio h-5 w-5 text-blue-600" /><span className="ml-2 text-sm text-gray-700">Express</span>
                                 </label>
@@ -114,47 +168,50 @@ const CheckoutPage = () => {
                         <h2 className="mb-4 font-bold md:text-xl text-heading ">Payment</h2>
                         <div className="mt-2">
                             <label className="inline-flex items-center">
-                                <input type="radio" className="form-radio h-5 w-5" name="accountType" value="personal" checked />
+                                <input onChange = { handleCreditCart } type="radio" className="form-radio h-5 w-5" name="accountType" value="personal" />
                                 <span className="ml-2">Credit Card</span>
                                 
                             </label>
                             <label className="inline-flex items-center ml-6">
-                                <input type="radio" className="form-radio h-5 w-5" name="accountType" value="busines" />
+                                <input onChange = { handlePaypal } type="radio" className="form-radio h-5 w-5" name="accountType" value="busines" />
                                 <span className="ml-2">Paypal</span>
                             </label>
                             <label className="inline-flex items-center ml-6">
-                                <input type="radio" className="form-radio h-5 w-5" name="accountType" value="etransfer" />
+                                <input onChange={ handleEtransfer } type="radio" className="form-radio h-5 w-5" name="accountType" value="etransfer" />
                                 <span className="ml-2">eTransfer</span>
                             </label>
                         </div>
-                        <CreditCardForm />
+                        {
+                            creditCart && <CreditCardForm />
+                        }
+                        {
+                            paypal && <PaypalForm />
+                        }
+                        {
+                            etransfer && <TransferForm />
+                        }
                     </div>
                 </div>
-                <div className="bg-red-600 text-white rounded p-5 flex flex-col w-full ml-0 lg:ml-12 lg:w-4/5">
-                    <div className="pt-12 md:pt-0 2xl:ps-4">
-                        <h2 className="text-xl font-bold">Order Summary
-                        </h2>
+                <div  className="text-white rounded py-5 flex flex-col w-full ml-0 lg:ml-12 lg:w-4/5 bg-gray-600 ">
+                    <div className="pt-12 md:pt-0 2xl:ps-4 tracking-tight">
+                        <h2 className="text-xl font-bold border-l-4 border-red-600 ml-5 pl-2 capitalize ">Order Summary</h2>
                         <div className="mt-8">
                             <div className="flex flex-col space-y-4">
                                 
                                 {
                                     cart.map((item, index) => 
-                                        <div item={item} key={index} className="flex space-x-4">
-                                            <div>
+                                        <div item={item} key={index} className="flex justify-between items-center space-x-4 hover:bg-red-700 px-5 shadow-lg ">
+                                            <div className="h-16 w-16">
                                                 <img src={item.img} alt="title"
-                                                    className="w-32" />
+                                                    className="w-full h-full" />
                                             </div>
                                             <div>
                                                 <h2 className="text-xl font-bold">{item.name}</h2>
                                                 <p className="text-sm">Lorem ipsum dolor sit amet, tet</p>
                                                 <span className="text-white">Price</span> ${item.price}
                                             </div>
-                                            <div>
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none"
-                                                    viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                        d="M6 18L18 6M6 6l12 12" />
-                                                </svg>
+                                            <div className='text-2xl  rounded-full cursor-pointer' onClick={() => handleRemove(item._id)}>
+                                                <TiDelete/>
                                             </div>
                                         </div>
                                     )
@@ -162,22 +219,27 @@ const CheckoutPage = () => {
                             </div>
                         </div>
                         <div
-                            className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                            Subtotal<span className="ml-2">$40.00</span></div>
+                            className="flex justify-between items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+                            Subtotal<span className="ml-2">${subTotal.toFixed(2)}</span></div>
                         <div
-                            className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                            Shipping Tax<span className="ml-2">$10</span></div>
+                            className="flex justify-between items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+                            Shipping Tax<span className="ml-2">${shipping}</span></div>
                         <div
-                            className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                            Total<span className="ml-2">$50.00</span></div>
+                            className="flex justify-between items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+                            Tax<span className="ml-2">${tax.toFixed(2)}</span></div>
+                        <div
+                            className="flex justify-between items-center w-full py-4 text-sm font-extrabold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+                            Total<span className="ml-2">${Total.toFixed(2)}</span></div>
                         <div className="mt-4">
                             <button
-                                className="w-full px-6 py-2 text-gray-50 primary_BTN">Process</button>
+                                className="w-full px-6 py-2 text-gray-50 primary_BTN">Process to order</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
+        <ToastContainer />
         <Footer />           
     </>
 
