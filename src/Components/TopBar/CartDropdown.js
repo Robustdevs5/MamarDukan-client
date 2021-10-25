@@ -51,8 +51,8 @@ const CartDropdown = ({ setDropdown }) => {
     >
       <div className="h-full flex flex-col  shadow-xl ">
         <div className="flex-1 py-6 overflow-y-auto px-4 sm:px-6 px-2">
-          <h4 className="text-lg font-medium text-gray-900">Shopping cart</h4>
-
+          <h4 className="text-lg font-medium text-gray-900 border-l-4 border-red-600 pl-3">Shopping cart</h4>
+          <hr/>
           <div className="mt-8 overflow-hidden h-52 overflow-y-scroll">
             <div className="flow-root">
               <ul role="list" className="-my-4 divide-y divide-gray-200">
@@ -119,17 +119,17 @@ const CartDropdown = ({ setDropdown }) => {
           </p>
           <div className="mt-4 flex justify-between">
             <Link
-              to="/viewCart"
-              className="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+              to="/cart"
+              className="flex justify-center items-center px-6 py-2 border border-transparent rounded-md shadow-sm text-base font-medium primary_BTN_Outline"
             >
               View Cart
             </Link>
 
             <Link
-              to="/viewCart"
-              className="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+              to="/cart"
+              className="flex justify-center items-center px-6 py-2 border border-transparent rounded-md shadow-sm text-base font-medium  primary_BTN"
             >
-              View Cart
+              Checkout
             </Link>
           </div>
         </div>

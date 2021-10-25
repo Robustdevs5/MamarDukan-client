@@ -8,21 +8,60 @@ import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import star from "../../images/5star.png";
 import { useHistory } from 'react-router';
-import { NewProduct } from '../HomepageProductData/HomepageProductData';
+import { NewProductOffer } from '../HomepageProductData/HomepageProductData';
+import { addToDatabaseCart } from '../ShopingCart/CartManager/cartManager';
+import useCart from '../ShopingCart/useCart';
+import { addToDb } from '../ShopingCart/CartDatabase';
 
 
 
 const NewProducts = () => {
 
-    const [newProduct, setNewProduct] = useState([]);
+    const [product, setProduct] = useState([]);
+    console.log('tt', product._id)
+    // const [cartProducts, setCartProducts] = useState([]);
+    const [cart, setCart] = useCart(product);
+    console.log('cart', cart)
 
     useEffect(() => {
         fetch(`https://mamardukan.herokuapp.com/products`)
             .then(res => res.json())
-            .then(data => setNewProduct(data.products))
-    }, [])
-    console.log(newProduct);
+            .then(data => {
+                // setCartProducts(data.products);
+                setProduct(data.products);
+            });
+    }, []);
 
+
+//    const Shopping =(product) =>{
+//     console.log('Product added', product);
+//     const newCart = [...cart, product];
+//     setCart(newCart);
+//     addToDatabaseCart(product._Id, 1)
+//    }
+
+   const handleAddToCart = async (newProduct) => {
+    console.log('newProduct', newProduct)
+    const exists = cart.find(pd => pd._id === newProduct._id);
+    
+    console.log('exists', exists);
+    let newCart = [];
+    
+    console.log('newCart', newCart);
+    if (exists) {
+        const rest = cart.filter(pd => pd._id !== newProduct._id);
+        exists.quantity = exists.quantity + 1;
+        newCart = [...rest, newProduct];
+    }
+    else {
+        newProduct.quantity = 1;
+        newCart = [...cart, newProduct];
+    }
+    setCart(newCart);
+    // save to local storage (for now)
+    addToDb(newProduct._id);
+
+}
 
 
     function SampleNextArrow(props) {
@@ -114,7 +153,7 @@ const NewProducts = () => {
                     </div>
                     <div className="flex">
                         {
-                            NewProduct.map((item, index) =>
+                            NewProductOffer.map((item, index) =>
                                 <li key={index} className={item.cls}>
                                     <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 primary_BTN_Outline rounded duration-300">{item.title}</Link>
                                 </li>
@@ -131,7 +170,7 @@ const NewProducts = () => {
             <Slider {...settings} className="px-8">
 
                 {
-                    newProduct.map(newProduct =>
+                    product.map(newProduct =>
                         <div className="p-2 border rounded hover:shadow-2xl group hover:border-blue-900 shadow px-6">
 
                             <div className="mb-4 w-40 h-40  pb-5">
@@ -140,6 +179,7 @@ const NewProducts = () => {
                                 <div className="hover:scale-100 scale-75 flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
 
                                     <button
+                                        onClick={() => handleAddToCart(newProduct)}
                                         className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
                                     >
                                         <FontAwesomeIcon icon={faShoppingBag} />
