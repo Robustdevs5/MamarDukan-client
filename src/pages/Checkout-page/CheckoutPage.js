@@ -1,4 +1,5 @@
-import React from 'react';
+import {useContext} from 'react';
+import { userContext } from '../../App';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar/Navbar';
@@ -6,6 +7,8 @@ import TopBar from '../../Components/TopBar/TopBar';
 import CreditCardForm from './CreditCardForm';
 
 const CheckoutPage = () => {
+    
+  const { cart, setCart } = useContext(userContext);
     return (
         <>
             <TopBar />
@@ -133,46 +136,30 @@ const CheckoutPage = () => {
                         </h2>
                         <div className="mt-8">
                             <div className="flex flex-col space-y-4">
-                                <div className="flex space-x-4">
-                                    <div>
-                                        <img src="https://source.unsplash.com/user/erondu/1600x900" alt="title"
-                                            className="w-32" />
-                                    </div>
-                                    <div>
-                                        <h2 className="text-xl font-bold">Title</h2>
-                                        <p className="text-sm">Lorem ipsum dolor sit amet, tet</p>
-                                        <span className="text-white">Price</span> $20
-                                    </div>
-                                    <div>
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div className="flex space-x-4">
-                                    <div>
-                                        <img src="https://source.unsplash.com/collection/190727/1600x900" alt="title"
-                                            className="w-32" />
-                                    </div>
-                                    <div>
-                                        <h2 className="text-xl font-bold">Title</h2>
-                                        <p className="text-sm">Lorem ipsum dolor sit amet, tet</p>
-                                        <span className="text-white">Price</span> $20
-                                    </div>
-                                    <div>
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                    </div>
-                                </div>
+                                
+                                {
+                                    cart.map((item, index) => 
+                                        <div item={item} key={index} className="flex space-x-4">
+                                            <div>
+                                                <img src={item.img} alt="title"
+                                                    className="w-32" />
+                                            </div>
+                                            <div>
+                                                <h2 className="text-xl font-bold">{item.name}</h2>
+                                                <p className="text-sm">Lorem ipsum dolor sit amet, tet</p>
+                                                <span className="text-white">Price</span> ${item.price}
+                                            </div>
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M6 18L18 6M6 6l12 12" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    )
+                                }
                             </div>
-                        </div>
-                        <div className="flex p-4 mt-4">
-                            <h2 className="text-xl font-bold">ITEMS 2</h2>
                         </div>
                         <div
                             className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
@@ -185,7 +172,7 @@ const CheckoutPage = () => {
                             Total<span className="ml-2">$50.00</span></div>
                         <div className="mt-4">
                             <button
-                                className="w-full px-6 py-2 text-gray-50 bg-gray-900 hover:bg-red-900">Process</button>
+                                className="w-full px-6 py-2 text-gray-50 primary_BTN">Process</button>
                         </div>
                     </div>
                 </div>
