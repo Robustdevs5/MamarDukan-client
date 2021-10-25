@@ -46,9 +46,9 @@ const CartDropdown = ({ setDropdown }) => {
         <div className="flex-1 py-6 overflow-y-auto px-4 sm:px-6 px-2">
           <h4 className="text-lg font-medium text-gray-900 border-l-4 border-red-600 pl-3">Shopping cart</h4>
           <hr/>
-          <div className="mt-5 px-4 overflow-hidden h-60 overflow-y-scroll">
+          <div className="mt-2 px-4 overflow-hidden h-60 overflow-y-scroll">
             <div className="flow-root  ">
-              <ul className="-my-4 divide-y divide-gray-200 ">
+              <ul className="divide-y divide-gray-200 ">
                 
                 {cart.map((product) => (
                   <li key={product._id} className="py-2 flex">
@@ -66,7 +66,7 @@ const CartDropdown = ({ setDropdown }) => {
                           <p>
                             <a href={product.href}>{product.name}</a>
                           </p>
-                          <p className="ml-4">$ {product.price}</p>
+                          <p className="ml-4">${product.price}</p>
                         </div>
                       </div>
                       <div className="mr-auto">
@@ -81,7 +81,7 @@ const CartDropdown = ({ setDropdown }) => {
                         <div className="flex">
                           <button
                             type="button"
-                            className="font-medium text-indigo-600 hover:text-indigo-500"
+                            className="primary_BTN_Outline px-2 font-medium text-indigo-600 hover:text-indigo-500"
                             onClick={() => handleRemove(product._id)}
                           >
                             Remove
@@ -97,21 +97,21 @@ const CartDropdown = ({ setDropdown }) => {
         </div>
 
         <div className="border-t border-gray-200 py-2 px-4 sm:px-6">
-          <div className="flex justify-between text-base font-medium text-gray-900">
+          <div className="flex justify-between text-base font-normal text-gray-900">
             <p>Subtotal</p>
             <p>${subTotal.toFixed(2)}</p>
           </div>
           <hr/>
-          <div className="flex justify-between text-base font-medium text-gray-900">
+          <div className="flex justify-between text-base font-normal text-gray-900">
             <p>shipping</p>
             <p>${shipping}</p>
           </div>
-          <div className="flex justify-between text-base font-medium text-gray-900">
+          <div className="flex justify-between text-base font-normal text-gray-900">
             <p>Tax</p>
             <p>${tax.toFixed(2)}</p>
           </div>
           <hr/>
-          <div className="flex justify-between  text-base font-medium text-gray-900">
+          <div className="flex justify-between  text-base font-bold text-gray-900">
             <p>Total</p>
             <p>${Total.toFixed(2)}</p>
           </div>
@@ -128,7 +128,7 @@ const CartDropdown = ({ setDropdown }) => {
             </Link>
 
             <Link
-              to="/cart"
+              to="/checkout"
               className="flex justify-center items-center px-6 py-2 border border-transparent rounded-md shadow-sm text-base font-medium  primary_BTN"
             >
               Checkout

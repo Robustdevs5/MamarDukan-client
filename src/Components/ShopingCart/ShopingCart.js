@@ -39,7 +39,8 @@ const ShopingCart = () => {
       <TopBar />
       <Navbar />
       <Table onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} />
-      <div className="m-5"><FooterCatagory />
+      <div className="m-5">
+      <FooterCatagory />
       <Footer /></div>
     </div>
   );
