@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar/Navbar';
 import TopBar from '../../Components/TopBar/TopBar';
-import CreditCardForm from './CreditCardForm';
+import { CreditCardForm, PaypalForm, TransferForm } from './CreditCardForm';
 
 const CheckoutPage = () => {
+    const [creditCart, setCreditCart] = useState (false);
+    const [paypal, setPaypal] = useState(false);
+    const [etransfer, setEtransfer] = useState(false);
+
+
+    const handleCreditCart = () => {
+        setCreditCart(true);
+        setPaypal(false);
+        setEtransfer(false);
+    }
+
+    const handlePaypal = () => {
+        setCreditCart(false);
+        setPaypal(true);
+        setEtransfer(false);
+    }
+
+    const handleEtransfer = () => {
+        setCreditCart(false);
+        setPaypal(false);
+        setEtransfer(true);
+    }
     return (
         <>
             <TopBar />
@@ -91,14 +113,14 @@ const CheckoutPage = () => {
                     <div className="pt-6 mt-10 border-t border-gray-300">
                         <h2 className="mb-4 font-bold md:text-xl text-heading ">Delivery Method</h2>
                         <div className="mt-6 flex space-x-4">
-                            <button className="flex-1 w-full bg-white rounded-md border-2 border-blue-500 p-5 focus:outline-none">
+                            <button className="flex-1 text-left w-full bg-white rounded-md border-2 border-blue-500 p-5 focus:outline-none">
                                 <label className="flex">
                                     <input type="radio" name="radio" className="form-radio h-5 w-5 text-blue-600" checked /><span className="ml-2 text-sm text-gray-700">Standard</span>
                                 </label>
                                 <p>4-10 Business Days</p>
                                 <span className="text-gray-700 text-sm font-bold">$18</span>
                             </button>
-                            <button className="flex-1 w-full bg-white rounded-md border p-5 focus:outline-none">
+                            <button className="flex-1 text-left w-full bg-white rounded-md border p-5 focus:outline-none">
                                 <label className="flex">
                                     <input type="radio" name="radio" className="form-radio h-5 w-5 text-blue-600" /><span className="ml-2 text-sm text-gray-700">Express</span>
                                 </label>
@@ -111,23 +133,31 @@ const CheckoutPage = () => {
                         <h2 className="mb-4 font-bold md:text-xl text-heading ">Payment</h2>
                         <div className="mt-2">
                             <label className="inline-flex items-center">
-                                <input type="radio" className="form-radio h-5 w-5" name="accountType" value="personal" checked />
+                                <input onChange = { handleCreditCart } type="radio" className="form-radio h-5 w-5" name="accountType" value="personal" />
                                 <span className="ml-2">Credit Card</span>
                                 
                             </label>
                             <label className="inline-flex items-center ml-6">
-                                <input type="radio" className="form-radio h-5 w-5" name="accountType" value="busines" />
+                                <input onChange = { handlePaypal } type="radio" className="form-radio h-5 w-5" name="accountType" value="busines" />
                                 <span className="ml-2">Paypal</span>
                             </label>
                             <label className="inline-flex items-center ml-6">
-                                <input type="radio" className="form-radio h-5 w-5" name="accountType" value="etransfer" />
+                                <input onChange={ handleEtransfer } type="radio" className="form-radio h-5 w-5" name="accountType" value="etransfer" />
                                 <span className="ml-2">eTransfer</span>
                             </label>
                         </div>
-                        <CreditCardForm />
+                        {
+                            creditCart && <CreditCardForm />
+                        }
+                        {
+                            paypal && <PaypalForm />
+                        }
+                        {
+                            etransfer && <TransferForm />
+                        }
                     </div>
                 </div>
-                <div className="bg-red-600 text-white rounded p-5 flex flex-col w-full ml-0 lg:ml-12 lg:w-4/5">
+                <div style={{backgroundColor: '#dd2400'}} className="text-white rounded p-5 flex flex-col w-full ml-0 lg:ml-12 lg:w-4/5">
                     <div className="pt-12 md:pt-0 2xl:ps-4">
                         <h2 className="text-xl font-bold">Order Summary
                         </h2>
@@ -172,7 +202,7 @@ const CheckoutPage = () => {
                             </div>
                         </div>
                         <div className="flex p-4 mt-4">
-                            <h2 className="text-xl font-bold">ITEMS 2</h2>
+                            <h2 className="text-xl font-bold">TOTAL ITEMS : 2</h2>
                         </div>
                         <div
                             className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
@@ -185,7 +215,7 @@ const CheckoutPage = () => {
                             Total<span className="ml-2">$50.00</span></div>
                         <div className="mt-4">
                             <button
-                                className="w-full px-6 py-2 text-gray-50 bg-gray-900 hover:bg-red-900">Process</button>
+                                className="w-full px-6 py-2 text-gray-50 bg-gray-900 hover:bg-red-900 rounded">Process</button>
                         </div>
                     </div>
                 </div>
