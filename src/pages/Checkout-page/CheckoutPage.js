@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { TiDelete } from 'react-icons/ti';
+import { toast, ToastContainer } from 'react-toastify';
+import { userContext } from '../../App';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar/Navbar';
+import { removeFromDb } from '../../Components/ShopingCart/CartDatabase';
 import TopBar from '../../Components/TopBar/TopBar';
+import img from '../../images/bn15.jpg';
 import { CreditCardForm, PaypalForm, TransferForm } from './CreditCardForm';
 
 const CheckoutPage = () => {
+    
+    const { cart, setCart } = useContext(userContext);
     const [creditCart, setCreditCart] = useState (false);
     const [paypal, setPaypal] = useState(false);
     const [etransfer, setEtransfer] = useState(false);
@@ -36,6 +43,31 @@ const CheckoutPage = () => {
         setPaypal(false);
         setEtransfer(true);
     }
+
+    const handleRemove = id => {
+        const newCart = cart.filter(product => product._id !== id);
+        setCart(newCart);
+        removeFromDb(id);
+        toast.success("successful product remove", {
+          position: "bottom-right",
+        });
+      }
+      
+    let totalQuantity = 0;
+    let subTotal = 0;
+
+    for (const product of cart) {
+        if (!product.quantity) {
+            product.quantity = 1;
+        }
+        subTotal = subTotal + product.price * product.quantity;
+        totalQuantity = totalQuantity + product.quantity;
+    }
+
+    const shipping = subTotal > 0 ? 15 : 0;
+    const tax = (subTotal + shipping) * 0.10;
+    const Total = subTotal + shipping + tax;
+    
     return (
         <>
             <TopBar />
@@ -43,7 +75,10 @@ const CheckoutPage = () => {
             <Navbar />
 
         <div className="container p-5 mx-auto">
-            <h2 className="mb-4 font-bold md:text-4xl text-center text-heading pb-5">Checkout</h2>
+            <div className="h-40 w-full absolute">
+                <img src={img} alt="title" className="w-full h-full opacity-30 " />
+            </div>
+            <h2 className=" relative  my-14 font-bold md:text-4xl text-center text-heading pb-5 capitalize">Checkout</h2>
             <div className="flex flex-col w-full px-0 mb-10 mx-auto md:flex-row">
                 <div className="bg-gray-50 p-5 rounded flex flex-col md:w-full">
                     <h2 className="mb-4 font-bold md:text-xl text-heading ">Shipping Address
@@ -113,7 +148,7 @@ const CheckoutPage = () => {
                             <div className="flex items-center mt-4">
                                 <label className="flex items-center text-sm group text-heading">
                                     <input type="checkbox" {...register("checkbox", {required: true})}
-                                        className="h-12 w-5 h-5 border border-gray-300 rounded focus:outline-none focus:ring-1" />
+                                        className="w-5 h-5 border border-gray-300 rounded focus:outline-none focus:ring-1" />
                                     <span className="ml-2">Save this information for next time</span></label>
                             </div>
                             <div className="relative pt-3 xl:pt-6"><label for="note"
@@ -172,70 +207,54 @@ const CheckoutPage = () => {
                         }
                     </div>
                 </div>
-                <div style={{backgroundColor: '#dd2400'}} className="text-white rounded p-5 flex flex-col w-full ml-0 lg:ml-12 lg:w-4/5">
-                    <div className="pt-12 md:pt-0 2xl:ps-4">
-                        <h2 className="text-xl font-bold">Order Summary
-                        </h2>
+                <div  className="text-white rounded py-5 flex flex-col w-full ml-0 lg:ml-12 lg:w-4/5 bg-gray-600 ">
+                    <div className="pt-12 md:pt-0 2xl:ps-4 tracking-tight">
+                        <h2 className="text-xl font-bold border-l-4 border-red-600 ml-5 pl-2 capitalize ">Order Summary</h2>
                         <div className="mt-8">
                             <div className="flex flex-col space-y-4">
-                                <div className="flex space-x-4">
-                                    <div>
-                                        <img src="https://source.unsplash.com/user/erondu/1600x900" alt="title"
-                                            className="w-32" />
-                                    </div>
-                                    <div>
-                                        <h2 className="text-xl font-bold">Title</h2>
-                                        <p className="text-sm">Lorem ipsum dolor sit amet, tet</p>
-                                        <span className="text-white">Price</span> $20
-                                    </div>
-                                    <div>
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div className="flex space-x-4">
-                                    <div>
-                                        <img src="https://source.unsplash.com/collection/190727/1600x900" alt="title"
-                                            className="w-32" />
-                                    </div>
-                                    <div>
-                                        <h2 className="text-xl font-bold">Title</h2>
-                                        <p className="text-sm">Lorem ipsum dolor sit amet, tet</p>
-                                        <span className="text-white">Price</span> $20
-                                    </div>
-                                    <div>
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                    </div>
-                                </div>
+                                
+                                {
+                                    cart.map((item, index) => 
+                                        <div item={item} key={index} className="flex justify-between items-center space-x-4 hover:bg-red-700 px-5 shadow-lg ">
+                                            <div className="h-16 w-16">
+                                                <img src={item.img} alt="title"
+                                                    className="w-full h-full" />
+                                            </div>
+                                            <div>
+                                                <h2 className="text-xl font-bold">{item.name}</h2>
+                                                <p className="text-sm">Lorem ipsum dolor sit amet, tet</p>
+                                                <span className="text-white">Price</span> ${item.price}
+                                            </div>
+                                            <div className='text-2xl  rounded-full cursor-pointer' onClick={() => handleRemove(item._id)}>
+                                                <TiDelete/>
+                                            </div>
+                                        </div>
+                                    )
+                                }
                             </div>
                         </div>
-                        <div className="flex p-4 mt-4">
-                            <h2 className="text-xl font-bold">TOTAL ITEMS : 2</h2>
-                        </div>
                         <div
-                            className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                            Subtotal<span className="ml-2">$40.00</span></div>
+                            className="flex justify-between items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+                            Subtotal<span className="ml-2">${subTotal.toFixed(2)}</span></div>
                         <div
-                            className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                            Shipping Tax<span className="ml-2">$10</span></div>
+                            className="flex justify-between items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+                            Shipping Tax<span className="ml-2">${shipping}</span></div>
                         <div
-                            className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                            Total<span className="ml-2">$50.00</span></div>
+                            className="flex justify-between items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+                            Tax<span className="ml-2">${tax.toFixed(2)}</span></div>
+                        <div
+                            className="flex justify-between items-center w-full py-4 text-sm font-extrabold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+                            Total<span className="ml-2">${Total.toFixed(2)}</span></div>
                         <div className="mt-4">
                             <button
-                                className="w-full px-6 py-2 text-gray-50 bg-gray-900 hover:bg-red-900 rounded">Process</button>
+                                className="w-full px-6 py-2 text-gray-50 primary_BTN">Process to order</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
+        <ToastContainer />
         <Footer />           
     </>
 
