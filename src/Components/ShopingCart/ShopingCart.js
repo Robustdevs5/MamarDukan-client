@@ -25,7 +25,7 @@ const ShopingCart = () => {
   const onRemove = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist.qty === 1) {
-      setCartItems(cartItems.filter((x) => x.id !== product.id));
+      exist.qty = 1
     } else {
       setCartItems(
         cartItems.map((x) =>
@@ -34,11 +34,14 @@ const ShopingCart = () => {
       );
     }
   };
+  const onDelete = (product) => {
+    setCartItems(cartItems.filter((x) => x.id !== product.id));
+  }
   return (
     <div>
       <TopBar />
       <Navbar />
-      <Table onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} />
+      <Table onAdd={onAdd} onRemove={onRemove} onDelete={onDelete} cartItems={cartItems} />
       <div className="m-5"><FooterCatagory />
       <Footer /></div>
     </div>
