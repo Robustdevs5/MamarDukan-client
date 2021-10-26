@@ -231,7 +231,7 @@ const CheckoutPage = () => {
                             className="flex justify-between items-center w-full py-4 text-sm font-extrabold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
                             Total<span className="ml-2">${Total.toFixed(2)}</span></div>
                         <div className="mt-4">
-                            <button
+                            <button type='submit'
                                 className="w-full px-6 py-2 text-gray-50 primary_BTN">Process to order</button>
                         </div>
                     </div>

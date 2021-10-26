@@ -6,6 +6,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 import React from "react";
+import StarRating from "../Utilities/StarRating";
 
 
 function TabPanel(props) {
@@ -159,7 +160,7 @@ const Description = () => {
     </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <StarRating/>
       </TabPanel>
       <TabPanel value={value} index={3}>
         Item Four
