@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
+import Tamal from './tamal';
 
 const StarRating = () => {
     const [ rating, setRating ]=useState(0)
@@ -168,6 +169,7 @@ const StarRating = () => {
                             </div>
                             <button type='submit' className='mt-6 primary_BTN px-5 py-1 rounded'>Review</button>
                         </div>
+                        <Tamal/>
                     </div>
                 </div>
             </div>

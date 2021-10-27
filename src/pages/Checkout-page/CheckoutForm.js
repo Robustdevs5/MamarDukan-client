@@ -1,45 +1,60 @@
-import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
 
-const CheckoutForm = () => {
-  const stripe = useStripe();
-  const elements = useElements();
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { useState } from 'react';
 
-  const handleSubmit = async (event) => {
-    // We don't want to let default form submission happen here,
-    // which would refresh the page.
-    event.preventDefault();
+const CheckoutForm = ({ setStripePayment }) => {
+    const stripe = useStripe();
+    const elements = useElements();
 
-    if (!stripe || !elements) {
-      // Stripe.js has not yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
-      return;
-    }
+    const [paymentError, setPaymentError] = useState(null)
+    const [paymentSuccess, setPaymentSuccess] = useState(null)
 
-    const result = await stripe.confirmPayment({
-      //`Elements` instance that was used to create the Payment Element
-      elements,
-      confirmParams: {
-        return_url: "https://my-site.com/order/123/complete",
-      },
-    });
+    const handleSubmit = async (event) => {
+        event.preventDefault();
 
+        if (!stripe || !elements) {
+            return;
+        }
 
-    if (result.error) {
-      // Show error to your customer (e.g., payment details incomplete)
-      console.log(result.error.message);
-    } else {
-      // Your customer will be redirected to your `return_url`. For some payment
-      // methods like iDEAL, your customer will be redirected to an intermediate
-      // site first to authorize the payment, then redirected to the `return_url`.
-    }
-  };
+        const cardElement = elements.getElement(CardElement);
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <PaymentElement />
-      <button disabled={!stripe}>Submit</button>
-    </form>
-  )
+        const { error, paymentMethod } = await stripe.createPaymentMethod({
+            type: 'card',
+            card: cardElement,
+        });
+
+        if (error) {
+            setPaymentError(error.message);
+            setPaymentSuccess(null);
+        } else {
+            setPaymentSuccess(paymentMethod.id);
+            setPaymentError(null);
+            setStripePayment(paymentMethod.id)
+        }
+    };
+
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                <label className="w-50">
+                    Card number
+                        <CardElement className="form-control" />
+                </label>
+                <br />
+
+                <button className="btn btn-success mb-3 mt-3 d-flex primary_BTN_Outline py-2 px-5" type="submit" disabled={!stripe}>
+                    Pay
+                </button>
+            </form>
+
+            {
+                paymentError && <p style={{ color: 'red' }}>{paymentError}</p>
+            }
+            {
+                paymentSuccess && <p style={{ color: 'green' }}>Your payment was successful</p>
+            }
+        </div>
+    );
 };
 
 export default CheckoutForm;
