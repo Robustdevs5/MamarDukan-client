@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { TiDelete } from 'react-icons/ti';
 import { toast, ToastContainer } from 'react-toastify';
-import CheckoutIndex from '.';
+import StripePayment from './StripePayment';
 import { userContext } from '../../App';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
@@ -19,9 +19,15 @@ const CheckoutPage = () => {
     
     
     const { cart, setCart } = useContext(userContext);
+    const { user, setUser } = useContext(userContext);
+
     const [creditCart, setCreditCart] = useState (false);
     const [paypal, setPaypal] = useState(false);
     const [etransfer, setEtransfer] = useState(false);
+    const [stripePayment, setStripePayment] = useState();
+    
+    console.log('stripePayment', stripePayment);
+    console.log('CheckoutPage login', user);
     const [deliveryPrice, setDeliveryPrice] = useState(0);
     console.log("Delivery" , deliveryPrice)
    
@@ -141,8 +147,7 @@ const stripePromise = loadStripe('pk_test_51Ie9VqKA9RGUKPzpRVUr3EBr9AjVwrTUnJ23F
                         <div className="">
                             <div className="space-x-0 lg:flex lg:space-x-4">
                                 <div className="w-full lg:w-1/2">
-                                    <label for="firstName" className="block mb-3 text-sm font-semibold text-gray-500">First
-                                        Name</label>
+                                    <label for="firstName" className="block mb-3 text-sm font-semibold text-gray-500">{user.username}</label>
                                     <input name="firstName" type="text" placeholder="First Name" 
                                         {...register("firstName", {required: true})}
                                         className="h-12 w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600" />
@@ -257,10 +262,7 @@ const stripePromise = loadStripe('pk_test_51Ie9VqKA9RGUKPzpRVUr3EBr9AjVwrTUnJ23F
                             </label>
                         </div>
                         {
-                            // <CheckoutIndex />
-                            creditCart && <Elements stripe={stripePromise} options={options}>
-                                <CheckoutForm />
-                            </Elements>
+                            creditCart && <StripePayment setStripePayment={setStripePayment}/>
                         }
                         {
                             paypal && <PaypalForm />

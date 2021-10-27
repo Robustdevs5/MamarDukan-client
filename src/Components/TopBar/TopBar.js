@@ -17,8 +17,6 @@ const TopBar = () => {
   const [dropdown, setDropdown] = useState(false);
   const { user, setUser } = useContext(userContext);
   const { cart, setCart } = useContext(userContext);
-  const [login, SetLogin] = useState()
-  console.log('login', login)
   let history = useHistory();
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/login" } };
@@ -28,10 +26,11 @@ const TopBar = () => {
     const loggedInUser = sessionStorage.getItem("user");
     if (loggedInUser) {
       const foundUser = JSON.parse(loggedInUser);
-      SetLogin(foundUser.email);
-      setUser(foundUser.email);
+      setUser(foundUser);
     }
-  }, [login]);
+    
+    // return loggedInUser ? JSON.parse(loggedInUser) : {};
+  }, [user]);
 
 
   const handleLogout = () => {
@@ -191,8 +190,8 @@ const TopBar = () => {
         <div>
           {/* {login ? <button className={styles.topBar_login_register} onClick={handleLogout}>Logout</button>
             : <> */}
-              {login ?
-                <button className={styles.topBar_login_register} onClick={handleUserDashboard}>{login}</button>
+              {user.email ?
+                <button className={styles.topBar_login_register} onClick={handleUserDashboard}>{user.username}</button>
                 :
                 <Link to="/login">
                   <p className={styles.topBar_login_register}>Login </p>{" "}
@@ -200,7 +199,7 @@ const TopBar = () => {
               }
 
               {
-                login ?
+                user.email ?
                   <button className={styles.topBar_login_register} onClick={handleLogout}>Logout</button>
                   :
                   <Link to="/register">
