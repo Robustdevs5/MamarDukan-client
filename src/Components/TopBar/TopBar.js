@@ -93,7 +93,7 @@ const TopBar = () => {
           <Menu as="div" className="relative inline-block text-left">
             <div>
               <Menu.Button className="flex items-center">
-                <p className="md:block hidden"> Customer Care</p>
+                <p className="md:block hidden px-1"> Customer Care </p>
                 <SupportAgentOutlined className="md:hidden block h-10   fill-current text-white-800 " />{" "}
                 <ChevronDownIcon
                   className="-mr-1 ml-2  w-5 md:block hidden"
@@ -174,7 +174,7 @@ const TopBar = () => {
                           "block px-4 py-2 text-sm"
                         )}
                       >
-                        Customer Service
+                        Customer Service 
                       </Link>
                     )}
                   </Menu.Item>

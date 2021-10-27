@@ -1,5 +1,8 @@
-import {useContext, useState} from 'react';
+import React, { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { TiDelete } from 'react-icons/ti';
 import { toast, ToastContainer } from 'react-toastify';
+import CheckoutIndex from '.';
 import { userContext } from '../../App';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
@@ -7,8 +10,7 @@ import Navbar from '../../Components/Navbar/Navbar/Navbar';
 import { removeFromDb } from '../../Components/ShopingCart/CartDatabase';
 import TopBar from '../../Components/TopBar/TopBar';
 import img from '../../images/bn15.jpg';
-import { CreditCardForm, PaypalForm, TransferForm } from './CreditCardForm';
-import { TiDelete } from 'react-icons/ti';
+import { PaypalForm, TransferForm } from './CreditCardForm';
 
 const CheckoutPage = () => {
     
@@ -16,7 +18,42 @@ const CheckoutPage = () => {
     const [creditCart, setCreditCart] = useState (false);
     const [paypal, setPaypal] = useState(false);
     const [etransfer, setEtransfer] = useState(false);
+    const [deliveryPrice, setDeliveryPrice] = useState();
+   
+    let productId = 0;
 
+    for (const product of cart) {
+      productId = product._id;
+      console.log('productId', productId)
+    }
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = (data) => {
+        const orderDetail = { 
+            data,
+            productId,
+        }
+
+        fetch('https://mamardukan.herokuapp.com/orders', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(orderDetail)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data){
+                alert('Your Order Placed successfully');
+            }
+        })
+        console.log(data);
+        console.log(errors);
+    }
+    
+    const handlePaymentSuccess = paymentId => {
+        
+    }
 
     const handleCreditCart = () => {
         setCreditCart(true);
@@ -34,6 +71,10 @@ const CheckoutPage = () => {
         setCreditCart(false);
         setPaypal(false);
         setEtransfer(true);
+    }
+
+    const handleDelivery = () => {
+        
     }
 
     const handleRemove = id => {
@@ -75,19 +116,23 @@ const CheckoutPage = () => {
                 <div className="bg-gray-50 p-5 rounded flex flex-col md:w-full">
                     <h2 className="mb-4 font-bold md:text-xl text-heading ">Shipping Address
                     </h2>
-                    <form className="justify-center w-full mx-auto" method="post" action>
+                    <form onSubmit={handleSubmit(onSubmit)} className="justify-center w-full mx-auto">
                         <div className="">
                             <div className="space-x-0 lg:flex lg:space-x-4">
                                 <div className="w-full lg:w-1/2">
                                     <label for="firstName" className="block mb-3 text-sm font-semibold text-gray-500">First
                                         Name</label>
-                                    <input name="firstName" type="text" placeholder="First Name"
+                                    <input name="firstName" type="text" placeholder="First Name" 
+                                        {...register("firstName", {required: true})}
                                         className="h-12 w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                    {errors.firstName?.type === 'required' && "First name is required"}
+                                    
                                 </div>
                                 <div className="w-full lg:w-1/2 ">
                                     <label for="firstName" className="block mb-3 text-sm font-semibold text-gray-500">Last
                                         Name</label>
-                                    <input name="Last Name" type="text" placeholder="Last Name"
+                                    <input name="Last Name" type="text" placeholder="Last Name" 
+                                        {...register("Last name", {required: true})}
                                         className="h-12 w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600" />
                                 </div>
                             </div>
@@ -95,7 +140,8 @@ const CheckoutPage = () => {
                                 <div className="w-full">
                                     <label for="Email"
                                         className="block mb-3 text-sm font-semibold text-gray-500">Email</label>
-                                    <input name="Last Name" type="text" placeholder="Email"
+                                    <input name="Last Name" type="text" placeholder="Email" 
+                                        {...register("Email", {required: true})}
                                         className="h-12 w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600" />
                                 </div>
                             </div>
@@ -103,7 +149,8 @@ const CheckoutPage = () => {
                                 <div className="w-full">
                                     <label for="Email"
                                         className="block mb-3 text-sm font-semibold text-gray-500">Phone</label>
-                                    <input name="phone" type="text" placeholder="Phone Number"
+                                    <input name="phone" type="text" placeholder="Phone Number" 
+                                        {...register("Phone Number", {required: true})}
                                         className="h-12 w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600" />
                                 </div>
                             </div>
@@ -111,7 +158,7 @@ const CheckoutPage = () => {
                                 <div className="w-full">
                                     <label for="Address"
                                         className="block mb-3 text-sm font-semibold text-gray-500">Address</label>
-                                    <textarea
+                                    <textarea {...register("Address", {required: true})}
                                         className="w-full px-4 py-3 text-xs border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
                                         name="Address" cols="20" rows="4" placeholder="Address"></textarea>
                                 </div>
@@ -120,44 +167,45 @@ const CheckoutPage = () => {
                                 <div className="w-full lg:w-1/2">
                                     <label for="city"
                                         className="block mb-3 text-sm font-semibold text-gray-500">City</label>
-                                    <input name="city" type="text" placeholder="City"
+                                    <input name="city" type="text" placeholder="City" 
+                                        {...register("city", {required: true})}
                                         className="h-12 w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600" />
                                 </div>
                                 <div className="w-full lg:w-1/2 ">
                                     <label for="postcode" className="block mb-3 text-sm font-semibold text-gray-500">
                                         Postcode</label>
-                                    <input name="postcode" type="text" placeholder="Post Code"
+                                    <input name="postcode" type="text" placeholder="Post Code" 
+                                        {...register("Postcode", {required: true})}
                                         className="h-12 w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600" />
                                 </div>
                             </div>
                             <div className="flex items-center mt-4">
                                 <label className="flex items-center text-sm group text-heading">
-                                    <input type="checkbox"
-                                        className="h-12 w-5 h-5 border border-gray-300 rounded focus:outline-none focus:ring-1" />
+                                    <input type="checkbox" {...register("checkbox", {required: true})}
+                                        className="w-5 h-5 border border-gray-300 rounded focus:outline-none focus:ring-1" />
                                     <span className="ml-2">Save this information for next time</span></label>
                             </div>
                             <div className="relative pt-3 xl:pt-6"><label for="note"
                                     className="block mb-3 text-sm font-semibold text-gray-500"> Notes
-                                    (Optional)</label><textarea name="note"
+                                    (Optional)</label><textarea name="note" {...register("Note", {required: true})}
                                     className="flex items-center w-full px-4 py-3 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-600"
                                     rows="4" placeholder="Notes for delivery"></textarea>
                             </div>
-                            
                         </div>
-                    </form>
+                    
                     <div className="pt-6 mt-10 border-t border-gray-300">
                         <h2 className="mb-4 font-bold md:text-xl text-heading ">Delivery Method</h2>
                         <div className="mt-6 flex space-x-4">
                             <button className="flex-1 text-left w-full bg-white rounded-md border-2 border-blue-500 p-5 focus:outline-none">
                                 <label className="flex">
-                                    <input type="radio" name="radio" className="form-radio h-5 w-5 text-blue-600" checked /><span className="ml-2 text-sm text-gray-700">Standard</span>
+                                    <input type="radio" name="radio" value="Standard" className="form-radio h-5 w-5 text-blue-600" checked /><span className="ml-2 text-sm text-gray-700">Standard</span>
                                 </label>
                                 <p>4-10 Business Days</p>
                                 <span className="text-gray-700 text-sm font-bold">$18</span>
                             </button>
                             <button className="flex-1 text-left w-full bg-white rounded-md border p-5 focus:outline-none">
                                 <label className="flex">
-                                    <input type="radio" name="radio" className="form-radio h-5 w-5 text-blue-600" /><span className="ml-2 text-sm text-gray-700">Express</span>
+                                    <input type="radio" name="radio" value="Express" className="form-radio h-5 w-5 text-blue-600" /><span className="ml-2 text-sm text-gray-700">Express</span>
                                 </label>
                                 <p>2-5 Business Days</p>
                                 <span className="text-gray-700 text-sm font-bold">$26</span>
@@ -182,7 +230,7 @@ const CheckoutPage = () => {
                             </label>
                         </div>
                         {
-                            creditCart && <CreditCardForm />
+                            creditCart && <CheckoutIndex />
                         }
                         {
                             paypal && <PaypalForm />
@@ -191,6 +239,11 @@ const CheckoutPage = () => {
                             etransfer && <TransferForm />
                         }
                     </div>
+                    <div className="mt-4">
+                        <button type="submit"
+                            className="w-full px-6 py-2 text-gray-50 primary_BTN">Process to order</button>
+                    </div>
+                    </form>
                 </div>
                 <div  className="text-white rounded py-5 flex flex-col w-full ml-0 lg:ml-12 lg:w-4/5 bg-gray-600 ">
                     <div className="pt-12 md:pt-0 2xl:ps-4 tracking-tight">
@@ -230,10 +283,7 @@ const CheckoutPage = () => {
                         <div
                             className="flex justify-between items-center w-full py-4 text-sm font-extrabold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
                             Total<span className="ml-2">${Total.toFixed(2)}</span></div>
-                        <div className="mt-4">
-                            <button
-                                className="w-full px-6 py-2 text-gray-50 primary_BTN">Process to order</button>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
