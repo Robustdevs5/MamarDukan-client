@@ -11,8 +11,12 @@ import { removeFromDb } from '../../Components/ShopingCart/CartDatabase';
 import TopBar from '../../Components/TopBar/TopBar';
 import img from '../../images/bn15.jpg';
 import { PaypalForm, TransferForm } from './CreditCardForm';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import CheckoutForm from './CheckoutForm';
 
 const CheckoutPage = () => {
+    
     
     const { cart, setCart } = useContext(userContext);
     const { user, setUser } = useContext(userContext);
@@ -20,11 +24,12 @@ const CheckoutPage = () => {
     const [creditCart, setCreditCart] = useState (false);
     const [paypal, setPaypal] = useState(false);
     const [etransfer, setEtransfer] = useState(false);
-    const [deliveryPrice, setDeliveryPrice] = useState();
     const [stripePayment, setStripePayment] = useState();
     
     console.log('stripePayment', stripePayment);
     console.log('CheckoutPage login', user);
+    const [deliveryPrice, setDeliveryPrice] = useState(0);
+    console.log("Delivery" , deliveryPrice)
    
     let productId = 0;
 
@@ -107,6 +112,22 @@ const CheckoutPage = () => {
     const tax = (subTotal + shipping) * 0.10;
     const Total = subTotal + shipping + tax;
     
+
+    ///Payment Method
+
+    const options = {
+        // passing the client secret obtained from the server
+        clientSecret: 'sk_test_51Ie9VqKA9RGUKPzp3Jloro2oCc90GABGEqBmodtmXZ0k0GPkWddfmkxo7tSTcS31clTD99OOklULUjzdzOXjkc020092gccmOY',
+      };
+
+// Make sure to call `loadStripe` outside of a component’s render to avoid
+// recreating the `Stripe` object on every render.
+const stripePromise = loadStripe('pk_test_51Ie9VqKA9RGUKPzpRVUr3EBr9AjVwrTUnJ23FXdzTUEAQ3Hz96sf5aQJICuFTgluBvc76FAftBtEQ06nW7BUbSCC00D9J8tnWt');
+
+// const CheckoutIndex = () => {
+  
+//  }
+
     return (
         <>
             <TopBar />
@@ -207,14 +228,14 @@ const CheckoutPage = () => {
                     <div className="pt-6 mt-10 border-t border-gray-300">
                         <h2 className="mb-4 font-bold md:text-xl text-heading ">Delivery Method</h2>
                         <div className="mt-6 flex space-x-4">
-                            <button className="flex-1 text-left w-full bg-white rounded-md border-2 border-blue-500 p-5 focus:outline-none">
+                            <button onChange={() => setDeliveryPrice(18)} className="flex-1 text-left w-full bg-white rounded-md border-2 border-blue-500 p-5 focus:outline-none">
                                 <label className="flex">
-                                    <input type="radio" name="radio" value="Standard" className="form-radio h-5 w-5 text-blue-600" checked /><span className="ml-2 text-sm text-gray-700">Standard</span>
+                                    <input type="radio" name="radio" value="Standard" className="form-radio h-5 w-5 text-blue-600" /><span className="ml-2 text-sm text-gray-700">Standard</span>
                                 </label>
                                 <p>4-10 Business Days</p>
                                 <span className="text-gray-700 text-sm font-bold">$18</span>
                             </button>
-                            <button className="flex-1 text-left w-full bg-white rounded-md border p-5 focus:outline-none">
+                            <button onChange={() => setDeliveryPrice(26)} className="flex-1 text-left w-full bg-white rounded-md border p-5 focus:outline-none">
                                 <label className="flex">
                                     <input type="radio" name="radio" value="Express" className="form-radio h-5 w-5 text-blue-600" /><span className="ml-2 text-sm text-gray-700">Express</span>
                                 </label>
@@ -241,7 +262,14 @@ const CheckoutPage = () => {
                             </label>
                         </div>
                         {
+<<<<<<< HEAD
                             creditCart && <StripePayment setStripePayment={setStripePayment}/>
+=======
+                            // <CheckoutIndex />
+                            creditCart && <Elements stripe={stripePromise} options={options}>
+                                <CheckoutForm />
+                            </Elements>
+>>>>>>> 321749c2a86889006f37c22751cb7571e591bc16
                         }
                         {
                             paypal && <PaypalForm />
