@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AiOutlineMail } from 'react-icons/ai';
 import { FaMapMarkerAlt, FaRegUser } from 'react-icons/fa';
 import { FiPhoneCall } from 'react-icons/fi';
@@ -10,6 +10,13 @@ import { userContext } from '../../../App';
 const AccountInformation = () => {
 
     const { user, setUser } = useContext(userContext);
+    const [Profile, setprofile] = useState([])
+    useEffect(() => {
+        fetch('http://localhost:5000/user/profile')
+        .then (response => response.json())
+        .then (data => console.log('profile', data))
+        .catch (error => console.log('error', error))
+    })
 
 
 
