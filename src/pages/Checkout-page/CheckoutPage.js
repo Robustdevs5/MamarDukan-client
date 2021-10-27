@@ -125,15 +125,16 @@ const CheckoutPage = () => {
                                     <input name="firstName" type="text" placeholder="First Name" 
                                         {...register("firstName", {required: true})}
                                         className="h-12 w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600" />
-                                    {errors.firstName?.type === 'required' && "First name is required"}
+                                    <span className="text-red-500">{errors.firstName?.type === 'required' && "First name is required"}</span>
                                     
                                 </div>
                                 <div className="w-full lg:w-1/2 ">
                                     <label for="firstName" className="block mb-3 text-sm font-semibold text-gray-500">Last
                                         Name</label>
                                     <input name="Last Name" type="text" placeholder="Last Name" 
-                                        {...register("Last name", {required: true})}
+                                        {...register("lastName", {required: true})}
                                         className="h-12 w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                    <span className="text-red-500">{errors.lastName?.type === 'required' && "Last name is required"}</span>
                                 </div>
                             </div>
                             <div className="mt-4">
@@ -141,8 +142,9 @@ const CheckoutPage = () => {
                                     <label for="Email"
                                         className="block mb-3 text-sm font-semibold text-gray-500">Email</label>
                                     <input name="Last Name" type="text" placeholder="Email" 
-                                        {...register("Email", {required: true})}
+                                        {...register("email", {required: true})}
                                         className="h-12 w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                    <span className="text-red-500">{errors.email?.type === 'required' && "Email is required"}</span>
                                 </div>
                             </div>
                             <div className="mt-4">
@@ -150,17 +152,19 @@ const CheckoutPage = () => {
                                     <label for="Email"
                                         className="block mb-3 text-sm font-semibold text-gray-500">Phone</label>
                                     <input name="phone" type="text" placeholder="Phone Number" 
-                                        {...register("Phone Number", {required: true})}
+                                        {...register("phoneNumber", {required: true})}
                                         className="h-12 w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                    <span className="text-red-500">{errors.phoneNumber?.type === 'required' && "Phone Number is required"}</span>
                                 </div>
                             </div>
                             <div className="mt-4">
                                 <div className="w-full">
                                     <label for="Address"
                                         className="block mb-3 text-sm font-semibold text-gray-500">Address</label>
-                                    <textarea {...register("Address", {required: true})}
+                                    <textarea {...register("address", {required: true})}
                                         className="w-full px-4 py-3 text-xs border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
                                         name="Address" cols="20" rows="4" placeholder="Address"></textarea>
+                                    <span className="text-red-500">{errors.address?.type === 'required' && "Address is required"}</span>
                                 </div>
                             </div>
                             <div className="space-x-0 lg:flex lg:space-x-4">
@@ -170,13 +174,15 @@ const CheckoutPage = () => {
                                     <input name="city" type="text" placeholder="City" 
                                         {...register("city", {required: true})}
                                         className="h-12 w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                    <span className="text-red-500">{errors.city?.type === 'required' && "City is required"}</span>
                                 </div>
                                 <div className="w-full lg:w-1/2 ">
                                     <label for="postcode" className="block mb-3 text-sm font-semibold text-gray-500">
                                         Postcode</label>
                                     <input name="postcode" type="text" placeholder="Post Code" 
-                                        {...register("Postcode", {required: true})}
+                                        {...register("postcode", {required: true})}
                                         className="h-12 w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                    <span className="text-red-500">{errors.postcode?.type === 'required' && "Postcode is required"}</span>
                                 </div>
                             </div>
                             <div className="flex items-center mt-4">
@@ -187,7 +193,7 @@ const CheckoutPage = () => {
                             </div>
                             <div className="relative pt-3 xl:pt-6"><label for="note"
                                     className="block mb-3 text-sm font-semibold text-gray-500"> Notes
-                                    (Optional)</label><textarea name="note" {...register("Note", {required: true})}
+                                    (Optional)</label><textarea name="note" {...register("Note")}
                                     className="flex items-center w-full px-4 py-3 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-600"
                                     rows="4" placeholder="Notes for delivery"></textarea>
                             </div>
