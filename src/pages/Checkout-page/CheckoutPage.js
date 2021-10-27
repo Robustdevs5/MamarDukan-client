@@ -262,14 +262,7 @@ const stripePromise = loadStripe('pk_test_51Ie9VqKA9RGUKPzpRVUr3EBr9AjVwrTUnJ23F
                             </label>
                         </div>
                         {
-<<<<<<< HEAD
                             creditCart && <StripePayment setStripePayment={setStripePayment}/>
-=======
-                            // <CheckoutIndex />
-                            creditCart && <Elements stripe={stripePromise} options={options}>
-                                <CheckoutForm />
-                            </Elements>
->>>>>>> 321749c2a86889006f37c22751cb7571e591bc16
                         }
                         {
                             paypal && <PaypalForm />
