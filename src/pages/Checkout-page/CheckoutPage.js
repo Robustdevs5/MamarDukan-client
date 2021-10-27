@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { TiDelete } from 'react-icons/ti';
 import { toast, ToastContainer } from 'react-toastify';
+import CheckoutIndex from '.';
 import { userContext } from '../../App';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
@@ -9,7 +10,7 @@ import Navbar from '../../Components/Navbar/Navbar/Navbar';
 import { removeFromDb } from '../../Components/ShopingCart/CartDatabase';
 import TopBar from '../../Components/TopBar/TopBar';
 import img from '../../images/bn15.jpg';
-import { CreditCardForm, PaypalForm, TransferForm } from './CreditCardForm';
+import { PaypalForm, TransferForm } from './CreditCardForm';
 
 const CheckoutPage = () => {
     
@@ -17,14 +18,42 @@ const CheckoutPage = () => {
     const [creditCart, setCreditCart] = useState (false);
     const [paypal, setPaypal] = useState(false);
     const [etransfer, setEtransfer] = useState(false);
+    const [deliveryPrice, setDeliveryPrice] = useState();
+   
+    let productId = 0;
+
+    for (const product of cart) {
+      productId = product._id;
+      console.log('productId', productId)
+    }
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data) => {
+        const orderDetail = { 
+            data,
+            productId,
+        }
+
+        fetch('https://mamardukan.herokuapp.com/orders', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(orderDetail)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data){
+                alert('Your Order Placed successfully');
+            }
+        })
         console.log(data);
         console.log(errors);
     }
     
-
+    const handlePaymentSuccess = paymentId => {
+        
+    }
 
     const handleCreditCart = () => {
         setCreditCart(true);
@@ -42,6 +71,10 @@ const CheckoutPage = () => {
         setCreditCart(false);
         setPaypal(false);
         setEtransfer(true);
+    }
+
+    const handleDelivery = () => {
+        
     }
 
     const handleRemove = id => {
@@ -90,8 +123,9 @@ const CheckoutPage = () => {
                                     <label for="firstName" className="block mb-3 text-sm font-semibold text-gray-500">First
                                         Name</label>
                                     <input name="firstName" type="text" placeholder="First Name" 
-                                        {...register("First name", {required: true})}
+                                        {...register("firstName", {required: true})}
                                         className="h-12 w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                    {errors.firstName?.type === 'required' && "First name is required"}
                                     
                                 </div>
                                 <div className="w-full lg:w-1/2 ">
@@ -157,9 +191,8 @@ const CheckoutPage = () => {
                                     className="flex items-center w-full px-4 py-3 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-600"
                                     rows="4" placeholder="Notes for delivery"></textarea>
                             </div>
-                            <input type="submit" />
                         </div>
-                    </form>
+                    
                     <div className="pt-6 mt-10 border-t border-gray-300">
                         <h2 className="mb-4 font-bold md:text-xl text-heading ">Delivery Method</h2>
                         <div className="mt-6 flex space-x-4">
@@ -197,7 +230,7 @@ const CheckoutPage = () => {
                             </label>
                         </div>
                         {
-                            creditCart && <CreditCardForm />
+                            creditCart && <CheckoutIndex />
                         }
                         {
                             paypal && <PaypalForm />
@@ -206,6 +239,11 @@ const CheckoutPage = () => {
                             etransfer && <TransferForm />
                         }
                     </div>
+                    <div className="mt-4">
+                        <button type="submit"
+                            className="w-full px-6 py-2 text-gray-50 primary_BTN">Process to order</button>
+                    </div>
+                    </form>
                 </div>
                 <div  className="text-white rounded py-5 flex flex-col w-full ml-0 lg:ml-12 lg:w-4/5 bg-gray-600 ">
                     <div className="pt-12 md:pt-0 2xl:ps-4 tracking-tight">
@@ -245,10 +283,7 @@ const CheckoutPage = () => {
                         <div
                             className="flex justify-between items-center w-full py-4 text-sm font-extrabold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
                             Total<span className="ml-2">${Total.toFixed(2)}</span></div>
-                        <div className="mt-4">
-                            <button
-                                className="w-full px-6 py-2 text-gray-50 primary_BTN">Process to order</button>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
