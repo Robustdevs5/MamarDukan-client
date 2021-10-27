@@ -17,7 +17,7 @@ export const ComputerTechnology = [
 ];
 
 
-export const NewProduct = [
+export const NewProductOffer = [
     {
         title: "Special offer",
         path: "/specialOffer",

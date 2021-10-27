@@ -18,7 +18,7 @@ const MostViewedProducts = () => {
             .then(res => res.json())
             .then(data => setMostViewedProduct(data.products))
     }, [])
-    console.log(mostViewedProduct);
+    // console.log(mostViewedProduct);
 
 
     function SampleNextArrow(props) {

@@ -1,66 +1,60 @@
-import { Fragment, useState } from "react";
+import { Fragment, useContext, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
-const products = [
-  {
-    id: 1,
-    name: "Throwback Hip Bag",
-    href: "#",
-    color: "Salmon",
-    price: "$90.00",
-    quantity: 1,
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg",
-    imageAlt:
-      "Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
-  },
-  {
-    id: 2,
-    name: "Throwback Hip Bag",
-    href: "#",
-    color: "Salmon",
-    price: "$90.00",
-    quantity: 1,
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg",
-    imageAlt:
-      "Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
-  },
-  {
-    id: 3,
-    name: "Medium Stuff Satchel",
-    href: "#",
-    color: "Blue",
-    price: "$32.00",
-    quantity: 1,
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
-    imageAlt:
-      "Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
-  },
-  // More products...
-];
+import { userContext } from "../../App";
+import { removeFromDb } from '../ShopingCart/CartDatabase';
+import { toast, ToastContainer } from "react-toastify";
+
 
 const CartDropdown = ({ setDropdown }) => {
+  const { cart, setCart } = useContext(userContext);
+
+  let totalQuantity = 0;
+  let subTotal = 0;
+
+  for (const product of cart) {
+    if (!product.quantity) {
+        product.quantity = 1;
+    }
+    subTotal = subTotal + product.price * product.quantity;
+    totalQuantity = totalQuantity + product.quantity;
+  }
+
+  const shipping = subTotal > 0 ? 15 : 0;
+  const tax = (subTotal + shipping) * 0.10;
+  const Total = subTotal + shipping + tax;
+
+
+  const handleRemove = id => {
+    const newCart = cart.filter(product => product._id !== id);
+    setCart(newCart);
+    removeFromDb(id);
+    toast.success("successful product remove", {
+      position: "bottom-right",
+    });
+  }
+
+
   return (
     <div
-      className="   max-width-full absolute  top-20 md:right-20 right-2 z-50 rounded-2 bg-gray-100 "
+      className="  max-width-full absolute  top-16 mt-2 md:right-20 right-2 z-50 rounded-xl bg-gray-100 "
       onMouseEnter={() => setDropdown(true)}
       onMouseLeave={() => setDropdown(false)}
     >
-      <div className="h-full flex flex-col  shadow-xl ">
+      <div className="h-full flex flex-col  shadow-xl  ">
         <div className="flex-1 py-6 overflow-y-auto px-4 sm:px-6 px-2">
-          <h4 className="text-lg font-medium text-gray-900">Shopping cart</h4>
-
-          <div className="mt-8 overflow-hidden h-52 overflow-y-scroll">
-            <div className="flow-root">
-              <ul role="list" className="-my-4 divide-y divide-gray-200">
-                {products.map((product) => (
-                  <li key={product.id} className="py-6 flex">
-                    <div className="flex-shrink-0 w-20 h-20 border border-gray-200 rounded-md overflow-hidden">
+          <h4 className="text-lg font-medium text-gray-900 border-l-4 border-red-600 pl-3">Shopping cart</h4>
+          <hr/>
+          <div className="mt-2 px-4 overflow-hidden h-60 overflow-y-scroll">
+            <div className="flow-root  ">
+              <ul className="divide-y divide-gray-200 ">
+                
+                {cart.map((product) => (
+                  <li key={product._id} className="py-2 flex">
+                    <div className="flex-shrink-0 w-14 h-14 border border-gray-200 rounded-md overflow-hidden">
                       <img
-                        src={product.imageSrc}
+                        src={product.img}
                         alt={product.imageAlt}
                         className="w-full h-full object-center object-cover"
                       />
@@ -68,26 +62,27 @@ const CartDropdown = ({ setDropdown }) => {
 
                     <div className="ml-4 flex-1 flex flex-col">
                       <div>
-                        <div className="flex justify-between  font-medium text-gray-900 text-blue-500">
+                        <div className="flex justify-between  font-medium text-gray-900">
                           <p>
                             <a href={product.href}>{product.name}</a>
                           </p>
-                          <p className="ml-4">{product.price}</p>
+                          <p className="ml-4">${product.price}</p>
                         </div>
                       </div>
                       <div className="mr-auto">
                         {" "}
                         <p className="mt-1 text-sm text-gray-500 ">
-                          {product.color}
+                          color: {product.color}
                         </p>
                       </div>
                       <div className="flex-1 flex items-end justify-between text-sm">
-                        <p className="text-gray-500">Qty {product.quantity}</p>
+                        <p className="text-gray-500">Quantity: {product.quantity}</p>
 
                         <div className="flex">
                           <button
                             type="button"
-                            className="font-medium text-indigo-600 hover:text-indigo-500"
+                            className="primary_BTN_Outline px-2 font-medium text-indigo-600 hover:text-indigo-500"
+                            onClick={() => handleRemove(product._id)}
                           >
                             Remove
                           </button>
@@ -101,39 +96,48 @@ const CartDropdown = ({ setDropdown }) => {
           </div>
         </div>
 
-        <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
-          <div className="flex justify-between text-base font-medium text-gray-900">
+        <div className="border-t border-gray-200 py-2 px-4 sm:px-6">
+          <div className="flex justify-between text-base font-normal text-gray-900">
             <p>Subtotal</p>
-            <p>$22.00</p>
+            <p>${subTotal.toFixed(2)}</p>
           </div>
-          <div className="flex justify-between text-base font-medium text-gray-900">
+          <hr/>
+          <div className="flex justify-between text-base font-normal text-gray-900">
+            <p>shipping</p>
+            <p>${shipping}</p>
+          </div>
+          <div className="flex justify-between text-base font-normal text-gray-900">
             <p>Tax</p>
-            <p>$284.00</p>
+            <p>${tax.toFixed(2)}</p>
           </div>
-          <div className="flex justify-between text-base font-medium text-gray-900">
+          <hr/>
+          <div className="flex justify-between  text-base font-bold text-gray-900">
             <p>Total</p>
-            <p>$262.00</p>
+            <p>${Total.toFixed(2)}</p>
           </div>
           <p className="mt-0.5 text-sm text-gray-500">
             Shipping and taxes calculated at checkout.
           </p>
+          <hr/>
           <div className="mt-4 flex justify-between">
             <Link
-              to="/viewCart"
-              className="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+              to="/cart"
+              className="flex justify-center items-center px-6 py-2 border border-transparent rounded-md shadow-sm text-base font-medium primary_BTN_Outline"
             >
               View Cart
             </Link>
 
             <Link
-              to="/viewCart"
-              className="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+              to="/checkout"
+              className="flex justify-center items-center px-6 py-2 border border-transparent rounded-md shadow-sm text-base font-medium  primary_BTN"
             >
-              View Cart
+              Checkout
             </Link>
           </div>
         </div>
       </div>
+      
+      <ToastContainer />
     </div>
   );
 };

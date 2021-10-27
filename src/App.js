@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { createContext, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddAdmin from "./Components/AdminDashboard/AddAdmin/AddAdmin";
-// import AddProduct from "./Components/Admin/addProduct/AddProduct";
 import AddProduct from "./Components/AdminDashboard/AddProduct/AddProduct";
 import AdminSidebar from './Components/AdminDashboard/AdminSidebar/AdminSidebar';
 import ManageProduct from "./Components/AdminDashboard/ManageProduct/ManageProduct";
@@ -20,7 +19,6 @@ import './Components/StyledComponent/Global.css';
 import AllProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/AllProducts-SuperAdminDashboard/AllProductsSuperAdminDashboard";
 import OrdersSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Orders-SuperAdminDashboard/OrdersSuperAdminDashboard";
 import ProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/ProductsSuperAdminDashboard";
-// import ProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/ProductsSuperAdminDashboard";
 import ReviewSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Review-SuperAdminDashboard/ReviewSuperAdminDashboard";
 import Report from "./Components/SuperAdminDashboard/Report/Report";
 import SuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminDashboard/SuperAdminDashboard";
@@ -29,10 +27,6 @@ import CustomerSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperA
 import SuperAdmin from "./Components/SuperAdminDashboard/SuperAdminManageUser/SuperAdmin-SuperAdminDashboard/SuperAdmin";
 import SuperAdminManageUser from "./Components/SuperAdminDashboard/SuperAdminManageUser/SuperAdminManageUser";
 import VendorSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Vendor-SuperAdminDashboard/VendorSuperAdminDashboard";
-// import SuperAdminOverview from "./Components/SuperAdminDashboard/SuperAdminOverview/SuperAdminOverview";
-// import SuperAdminUserOverview from "./Components/SuperAdminDashboard/SuperAdminUserOverview/SuperAdminUserOverview";
-// import ManageSuperAdmin from "./Components/SuperAdminDashboard/ManageSuperAdmin/ManageSuperAdmin";
-// import AddSuperAdmin from "./Components/SuperAdminDashboard/AddSuperAdmin/AddSuperAdmin";
 import TrackOrder from './Components/TrackOrder/TrackOrder';
 import Dashboard from './Components/UserDashboard/Dashboard';
 import VendorAddProduct from "./Components/VendorDashboard/VendorAddProduct/VendorAddProduct";
@@ -48,6 +42,7 @@ import VendorReport from "./Components/VendorDashboard/VendorReport/VendorReport
 import VendorStockOverview from "./Components/VendorDashboard/VendorStock/VendorStockOverview";
 import VendorStockStatus from "./Components/VendorDashboard/VendorStock/VendorStockStatus";
 import Blogs from "./pages/Blog-page/Blogs";
+import CheckoutPage from "./pages/Checkout-page/CheckoutPage";
 import Contact from './pages/Contact-page/Contact';
 import HomePage from "./pages/Home-page/HomePage";
 export const userContext = createContext();
@@ -62,6 +57,7 @@ function App() {
   const [orders, setOrders] = useState([])
   const [user, setUser] = useState({});
   const [loggedInUser, setLoggedInUser] = useState([])
+  const [cart, setCart] = useState([]);
 
   // useEffect(() => {
   //   api.get('/user')
@@ -79,7 +75,7 @@ function App() {
   // }, [orders.length])
 
 
-  const contextData = {loggedInUser, setLoggedInUser, products, setProducts, orders, setOrders, user, setUser }
+  const contextData = {loggedInUser, setLoggedInUser, products, setProducts, orders, setOrders, user, setUser, cart, setCart }
   // console.log(';contextAPi', contextData)
 
   return (
@@ -132,6 +128,7 @@ function App() {
           <Route path="/vendor/dashboard/stock-status" component={VendorStockStatus }/>
           <Route path="/vendor/dashboard/reports" component={VendorReport }/>
           <Route path="/vendor/dashboard/messages" component={VendorMessage }/>
+          <Route path="/checkout" component={CheckoutPage }/>
 
       </Switch>
     </Router>

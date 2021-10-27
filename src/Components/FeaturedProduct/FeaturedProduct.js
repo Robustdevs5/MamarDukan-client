@@ -21,7 +21,7 @@ const FeaturedProduct = () => {
             .then(res => res.json())
             .then(data => setFeaturedProduct(data.products))
     }, [])
-    console.log(featuredProduct);
+    // console.log(featuredProduct);
 
 
 
