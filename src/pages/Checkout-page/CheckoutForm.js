@@ -1,4 +1,5 @@
 import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { CreditCardForm } from './CreditCardForm';
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -37,6 +38,7 @@ const CheckoutForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <PaymentElement />
+      <CreditCardForm />
       <button disabled={!stripe}>Submit</button>
     </form>
   )
