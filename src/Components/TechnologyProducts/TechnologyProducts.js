@@ -128,14 +128,14 @@ const TechnologyProducts = () => {
                     technologyProduct.map(technologyProduct =>
                         <div className="p-2 hover:border-red-600 md:border rounded relative">
                             <div className="relative">
-                                <div className="mb-4 w-40 h-40">
+                                <div className="mb-4 w-10/12 h-40">
                                     <img onClick={() => handleProductClick(technologyProduct._id)} className="rounded cursor-pointer h-full w-full" src={technologyProduct.img} alt="8192" />
                                 </div>
-                                <div className="absolute bottom-0 left-0 bg-custom px-2 py-1 text-white text-sm hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
-                                    Computer
-                                </div>
+                                {/* <div className="absolute bottom-0 left-0 bg-custom px-2 py-1 text-white text-sm rounded-full transition duration-500 ease-in-out">
+                                   <span className="font-bold"> Computer</span>
+                                </div> */}
                                 <a href="!#">
-                                    <div className="text-sm absolute top-0 right-0 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
+                                    <div className="text-sm absolute top-0 right-0 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center rounded-full transition duration-500 ease-in-out">
                                         <span className="font-bold">Sale</span>
                                     </div>
                                 </a>
