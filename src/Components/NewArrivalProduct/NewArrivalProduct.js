@@ -51,12 +51,6 @@ const NewArrivalProduct = () => {
                     <p className="font-bold text-red-900 mt-0">$340</p>
                     </div>
                 </div>
-<<<<<<< HEAD
-                <div className="px-2 py-4 opacity-0 hover:opacity-100">
-                    <button class="bg-custom hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Add to Cart</button>
-                </div>                
-=======
->>>>>>> 859e71d8d7d6318eeecfc003c5f46ef7724c9de1
             </div>
             <div className="group relative w-full bg-white border cursor-pointer">
                 <div className="overflow-x-hidden relative border-b p-2">
@@ -99,12 +93,6 @@ const NewArrivalProduct = () => {
                     <p className="font-bold text-red-900 mt-0">$340</p>
                     </div>
                 </div>
-<<<<<<< HEAD
-                {/* <div className="px-2 py-4">
-                    <button class="bg-custom hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Add to Cart</button>
-                </div> */}
-=======
->>>>>>> 859e71d8d7d6318eeecfc003c5f46ef7724c9de1
             </div>
             <div className="group relative w-full bg-white border cursor-pointer">
                 <div className="overflow-x-hidden relative border-b p-2">
@@ -147,12 +135,6 @@ const NewArrivalProduct = () => {
                     <p className="font-bold text-red-900 mt-0">$340</p>
                     </div>
                 </div>
-<<<<<<< HEAD
-                {/* <div className="px-2 py-4">
-                    <button class="bg-custom hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Add to Cart</button>
-                </div> */}
-=======
->>>>>>> 859e71d8d7d6318eeecfc003c5f46ef7724c9de1
             </div>
             <div className="group relative w-full bg-white border cursor-pointer">
                 <div className="overflow-x-hidden relative border-b p-2">
@@ -195,12 +177,6 @@ const NewArrivalProduct = () => {
                     <p className="font-bold text-red-900 mt-0">$340</p>
                     </div>
                 </div>
-<<<<<<< HEAD
-                {/* <div className="px-2 py-4">
-                    <button class="bg-custom hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Add to Cart</button>
-                </div> */}
-=======
->>>>>>> 859e71d8d7d6318eeecfc003c5f46ef7724c9de1
             </div>
             <div className="relative w-full bg-white border cursor-pointer row-span-2 col-span-2">
                 <div className="overflow-x-hidden relative border-b p-2">
@@ -265,12 +241,6 @@ const NewArrivalProduct = () => {
                     <p className="font-bold text-red-900 mt-0">$340</p>
                     </div>
                 </div>
-<<<<<<< HEAD
-                {/* <div className="px-2 py-4">
-                    <button class="bg-custom hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Add to Cart</button>
-                </div> */}
-=======
->>>>>>> 859e71d8d7d6318eeecfc003c5f46ef7724c9de1
             </div>
             <div className="group relative w-full bg-white border cursor-pointer">
                 <div className="overflow-x-hidden relative border-b p-2">
@@ -313,12 +283,6 @@ const NewArrivalProduct = () => {
                     <p className="font-bold text-red-900 mt-0">$340</p>
                     </div>
                 </div>
-<<<<<<< HEAD
-                {/* <div className="px-2 py-4">
-                    <button class="bg-custom hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Add to Cart</button>
-                </div> */}
-=======
->>>>>>> 859e71d8d7d6318eeecfc003c5f46ef7724c9de1
             </div>
             <div className="group relative w-full bg-white border cursor-pointer">
                 <div className="overflow-x-hidden relative border-b p-2">
@@ -361,12 +325,6 @@ const NewArrivalProduct = () => {
                     <p className="font-bold text-red-900 mt-0">$340</p>
                     </div>
                 </div>
-<<<<<<< HEAD
-                {/* <div className="px-2 py-4">
-                    <button class="bg-custom hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Add to Cart</button>
-                </div> */}
-=======
->>>>>>> 859e71d8d7d6318eeecfc003c5f46ef7724c9de1
             </div>
             <div className="group relative w-full bg-white border cursor-pointer">
                 <div className="overflow-x-hidden relative border-b p-2">
@@ -409,12 +367,6 @@ const NewArrivalProduct = () => {
                     <p className="font-bold text-red-900 mt-0">$340</p>
                     </div>
                 </div>
-<<<<<<< HEAD
-                {/* <div className="px-2 py-4">
-                    <button class="bg-custom hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Add to Cart</button>
-                </div> */}
-=======
->>>>>>> 859e71d8d7d6318eeecfc003c5f46ef7724c9de1
             </div>
         </div>
         <div class="my-8"> 
