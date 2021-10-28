@@ -4,8 +4,8 @@ import { userContext } from '../../../App';
 
 
 const UpdateProfile = () => {
-
     const { user, setUser } = useContext(userContext);
+    
 
 
     const handleSubmit = (e) => {
