@@ -369,7 +369,14 @@ const NewArrivalProduct = () => {
                 </div>
             </div>
         </div>
+        <div class="my-8"> 
+            <a href="http://localhost:3000/shop" class=""> 
+                <img src="https://demo2.madrasthemes.com/tokoo/wp-content/uploads/2018/07/banner-0a.png" class="h-full w-full object-cover" alt="shop banner" /> 
+            </a>
+        </div>
       </div>
+      
+      
     );
 };
 
