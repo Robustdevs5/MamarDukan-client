@@ -11,11 +11,11 @@ const Thankyou = () => {
         <div>
             <TopBar />
             <Navbar />
-            <div className="w-screen h-screen flex">
-                <div className="w-3/5 m-2 h-4/6 ">
+            <div className="w-screen h-auto flex mb-32 mt-8">
+                <div className="w-3/5 m-2  border-r-2 border-black ">
                     <CustomerInfo />
                 </div>
-                <div className="w-2/5 m-6 h-4/6 ">
+                <div className="w-2/5 m-6 ">
                     <Orderinfo />
                 </div>
             </div>
