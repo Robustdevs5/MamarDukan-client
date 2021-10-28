@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { TiDelete } from 'react-icons/ti';
 import { toast, ToastContainer } from 'react-toastify';
@@ -27,7 +27,7 @@ const CheckoutPage = () => {
     const [stripePayment, setStripePayment] = useState();
     
     console.log('stripePayment', stripePayment);
-    console.log('CheckoutPage login', user);
+    console.log('CheckoutPage login', user.token);
     const [deliveryPrice, setDeliveryPrice] = useState(0);
     console.log("Delivery" , deliveryPrice)
    
@@ -37,6 +37,19 @@ const CheckoutPage = () => {
       productId = product._id;
       console.log('productId', productId)
     }
+
+    useEffect(() => {
+        fetch('http://localhost:5000/user/profile', {
+          headers: {
+            Authorization: user.token
+          }
+        })
+          .then(res => res.json())
+          .then(data => {
+              console.log('test profile',data)
+              alert(data)
+            });
+    },[user.length])
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data) => {
@@ -58,8 +71,8 @@ const CheckoutPage = () => {
                 alert('Your Order Placed successfully');
             }
         })
-        console.log(data);
-        console.log(errors);
+        // console.log(data);
+        // console.log(errors);
     }
     
     const handlePaymentSuccess = paymentId => {

@@ -37,13 +37,13 @@ const Tamal = () => {
     return (
         <div>
             {averageRating.toFixed(0)}
-            {
+            {/* {
                 tamalRating.map((item, index) => {
                    return <li item={item} key={index}>
                        {item.star}
                     </li>
                 })
-            }
+            } */}
             <StripePayment/>
         </div>
     );
