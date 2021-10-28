@@ -126,7 +126,7 @@ const TechnologyProducts = () => {
 
                 {
                     technologyProduct.map(technologyProduct =>
-                        <div className="p-2 hover:border-red-600 md:border rounded relative">
+                        <div className="p-2 hover:border-red-600 md:border rounded">
                             <div className="relative">
                                 <div className="mb-4 w-10/12 h-40">
                                     <img onClick={() => handleProductClick(technologyProduct._id)} className="rounded cursor-pointer h-full w-full" src={technologyProduct.img} alt="8192" />
