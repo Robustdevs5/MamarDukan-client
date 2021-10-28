@@ -1,5 +1,5 @@
 import React from 'react';
-import { OrderDetails } from './OrderAPI';
+import { OrderDetails1 } from './OrderAPI';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 
@@ -60,7 +60,7 @@ const RecentOrders = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {OrderDetails
+                            {OrderDetails1
                                 // .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((item) => (
                                     <StyledTableRow key={item.name} className={classes.tables}>
