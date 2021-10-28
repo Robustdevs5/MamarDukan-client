@@ -50,7 +50,7 @@ const Table = (props) => {
       </div>
       <div className="CupponTotal grid grid-cols-1 md:grid-cols-2  mt-10">
         <div className=""><CupponCart /></div>
-        {/* <div className=""><TotalCart totalPrice={totalPrice} taxPrice={taxPrice} itemsPrice={itemsPrice} /></div> */}
+        <div className=""><TotalCart  /></div>
       </div>
     </div>
     

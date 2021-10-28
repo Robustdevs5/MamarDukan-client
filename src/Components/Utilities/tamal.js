@@ -21,9 +21,9 @@ const Tamal = () => {
     let subTotal = 0;
   
     for (const review of tamalRating) {
-    //   if (!product.quantity) {
-    //       product.quantity = 1;
-    //   }
+      if (!review.quantity) {
+        review.quantity = 1;
+      }
       subTotal = subTotal + review.star
       console.log('review', review)
       console.log('subTotal', subTotal)
@@ -37,14 +37,14 @@ const Tamal = () => {
     return (
         <div>
             {averageRating.toFixed(0)}
-            {/* {
+            {
                 tamalRating.map((item, index) => {
                    return <li item={item} key={index}>
                        {item.star}
                     </li>
                 })
-            } */}
-            <StripePayment/>
+            }
+            {/* <StripePayment/> */}
         </div>
     );
 };

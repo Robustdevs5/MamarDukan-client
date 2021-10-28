@@ -169,7 +169,7 @@ const StarRating = () => {
                             </div>
                             <button type='submit' className='mt-6 primary_BTN px-5 py-1 rounded'>Review</button>
                         </div>
-                        <Tamal/>
+                        {/* <Tamal/> */}
                     </div>
                 </div>
             </div>
