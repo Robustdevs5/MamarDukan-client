@@ -5,7 +5,6 @@ import { getStoredCart } from './CartDatabase';
 const useCart = products => {
     // const [cart, setCart] = useState([]);
     const { cart, setCart } = useContext(userContext);
-    console.log('cart useContext', cart)
 
     useEffect(() => {
 

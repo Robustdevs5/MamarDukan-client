@@ -11,12 +11,20 @@ const AccountInformation = () => {
 
     const { user, setUser } = useContext(userContext);
     const [Profile, setprofile] = useState([])
-    useEffect(() => {
-        fetch('http://localhost:5000/user/profile')
-        .then (response => response.json())
-        .then (data => console.log('profile', data))
-        .catch (error => console.log('error', error))
-    })
+
+    
+    // useEffect(() => {
+    //     // fetch('http://localhost:5000/user/profile' , { 
+    //     //    headers : {
+    //     //     Method: 'GET',
+    //     //     Authorization : user.token 
+    //     //    }
+    //     // })
+        
+    //     // .then (response => response.json())
+    //     // .then (data => console.log('profile', data))
+    //     // .catch (error => console.log('error', error))
+    // },[user])
 
 
 
