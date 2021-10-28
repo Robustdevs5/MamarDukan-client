@@ -12,6 +12,7 @@ const UserSignUpFrom = () => {
       } = useForm()
 
       async function handleSignup(userInfo) {
+        console.log(userInfo)
         // setLoading(true)
         // try {
         //   if (donatedBefore)

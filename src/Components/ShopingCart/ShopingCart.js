@@ -1,44 +1,71 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Footer from '../Footer/Footer';
 import FooterCatagory from '../Footer/FooterCatagory';
 import Navbar from '../Navbar/Navbar/Navbar';
 import TopBar from '../TopBar/TopBar';
 import Table from './Table';
-import {Cart} from "./Data";
+import { userContext } from '../../App';
+import { toast } from 'react-toastify';
+import { addToDb, removeFromDb } from './CartDatabase';
 
 
 const ShopingCart = () => {
-  const {products} = Cart;
-  const [cartItems, setCartItems] = useState(products);
-  const onAdd = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
-    if (exist) {
-      setCartItems(
-        cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
-        )
-      );
-    } else {
-      setCartItems([...cartItems, { ...product, qty: 1 }]);
+  const { cart, setCart } = useContext(userContext);
+
+  const onAdd = (newProduct) => {
+    const exists = cart.find(pd => pd._id === newProduct._id);
+    let newCart = [];
+    if (exists) {
+        const rest = cart.filter(pd => pd._id !== newProduct._id);
+        exists.quantity = exists.quantity + 1;
+        newCart = [...rest, newProduct];
+        toast.success( "increase "+ exists.quantity + " quantity", {
+            position: "bottom-right",
+        });
     }
-  };
-  const onRemove = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
-    if (exist.qty === 1) {
-      setCartItems(cartItems.filter((x) => x.id !== product.id));
-    } else {
-      setCartItems(
-        cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
-        )
-      );
-    }
-  };
+   
+    setCart(newCart);
+    // save to local storage (for now)
+    addToDb(newProduct._id);
+
+}
+
+
+const onRemove = (newProduct) => {
+  const exists = cart.find(pd => pd._id === newProduct._id);
+  let newCart = [];
+  if (exists) {
+      const rest = cart.filter(pd => pd._id !== newProduct._id);
+      exists.quantity = exists.quantity - 1;
+      newCart = [...rest, newProduct];
+      
+      if(exists.quantity <= 1){
+        exists.quantity = 1
+      }
+      toast.success( "decrease "+ exists.quantity + " quantity", {
+        position: "bottom-right",
+    });
+  }
+
+  setCart(newCart);
+  // save to local storage (for now)
+  addToDb(newProduct._id);
+
+}
+
+const onDelete = id => {
+  const newCart = cart.filter(product => product._id !== id);
+  setCart(newCart);
+  removeFromDb(id);
+  toast.success("successful product remove", {
+    position: "bottom-right",
+  });
+}
   return (
     <div>
       <TopBar />
       <Navbar />
-      <Table onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} />
+      <Table onAdd={onAdd} onRemove={onRemove} onDelete={onDelete} />
       <div className="m-5">
       <FooterCatagory />
       <Footer /></div>
