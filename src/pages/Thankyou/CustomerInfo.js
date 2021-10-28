@@ -9,7 +9,7 @@ const CustomerInfo = () => {
                 <div className="w-2/12  font-center"><FcCheckmark /></div>
                 <div className="w-10/12">
                 <h1 className="">Your Order is placed successfully</h1>
-                <h4 className="">Thank you for your order</h4>
+                <h4 className=""> your order is confirmed</h4>
                 </div>
             </div>
             <div className="m-4" >

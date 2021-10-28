@@ -130,7 +130,7 @@ function App() {
           <Route path="/vendor/dashboard/reports" component={VendorReport }/>
           <Route path="/vendor/dashboard/messages" component={VendorMessage }/>
           <Route path="/checkout" component={CheckoutPage }/>
-          <Route path="/Thankyou" component={Thankyou }/>
+          <Route path="/Confirm" component={Thankyou }/>
 
       </Switch>
     </Router>
