@@ -1,5 +1,6 @@
 import React from "react";
 import AllInOne from "../../Components/AllInOne/AllInOne";
+import BestRatedProduct from "../../Components/BestRatedProduct/BestRatedProduct";
 import ClassicProducts from "../../Components/ClassicProducts/ClassicProducts";
 import FeaturedProduct from "../../Components/FeaturedProduct/FeaturedProduct";
 import Footer from "../../Components/Footer/Footer";
@@ -24,6 +25,7 @@ const HomePage = () => {
       <NewProducts />
       <FeaturedProduct />
       <NewArrivalProduct />
+      <BestRatedProduct />
       <SummerStyles/>
       <ClassicProducts/>
       <TechnologyProducts />
