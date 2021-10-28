@@ -45,6 +45,7 @@ import Blogs from "./pages/Blog-page/Blogs";
 import CheckoutPage from "./pages/Checkout-page/CheckoutPage";
 import Contact from './pages/Contact-page/Contact';
 import HomePage from "./pages/Home-page/HomePage";
+import Thankyou from "./pages/Thankyou/Thankyou";
 export const userContext = createContext();
 
 const api = axios.create({
@@ -129,6 +130,7 @@ function App() {
           <Route path="/vendor/dashboard/reports" component={VendorReport }/>
           <Route path="/vendor/dashboard/messages" component={VendorMessage }/>
           <Route path="/checkout" component={CheckoutPage }/>
+          <Route path="/Confirm" component={Thankyou }/>
 
       </Switch>
     </Router>

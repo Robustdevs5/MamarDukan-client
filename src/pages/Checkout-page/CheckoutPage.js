@@ -47,7 +47,7 @@ const CheckoutPage = () => {
           .then(res => res.json())
           .then(data => {
               console.log('test profile',data)
-              alert(data)
+            //   alert(data)
             });
     },[user.length])
 

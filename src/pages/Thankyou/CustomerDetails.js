@@ -1,36 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { AiOutlineMail } from 'react-icons/ai';
 import { FaMapMarkerAlt, FaRegUser } from 'react-icons/fa';
 import { FiPhoneCall } from 'react-icons/fi';
 import { MdDateRange } from 'react-icons/md';
-import { userContext } from '../../../App';
 
 
 
-const AccountInformation = () => {
-
-    const { user, setUser } = useContext(userContext);
-    const [Profile, setprofile] = useState([])
-
-    
-    // useEffect(() => {
-    //     // fetch('http://localhost:5000/user/profile' , { 
-    //     //    headers : {
-    //     //     Method: 'GET',
-    //     //     Authorization : user.token 
-    //     //    }
-    //     // })
-        
-    //     // .then (response => response.json())
-    //     // .then (data => console.log('profile', data))
-    //     // .catch (error => console.log('error', error))
-    // },[user])
-
-
-
+const CustomerDetail = () => {
     return (
-        <div className="p-8">
-            <h1 className="font-bold text-2xl my-8">Account Information</h1>
+        <div className="">
+            <h1 className="font-bold text-2xl m-2">Customer Information</h1>
 
             <div className="text-gray-700">
                 <div className="flex items-center py-1">
@@ -77,4 +56,4 @@ const AccountInformation = () => {
     );
 };
 
-export default AccountInformation;
+export default CustomerDetail;

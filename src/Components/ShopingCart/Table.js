@@ -42,8 +42,8 @@ const Table = (props) => {
                   <button onClick={() => onAdd(item)} className="ml-5 cursor-pointer text-3xl">+</button>
               </div>
               <div className='text-2xl  rounded-full cursor-pointer' onClick={() => onDelete(item._id)}>
-                                                <TiDelete/>
-                                            </div>
+                  <TiDelete/>
+              </div>
             </div>)
           }
         </div>

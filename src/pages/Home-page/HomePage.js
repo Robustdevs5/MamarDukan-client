@@ -25,6 +25,7 @@ const HomePage = () => {
       <NewProducts />
       <FeaturedProduct />
       <NewArrivalProduct />
+      <TechnologyProducts />
       <BestRatedProduct />
       <SummerStyles/>
       <ClassicProducts/>
