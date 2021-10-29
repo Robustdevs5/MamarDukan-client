@@ -16,17 +16,22 @@ const BestRatedProduct = () => {
     console.log('firstFiveProduct', firstFiveProduct)
 
     async function shuffleArray(array) {
-
-        let i = await array.length - 1;
-        console.log('i', i) 
-        for (; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            const temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
-        
+        try{
+            let i = await array.length - 1;
+            console.log('i', i) 
+            for (; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                const temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            
+            }
+            
+            return array.slice(0,5);
         }
-         return array.slice(0,5);
+        catch(err) {
+            console.log(err)
+        }
      }
 
     let shuffle= shuffleArray(products.products)
