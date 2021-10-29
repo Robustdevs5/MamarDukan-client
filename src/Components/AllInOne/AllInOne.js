@@ -28,10 +28,9 @@ export default function AllInOne() {
     
     // function shuffleArray(array) {
     const shuffleArray = async array => {
-        let i = await array.length - 1;
-        
+        let i ;
+        i = await array.length - 1;
             console.log('i', i)
-            let k;
         for (; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
           const temp = array[i];
