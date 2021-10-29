@@ -26,12 +26,12 @@ const BestRatedProduct = () => {
                 array[j] = temp;
             
             }
-            
-            return array.slice(0,5);
         }
         catch(err) {
             console.log(err)
         }
+        
+        return array.slice(0,5);
      }
 
     let shuffle= shuffleArray(products.products)
