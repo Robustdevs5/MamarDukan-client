@@ -3,6 +3,7 @@ import AllInOne from "../../Components/AllInOne/AllInOne";
 import BestRatedProduct from "../../Components/BestRatedProduct/BestRatedProduct";
 import ClassicProducts from "../../Components/ClassicProducts/ClassicProducts";
 import FeaturedProduct from "../../Components/FeaturedProduct/FeaturedProduct";
+import FlashSaleProducts from "../../Components/FlashSaleProducts/FlashSaleProducts";
 import Footer from "../../Components/Footer/Footer";
 import MostViewedProducts from "../../Components/MostViewedProducts/MostViewedProducts";
 import Navbar from "../../Components/Navbar/Navbar/Navbar";
@@ -27,6 +28,7 @@ const HomePage = () => {
       <NewArrivalProduct />
       <TechnologyProducts />
       <BestRatedProduct />
+      <FlashSaleProducts />
       <SummerStyles/>
       <ClassicProducts/>
       <TechnologyProducts />

@@ -5,6 +5,47 @@ import {Accessories} from '../Navbar/Menu/MenuItems';
 
 export default function AllInOne() {
     
+<<<<<<< HEAD
+=======
+    const [products, setProducts] = useProducts(); 
+     const [pd, setPd] = useState() 
+    console.log('useProducts', products)
+    console.log('pd', pd)
+    
+    // const shuffle = async a => {
+    //     let test;
+    //     for (let i = a.products.length; i; i--) {
+    //         let j = Math.floor(Math.random() * i);
+    //         let k= [a[i - 1], a[j]] = [a[j], a[i - 1]];
+            
+    //         console.log('j', j)
+    //         console.log('k', k)
+    //         // setPd(k)
+    //         let test
+    //     }
+        
+    // console.log('a', a.products.length)
+    // // setPd(k)
+    // }
+    
+    // function shuffleArray(array) {
+    const shuffleArray = async array => {
+        let i ;
+        i = await array.length - 1;
+            console.log('i', i)
+        for (; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          const temp = array[i];
+          array[i] = array[j];
+          array[j] = temp;
+        }
+        return array.slice(0,5);
+      }
+
+    const first10 = shuffleArray(products.products);
+    
+    console.log('first10', first10)
+>>>>>>> ca2b11a429445e0833c1b4fd3899f538f1c9a7a7
     
     return (
         <div className="py-20 bg-white">
