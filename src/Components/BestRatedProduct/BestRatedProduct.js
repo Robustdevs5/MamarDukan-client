@@ -10,43 +10,47 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const BestRatedProduct = () => {
     
-    // const [products, setProducts] = useProducts(); 
-    // const [firstFiveProduct, setFirstFiveProduct] = useState()
-    // console.log('useProducts', products)
-    // console.log('firstFiveProduct', firstFiveProduct)
+    const [products, setProducts] = useProducts(); 
+    const [firstFiveProduct, setFirstFiveProduct] = useState()
+    console.log('useProducts', products)
+    console.log('firstFiveProduct', firstFiveProduct)
 
-    // async function shuffleArray(array) {
+    async function shuffleArray(array) {
+        try{
+            let i = await array.length - 1;
+            console.log('i', i) 
+            for (; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                const temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            
+            }
+        }
+        catch(err) {
+            console.log("eooor" , err)
+        }
+        return array.slice(0,5);
+     }
 
-    //     let i = await array.length - 1;
-    //     console.log('i', i) 
-    //     for (; i > 0; i--) {
-    //         const j = Math.floor(Math.random() * (i + 1));
-    //         const temp = array[i];
-    //         array[i] = array[j];
-    //         array[j] = temp;
-        
-    //     }
-    //      return array.slice(0,5);
-    //  }
+    let shuffle= shuffleArray(products.products)
+        .then(async function(data){
+            // setFirstFiveProduct(data)
 
-    // let shuffle= shuffleArray(products.products)
-    //     .then(async function(data){
-    //         // setFirstFiveProduct(data)
+            let shuffleProducts;
 
-    //         let shuffleProducts;
-
-    //         await data.map((item, index) => {
-    //             console.log('data',item);
-    //             // setFirstFiveProduct(item) 
+            await data.map((item, index) => {
+                console.log('data',item);
+                // setFirstFiveProduct(item) 
                 
-    //             shuffleProducts = item
-    //             // console.log('shuffleProducts item', shuffleProducts);
-    //         })
-    //     console.log('shuffleProducts', shuffleProducts);
-    // })
+                shuffleProducts = item
+                // console.log('shuffleProducts item', shuffleProducts);
+            })
+        console.log('shuffleProducts', shuffleProducts);
+    })
 
     
-    // console.log('shuffle', shuffle)
+    console.log('shuffle', shuffle)
 
 
     return (
