@@ -27,22 +27,22 @@ export default function AllInOne() {
     // }
     
     // function shuffleArray(array) {
-    const shuffleArray = async array => {
-        let i ;
-        i = await array.length - 1;
-            console.log('i', i)
-        for (; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          const temp = array[i];
-          array[i] = array[j];
-          array[j] = temp;
-        }
-        return array.slice(0,5);
-      }
+    // const shuffleArray = async array => {
+    //     let i ;
+    //     i = await array.length - 1;
+    //         console.log('i', i)
+    //     for (; i > 0; i--) {
+    //       const j = Math.floor(Math.random() * (i + 1));
+    //       const temp = array[i];
+    //       array[i] = array[j];
+    //       array[j] = temp;
+    //     }
+    //     return array.slice(0,5);
+    //   }
 
-    const first10 = shuffleArray(products.products);
+    // const first10 = shuffleArray(products.products);
     
-    console.log('first10', first10)
+    // console.log('first10', first10)
     
     return (
         <div className="py-20 bg-white">
