@@ -14,6 +14,8 @@ import { PaypalForm, TransferForm } from './CreditCardForm';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from './CheckoutForm';
+import Totalcart from '../../Components/ShopingCart/Totalcart';
+import Newsletter from '../../Components/Newsletter/Newsletter';
 
 const CheckoutPage = () => {
     
@@ -109,21 +111,7 @@ const CheckoutPage = () => {
           position: "bottom-right",
         });
       }
-      
-    let totalQuantity = 0;
-    let subTotal = 0;
-
-    for (const product of cart) {
-        if (!product.quantity) {
-            product.quantity = 1;
-        }
-        subTotal = subTotal + product.price * product.quantity;
-        totalQuantity = totalQuantity + product.quantity;
-    }
-
-    const shipping = subTotal > 0 ? 15 : 0;
-    const tax = (subTotal + shipping) * 0.10;
-    const Total = subTotal + shipping + tax;
+    
     
 
     ///Payment Method
@@ -248,7 +236,7 @@ const stripePromise = loadStripe('pk_test_51Ie9VqKA9RGUKPzpRVUr3EBr9AjVwrTUnJ23F
                                 <p>4-10 Business Days</p>
                                 <span className="text-gray-700 text-sm font-bold">$18</span>
                             </button>
-                            <button onChange={() => setDeliveryPrice(26)} className="flex-1 text-left w-full bg-white rounded-md border p-5 focus:outline-none">
+                            <button type="radio" onChange={() => setDeliveryPrice(26)} className="flex-1 text-left w-full bg-white rounded-md border p-5 focus:outline-none">
                                 <label className="flex">
                                     <input type="radio" name="radio" value="Express" className="form-radio h-5 w-5 text-blue-600" /><span className="ml-2 text-sm text-gray-700">Express</span>
                                 </label>
@@ -290,10 +278,10 @@ const stripePromise = loadStripe('pk_test_51Ie9VqKA9RGUKPzpRVUr3EBr9AjVwrTUnJ23F
                     </div>
                     </form>
                 </div>
-                <div  className="text-white rounded py-5 flex flex-col w-full ml-0 lg:ml-12 lg:w-4/5 bg-gray-600 ">
-                    <div className="pt-12 md:pt-0 2xl:ps-4 tracking-tight">
-                        <h2 className="text-xl font-bold border-l-4 border-red-600 ml-5 pl-2 capitalize ">Order Summary</h2>
-                        <div className="mt-8">
+                <div  className="text-white rounded  flex flex-col w-full ml-0 lg:ml-12 lg:w-4/5">
+                    <div className="py-5 md:pt-0 2xl:ps-4 tracking-tight bg-red-600 sticky top-28">
+                        <h2 className="text-xl font-bold border-l-2 border-gray-300 ml-5 pl-2 capitalize my-5">Order Summary</h2>
+                        <div className="my-8">
                             <div className="flex flex-col space-y-4">
                                 
                                 {
@@ -316,18 +304,9 @@ const stripePromise = loadStripe('pk_test_51Ie9VqKA9RGUKPzpRVUr3EBr9AjVwrTUnJ23F
                                 }
                             </div>
                         </div>
-                        <div
-                            className="flex justify-between items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                            Subtotal<span className="ml-2">${subTotal.toFixed(2)}</span></div>
-                        <div
-                            className="flex justify-between items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                            Shipping Tax<span className="ml-2">${shipping}</span></div>
-                        <div
-                            className="flex justify-between items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                            Tax<span className="ml-2">${tax.toFixed(2)}</span></div>
-                        <div
-                            className="flex justify-between items-center w-full py-4 text-sm font-extrabold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                            Total<span className="ml-2">${Total.toFixed(2)}</span></div>
+                        
+                        <h2 className="text-xl font-bold border-l-2 border-gray-300 ml-5 pl-2 capitalize ">Price Summary</h2>
+                        <Totalcart/>
                         
                     </div>
                 </div>
@@ -335,6 +314,7 @@ const stripePromise = loadStripe('pk_test_51Ie9VqKA9RGUKPzpRVUr3EBr9AjVwrTUnJ23F
         </div>
         
         <ToastContainer />
+        <Newsletter/>
         <Footer />           
     </>
 

@@ -8,7 +8,7 @@ import Slider from "react-slick";
 import { toast, ToastContainer } from 'react-toastify';
 import { ComputerTechnology } from '../HomepageProductData/HomepageProductData';
 import { addToDb } from '../ShopingCart/CartDatabase';
-import useCart from '../ShopingCart/useCart';
+import useCart from '../../hooks/useCart';
 import Modal from '../Modal/Modal';
 
 import star from "../../images/5star.png";

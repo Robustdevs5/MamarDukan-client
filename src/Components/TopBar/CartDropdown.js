@@ -96,43 +96,23 @@ const CartDropdown = ({ setDropdown }) => {
           </div>
         </div>
 
-        <div className="border-t border-gray-200 py-2 px-4 sm:px-6">
-          <div className="flex justify-between text-base font-normal text-gray-900">
-            <p>Subtotal</p>
-            <p>${subTotal.toFixed(2)}</p>
-          </div>
-          <hr/>
-          <div className="flex justify-between text-base font-normal text-gray-900">
-            <p>shipping</p>
-            <p>${shipping}</p>
-          </div>
-          <div className="flex justify-between text-base font-normal text-gray-900">
-            <p>Tax</p>
-            <p>${tax.toFixed(2)}</p>
-          </div>
-          <hr/>
+        <div className="border-t border-gray-200 py-2 px-4 sm:px-6"> 
           <div className="flex justify-between  text-base font-bold text-gray-900">
-            <p>Total</p>
-            <p>${Total.toFixed(2)}</p>
+              <p>Subtotal</p>
+              <p>${subTotal.toFixed(2)}</p>
           </div>
           <p className="mt-0.5 text-sm text-gray-500">
-            Shipping and taxes calculated at checkout.
+              Shipping and taxes calculated at checkout.
           </p>
           <hr/>
           <div className="mt-4 flex justify-between">
-            <Link
-              to="/cart"
-              className="flex justify-center items-center px-6 py-2 border border-transparent rounded-md shadow-sm text-base font-medium primary_BTN_Outline"
-            >
-              View Cart
-            </Link>
+            <Link to="/cart"
+              className="flex justify-center items-center px-6 py-2 border border-transparent rounded-md shadow-sm text-base font-medium primary_BTN_Outline" >
+              View Cart </Link>
 
-            <Link
-              to="/checkout"
-              className="flex justify-center items-center px-6 py-2 border border-transparent rounded-md shadow-sm text-base font-medium  primary_BTN"
-            >
-              Checkout
-            </Link>
+            <Link to="/checkout"
+              className="flex justify-center items-center px-6 py-2 border border-transparent rounded-md shadow-sm text-base font-medium  primary_BTN" >
+              Checkout  </Link>
           </div>
         </div>
       </div>
