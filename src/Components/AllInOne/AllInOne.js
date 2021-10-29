@@ -5,6 +5,7 @@ import {Accessories} from '../Navbar/Menu/MenuItems';
 
 export default function AllInOne() {
     
+
     const [products, setProducts] = useProducts(); 
      const [pd, setPd] = useState() 
     console.log('useProducts', products)
@@ -42,7 +43,6 @@ export default function AllInOne() {
 
     // const first10 = shuffleArray(products.products);
     
-    // console.log('first10', first10)
     
     return (
         <div className="py-20 bg-white">
