@@ -196,9 +196,9 @@ const NewArrivalProduct = () => {
                     <p className="font-bold text-red-900 mt-0">$340</p>
                     </div>
                 </div>
-                <div className="px-2 py-4">
+                {/* <div className="px-2 py-4">
                     <button class="bg-custom hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Add to Cart</button>
-                </div>
+                </div> */}
             </div>
             <div className="group relative w-full bg-white border cursor-pointer">
                 <div className="overflow-x-hidden relative border-b p-2">
