@@ -9,6 +9,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import { ComputerTechnology } from '../HomepageProductData/HomepageProductData';
 import { addToDb } from '../ShopingCart/CartDatabase';
 import useCart from '../ShopingCart/useCart';
+import Modal from '../Modal/Modal';
 
 import star from "../../images/5star.png";
 import Countdown from './Countdown';
@@ -18,6 +19,8 @@ const FlashSaleProducts = () => {
 
     const [mostViewedProduct, setMostViewedProduct] = useState([]);
     const [cart, setCart] = useCart(mostViewedProduct);
+    const [modalUpdateStatus, setModalStatus] = useState(false);
+    const [modalId, setModalId] = useState(null);
 
     useEffect(() => {
         fetch(`https://mamardukan.herokuapp.com/products`)
@@ -93,7 +96,10 @@ const FlashSaleProducts = () => {
         ]
     };
 
-
+    const handleModalOpen = (id) => {
+        setModalStatus(true);
+        setModalId(id)
+    }
 
     const history = useHistory();
     const handleProductClick = (id) => {
@@ -127,36 +133,14 @@ const FlashSaleProducts = () => {
             <div className="h-full w-full bg-cover relative py-16 bg-no-repeat bg-right" style={{backgroundImage:"url(https://demo2.madrasthemes.com/tokoo/wp-content/uploads/2018/07/bg-lady-1.jpg)"}}>
                 <div className="w-3/5 flex pb-12">
                     <div className="w-2/5 bg-white p-4 text-right border-r-2 border-gray-400">
-                        <h2 className="text-6xl font-bold items-center pr-4 uppercase">Flash <br/>Sale</h2>
+                        <h2 className="text-gray-800 text-6xl font-bold items-center pr-4 uppercase">Flash <br/>Sale</h2>
                     </div>
-                    {/* <div className="w-3/5 p-8 items-center justify-center">
-                        <h4 className="text-lg font-bold text-gray-900 pl-8"> Sales Ends in</h4>
-                        <div className="flex mt-2 text-center">
-                            <div className="flex-1">
-                                <h4 className="text-6xl font-bold items-center uppercase">0</h4>
-                                <p className="text-md font-semibold text-gray-600">Days</p>
-                            </div>
-                            <div className="flex-1">
-                                <h4 className="text-6xl font-bold items-center uppercase">7</h4>
-                                <p className="text-md font-semibold text-gray-600">Hours</p>
-                            </div>
-                            <div className="flex-1">
-                                <h4 className="text-6xl font-bold items-center uppercase">15</h4>
-                                <p className="text-md font-semibold text-gray-600">Mins</p>
-                            </div>
-                            <div className="flex-1">
-                                <h4 className="text-6xl font-bold items-center uppercase">35</h4>
-                                <p className="text-md font-semibold text-gray-600">Sec</p>
-                            </div>
-                        </div>
-                    </div> */}
-                    
                     <Countdown/>
                 </div>               
             <Slider {...settings} className="px-10 w-9/12">
                 {
                     mostViewedProduct.slice(0,32).map(mostViewedProduct =>
-                        <div onClick={() => handleProductClick(mostViewedProduct._id)} className="px-2 mb-2 group relative w-full bg-white cursor-pointer">
+                        <div className="px-2 mb-2 group relative w-full bg-white cursor-pointer">
                             <div className="overflow-x-hidden relative border-b p-2 border">
                                 <img className="h-48 w-full object-cover" src={mostViewedProduct.img} alt={mostViewedProduct.name} />
                                 
@@ -174,10 +158,12 @@ const FlashSaleProducts = () => {
 
                                                 <button
                                                     className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                                    onClick={() => handleModalOpen(mostViewedProduct._id)}
                                                 >
                                                     <FontAwesomeIcon icon={faEye} />
+                                                    
                                                 </button>
-
+                                               
                                                 <button
                                                     className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
                                                 >
@@ -219,6 +205,11 @@ const FlashSaleProducts = () => {
 
             </Slider>
             </div> 
+            {/* <Modal/> */}
+            {modalUpdateStatus && <Modal
+                setModalStatus={setModalStatus}
+                modalId={modalId}
+            />}
             <ToastContainer />
         </div>
     );

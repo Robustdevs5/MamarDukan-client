@@ -54,7 +54,7 @@ const Countdown = () => {
         </div> */}
         <div className="w-3/5 p-8 items-center justify-center">
         <h4 className="text-lg font-bold text-gray-900 pl-8"> Sales Ends in</h4>
-        <div className="flex mt-2 text-center">
+        <div className="flex mt-2 text-center text-gray-800 ">
             <div className="flex-1">
                 <h4 className="text-6xl font-bold items-center uppercase">{timeLeft.days}</h4>
                 <p className="text-md font-semibold text-gray-600">Days</p>
