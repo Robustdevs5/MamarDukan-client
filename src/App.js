@@ -67,6 +67,7 @@ function App() {
   const [user, setUser] = useState({});
   const [loggedInUser, setLoggedInUser] = useState([])
   const [cart, setCart] = useState([]);
+  const [wishlistCart, SetWishlistCart] = useState([]);
 
   // useEffect(() => {
   //   api.get('/user')
@@ -84,7 +85,7 @@ function App() {
   // }, [orders.length])
 
 
-  const contextData = {loggedInUser, setLoggedInUser, products, setProducts, orders, setOrders, user, setUser, cart, setCart }
+  const contextData = {loggedInUser, setLoggedInUser, products, setProducts, orders, setOrders, user, setUser, cart, setCart, wishlistCart, SetWishlistCart }
   // console.log(';contextAPi', contextData)
 
   return (
