@@ -102,11 +102,9 @@ const TechnologyProducts = () => {
         <div className="px-2 my-20">
 
             <div className="px-8 bg-gray-100">
-                <ul className="md:flex md:justify-between items-center md:border-b md:border-blue-300 mb-10">
+                <ul className="md:flex md:justify-between items-center  mb-10">
                     <div>
-                        <li>
-                            <h1 className="tracking-tighter uppercase sm:text-3xl text-gray-800 font-bold py-2 my-4 md:py-2 md:my-0 border-b-2 border-blue-500 md:border-none"> Computer & Technology</h1>
-                        </li>
+                        <h1 className="tracking-tight uppercase sm:text-2xl text-gray-800 font-bold py-2 my-4 md:py-1 md:pl-3 md:my-0 md:border-red-600 mb-10 border-l-4"> Computer & Technology</h1>
                     </div>
                     <div className="flex">
                         {

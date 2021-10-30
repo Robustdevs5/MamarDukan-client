@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { createContext, useState } from 'react';
+import './hooks/useProducts'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddAdmin from "./Components/AdminDashboard/AddAdmin/AddAdmin";
 import AddProduct from "./Components/AdminDashboard/AddProduct/AddProduct";
@@ -51,6 +52,8 @@ import Contact from './pages/Contact-page/Contact';
 import HelpCenter from "./pages/HelpCenter/HelpCenter";
 import HomePage from "./pages/Home-page/HomePage";
 import Thankyou from "./pages/Thankyou/Thankyou";
+import SuperAdminMassage from "./Components/SuperAdminDashboard/Massage/SuperAdminMassage";
+import SuperAddProduct from './Components/SuperAdminDashboard/Products-SuperAdminDashboard/AddProduct'
 export const userContext = createContext();
 
 const api = axios.create({
@@ -112,8 +115,11 @@ function App() {
           <Route path="/cart" component={ShopingCart} />
           <Route path="/faqs" component={FAQS} />
           <Route path="/user/dashboard" component={Dashboard} />
-          <Route path="/super-admin/dashboard/overview" component={SuperAdminDashboard}/>
           <Route path="/reports/reports1" component={Report}/>
+
+                {/* Super Admin Route */}
+
+          <Route path="/super-admin/dashboard/overview" component={SuperAdminDashboard}/>
           <Route path="/super-admin/dashboard/manage-user/overview" component={SuperAdminManageUser}/>
           <Route path="/super-admin/dashboard/customers/overview" component={CustomerSuperAdminDashboard}/>
           <Route path="/super-admin/dashboard/admin/overview" component={AdminSuperAdminDashboard}/>
@@ -123,6 +129,11 @@ function App() {
           <Route path="/super-admin/dashboard/products/overview" component={ProductsSuperAdminDashboard} />
           <Route path="/super-admin/dashboard/all-products/overview" component={AllProductsSuperAdminDashboard} />
           <Route path="/super-admin/dashboard/review/overview" component={ReviewSuperAdminDashboard} />
+          <Route path="/super-admin/dashboard/massage/overview" component={SuperAdminMassage} />
+          <Route path="/super-admin/dashboard/addproduct/overview" component={SuperAddProduct} />
+
+                {/* Vendor Panel Dashboard */}
+
           <Route path="/vendor/dashboard/overview" component={VendorPanel}/>
           <Route path="/vendor/dashboard/products" component={VendorAllProducts}/>
           <Route path="/vendor/dashboard/customers" component={VendorCustomer}/>
@@ -135,6 +146,7 @@ function App() {
           <Route path="/vendor/dashboard/stock-status" component={VendorStockStatus }/>
           <Route path="/vendor/dashboard/reports" component={VendorReport }/>
           <Route path="/vendor/dashboard/messages" component={VendorMessage }/>
+          
           <Route path="/checkout" component={CheckoutPage }/>
           <Route path="/Confirm" component={Thankyou }/>
           <Route path="/careers" component={Careers }/>

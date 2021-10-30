@@ -7,6 +7,7 @@ import Table from './Table';
 import { userContext } from '../../App';
 import { toast } from 'react-toastify';
 import { addToDb, removeFromDb } from './CartDatabase';
+import Newsletter from '../Newsletter/Newsletter';
 
 
 const ShopingCart = () => {
@@ -18,7 +19,7 @@ const ShopingCart = () => {
     if (exists) {
         const rest = cart.filter(pd => pd._id !== newProduct._id);
         exists.quantity = exists.quantity + 1;
-        newCart = [...rest, newProduct];
+        newCart = [newProduct , ...rest];
         toast.success( "increase "+ exists.quantity + " quantity", {
             position: "bottom-right",
         });
@@ -37,7 +38,7 @@ const onRemove = (newProduct) => {
   if (exists) {
       const rest = cart.filter(pd => pd._id !== newProduct._id);
       exists.quantity = exists.quantity - 1;
-      newCart = [...rest, newProduct];
+      newCart = [ newProduct , ...rest];
       
       if(exists.quantity <= 1){
         exists.quantity = 1
@@ -67,8 +68,10 @@ const onDelete = id => {
       <Navbar />
       <Table onAdd={onAdd} onRemove={onRemove} onDelete={onDelete} />
       <div className="m-5">
-      <FooterCatagory />
-      <Footer /></div>
+        <FooterCatagory />
+        <Newsletter/>
+        <Footer />
+      </div>
     </div>
   );
 };

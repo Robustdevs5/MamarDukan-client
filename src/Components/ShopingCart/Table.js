@@ -1,21 +1,17 @@
 import React, { useContext, useState } from "react";
-import {Cart} from "./Data";
 import './Table.css'
 import TotalCart from './Totalcart';
 import CupponCart from './CupponCart'
 import { userContext } from "../../App";
 import { TiDelete } from "react-icons/ti";
+import { Link } from "react-router-dom";
+import { CgArrowLeftR,  CgArrowRightR} from "react-icons/cg";
 
 const Table = (props) => {
-  const {products} = Cart;
-  const { onAdd , onRemove  , onDelete} = props;
-  // const itemsPrice = cart.reduce((a, c) => a + c.qty * c.price, 0);
-  // const taxPrice = itemsPrice * 0.05;
-  // const shippingPrice = itemsPrice > 2000 ? 0 : 20;
-  // const totalPrice = itemsPrice + taxPrice + shippingPrice;
-
-  
+  const { onAdd , onRemove  , onDelete} = props;  
   const { cart, setCart } = useContext(userContext);
+  console.log('cart', cart);
+  // const total = quantity * price
 
   return (
     <div>
@@ -33,16 +29,19 @@ const Table = (props) => {
           </div>
           {
             cart.map((item, index) => <div className="bg-green-50 mt-2 " key={index} item={item}>
-              <div className="w-1/5 mx-auto my-auto  "><img className="w-20 h-20 my-auto mx-auto py-2" src={item.img}  alt=''/></div>
-              <h1 className="w-1/5 mx-auto my-auto text-center"> {item.name}</h1>
-              <p className='w-1/5 mx-auto my-auto text-center'>${item.price}</p>
-              <div className='w-1/5 mx-auto my-auto text-center '>
+              <div className="w-1/6 mx-auto my-auto  "><img className="w-20 h-20 my-auto mx-auto py-2" src={item.img}  alt=''/></div>
+              <h1 className="w-1/6 mx-auto my-auto text-center"> {item.name}</h1>
+              <p className='w-1/6 mx-auto my-auto text-center'>${item.price}</p>
+              <div className='w-1/6 mx-auto my-auto text-center '>
                   <button onClick={() => onRemove(item)} className="mr-5 cursor-pointer text-3xl">-</button>
                     {item.quantity}
                   <button onClick={() => onAdd(item)} className="ml-5 cursor-pointer text-3xl">+</button>
               </div>
-              <div className='text-2xl  rounded-full cursor-pointer' onClick={() => onDelete(item._id)}>
-                  <TiDelete/>
+              <div className='w-1/6 mx-auto my-auto text-center '>
+              {item.quantity * item.price}
+              </div>
+              <div className='w-1/6 text-2xl text-center rounded-full cursor-pointer mx-auto my-auto' onClick={() => onDelete(item._id)}>
+                  <TiDelete className='block mx-auto'/>
               </div>
             </div>)
           }
@@ -50,7 +49,17 @@ const Table = (props) => {
       </div>
       <div className="CupponTotal grid grid-cols-1 md:grid-cols-2  mt-10">
         <div className=""><CupponCart /></div>
-        <div className=""><TotalCart  /></div>
+        <div className="">
+          <h2 className="text-xl font-bold border-l-4 border-red-600 ml-5 pl-2 capitalize ">Price Summary</h2>
+          <TotalCart  />
+          <div className="flex justify-around items-center w-full mt-4 tracking-tighter text-center text-lg">
+            <Link to="/shop" className="primary_BTN py-2 px-5 rounded w-full mr-3 flex items-center justify-evenly">
+                <CgArrowLeftR/> Continue shopping </Link>
+            <Link to="/checkout" className="primary_BTN py-2 px-5 rounded w-full flex items-center justify-evenly">
+               Checkout <CgArrowRightR/></Link>
+        </div>
+        </div>
+
       </div>
     </div>
     

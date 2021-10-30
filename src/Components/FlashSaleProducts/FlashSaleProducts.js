@@ -6,16 +6,21 @@ import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import { toast, ToastContainer } from 'react-toastify';
-import { MostViewedProduct } from '../HomepageProductData/HomepageProductData';
+import { ComputerTechnology } from '../HomepageProductData/HomepageProductData';
 import { addToDb } from '../ShopingCart/CartDatabase';
-import useCart from '../ShopingCart/useCart';
+import useCart from '../../hooks/useCart';
+import Modal from '../Modal/Modal';
 
+import star from "../../images/5star.png";
+import Countdown from './Countdown';
 
 
 const FlashSaleProducts = () => {
 
     const [mostViewedProduct, setMostViewedProduct] = useState([]);
     const [cart, setCart] = useCart(mostViewedProduct);
+    const [modalUpdateStatus, setModalStatus] = useState(false);
+    const [modalId, setModalId] = useState(null);
 
     useEffect(() => {
         fetch(`https://mamardukan.herokuapp.com/products`)
@@ -55,7 +60,7 @@ const FlashSaleProducts = () => {
         centerPadding: "10px",
         slidesToShow: 2,
         slidesToScroll: 2,
-        speed: 2000,
+        speed: 3000,
         rows: 2,
         slidesPerRow: 2,
         autoplaySpeed: 3000,
@@ -91,7 +96,10 @@ const FlashSaleProducts = () => {
         ]
     };
 
-
+    const handleModalOpen = (id) => {
+        setModalStatus(true);
+        setModalId(id)
+    }
 
     const history = useHistory();
     const handleProductClick = (id) => {
@@ -102,58 +110,38 @@ const FlashSaleProducts = () => {
 
     return (
         <div className="my-20 w-full">
-
-            <div className="px-8 bg-gray-100">
-                <ul className="md:flex md:justify-between items-center md:border-b md:border-blue-300 mb-10">
+            <div className="px-3 bg-gray-100">
+                <ul className="md:flex md:justify-between items-center  ">
                     <div>
-                        <li>
-                            <h1 className="tracking-tighter uppercase sm:text-3xl text-gray-800 font-bold py-2 my-4 md:py-2 md:my-0 border-b-2 border-blue-500 md:border-none"> Most viewed Products</h1>
-                        </li>
+                        <h1 className="tracking-tight uppercase sm:text-2xl text-gray-800 font-bold py-2 my-4 md:py-1 md:pl-3 md:my-0 md:border-red-600 mb-10 border-l-4"> Flash sales </h1>
                     </div>
                     <div className="flex">
                         {
-                            MostViewedProduct.map((item, index) =>
+                            ComputerTechnology.map((item, index) =>
                                 <li key={index} className={item.cls}>
-                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 primary_BTN_Outline rounded  duration-300">{item.title}</Link>
+                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 primary_BTN duration-300">{item.title}
+                                    </Link>
                                 </li>
                             )
                         }
                     </div>
                 </ul>
+                
+            <hr/>
             </div>
 
             <div className="h-full w-full bg-cover relative py-16 bg-no-repeat bg-right" style={{backgroundImage:"url(https://demo2.madrasthemes.com/tokoo/wp-content/uploads/2018/07/bg-lady-1.jpg)"}}>
                 <div className="w-3/5 flex pb-12">
                     <div className="w-2/5 bg-white p-4 text-right border-r-2 border-gray-400">
-                        <h2 className="text-6xl font-bold items-center pr-4 uppercase">Flash <br/>Sale</h2>
+                        <h2 className="text-gray-800 text-6xl font-bold items-center pr-4 uppercase">Flash <br/>Sale</h2>
                     </div>
-                    <div className="w-3/5 p-8 items-center justify-center">
-                        <h4 className="text-lg font-bold text-gray-900 pl-8"> Sales Ends in</h4>
-                        <div className="flex mt-2 text-center">
-                            <div className="flex-1">
-                                <h4 className="text-6xl font-bold items-center uppercase">0</h4>
-                                <p className="text-md font-semibold text-gray-600">Days</p>
-                            </div>
-                            <div className="flex-1">
-                                <h4 className="text-6xl font-bold items-center uppercase">7</h4>
-                                <p className="text-md font-semibold text-gray-600">Hours</p>
-                            </div>
-                            <div className="flex-1">
-                                <h4 className="text-6xl font-bold items-center uppercase">15</h4>
-                                <p className="text-md font-semibold text-gray-600">Mins</p>
-                            </div>
-                            <div className="flex-1">
-                                <h4 className="text-6xl font-bold items-center uppercase">35</h4>
-                                <p className="text-md font-semibold text-gray-600">Sec</p>
-                            </div>
-                        </div>
-                    </div>
+                    <Countdown/>
                 </div>               
             <Slider {...settings} className="px-10 w-9/12">
                 {
-                    mostViewedProduct.map(mostViewedProduct =>
-                        <div onClick={() => handleProductClick(mostViewedProduct._id)} className="mb-2 group relative w-full bg-white border cursor-pointer">
-                            <div className="overflow-x-hidden relative border-b p-2">
+                    mostViewedProduct.slice(0,32).map(mostViewedProduct =>
+                        <div className="px-2 mb-2 group relative w-full bg-white cursor-pointer">
+                            <div className="overflow-x-hidden relative border-b p-2 border">
                                 <img className="h-48 w-full object-cover" src={mostViewedProduct.img} alt={mostViewedProduct.name} />
                                 
                                 <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
@@ -170,10 +158,12 @@ const FlashSaleProducts = () => {
 
                                                 <button
                                                     className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                                    onClick={() => handleModalOpen(mostViewedProduct._id)}
                                                 >
                                                     <FontAwesomeIcon icon={faEye} />
+                                                    
                                                 </button>
-
+                                               
                                                 <button
                                                     className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
                                                 >
@@ -188,10 +178,26 @@ const FlashSaleProducts = () => {
 
                                             </div>
                             </div>
-                            <div className="p-4 flex justify-between ">
-                                <div>
-                                <p onClick={() => handleProductClick(mostViewedProduct._id)} className="text-md font-semibold text-gray-900 mb-0">{mostViewedProduct.name}</p>
-                                <p className="font-bold text-red-900 mt-0">${mostViewedProduct.price}</p>
+                            <div className="px-3 border-b p-2 border">
+                                <div className="flex py-3">
+                                    <h5 className="text-base font-bold text-green-700">${mostViewedProduct.price}</h5>
+                                    <del className="px-4 text-base text-gray-500">$10000</del>
+                                </div>
+
+                                <p className="text-gray-700 text-sm mb-2">Sold by: <span className="hover:text-blue-500 cursor-pointer"> Mr. Rahim</span></p>
+                                <hr />
+
+                                <div className="py-3 flex justify-between">
+                                    <div>
+                                        <p onClick={() => handleProductClick(mostViewedProduct._id)} className="text-blue-500 hover:text-yellow-500 cursor-pointer text-sm">{mostViewedProduct.name}</p>
+
+                                        <div className="flex">
+                                            <img src={star} style={{ width: '60px', height: '15px' }} alt="" />
+                                            <p className="text-gray-600 text-xs px-1">(10)</p>
+                                        </div>
+                                    </div>
+
+                                    <p className="text-gray-600 text-xs px-1">Sold: 10</p>
                                 </div>
                             </div>
                         </div>
@@ -199,6 +205,11 @@ const FlashSaleProducts = () => {
 
             </Slider>
             </div> 
+            {/* <Modal/> */}
+            {modalUpdateStatus && <Modal
+                setModalStatus={setModalStatus}
+                modalId={modalId}
+            />}
             <ToastContainer />
         </div>
     );

@@ -10,7 +10,7 @@ import star from "../../images/5star.png";
 import { useHistory } from 'react-router';
 import { NewProductOffer } from '../HomepageProductData/HomepageProductData';
 import { addToDatabaseCart } from '../ShopingCart/CartManager/cartManager';
-import useCart from '../ShopingCart/useCart';
+import useCart from '../../hooks/useCart';
 import { addToDb } from '../ShopingCart/CartDatabase';
 import { toast, ToastContainer } from 'react-toastify';
 
