@@ -7,6 +7,7 @@ import Table from './Table';
 import { userContext } from '../../App';
 import { toast } from 'react-toastify';
 import { addToDb, removeFromDb } from './CartDatabase';
+import Newsletter from '../Newsletter/Newsletter';
 
 
 const ShopingCart = () => {
@@ -67,8 +68,10 @@ const onDelete = id => {
       <Navbar />
       <Table onAdd={onAdd} onRemove={onRemove} onDelete={onDelete} />
       <div className="m-5">
-      <FooterCatagory />
-      <Footer /></div>
+        <FooterCatagory />
+        <Newsletter/>
+        <Footer />
+      </div>
     </div>
   );
 };

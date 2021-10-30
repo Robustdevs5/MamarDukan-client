@@ -1,17 +1,15 @@
-import { ShoppingCart, SupportAgentOutlined } from "@mui/icons-material";
+
 import React, { useState, useEffect, useContext } from "react";
-import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon, SearchIcon, UserIcon } from "@heroicons/react/solid";
-import { Link } from "react-router-dom";
-import styles from "../StyledComponent/TopBar.module.css";
 import CartDropdown from "./CartDropdown";
-// import { useHistory, useLocation } from "react-router";
 import { useHistory, useLocation } from "react-router";
 import { userContext } from "../../App";
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+import CustomerCare from "./CustomerCare";
+import styles from "../StyledComponent/TopBar.module.css";
+import { Link } from "react-router-dom";
+import { AiOutlineHeart,AiOutlineSearch } from "react-icons/ai";
+import { FaChartBar, FaUserCircle } from "react-icons/fa";
+import { MdShoppingCart } from "react-icons/md";
+
 
 const TopBar = () => {
   const [dropdown, setDropdown] = useState(false);
@@ -46,172 +44,93 @@ const TopBar = () => {
   };
 
 
-
+  // primary_BG_color
   return (
-    <div class="flex  h-20  w-full  pl-0 sticky top-0 z-50 primary_BG_color">
-      <div class="flex  justify-between items-center sm:w-4/6 w-4/6  ">
-        <div class="mx-0 sm:mx-4 hidden sm:block ">
-          <p class="text-lg sm:text-2xl text-white font-bold ">Mamar Dukan</p>
+    <main className="h-20 pl-0 sticky top-0 z-50 primary_BG_color z-50">
+      <section className=" flex justify-between  items-center  ">
+        <div className="flex justify-between items-center">
+          <div className="mx-0 sm:mx-4 hidden sm:block ">
+            <p className="text-lg sm:text-2xl text-white font-bold ">Mamar Dukan</p>
+          </div>
+
+
+        
         </div>
+        
+        <div className='flex justify-end items-center w-9/12'>
+        <form action="" className=" sm:w-3/5 w-full h-10  items-center flex flex-row">
+            <input
+              type="text"
+              placeholder="Search"
+              className={styles.topBar_search_input}
+            />
+            <AiOutlineSearch size={33} className={styles.topBar_search_icon} />
+          </form>
+          
+          <div onMouseEnter={() => setDropdown(true)}
+              onMouseLeave={() => setDropdown(false)}>
 
-        {/* Search box  */}
+            <div className={styles.topBar_tags}>
+                <button href="#" className="w-10 h-10 items-center flex justify-center">
+                    <FaChartBar size={30}></FaChartBar>
+                </button>
+                <strong className="text-gray-100 -ml-2 -mt-6 bg-red-600 rounded-full px-1">
+                  {cart.length}
+                </strong>
+            </div>
+          </div>
 
-        <form action="" className=" sm:w-3/5 w-full h-1/2   flex flex-row">
-          <input
-            type="text"
-            placeholder="Search"
-            className={styles.topBar_search_input}
-          />
-          <SearchIcon className={styles.topBar_search_icon} />
-        </form>
-      </div>
+          <div onMouseEnter={() => setDropdown(true)}
+              onMouseLeave={() => setDropdown(false)} >
 
-      <div className="flex justify-end  items-center  flex-grow">
-        {/* Add to cart */}
-        <div
-          onMouseEnter={() => setDropdown(true)}
-          onMouseLeave={() => setDropdown(false)}
-        >
-          {/* <div className={styles.topBar_tags}>
-            <Link to="/cart">
-              <ShoppingCart fontSize="large"></ShoppingCart>
-            </Link>{" "}
-          </div> */}
-          <div className={styles.topBar_tags}>
-              <button href="#" className="w-10 h-10 items-center flex justify-center">
-              <ShoppingCart fontSize="large"></ShoppingCart>
-              </button>
-              <strong className="text-gray-100 -ml-2 -mt-6 bg-red-600 rounded-full px-1">
-                {cart.length}
-              </strong>
+            <div className={styles.topBar_tags}>
+                <button href="#" className="w-10 h-10 items-center flex justify-center">
+                  <AiOutlineHeart size={30}></AiOutlineHeart>
+                </button>
+                <strong className="text-gray-100 -ml-2 -mt-6 bg-red-600 rounded-full px-1">
+                  {cart.length}
+                </strong>
+            </div>
+          </div>
+
+          <div onMouseEnter={() => setDropdown(true)}
+              onMouseLeave={() => setDropdown(false)} >
+
+            <div className={styles.topBar_tags}>
+                <button href="#" className="w-10 h-10 items-center flex justify-center">
+                  <MdShoppingCart size={30}></MdShoppingCart>
+                </button>
+                <strong className="text-gray-100 -ml-2 -mt-6 bg-red-600 rounded-full px-1">
+                  {cart.length}
+                </strong>
+            </div>
+          </div>
+
+          <CustomerCare/>
+
+
+          <div className='flex items-center'>
+              <FaUserCircle size={30} className="h-8 ml-2  hidden sm:block text-white fill-current text-white-600"></FaUserCircle>
+              <div>
+                  {user.email ?
+                    <button className={styles.topBar_login_register} onClick={handleUserDashboard}>{user.username}</button>
+                  :
+                    <Link to="/login">
+                      <p className={styles.topBar_login_register}>Login </p>{" "}
+                    </Link> }
+
+                  { user.email ?
+                    <button className={styles.topBar_login_register} onClick={handleLogout}>Logout</button>
+                  :
+                    <Link to="/register">
+                      <p className={styles.topBar_login_register}> Register</p>{" "}
+                    </Link> }
+              </div>
           </div>
         </div>
-        {/* Customer Care Dropdown */}
-
-        <div className={styles.topBar_dropdown}>
-          <Menu as="div" className="relative inline-block text-left">
-            <div>
-              <Menu.Button className="flex items-center">
-                <p className="md:block hidden px-1"> Customer Care </p>
-                <SupportAgentOutlined className="md:hidden block h-10   fill-current text-white-800 " />{" "}
-                <ChevronDownIcon
-                  className="-mr-1 ml-2  w-5 md:block hidden"
-                  aria-hidden="true"
-                />
-              </Menu.Button>
-            </div>
-
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95"
-            >
-              <Menu.Items className={styles.dropdown_menu_items}>
-                <div className="py-1">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <Link
-                        to="/helpCenter"
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
-                        )}
-                      >
-                        {" "}
-                        Help center
-                      </Link>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <Link
-                        to="/shopping&delivery"
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
-                        )}
-                      >
-                        {" "}
-                        Shipping & Delivery
-                      </Link>
-                    )}
-                  </Menu.Item>
-
-                  <Menu.Item>
-                    {({ active }) => (
-                      <Link
-                        to="return&refunds"
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
-                        )}
-                      >
-                        {" "}
-                        Return & Refunds
-                      </Link>
-                    )}
-                  </Menu.Item>
-
-                  <Menu.Item>
-                    {({ active }) => (
-                      <Link
-                        to="/customerService"
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
-                        )}
-                      >
-                        Customer Service 
-                      </Link>
-                    )}
-                  </Menu.Item>
-                </div>
-              </Menu.Items>
-            </Transition>
-          </Menu>{" "}
-        </div>
-
-        {/* Login and Register */}
-
-        <UserIcon className="h-8 ml-2  hidden sm:block text-white fill-current text-white-600"></UserIcon>
-
-        <div>
-          {/* {login ? <button className={styles.topBar_login_register} onClick={handleLogout}>Logout</button>
-            : <> */}
-              {user.email ?
-                <button className={styles.topBar_login_register} onClick={handleUserDashboard}>{user.username}</button>
-                :
-                <Link to="/login">
-                  <p className={styles.topBar_login_register}>Login </p>{" "}
-                </Link>
-              }
-
-              {
-                user.email ?
-                  <button className={styles.topBar_login_register} onClick={handleLogout}>Logout</button>
-                  :
-                  <Link to="/register">
-                    <p className={styles.topBar_login_register}> Register</p>{" "}
-                  </Link>
-              }
-            {/* </> */}
-          {/* } */}
-        </div>
-      </div>
+      </section>
       {dropdown && <CartDropdown setDropdown={setDropdown} />}
-    </div>
+    </main>
   );
 };
 export default TopBar;

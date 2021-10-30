@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
-import { userContext } from '../../App';
-import { getStoredCart } from './CartDatabase';
+import { userContext } from '../App';
+import { getStoredCart } from '../Components/ShopingCart/CartDatabase';
 
 const useCart = products => {
     // const [cart, setCart] = useState([]);
