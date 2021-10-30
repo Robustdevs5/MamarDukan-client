@@ -19,7 +19,7 @@ const ShopingCart = () => {
     if (exists) {
         const rest = cart.filter(pd => pd._id !== newProduct._id);
         exists.quantity = exists.quantity + 1;
-        newCart = [...rest, newProduct];
+        newCart = [newProduct , ...rest];
         toast.success( "increase "+ exists.quantity + " quantity", {
             position: "bottom-right",
         });
@@ -38,7 +38,7 @@ const onRemove = (newProduct) => {
   if (exists) {
       const rest = cart.filter(pd => pd._id !== newProduct._id);
       exists.quantity = exists.quantity - 1;
-      newCart = [...rest, newProduct];
+      newCart = [ newProduct , ...rest];
       
       if(exists.quantity <= 1){
         exists.quantity = 1

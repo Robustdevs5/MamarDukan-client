@@ -10,6 +10,8 @@ import { CgArrowLeftR,  CgArrowRightR} from "react-icons/cg";
 const Table = (props) => {
   const { onAdd , onRemove  , onDelete} = props;  
   const { cart, setCart } = useContext(userContext);
+  console.log('cart', cart);
+  // const total = quantity * price
 
   return (
     <div>
@@ -27,16 +29,19 @@ const Table = (props) => {
           </div>
           {
             cart.map((item, index) => <div className="bg-green-50 mt-2 " key={index} item={item}>
-              <div className="w-1/5 mx-auto my-auto  "><img className="w-20 h-20 my-auto mx-auto py-2" src={item.img}  alt=''/></div>
-              <h1 className="w-1/5 mx-auto my-auto text-center"> {item.name}</h1>
-              <p className='w-1/5 mx-auto my-auto text-center'>${item.price}</p>
-              <div className='w-1/5 mx-auto my-auto text-center '>
+              <div className="w-1/6 mx-auto my-auto  "><img className="w-20 h-20 my-auto mx-auto py-2" src={item.img}  alt=''/></div>
+              <h1 className="w-1/6 mx-auto my-auto text-center"> {item.name}</h1>
+              <p className='w-1/6 mx-auto my-auto text-center'>${item.price}</p>
+              <div className='w-1/6 mx-auto my-auto text-center '>
                   <button onClick={() => onRemove(item)} className="mr-5 cursor-pointer text-3xl">-</button>
                     {item.quantity}
                   <button onClick={() => onAdd(item)} className="ml-5 cursor-pointer text-3xl">+</button>
               </div>
-              <div className='text-2xl  rounded-full cursor-pointer' onClick={() => onDelete(item._id)}>
-                  <TiDelete/>
+              <div className='w-1/6 mx-auto my-auto text-center '>
+              {item.quantity * item.price}
+              </div>
+              <div className='w-1/6 text-2xl text-center rounded-full cursor-pointer mx-auto my-auto' onClick={() => onDelete(item._id)}>
+                  <TiDelete className='block mx-auto'/>
               </div>
             </div>)
           }

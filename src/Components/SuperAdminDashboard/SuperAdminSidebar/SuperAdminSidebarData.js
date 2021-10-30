@@ -77,6 +77,11 @@ export const SidebarData = [
         title: 'Orders',
         path: '/super-admin/dashboard/orders/overview',
         icon: <IoIcons.IoIosPaper />
+      },
+      {
+        title: 'Add Product',
+        path: '/super-admin/dashboard/addproduct/overview',
+        icon: <IoIcons.IoIosPaper />
       }
     ]
   },
