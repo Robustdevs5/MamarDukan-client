@@ -11,7 +11,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const BestRatedProduct = () => {
     
     const [products, setProducts] = useProducts(); 
-    const [firstFiveProduct, setFirstFiveProduct] = useState()
+    const [firstFiveProduct, setFirstFiveProduct] = useState([])
+
     console.log('useProducts', products)
     console.log('firstFiveProduct', firstFiveProduct)
 
@@ -24,13 +25,13 @@ const BestRatedProduct = () => {
                 const temp = array[i];
                 array[i] = array[j];
                 array[j] = temp;
-            
-            }
+            return array.slice(0,5);
+            }        
+
         }
         catch(err) {
             console.log("eooor" , err)
         }
-        return array.slice(0,5);
      }
 
     let shuffle= shuffleArray(products.products)
@@ -40,18 +41,18 @@ const BestRatedProduct = () => {
             let shuffleProducts;
 
             await data.map((item, index) => {
-                console.log('data',item);
+                // console.log('data',item);
                 // setFirstFiveProduct(item) 
                 
                 shuffleProducts = item
                 // console.log('shuffleProducts item', shuffleProducts);
             })
+
         console.log('shuffleProducts', shuffleProducts);
+
     })
 
-    
     console.log('shuffle', shuffle)
-
 
     return (
         <div className="px-8">
