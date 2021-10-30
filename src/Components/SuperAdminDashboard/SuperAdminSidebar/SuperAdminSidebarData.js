@@ -139,24 +139,11 @@ export const SidebarData = [
   },
   {
     title: 'Messages',
-    path: '/messages',
+    path: '/super-admin/dashboard/massage/overview',
     icon: <FaIcons.FaEnvelopeOpenText />,
 
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
-
-    subNav: [
-      {
-        title: 'Message 1',
-        path: '/messages/message1',
-        icon: <IoIcons.IoIosPaper />
-      },
-      {
-        title: 'Message 2',
-        path: '/messages/message2',
-        icon: <IoIcons.IoIosPaper />
-      }
-    ]
   },
   {
     title: 'Support',
