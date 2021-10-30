@@ -135,7 +135,7 @@ const TechnologyProducts = () => {
                                    <span className="font-bold"> Computer</span>
                                 </div> */}
                                 <a href="!#">
-                                    <div className="text-sm absolute top-0 right-0 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center rounded-full transition duration-500 ease-in-out">
+                                    <div className="text-sm absolute top-0 right-0 bg-custom px-4 py-2 text-white flex flex-col items-center justify-center rounded-full transition duration-500 ease-in-out">
                                         <span className="font-bold">Sale</span>
                                     </div>
                                 </a>

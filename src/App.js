@@ -41,9 +41,14 @@ import VendorPanel from "./Components/VendorDashboard/VendorPanel/VendorPanel";
 import VendorReport from "./Components/VendorDashboard/VendorReport/VendorReport";
 import VendorStockOverview from "./Components/VendorDashboard/VendorStock/VendorStockOverview";
 import VendorStockStatus from "./Components/VendorDashboard/VendorStock/VendorStockStatus";
+import NotFound from "./pages/404/404";
+import About from "./pages/AboutPage/AboutPage";
 import Blogs from "./pages/Blog-page/Blogs";
+import BlogDetails from "./pages/BlogDetails/BlogDetails";
+import Careers from "./pages/Careers/Careers";
 import CheckoutPage from "./pages/Checkout-page/CheckoutPage";
 import Contact from './pages/Contact-page/Contact';
+import HelpCenter from "./pages/HelpCenter/HelpCenter";
 import HomePage from "./pages/Home-page/HomePage";
 import Thankyou from "./pages/Thankyou/Thankyou";
 export const userContext = createContext();
@@ -85,6 +90,7 @@ function App() {
         <Switch>
 
           <Route exact path="/" component={HomePage} />
+          
           <Route path="/login" component={SIgnIn} />
           <Route path="/register" component={SignUP} />
           {/* <PrivateRoute path="/dashboard" component={AdminPanel} /> */}
@@ -131,6 +137,11 @@ function App() {
           <Route path="/vendor/dashboard/messages" component={VendorMessage }/>
           <Route path="/checkout" component={CheckoutPage }/>
           <Route path="/Confirm" component={Thankyou }/>
+          <Route path="/careers" component={Careers }/>
+          <Route path="/blogDetails" component={BlogDetails }/>
+          <Route path="/about" component={About }/>
+          <Route path="/help-center" component={HelpCenter }/>
+          <Route path="*" component={NotFound} />
 
       </Switch>
     </Router>
