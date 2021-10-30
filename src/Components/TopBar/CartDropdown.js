@@ -21,10 +21,6 @@ const CartDropdown = ({ setDropdown }) => {
     totalQuantity = totalQuantity + product.quantity;
   }
 
-  const shipping = subTotal > 0 ? 15 : 0;
-  const tax = (subTotal + shipping) * 0.10;
-  const Total = subTotal + shipping + tax;
-
 
   const handleRemove = id => {
     const newCart = cart.filter(product => product._id !== id);
