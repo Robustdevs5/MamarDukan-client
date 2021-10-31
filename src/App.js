@@ -51,6 +51,7 @@ import Blogs from "./pages/Blog-page/Blogs";
 import BlogDetails from "./pages/BlogDetails/BlogDetails";
 import Careers from "./pages/Careers/Careers";
 import CheckoutPage from "./pages/Checkout-page/CheckoutPage";
+import Compare from "./pages/Compare/Compare";
 import Contact from './pages/Contact-page/Contact';
 import HelpCenter from "./pages/HelpCenter/HelpCenter";
 import HomePage from "./pages/Home-page/HomePage";
@@ -60,6 +61,7 @@ import Refund from "./pages/Refund/Refund";
 import ShippingAndDelivery from "./pages/ShippingAndDelivery/ShippingAndDelivery";
 import Terms from "./pages/T&C/T&C";
 import Thankyou from "./pages/Thankyou/Thankyou";
+import Wishlist from "./pages/Wishlist/Wishlist";
 export const userContext = createContext();
 
 const api = axios.create({
@@ -157,7 +159,7 @@ function App() {
           <Route path="/checkout" component={CheckoutPage }/>
           <Route path="/Confirm" component={Thankyou }/>
           <Route path="/careers" component={Careers }/>
-          <Route path="/blogDetails" component={BlogDetails }/>
+          <Route path="/blog-details" component={BlogDetails }/>
           <Route path="/about" component={About }/>
           <Route path="/terms-and-conditions" component={Terms }/>
           <Route path="/privacy-policy" component={Privacy }/>
@@ -166,6 +168,8 @@ function App() {
           <Route path="/affiliates" component={Affiliate }/>
           <Route path="/how-to-buy" component={HowToBuy }/>
           <Route path="/shipping-and-delivery" component={ShippingAndDelivery }/>
+          <Route path="/compare" component={Compare }/>
+          <Route path="/wishlist" component={Wishlist }/>
           <Route path="*" component={NotFound} />
 
       </Switch>

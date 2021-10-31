@@ -10,8 +10,13 @@ const HelpCenter = () => {
       <TopBar />
       <Header />
       <Navbar />
-
-      
+      <div className="bg-white">
+          <div className="w-full text-center justify-center item-center ">
+              <h1 className="font-bold text-5xl text-gray-700 py-16">
+                Mamar Dukan Help Center
+              </h1>
+          </div>
+      </div>                   
       <Footer />
     </>
   );
