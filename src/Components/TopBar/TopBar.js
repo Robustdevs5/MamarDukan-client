@@ -11,16 +11,18 @@ import { FaChartBar, FaUserCircle } from "react-icons/fa";
 import { MdShoppingCart } from "react-icons/md";
 import WishlistDropwon from "./WishlistDropwon";
 import CompareDropdown from "./CompareDropdown";
+import { getWishlistToDb } from "../Cart/WishlistCart/WishListCartDatabase";
 
 
 const TopBar = () => {
   const [dropdown, setDropdown] = useState(false);
   const [wishlistDropwon, setWishlistDropwon] = useState(false);
   const [compareDropdown, setCompareDropdown] = useState(false);
-  const { wishlistCart, SetWishlistCart } = useContext(userContext);
-  console.log('wishlistCart', wishlistCart)
+  const { wishlistCart,  SetWishlistCart } = useContext(userContext);
+  console.log(' SetWishlistCart', wishlistCart)
+  const { CompareCart} = useContext(userContext);
   const { user, setUser } = useContext(userContext);
-  const { cart, setCart } = useContext(userContext);
+  const { cart } = useContext(userContext);
   let history = useHistory();
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/login" } };
@@ -48,9 +50,7 @@ const TopBar = () => {
   const handleUserDashboard = () => {
     history.push('/dashboard');
   };
-
-
-  // primary_BG_color
+  
   return (
     <main className="h-20 pl-0 sticky top-0 z-50 primary_BG_color ">
       <section className=" flex justify-between  items-center  ">
@@ -81,7 +81,7 @@ const TopBar = () => {
                     <FaChartBar size={30}></FaChartBar>
                 </button>
                 <strong className="text-gray-100 -ml-2 -mt-6 bg-red-600 rounded-full px-1">
-                  {cart.length}
+                    {CompareCart.length}
                 </strong>
             </div>
           </div>
@@ -91,10 +91,10 @@ const TopBar = () => {
 
             <div className={styles.topBar_tags}>
                 <button href="#" className="w-10 h-10 items-center flex justify-center">
-                  <AiOutlineHeart size={30}></AiOutlineHeart>
+                    <AiOutlineHeart size={30}></AiOutlineHeart>
                 </button>
                 <strong className="text-gray-100 -ml-2 -mt-6 bg-red-600 rounded-full px-1">
-                  {wishlistCart.length}
+                    {wishlistCart.length}
                 </strong>
             </div>
           </div>
@@ -104,10 +104,10 @@ const TopBar = () => {
 
             <div className={styles.topBar_tags}>
                 <button href="#" className="w-10 h-10 items-center flex justify-center">
-                  <MdShoppingCart size={30}></MdShoppingCart>
+                   <MdShoppingCart size={30}></MdShoppingCart>
                 </button>
                 <strong className="text-gray-100 -ml-2 -mt-6 bg-red-600 rounded-full px-1">
-                  {cart.length}
+                    {cart.length}
                 </strong>
             </div>
           </div>
