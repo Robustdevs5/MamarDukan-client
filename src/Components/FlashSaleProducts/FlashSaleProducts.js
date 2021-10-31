@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import { toast } from 'react-toastify';
 import { ComputerTechnology } from '../HomepageProductData/HomepageProductData';
-import { addToDb } from '../ShopingCart/CartDatabase';
+import { addToDb } from '../Cart/ShopingCart/CartDatabase';
 import useCart from '../../hooks/useCart';
 // import Modal from '../Modal/Modal';
 
@@ -16,6 +16,7 @@ import Countdown from './Countdown';
 import useProducts from '../../hooks/useProducts';
 import CartButton from '../Cart/CartButton/CartButton';
 import useShuffleProducts from '../../hooks/useShuffleProducts';
+import { Loader } from '../Loader/Loader';
 
 
 const FlashSaleProducts = () => {
@@ -138,9 +139,11 @@ const FlashSaleProducts = () => {
                                 </div>
                             </div>
                         )}
-
+                   
                 </Slider>
             </div> 
+            { !shuffleProduct && <Loader/>
+            }
         </div>
     );
 };

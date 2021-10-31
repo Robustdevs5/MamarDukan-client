@@ -7,7 +7,7 @@ import { userContext } from '../../App';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar/Navbar';
-import { removeFromDb } from '../../Components/ShopingCart/CartDatabase';
+import { removeFromDb } from '../../Components/Cart/ShopingCart/CartDatabase';
 import TopBar from '../../Components/TopBar/TopBar';
 import img from '../../images/bn15.jpg';
 import { PaypalForm, TransferForm } from './CreditCardForm';

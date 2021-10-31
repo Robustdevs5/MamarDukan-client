@@ -2,8 +2,8 @@ import { Fragment, useContext, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
-import { userContext } from "../../App";
-import { removeFromDb } from '../ShopingCart/CartDatabase';
+import { userContext } from "../../../App";
+import { removeFromDb } from './CartDatabase';
 import { toast, ToastContainer } from "react-toastify";
 
 

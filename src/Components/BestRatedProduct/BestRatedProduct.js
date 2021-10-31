@@ -8,6 +8,7 @@ import star from "../../images/5star.png";
 import { Link } from 'react-router-dom';
 import { ComputerTechnology } from '../HomepageProductData/HomepageProductData';
 import useShuffleProducts from '../../hooks/useShuffleProducts';
+import { Loader } from '../Loader/Loader';
 
 
 const BestRatedProduct = () => {
@@ -146,18 +147,8 @@ const BestRatedProduct = () => {
                 }    
                        
             </div>
-           {!shuffleProduct && <div class="border border-blue-300 shadow rounded-md p-4  w-full mx-auto">
-                            <div class="animate-pulse flex space-x-4">
-                            <div class="rounded-full bg-blue-400 h-12 w-12"></div>
-                            <div class="flex-1 space-y-4 py-1">
-                                <div class="h-4 bg-blue-400 rounded w-3/4"></div>
-                                <div class="space-y-2">
-                                <div class="h-4 bg-blue-400 rounded"></div>
-                                <div class="h-4 bg-blue-400 rounded w-5/6"></div>
-                                </div>
-                            </div>
-                            </div>
-                    </div> }
+            { !shuffleProduct && <Loader/>
+            }
 
       </div>
     );

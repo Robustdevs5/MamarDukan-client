@@ -1,4 +1,5 @@
 import React ,{useEffect, useState}from 'react';
+import { Loader } from '../Loader/Loader';
 
 const ModalDetails = ({modalId}) => {
     
@@ -8,9 +9,12 @@ const ModalDetails = ({modalId}) => {
           .then(res => res.json())
           .then(data => setModalProducts(data.product))
       }, [modalId])
-      console.log('modalProducts', modalProducts.name)
+      console.log('modalProducts', modalProducts)
     return (
         <section class="text-gray-900 body-font overflow-hidden w-full bg-white">
+            
+            {modalProducts.length ==0 ? <Loader/>
+            :
             <div class="container mx-auto">
                 <div class="lg:w-4/5 mx-auto">
     
@@ -121,6 +125,7 @@ const ModalDetails = ({modalId}) => {
                 </div>
     
             </div>
+        }
       </section>
     );
 };

@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useContext } from "react";
-import CartDropdown from "./CartDropdown";
+import CartDropdown from "../Cart/ShopingCart/CartDropdown";
 import { useHistory, useLocation } from "react-router";
 import { userContext } from "../../App";
 import CustomerCare from "./CustomerCare";
@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 import { AiOutlineHeart,AiOutlineSearch } from "react-icons/ai";
 import { FaChartBar, FaUserCircle } from "react-icons/fa";
 import { MdShoppingCart } from "react-icons/md";
-import WishlistDropwon from "./WishlistDropwon";
-import CompareDropdown from "./CompareDropdown";
+import WishlistDropwon from "../Cart/WishlistCart/WishlistDropwon";
+import CompareDropdown from "../Cart/CompareCart/CompareDropdown";
 import { getWishlistToDb } from "../Cart/WishlistCart/WishListCartDatabase";
 
 

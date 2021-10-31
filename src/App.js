@@ -14,7 +14,7 @@ import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
 import Shop from './Components/Shop/Shop';
 import FAQS from './Components/ShopingCart/FAQS';
-import ShopingCart from './Components/ShopingCart/ShopingCart';
+import ShopingCart from './Components/Cart/ShopingCart/ShopingCart';
 import './Components/StyledComponent/Global.css';
 import SuperAdminMassage from "./Components/SuperAdminDashboard/Massage/SuperAdminMassage";
 import SuperAddProduct from './Components/SuperAdminDashboard/Products-SuperAdminDashboard/AddProduct';
