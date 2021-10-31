@@ -1,0 +1,12 @@
+
+.slick-prev {
+    left: 0px !important;
+    top: 35% !important;
+    @apply bg-red-600 rounded-full
+}
+
+.slick-next {
+    top: 35% !important;
+    right: 10px !important;
+    @apply bg-red-600 rounded-full
+}

@@ -9,10 +9,16 @@ import { Link } from "react-router-dom";
 import { AiOutlineHeart,AiOutlineSearch } from "react-icons/ai";
 import { FaChartBar, FaUserCircle } from "react-icons/fa";
 import { MdShoppingCart } from "react-icons/md";
+import WishlistDropwon from "./WishlistDropwon";
+import CompareDropdown from "./CompareDropdown";
 
 
 const TopBar = () => {
   const [dropdown, setDropdown] = useState(false);
+  const [wishlistDropwon, setWishlistDropwon] = useState(false);
+  const [compareDropdown, setCompareDropdown] = useState(false);
+  const { wishlistCart, SetWishlistCart } = useContext(userContext);
+  console.log('wishlistCart', wishlistCart)
   const { user, setUser } = useContext(userContext);
   const { cart, setCart } = useContext(userContext);
   let history = useHistory();
@@ -46,7 +52,7 @@ const TopBar = () => {
 
   // primary_BG_color
   return (
-    <main className="h-20 pl-0 sticky top-0 z-50 primary_BG_color z-50">
+    <main className="h-20 pl-0 sticky top-0 z-50 primary_BG_color ">
       <section className=" flex justify-between  items-center  ">
         <div className="flex justify-between items-center">
           <div className="mx-0 sm:mx-4 hidden sm:block ">
@@ -67,8 +73,8 @@ const TopBar = () => {
             <AiOutlineSearch size={33} className={styles.topBar_search_icon} />
           </form>
           
-          <div onMouseEnter={() => setDropdown(true)}
-              onMouseLeave={() => setDropdown(false)}>
+          <div onMouseEnter={() => setCompareDropdown(true)}
+              onMouseLeave={() => setCompareDropdown(false)}>
 
             <div className={styles.topBar_tags}>
                 <button href="#" className="w-10 h-10 items-center flex justify-center">
@@ -80,15 +86,15 @@ const TopBar = () => {
             </div>
           </div>
 
-          <div onMouseEnter={() => setDropdown(true)}
-              onMouseLeave={() => setDropdown(false)} >
+          <div onMouseEnter={() => setWishlistDropwon(true)}
+              onMouseLeave={() => setWishlistDropwon(false)} >
 
             <div className={styles.topBar_tags}>
                 <button href="#" className="w-10 h-10 items-center flex justify-center">
                   <AiOutlineHeart size={30}></AiOutlineHeart>
                 </button>
                 <strong className="text-gray-100 -ml-2 -mt-6 bg-red-600 rounded-full px-1">
-                  {cart.length}
+                  {wishlistCart.length}
                 </strong>
             </div>
           </div>
@@ -130,6 +136,8 @@ const TopBar = () => {
         </div>
       </section>
       {dropdown && <CartDropdown setDropdown={setDropdown} />}
+      {wishlistDropwon && <WishlistDropwon setWishlistDropwon={setWishlistDropwon} />}
+      {compareDropdown && <CompareDropdown setCompareDropdown={setCompareDropdown} />}
     </main>
   );
 };

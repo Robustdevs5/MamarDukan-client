@@ -17,7 +17,8 @@ const Sliders = () => {
         slidesToShow: 1,
         autoplay: true,
         slidesToScroll: 1,
-        fade: true
+        fade: true,
+        arrows: false,
     };
     return (
         <div className="mx-2 xs:grid-cols-1 md:grid grid-cols-3 gap-2 slider pt-4">

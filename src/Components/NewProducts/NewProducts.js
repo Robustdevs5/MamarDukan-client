@@ -9,10 +9,11 @@ import Slider from "react-slick";
 import star from "../../images/5star.png";
 import { useHistory } from 'react-router';
 import { NewProductOffer } from '../HomepageProductData/HomepageProductData';
-import { addToDatabaseCart } from '../ShopingCart/CartManager/cartManager';
 import useCart from '../../hooks/useCart';
 import { addToDb } from '../ShopingCart/CartDatabase';
 import { toast, ToastContainer } from 'react-toastify';
+import { AddWishlistToDb } from '../Cart/WishlistCart/WishListCartDatabase';
+import useWishlistCart from '../../hooks/useWishlistCart';
 
 
 
@@ -20,7 +21,9 @@ const NewProducts = () => {
 
     const [product, setProduct] = useState([]);
     const [cart, setCart] = useCart(product);
+    const [wishlistCart, SetWishlistCart] = useWishlistCart(product);
 
+    console.log('wishlistCart starte' , wishlistCart)
     useEffect(() => {
         fetch(`https://mamardukan.herokuapp.com/products`)
             .then(res => res.json())
@@ -28,58 +31,79 @@ const NewProducts = () => {
                 setProduct(data.products);
             });
     }, []);
+    
 
+    /**              Add Cart                 */
    const handleAddToCart = (newProduct) => {
-    const exists = cart.find(pd => pd._id === newProduct._id);
-    let newCart = [];
+        const exists = cart.find(pd => pd._id === newProduct._id);
+        let newCart = [];
+        if (exists) {
+            const rest = cart.filter(pd => pd._id !== newProduct._id);
+            exists.quantity = exists.quantity + 1;
+            newCart = [...rest, newProduct];
+            toast.success( "increase "+ exists.quantity + " quantity", {
+                position: "bottom-right",
+            });
+        }
+        else {
+            newProduct.quantity = 1;
+            newCart = [...cart, newProduct];
+            toast.success( "Product added", {
+                position: "bottom-right",
+            });
+        }
+        setCart(newCart);
+        // save to local storage (for now)
+        addToDb(newProduct._id);
+    }
+
+    /**              Add Wishlist                 */
+   const handleAddToWishlist = (newProduct) => {
+    const exists = wishlistCart.find(pd => pd._id === newProduct._id);
     if (exists) {
-        const rest = cart.filter(pd => pd._id !== newProduct._id);
-        exists.quantity = exists.quantity + 1;
-        newCart = [...rest, newProduct];
-        toast.success( "increase "+ exists.quantity + " quantity", {
+        toast.warning( "already "+ exists.name + " added", {
             position: "bottom-right",
         });
     }
     else {
-        newProduct.quantity = 1;
-        newCart = [...cart, newProduct];
-        toast.success( "Product added", {
+        let newCart = [...wishlistCart, newProduct];
+        SetWishlistCart(newCart);
+
+        toast.success( "wishlist Cart product added", {
             position: "bottom-right",
         });
     }
-    setCart(newCart);
     // save to local storage (for now)
-    addToDb(newProduct._id);
-
+    AddWishlistToDb(newProduct._id);
 }
 
 
-    function SampleNextArrow(props) {
-        const { className, style, onClick } = props;
-        return (
-            <div className={className}
-                style={{ ...style, display: "block" }}
-                onClick={onClick} >
+    // function SampleNextArrow(props) {
+    //     const { className, style, onClick } = props;
+    //     return (
+    //         <div className={className}
+    //             style={{ ...style, display: "block" }}
+    //             onClick={onClick} >
 
-                <KeyboardArrowRightIcon className="arrow" color="primary" />
+    //             <KeyboardArrowRightIcon className="arrow" color="primary" />
 
-            </div>
-        );
-    }
+    //         </div>
+    //     );
+    // }
 
 
-    function SamplePrevArrow(props) {
-        const { className, style, onClick } = props;
-        return (
-            <div className={className}
-                style={{ ...style, display: "block" }}
-                onClick={onClick} >
+    // function SamplePrevArrow(props) {
+    //     const { className, style, onClick } = props;
+    //     return (
+    //         <div className={className}
+    //             style={{ ...style, display: "block" }}
+    //             onClick={onClick} >
 
-                <KeyboardArrowLeftIcon className="arrow" color="primary" />
+    //             <KeyboardArrowLeftIcon className="arrow" color="primary" />
 
-            </div>
-        );
-    }
+    //         </div>
+    //     );
+    // }
 
 
 
@@ -91,8 +115,8 @@ const NewProducts = () => {
         autoplay: true,
         autoplaySpeed: 2000,
         pauseOnHover: true,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />,
+        // nextArrow: <SampleNextArrow />,
+        // prevArrow: <SamplePrevArrow />,
 
         responsive: [
             {
@@ -182,6 +206,7 @@ const NewProducts = () => {
                                     </button>
 
                                     <button
+                                        onClick={() => handleAddToWishlist(newProduct)}
                                         className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
                                     >
                                         <FontAwesomeIcon icon={faHeart} />
