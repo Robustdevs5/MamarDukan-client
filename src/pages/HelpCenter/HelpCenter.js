@@ -11,7 +11,7 @@ const HelpCenter = () => {
       <Header />
       <Navbar />
 
-
+      
       <Footer />
     </>
   );
