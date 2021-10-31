@@ -48,7 +48,8 @@ import Contact from './pages/Contact-page/Contact';
 import HomePage from "./pages/Home-page/HomePage";
 import Thankyou from "./pages/Thankyou/Thankyou";
 import SuperAdminMassage from "./Components/SuperAdminDashboard/Massage/SuperAdminMassage";
-import SuperAddProduct from './Components/SuperAdminDashboard/Products-SuperAdminDashboard/AddProduct'
+import SuperAddProduct from './Components/SuperAdminDashboard/Products-SuperAdminDashboard/AddProduct';
+import OrdersReports from './Components/SuperAdminDashboard/Report/OrdersReport/OrdersReport'
 export const userContext = createContext();
 
 const api = axios.create({
@@ -125,6 +126,7 @@ function App() {
           <Route path="/super-admin/dashboard/review/overview" component={ReviewSuperAdminDashboard} />
           <Route path="/super-admin/dashboard/massage/overview" component={SuperAdminMassage} />
           <Route path="/super-admin/dashboard/addproduct/overview" component={SuperAddProduct} />
+          <Route path="/reports/orders" component={OrdersReports} />
 
                 {/* Vendor Panel Dashboard */}
 
