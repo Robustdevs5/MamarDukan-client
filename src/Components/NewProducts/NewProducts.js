@@ -94,7 +94,9 @@ const NewProducts = () => {
                             <div className="mb-4 w-40 h-40  pb-5">
                                 <img onClick={() => handleProductClick(newProduct._id)} className="rounded cursor-pointer h-full w-full"
                                     src={newProduct.img} alt="8192" />
-                                <CartButton cartProduct={newProduct}/>
+                                     <div className=" flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
+                                        <CartButton cartProduct={newProduct}/>
+                                    </div>
                             </div>
 
 

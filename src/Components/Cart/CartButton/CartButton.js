@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import useProducts from '../../../hooks/useProducts';
 import useCart from '../../../hooks/useCart';
@@ -109,22 +109,25 @@ const CartButton = ({cartProduct}) => {
 
 
     return (
-        <div className=" flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
+        <Fragment>
 
             <button
                 onClick={() => handleAddToCart(cartProduct)}
+                title='add to cart'
                 className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2">
                 <MdShoppingCart />
             </button>
 
             <button
                 onClick={() => handleModalOpen(cartProduct._id)}
+                title='view products'
                 className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2">
                 <AiOutlineEye />
             </button>
 
             <button
                 onClick={() => handleAddToWishlist(cartProduct)}
+                title='add to wishlist'
                 className={
                     love ? "rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2 cursor-not-allowed" 
                     : "rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2 cursor-pointer"}>
@@ -134,6 +137,7 @@ const CartButton = ({cartProduct}) => {
 
             <button
                 onClick={() => handleCompare(cartProduct)}
+                title='add to compare list'
                 className={
                     compare ? "rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2 cursor-not-allowed" 
                     : "rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2 cursor-pointer"}>
@@ -144,7 +148,7 @@ const CartButton = ({cartProduct}) => {
                 setModalStatus={setModalStatus}
                 modalId={modalId}
             />}
-        </div>
+        </Fragment>
     );
 };
 

@@ -5,53 +5,22 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { ComputerTechnology } from '../HomepageProductData/HomepageProductData';
 import { addToDb } from '../ShopingCart/CartDatabase';
 import useCart from '../../hooks/useCart';
-import Modal from '../Modal/Modal';
+// import Modal from '../Modal/Modal';
 
 import star from "../../images/5star.png";
 import Countdown from './Countdown';
+import useProducts from '../../hooks/useProducts';
+import CartButton from '../Cart/CartButton/CartButton';
+import useShuffleProducts from '../../hooks/useShuffleProducts';
 
 
 const FlashSaleProducts = () => {
 
-    const [mostViewedProduct, setMostViewedProduct] = useState([]);
-    const [cart, setCart] = useCart(mostViewedProduct);
-    const [modalUpdateStatus, setModalStatus] = useState(false);
-    const [modalId, setModalId] = useState(null);
-
-    useEffect(() => {
-        fetch(`https://mamardukan.herokuapp.com/products`)
-            .then(res => res.json())
-            .then(data => setMostViewedProduct(data.products))
-    }, [])
-    // console.log(mostViewedProduct);
-
-    const handleAddToCart = (newProduct) => {
-        const exists = cart.find(pd => pd._id === newProduct._id);
-        let newCart = [];
-        if (exists) {
-            const rest = cart.filter(pd => pd._id !== newProduct._id);
-            exists.quantity = exists.quantity + 1;
-            newCart = [...rest, newProduct];
-            toast.success( "increase "+ exists.quantity + " quantity", {
-                position: "bottom-right",
-            });
-        }
-        else {
-            newProduct.quantity = 1;
-            newCart = [...cart, newProduct];
-            toast.success( "Product added", {
-                position: "bottom-right",
-            });
-        }
-        setCart(newCart);
-        // save to local storage (for now)
-        addToDb(newProduct._id);
-    
-    }
+    const [shuffleProduct, setShuffleProduct] = useShuffleProducts()
 
     const settings = {
         className: "center",
@@ -95,12 +64,6 @@ const FlashSaleProducts = () => {
             }
         ]
     };
-
-    const handleModalOpen = (id) => {
-        setModalStatus(true);
-        setModalId(id)
-    }
-
     const history = useHistory();
     const handleProductClick = (id) => {
         history.push(`/product/${id}`);
@@ -137,80 +100,47 @@ const FlashSaleProducts = () => {
                     </div>
                     <Countdown/>
                 </div>               
-            <Slider {...settings} className="px-10 w-9/12">
-                {
-                    mostViewedProduct.slice(0,32).map(mostViewedProduct =>
-                        <div className="px-2 mb-2 group relative w-full bg-white cursor-pointer">
-                            <div className="overflow-x-hidden relative border-b p-2 border">
-                                <img className="h-48 w-full object-cover" src={mostViewedProduct.img} alt={mostViewedProduct.name} />
-                                
-                                <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
-                                    <span className="font-bold">Sale</span>
+                <Slider {...settings} className="px-10 w-9/12">
+                    {
+                        shuffleProduct && shuffleProduct.slice(0,32).map(flashSaleProducts =>
+                            <div className="px-2 mb-2 group relative w-full bg-white cursor-pointer">
+                                <div className="overflow-x-hidden relative border-b p-2 border">
+                                    <img className="h-48 w-full object-cover" src={flashSaleProducts.img} alt={flashSaleProducts.name} />
+                                    
+                                    <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
+                                        <span className="font-bold">Sale</span>
+                                    </div>
+                                    <div className="w-full bottom-0 flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
+                                        <CartButton cartProduct={flashSaleProducts}/>
+                                    </div>
                                 </div>
-                                <div className="w-full bottom-0 flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
-
-                                                <button
-                                                    onClick={() => handleAddToCart(mostViewedProduct)}
-                                                    className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                                >
-                                                    <FontAwesomeIcon icon={faShoppingBag} />
-                                                </button>
-
-                                                <button
-                                                    className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                                    onClick={() => handleModalOpen(mostViewedProduct._id)}
-                                                >
-                                                    <FontAwesomeIcon icon={faEye} />
-                                                    
-                                                </button>
-                                               
-                                                <button
-                                                    className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                                >
-                                                    <FontAwesomeIcon icon={faHeart} />
-                                                </button >
-
-                                                <button
-                                                    className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                                >
-                                                    <FontAwesomeIcon icon={faChartBar} />
-                                                </button>
-
-                                            </div>
-                            </div>
-                            <div className="px-3 border-b p-2 border">
-                                <div className="flex py-3">
-                                    <h5 className="text-base font-bold text-green-700">${mostViewedProduct.price}</h5>
-                                    <del className="px-4 text-base text-gray-500">$10000</del>
-                                </div>
-
-                                <p className="text-gray-700 text-sm mb-2">Sold by: <span className="hover:text-blue-500 cursor-pointer"> Mr. Rahim</span></p>
-                                <hr />
-
-                                <div className="py-3 flex justify-between">
-                                    <div>
-                                        <p onClick={() => handleProductClick(mostViewedProduct._id)} className="text-blue-500 hover:text-yellow-500 cursor-pointer text-sm">{mostViewedProduct.name}</p>
-
-                                        <div className="flex">
-                                            <img src={star} style={{ width: '60px', height: '15px' }} alt="" />
-                                            <p className="text-gray-600 text-xs px-1">(10)</p>
-                                        </div>
+                                <div className="px-3 border-b p-2 border">
+                                    <div className="flex py-3">
+                                        <h5 className="text-base font-bold text-green-700">${flashSaleProducts.price}</h5>
+                                        <del className="px-4 text-base text-gray-500">$10000</del>
                                     </div>
 
-                                    <p className="text-gray-600 text-xs px-1">Sold: 10</p>
+                                    <p className="text-gray-700 text-sm mb-2">Sold by: <span className="hover:text-blue-500 cursor-pointer"> Mr. Rahim</span></p>
+                                    <hr />
+
+                                    <div className="py-3 flex justify-between">
+                                        <div>
+                                            <p onClick={() => handleProductClick(flashSaleProducts._id)} className="text-blue-500 hover:text-yellow-500 cursor-pointer text-sm">{flashSaleProducts.name}</p>
+
+                                            <div className="flex">
+                                                <img src={star} style={{ width: '60px', height: '15px' }} alt="" />
+                                                <p className="text-gray-600 text-xs px-1">(10)</p>
+                                            </div>
+                                        </div>
+
+                                        <p className="text-gray-600 text-xs px-1">Sold: 10</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    )}
+                        )}
 
-            </Slider>
+                </Slider>
             </div> 
-            {/* <Modal/> */}
-            {modalUpdateStatus && <Modal
-                setModalStatus={setModalStatus}
-                modalId={modalId}
-            />}
-            <ToastContainer />
         </div>
     );
 };
