@@ -61,13 +61,7 @@ import Refund from "./pages/Refund/Refund";
 import ShippingAndDelivery from "./pages/ShippingAndDelivery/ShippingAndDelivery";
 import Terms from "./pages/T&C/T&C";
 import Thankyou from "./pages/Thankyou/Thankyou";
-<<<<<<< HEAD
-import SuperAdminMassage from "./Components/SuperAdminDashboard/Massage/SuperAdminMassage";
-import SuperAddProduct from './Components/SuperAdminDashboard/Products-SuperAdminDashboard/AddProduct';
-import OrdersReports from './Components/SuperAdminDashboard/Report/OrdersReport/OrdersReport'
-=======
 import Wishlist from "./pages/Wishlist/Wishlist";
->>>>>>> f3b05e3834848edc35130e7a15e39723cb4ff2ab
 export const userContext = createContext();
 
 const api = axios.create({
