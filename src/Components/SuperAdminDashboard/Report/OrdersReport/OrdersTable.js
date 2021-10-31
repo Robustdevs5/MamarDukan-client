@@ -2,9 +2,23 @@ import React, { useState } from 'react';
 import ShipingInfo from '../../../UserDashboard/Onclick Page/ShipingInfo';
 import DeliveryDetails from './DeliveryDetails';
 import DeliveryReport from './DeliveryReport';
+import Modal from '../../../Modal/Modal';
+
+
 const OrdersTable = (props) => {
+
+
     const {Data  } = props;
     const [Dropdown , setDropdown] = useState(false)
+    
+    const [modalUpdateStatus, setModalStatus] = useState(false);
+    const [modalId, setModalId] = useState(null);
+
+    const handleModalOpen = (id) => {
+        setModalStatus(true);
+        setModalId(id)
+    }
+
     
     return (
         <div>
@@ -21,37 +35,34 @@ const OrdersTable = (props) => {
                                 <th class="px-4 py-3">Amount</th>
                                 <th class="px-4 py-3">Status</th>
                             </tr>
-                            </thead>
+                            </thead><tbody class="bg-white">
                             {
                                 Data.map((item, index) => {
                                 return [
-                                    Dropdown ?        <tbody class="bg-white">                     
+                                                               
                                     <tr item={item} key={index} class="text-gray-700 m-8">
-                                    <td onClick={() => Dropdown ? setDropdown(false) : setDropdown(true)} class="px-4 py-3 text-ms font-semibold border cursor-pointer">{item.ID}</td>
+                                    <td  onClick={() => handleModalOpen(item._id)} class="px-4 py-3 text-ms font-semibold border cursor-pointer">{item.ID}</td>
                                     <td class="px-4 py-3 text-ms font-semibold border">{item.Name}</td>
                                     <td class="px-4 py-3 text-ms font-semibold border">{item.Data}</td>
                                     <td class="px-4 py-3 text-ms font-semibold border">{item.Price}</td>
                                     <td class="px-4 py-3 text-ms font-semibold border">{item.Status}</td>
                                    </tr> 
-                                    <tr> <DeliveryDetails className="w-40 h-40" /> </tr>
-                                    </tbody>
-                                    : <tbody class="bg-white">
-
-                                    <tr item={item} key={index} class="text-gray-700 m-8">
-                                    <td onClick={() => Dropdown ? setDropdown(false) : setDropdown(true)} class="px-4 py-3 text-ms font-semibold border cursor-pointer">{item.ID}</td>
-                                    <td class="px-4 py-3 text-ms font-semibold border">{item.Name}</td>
-                                    <td class="px-4 py-3 text-ms font-semibold border">{item.Data}</td>
-                                    <td class="px-4 py-3 text-ms font-semibold border">{item.Price}</td>
-                                    <td class="px-4 py-3 text-ms font-semibold border">{item.Status}</td>
-                                   </tr>  </tbody>
+                                   
+                                    
                                 ]
                                 })
 
                             }
-                           
+                            </tbody>
                         </table>
                         </div>
                     </div>
+                    {modalUpdateStatus && <Modal
+                        setModalStatus={setModalStatus}
+                            modalId={modalId}
+                        />}
+
+
                 </section>
         </div>
     );
