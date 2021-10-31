@@ -4,7 +4,7 @@ import useProducts from '../../../hooks/useProducts';
 import useCart from '../../../hooks/useCart';
 import useWishlistCart from '../../../hooks/useWishlistCart';
 import { AddWishlistToDb } from '../WishlistCart/WishListCartDatabase';
-import { addToDb } from '../../ShopingCart/CartDatabase';
+import { addToDb } from '../ShopingCart/CartDatabase';
 import { AddCompareToDb } from '../CompareCart/CompareCartDatabase';
 import { userContext } from '../../../App';
 import Modal from '../../Modal/Modal';

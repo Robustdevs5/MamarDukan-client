@@ -10,8 +10,6 @@ import { CgArrowLeftR,  CgArrowRightR} from "react-icons/cg";
 const Table = (props) => {
   const { onAdd , onRemove  , onDelete} = props;  
   const { cart, setCart } = useContext(userContext);
-  console.log('cart', cart);
-  // const total = quantity * price
 
   return (
     <div>
