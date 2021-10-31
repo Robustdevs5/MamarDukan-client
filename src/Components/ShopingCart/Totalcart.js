@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { userContext } from '../../App';
 
-const Totalcart = () => {
+const Totalcart = ({setPriceTotal}) => {
     const { cart, setCart } = useContext(userContext);
 
     let totalQuantity = 0;
@@ -18,6 +18,7 @@ const Totalcart = () => {
     const shipping = subTotal > 0 ? 15 : 0;
     const tax = (subTotal + shipping) * 0.10;
     const Total = subTotal + shipping + tax;
+    setPriceTotal(Total)
 
     return (
         <div className="pt-12 md:pt-0 2xl:ps-4 tracking-tight">

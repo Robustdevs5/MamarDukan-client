@@ -152,7 +152,8 @@ const SIgnIn = () => {
                             e.target.reset();
                             sessionStorage.setItem('user', JSON.stringify(user));
                             setUser(user);
-                            history.push('/');
+                            
+                            setTimeout(history.push('/'), 8000)
                         }
                         else {
                             toast.error(user.message, {

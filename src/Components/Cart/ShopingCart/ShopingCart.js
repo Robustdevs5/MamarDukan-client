@@ -1,13 +1,11 @@
 import React, { useContext, useState } from 'react';
 import Footer from '../../Footer/Footer';
-import FooterCatagory from '../../Footer/FooterCatagory';
 import Navbar from '../../Navbar/Navbar/Navbar';
 import TopBar from '../../TopBar/TopBar';
 import Table from '../../ShopingCart/Table';
 import { userContext } from '../../../App';
 import { toast, ToastContainer } from 'react-toastify';
 import { addToDb, removeFromDb } from './CartDatabase';
-import Newsletter from '../../Newsletter/Newsletter';
 
 
 const ShopingCart = () => {
@@ -68,9 +66,6 @@ const ShopingCart = () => {
       <Navbar />
       <Table onAdd={onAdd} onRemove={onRemove} onDelete={onDelete} />
       <div className="m-5">
-     
-        <FooterCatagory />
-        <Newsletter/>
         <ToastContainer/>
         <Footer />
       </div>

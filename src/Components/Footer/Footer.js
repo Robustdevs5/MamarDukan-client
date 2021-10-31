@@ -1,7 +1,9 @@
 import { faCcMastercard, faCcPaypal, faCcVisa } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import Newsletter from '../Newsletter/Newsletter';
 import '../StyledComponent/Footer.css';
+import FooterCatagory from './FooterCatagory';
 import FooterCol from './FooterCol';
 
 const Footer = () => {
@@ -34,6 +36,8 @@ const Footer = () => {
 
     return (
         <div className="">
+            <FooterCatagory/>
+            <Newsletter/>
             <div className="footer">
                 <FooterCol key={1} menuTitle={"SHORTCUT"} menuItems={Shotcut}/>
                 <FooterCol key={2} menuTitle={"OUR LINK"} menuItems={OurLink}/>

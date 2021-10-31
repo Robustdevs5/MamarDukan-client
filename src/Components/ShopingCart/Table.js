@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import './Table.css'
 import TotalCart from './Totalcart';
-import CupponCart from './CupponCart'
+import CupponCart from '../Cart/CupponCart'
 import { userContext } from "../../App";
 import { TiDelete } from "react-icons/ti";
 import { Link } from "react-router-dom";

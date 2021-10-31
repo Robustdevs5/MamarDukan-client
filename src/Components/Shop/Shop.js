@@ -36,7 +36,6 @@ const Shop = () => {
             .then(res => res.json())
             .then(data => setProduct(data.products))
     }, [])
-    console.log(product);
 
 
     //Department unique Names//////////////////////////////
@@ -48,8 +47,6 @@ const Shop = () => {
             uniqDeptName.push(element);
         }
     }
-    console.log(uniqDeptName)
-
 
     // pagination........................................................
     const handleChangeRowsPerPage = (event) => {
@@ -70,7 +67,6 @@ const Shop = () => {
             uniqBrandName.push(element);
         }
     }
-    console.log(uniqBrandName)
 
 
     const handleDepartmentClick = (dept) => {
@@ -113,7 +109,6 @@ const Shop = () => {
         //      text.style.display = "none";
         //   }
     }
-    console.log(brandProduct);
 
 
 
