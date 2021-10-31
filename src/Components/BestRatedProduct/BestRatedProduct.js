@@ -1,5 +1,4 @@
 import React,{Fragment, useState} from 'react'
-import useProducts from '../../hooks/useProducts';
 import { faEye, faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faChartBar, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,35 +7,12 @@ import { useHistory } from 'react-router';
 import star from "../../images/5star.png";
 import { Link } from 'react-router-dom';
 import { ComputerTechnology } from '../HomepageProductData/HomepageProductData';
+import useShuffleProducts from '../../hooks/useShuffleProducts';
 
 
 const BestRatedProduct = () => {
-    
-    const [loading, setLoading] = useState(false);
-    const [products, setProducts] = useProducts();     
-    const [firstFiveProduct, setFirstFiveProduct] = useState()
-
-    function shuffleArray(array) {
-        setTimeout(async function(){ 
-            try{
-                let i = array.length - 1;
-                console.log('i', i) 
-                for (; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    const temp = array[i];
-                    array[i] = array[j];
-                    array[j] = temp;
-                
-                }
-                setFirstFiveProduct(array)
-            }
-            catch(err) {
-                console.log('error f', err)
-            }
-        }, 6000);
-    }
-    
-    shuffleArray(products.products);
+    const [shuffleProduct, setShuffleProduct] = useShuffleProducts()
+   
     const history = useHistory();
     const handleProductClick = (id) =>{
         history.push(`/product/${id}`);
@@ -65,7 +41,7 @@ const BestRatedProduct = () => {
             </div>
             <div className="my-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-6 lg:grid-rows-2 lg:grid-flow-col xl:gap-4">
                 {
-                    products.products && products.products.slice(0,9).map((firstFiveProducts, index) => {
+                    shuffleProduct && shuffleProduct.slice(0,9).map((firstFiveProducts, index) => {
                         return <Fragment firstFiveProducts={firstFiveProducts} key={index} >
                             
                             { index == 0 ?
@@ -166,9 +142,23 @@ const BestRatedProduct = () => {
                                 </div>
                             }
                         </Fragment>
-                    })
-                }           
+                    }) 
+                }    
+                       
             </div>
+           {!shuffleProduct && <div class="border border-blue-300 shadow rounded-md p-4  w-full mx-auto">
+                            <div class="animate-pulse flex space-x-4">
+                            <div class="rounded-full bg-blue-400 h-12 w-12"></div>
+                            <div class="flex-1 space-y-4 py-1">
+                                <div class="h-4 bg-blue-400 rounded w-3/4"></div>
+                                <div class="space-y-2">
+                                <div class="h-4 bg-blue-400 rounded"></div>
+                                <div class="h-4 bg-blue-400 rounded w-5/6"></div>
+                                </div>
+                            </div>
+                            </div>
+                    </div> }
+
       </div>
     );
 };

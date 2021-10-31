@@ -17,7 +17,6 @@ const NewArrivalProduct = () => {
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useProducts();     
     const [firstFiveProduct, setFirstFiveProduct] = useState()
-    console.log('f', firstFiveProduct)
     function shuffleArray(array) {
         setTimeout(async function(){ 
             try{

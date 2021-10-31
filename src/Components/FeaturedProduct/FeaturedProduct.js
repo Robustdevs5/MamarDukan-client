@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick.css";
 import star from "../../images/5star.png";
 import { FeaturedProducts } from '../HomepageProductData/HomepageProductData';
 import { useHistory } from 'react-router';
-import '../StyledComponent/HomepageProduct.css';
+import '../StyledComponent/SliderNextandPrevs.css';
 
 
 
@@ -59,8 +59,8 @@ const FeaturedProduct = () => {
         slidesToShow: 6,
         slidesToScroll: 4,
         initialSlide: 0,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />,
+        // nextArrow: <SampleNextArrow />,
+        // prevArrow: <SamplePrevArrow />,
         responsive: [
             {
                 breakpoint: 1024,

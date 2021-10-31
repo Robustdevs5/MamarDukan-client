@@ -5,6 +5,7 @@ import ClassicProducts from "../../Components/ClassicProducts/ClassicProducts";
 import FeaturedProduct from "../../Components/FeaturedProduct/FeaturedProduct";
 import FlashSaleProducts from "../../Components/FlashSaleProducts/FlashSaleProducts";
 import Footer from "../../Components/Footer/Footer";
+import HomePageBanner from "../../Components/HomePageBanner/HomePageBanner";
 import MostViewedProducts from "../../Components/MostViewedProducts/MostViewedProducts";
 import Navbar from "../../Components/Navbar/Navbar/Navbar";
 import NewArrivalProduct from "../../Components/NewArrivalProduct/NewArrivalProduct";
@@ -29,6 +30,7 @@ const HomePage = () => {
       <TechnologyProducts />
       <BestRatedProduct />
       <FlashSaleProducts />
+      <HomePageBanner />
       <SummerStyles/>
       <ClassicProducts/>
       <TechnologyProducts />

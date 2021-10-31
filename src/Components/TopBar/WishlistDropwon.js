@@ -1,20 +1,18 @@
 
-import { Fragment, useContext, useState } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import { XIcon } from "@heroicons/react/outline";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { userContext } from "../../App";
 import { removeFromDb } from '../ShopingCart/CartDatabase';
 import { toast, ToastContainer } from "react-toastify";
 
 
-const WishlistDropwon = () => {
-    const { cart, setCart } = useContext(userContext);
+const WishlistDropwon = ({setWishlistDropwon}) => {
+    const { wishlistCart, SetWishlistCart  } = useContext(userContext);
 
     let totalQuantity = 0;
     let subTotal = 0;
 
-    for (const product of cart) {
+    for (const product of wishlistCart) {
         if (!product.quantity) {
             product.quantity = 1;
         }
@@ -24,8 +22,8 @@ const WishlistDropwon = () => {
 
 
     const handleRemove = id => {
-        const newCart = cart.filter(product => product._id !== id);
-        setCart(newCart);
+        const newCart = wishlistCart.filter(product => product._id !== id);
+        SetWishlistCart(newCart);
         removeFromDb(id);
         toast.success("successful product remove", {
         position: "bottom-right",
@@ -33,19 +31,19 @@ const WishlistDropwon = () => {
     }
     return (
         <div
-        className="  max-width-full absolute  top-16 mt-2 md:right-20 right-2 z-50 rounded-xl bg-gray-100 "
-        onMouseEnter={() => setDropdown(true)}
-        onMouseLeave={() => setDropdown(false)}
+        className="  max-width-full absolute  top-16 right-16  md:left-2/4  md:mx-32   z-50 rounded-xl bg-gray-100 mt-2 "
+        onMouseEnter={() => setWishlistDropwon(true)}
+        onMouseLeave={() => setWishlistDropwon(false)}
       >
         <div className="h-full flex flex-col  shadow-xl  ">
-          <div className="flex-1 py-6 overflow-y-auto px-4 sm:px-6 px-2">
-            <h4 className="text-lg font-medium text-gray-900 border-l-4 border-red-600 pl-3">Shopping cart</h4>
+          <div className="flex-1 py-6 overflow-y-auto sm:px-6 px-2">
+            <h4 className="text-lg font-medium text-gray-900 border-l-4 border-red-600 pl-3">Wishlist</h4>
             <hr/>
             <div className="mt-2 px-4 overflow-hidden h-60 overflow-y-scroll">
               <div className="flow-root  ">
                 <ul className="divide-y divide-gray-200 ">
                   
-                  {cart.map((product) => (
+                  {wishlistCart.map((product) => (
                     <li key={product._id} className="py-2 flex">
                       <div className="flex-shrink-0 w-14 h-14 border border-gray-200 rounded-md overflow-hidden">
                         <img

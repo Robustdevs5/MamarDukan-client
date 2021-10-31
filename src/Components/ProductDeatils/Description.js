@@ -1,3 +1,6 @@
+import { faEye, faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faChartBar, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
@@ -103,7 +106,6 @@ const Description = () => {
                     Color
                   </th>
                   <td
-                    scope="col"
                     className="px-6 py-3 text-left text-md font-medium text-gray-500 uppercase tracking-wider"
                   >
                     Black, White
@@ -117,7 +119,6 @@ const Description = () => {
                     Resolution
                   </th>
                   <td
-                    scope="col"
                     className="px-6 py-3 text-left text-md font-medium text-gray-500 uppercase tracking-wider"
                   >
                     HD 1080
@@ -132,7 +133,6 @@ const Description = () => {
                     Number Of Cameras	
                   </th>
                   <td
-                    scope="col"
                     className="px-6 py-3 text-left text-md font-medium text-gray-500 uppercase tracking-wider"
                   >
                     1
@@ -146,7 +146,6 @@ const Description = () => {
                     Night Vision	
                   </th>
                   <td
-                    scope="col"
                     className="px-6 py-3 text-left text-md font-medium text-gray-500 uppercase tracking-wider"
                   >
                     32 feet / 10 meters
@@ -166,7 +165,177 @@ const Description = () => {
         Item Four
       </TabPanel>
       <TabPanel value={value} index={4}>
-        Item Five
+      <div className="my-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 xl:gap-4">
+        <div className="group relative w-full bg-white border cursor-pointer">
+                <div className="overflow-x-hidden relative border-b p-2">
+                    <img className="h-48 w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg" alt="Product Title" />
+                    
+                    <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
+                        <span className="font-bold">Sale</span>
+                    </div>
+                    <div className="w-full bottom-0 flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
+
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faShoppingBag} />
+                                    </button>
+
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faEye} />
+                                    </button>
+
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faHeart} />
+                                    </button >
+
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faChartBar} />
+                                    </button>
+
+                                </div>
+                </div>
+                <div className="p-4 flex justify-between ">
+                    <div>
+                    <p className="text-md font-semibold text-gray-900 mb-0">Russell Hobbs Kettle Premium Stainlessteel</p>
+                    <p className="font-bold text-red-900 mt-0">$340</p>
+                    </div>
+                </div>
+            </div>
+            <div className="group relative w-full bg-white border cursor-pointer">
+                <div className="overflow-x-hidden relative border-b p-2">
+                    <img className="h-48 w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg" alt="Product Title" />
+                    
+                    <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
+                        <span className="font-bold">Sale</span>
+                    </div>
+                    <div className="w-full bottom-0 flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
+
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faShoppingBag} />
+                                    </button>
+
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faEye} />
+                                    </button>
+
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faHeart} />
+                                    </button >
+
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faChartBar} />
+                                    </button>
+
+                                </div>
+                </div>
+                <div className="p-4 flex justify-between ">
+                    <div>
+                    <p className="text-md font-semibold text-gray-900 mb-0">Russell Hobbs Kettle Premium Stainlessteel</p>
+                    <p className="font-bold text-red-900 mt-0">$340</p>
+                    </div>
+                </div>
+            </div>
+            <div className="group relative w-full bg-white border cursor-pointer">
+                <div className="overflow-x-hidden relative border-b p-2">
+                    <img className="h-48 w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg" alt="Product Title" />
+                    
+                    <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
+                        <span className="font-bold">Sale</span>
+                    </div>
+                    <div className="w-full bottom-0 flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
+
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faShoppingBag} />
+                                    </button>
+
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faEye} />
+                                    </button>
+
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faHeart} />
+                                    </button >
+
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faChartBar} />
+                                    </button>
+
+                                </div>
+                </div>
+                <div className="p-4 flex justify-between ">
+                    <div>
+                    <p className="text-md font-semibold text-gray-900 mb-0">Russell Hobbs Kettle Premium Stainlessteel</p>
+                    <p className="font-bold text-red-900 mt-0">$340</p>
+                    </div>
+                </div>
+            </div>
+            <div className="group relative w-full bg-white border cursor-pointer">
+                <div className="overflow-x-hidden relative border-b p-2">
+                    <img className="h-48 w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg" alt="Product Title" />
+                    
+                    <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
+                        <span className="font-bold">Sale</span>
+                    </div>
+                    <div className="w-full bottom-0 flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
+
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faShoppingBag} />
+                                    </button>
+
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faEye} />
+                                    </button>
+
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faHeart} />
+                                    </button >
+
+                                    <button
+                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
+                                    >
+                                        <FontAwesomeIcon icon={faChartBar} />
+                                    </button>
+
+                                </div>
+                </div>
+                <div className="p-4 flex justify-between ">
+                    <div>
+                    <p className="text-md font-semibold text-gray-900 mb-0">Russell Hobbs Kettle Premium Stainlessteel</p>
+                    <p className="font-bold text-red-900 mt-0">$340</p>
+                    </div>
+                </div>
+            </div>
+            
+      </div>
       </TabPanel>
     </div>
   );

@@ -7,19 +7,9 @@ import { removeFromDb } from '../ShopingCart/CartDatabase';
 import { toast, ToastContainer } from "react-toastify";
 
 
-const CartDropdown = ({ setDropdown }) => { 
+const CompareDropdown = ({setCompareDropdown}) => {
     const { cart, setCart } = useContext(userContext);
 
-    let totalQuantity = 0;
-    let subTotal = 0;
-
-    for (const product of cart) {
-        if (!product.quantity) {
-            product.quantity = 1;
-        }
-        subTotal = subTotal + product.price * product.quantity;
-        totalQuantity = totalQuantity + product.quantity;
-    }
 
 
     const handleRemove = id => {
@@ -32,13 +22,13 @@ const CartDropdown = ({ setDropdown }) => {
     }
     return (
         <div
-        className="  max-width-full absolute  top-16 mt-2 md:right-0 md:mx-32  right-2 z-50 rounded-xl bg-gray-100"
-        onMouseEnter={() => setDropdown(true)}
-        onMouseLeave={() => setDropdown(false)}
+        className="  max-width-full absolute  top-16 right-16  md:left-2/4   md:right-1/4  z-50 rounded-xl bg-gray-100 mt-2 "
+        onMouseEnter={() => setCompareDropdown(true)}
+        onMouseLeave={() => setCompareDropdown(false)}
       >
         <div className="h-full flex flex-col  shadow-xl  ">
           <div className="flex-1 py-6 overflow-y-auto sm:px-6 px-2">
-            <h4 className="text-lg font-medium text-gray-900 border-l-4 border-red-600 pl-3">Shoping Cart</h4>
+            <h4 className="text-lg font-medium text-gray-900 border-l-4 border-red-600 pl-3">Product Compare</h4>
             <hr/>
             <div className="mt-2 px-4 overflow-hidden h-60 overflow-y-scroll">
               <div className="flow-root  ">
@@ -91,13 +81,6 @@ const CartDropdown = ({ setDropdown }) => {
           </div>
   
           <div className="border-t border-gray-200 py-2 px-4 sm:px-6"> 
-            <div className="flex justify-between  text-base font-bold text-gray-900">
-                <p>Subtotal</p>
-                <p>${subTotal.toFixed(2)}</p>
-            </div>
-            <p className="mt-0.5 text-sm text-gray-500">
-                Shipping and taxes calculated at checkout.
-            </p>
             <hr/>
             <div className="mt-4 flex justify-between">
               <Link to="/cart"
@@ -116,4 +99,4 @@ const CartDropdown = ({ setDropdown }) => {
     );
 };
 
-export default CartDropdown;
+export default CompareDropdown;

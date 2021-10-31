@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { createContext, useState } from 'react';
-import './hooks/useProducts'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddAdmin from "./Components/AdminDashboard/AddAdmin/AddAdmin";
 import AddProduct from "./Components/AdminDashboard/AddProduct/AddProduct";
@@ -17,6 +16,8 @@ import Shop from './Components/Shop/Shop';
 import FAQS from './Components/ShopingCart/FAQS';
 import ShopingCart from './Components/ShopingCart/ShopingCart';
 import './Components/StyledComponent/Global.css';
+import SuperAdminMassage from "./Components/SuperAdminDashboard/Massage/SuperAdminMassage";
+import SuperAddProduct from './Components/SuperAdminDashboard/Products-SuperAdminDashboard/AddProduct';
 import AllProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/AllProducts-SuperAdminDashboard/AllProductsSuperAdminDashboard";
 import OrdersSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Orders-SuperAdminDashboard/OrdersSuperAdminDashboard";
 import ProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/ProductsSuperAdminDashboard";
@@ -42,14 +43,31 @@ import VendorPanel from "./Components/VendorDashboard/VendorPanel/VendorPanel";
 import VendorReport from "./Components/VendorDashboard/VendorReport/VendorReport";
 import VendorStockOverview from "./Components/VendorDashboard/VendorStock/VendorStockOverview";
 import VendorStockStatus from "./Components/VendorDashboard/VendorStock/VendorStockStatus";
+import './hooks/useProducts';
+import NotFound from "./pages/404/404";
+import About from "./pages/AboutPage/AboutPage";
+import Affiliate from "./pages/Affiliate/Affiliate";
 import Blogs from "./pages/Blog-page/Blogs";
+import BlogDetails from "./pages/BlogDetails/BlogDetails";
+import Careers from "./pages/Careers/Careers";
 import CheckoutPage from "./pages/Checkout-page/CheckoutPage";
+import Compare from "./pages/Compare/Compare";
 import Contact from './pages/Contact-page/Contact';
+import HelpCenter from "./pages/HelpCenter/HelpCenter";
 import HomePage from "./pages/Home-page/HomePage";
+import HowToBuy from "./pages/HowToBuy/HowToBuy";
+import Privacy from "./pages/Privacy/Privacy";
+import Refund from "./pages/Refund/Refund";
+import ShippingAndDelivery from "./pages/ShippingAndDelivery/ShippingAndDelivery";
+import Terms from "./pages/T&C/T&C";
 import Thankyou from "./pages/Thankyou/Thankyou";
+<<<<<<< HEAD
 import SuperAdminMassage from "./Components/SuperAdminDashboard/Massage/SuperAdminMassage";
 import SuperAddProduct from './Components/SuperAdminDashboard/Products-SuperAdminDashboard/AddProduct';
 import OrdersReports from './Components/SuperAdminDashboard/Report/OrdersReport/OrdersReport'
+=======
+import Wishlist from "./pages/Wishlist/Wishlist";
+>>>>>>> f3b05e3834848edc35130e7a15e39723cb4ff2ab
 export const userContext = createContext();
 
 const api = axios.create({
@@ -63,6 +81,8 @@ function App() {
   const [user, setUser] = useState({});
   const [loggedInUser, setLoggedInUser] = useState([])
   const [cart, setCart] = useState([]);
+  const [wishlistCart, SetWishlistCart] = useState([]);
+  const [CompareCart, SetCompareCart] = useState([]);
 
   // useEffect(() => {
   //   api.get('/user')
@@ -80,7 +100,7 @@ function App() {
   // }, [orders.length])
 
 
-  const contextData = {loggedInUser, setLoggedInUser, products, setProducts, orders, setOrders, user, setUser, cart, setCart }
+  const contextData = {loggedInUser, setLoggedInUser, products, setProducts, orders, setOrders, user, setUser, cart, setCart, wishlistCart, SetWishlistCart, CompareCart, SetCompareCart}
   // console.log(';contextAPi', contextData)
 
   return (
@@ -89,6 +109,7 @@ function App() {
         <Switch>
 
           <Route exact path="/" component={HomePage} />
+          
           <Route path="/login" component={SIgnIn} />
           <Route path="/register" component={SignUP} />
           {/* <PrivateRoute path="/dashboard" component={AdminPanel} /> */}
@@ -145,6 +166,19 @@ function App() {
           
           <Route path="/checkout" component={CheckoutPage }/>
           <Route path="/Confirm" component={Thankyou }/>
+          <Route path="/careers" component={Careers }/>
+          <Route path="/blog-details" component={BlogDetails }/>
+          <Route path="/about" component={About }/>
+          <Route path="/terms-and-conditions" component={Terms }/>
+          <Route path="/privacy-policy" component={Privacy }/>
+          <Route path="/help-center" component={HelpCenter }/>
+          <Route path="/return-and-refund" component={Refund }/>
+          <Route path="/affiliates" component={Affiliate }/>
+          <Route path="/how-to-buy" component={HowToBuy }/>
+          <Route path="/shipping-and-delivery" component={ShippingAndDelivery }/>
+          <Route path="/compare" component={Compare }/>
+          <Route path="/wishlist" component={Wishlist }/>
+          <Route path="*" component={NotFound} />
 
       </Switch>
     </Router>
