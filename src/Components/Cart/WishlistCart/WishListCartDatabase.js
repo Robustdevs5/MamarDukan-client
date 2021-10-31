@@ -40,7 +40,6 @@ const AddWishlistToDb = id => {
     return exists ? JSON.parse(exists) : {};
   }
   
- console.log('getDb Wishlist_cart' , localStorage.getItem('Wishlist_cart'))
   const clearWishlistToDb = () => {
     localStorage.removeItem('Wishlist_cart');
   }

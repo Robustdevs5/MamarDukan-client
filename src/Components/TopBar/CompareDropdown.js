@@ -10,16 +10,6 @@ import { toast, ToastContainer } from "react-toastify";
 const CompareDropdown = ({setCompareDropdown}) => {
     const { cart, setCart } = useContext(userContext);
 
-    let totalQuantity = 0;
-    let subTotal = 0;
-
-    for (const product of cart) {
-        if (!product.quantity) {
-            product.quantity = 1;
-        }
-        subTotal = subTotal + product.price * product.quantity;
-        totalQuantity = totalQuantity + product.quantity;
-    }
 
 
     const handleRemove = id => {
@@ -91,13 +81,6 @@ const CompareDropdown = ({setCompareDropdown}) => {
           </div>
   
           <div className="border-t border-gray-200 py-2 px-4 sm:px-6"> 
-            <div className="flex justify-between  text-base font-bold text-gray-900">
-                <p>Subtotal</p>
-                <p>${subTotal.toFixed(2)}</p>
-            </div>
-            <p className="mt-0.5 text-sm text-gray-500">
-                Shipping and taxes calculated at checkout.
-            </p>
             <hr/>
             <div className="mt-4 flex justify-between">
               <Link to="/cart"

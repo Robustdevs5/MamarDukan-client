@@ -32,36 +32,36 @@ const ShopingCart = () => {
 }
 
 
-const onRemove = (newProduct) => {
-  const exists = cart.find(pd => pd._id === newProduct._id);
-  let newCart = [];
-  if (exists) {
-      const rest = cart.filter(pd => pd._id !== newProduct._id);
-      exists.quantity = exists.quantity - 1;
-      newCart = [ newProduct , ...rest];
-      
-      if(exists.quantity <= 1){
-        exists.quantity = 1
-      }
-      toast.success( "decrease "+ exists.quantity + " quantity", {
-        position: "bottom-right",
-    });
+  const onRemove = (newProduct) => {
+    const exists = cart.find(pd => pd._id === newProduct._id);
+    let newCart = [];
+    if (exists) {
+        const rest = cart.filter(pd => pd._id !== newProduct._id);
+        exists.quantity = exists.quantity - 1;
+        newCart = [ newProduct , ...rest];
+        
+        if(exists.quantity <= 1){
+          exists.quantity = 1
+        }
+        toast.success( "decrease "+ exists.quantity + " quantity", {
+          position: "bottom-right",
+      });
+    }
+
+    setCart(newCart);
+    // save to local storage (for now)
+    addToDb(newProduct._id);
+
   }
 
-  setCart(newCart);
-  // save to local storage (for now)
-  addToDb(newProduct._id);
-
-}
-
-const onDelete = id => {
-  const newCart = cart.filter(product => product._id !== id);
-  setCart(newCart);
-  removeFromDb(id);
-  toast.success("successful product remove", {
-    position: "bottom-right",
-  });
-}
+  const onDelete = id => {
+    const newCart = cart.filter(product => product._id !== id);
+    setCart(newCart);
+    removeFromDb(id);
+    toast.success("successful product remove", {
+      position: "bottom-right",
+    });
+  }
   return (
     <div>
       <TopBar />
