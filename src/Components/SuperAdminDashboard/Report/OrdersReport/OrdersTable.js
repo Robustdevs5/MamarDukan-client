@@ -4,7 +4,7 @@ import DeliveryDetails from './DeliveryDetails';
 import DeliveryReport from './DeliveryReport';
 const OrdersTable = (props) => {
     const {Data  } = props;
-    const [Dropdown , setDropdown] = useState(!false)
+    const [Dropdown , setDropdown] = useState(false)
     
     return (
         <div>
@@ -22,11 +22,10 @@ const OrdersTable = (props) => {
                                 <th class="px-4 py-3">Status</th>
                             </tr>
                             </thead>
-                            <tbody class="bg-white">
                             {
                                 Data.map((item, index) => {
                                 return [
-                                    Dropdown ? <DeliveryDetails /> :
+                                    Dropdown ?        <tbody class="bg-white">                     
                                     <tr item={item} key={index} class="text-gray-700 m-8">
                                     <td onClick={() => Dropdown ? setDropdown(false) : setDropdown(true)} class="px-4 py-3 text-ms font-semibold border cursor-pointer">{item.ID}</td>
                                     <td class="px-4 py-3 text-ms font-semibold border">{item.Name}</td>
@@ -34,11 +33,22 @@ const OrdersTable = (props) => {
                                     <td class="px-4 py-3 text-ms font-semibold border">{item.Price}</td>
                                     <td class="px-4 py-3 text-ms font-semibold border">{item.Status}</td>
                                    </tr> 
+                                    <tr> <DeliveryDetails className="w-40 h-40" /> </tr>
+                                    </tbody>
+                                    : <tbody class="bg-white">
+
+                                    <tr item={item} key={index} class="text-gray-700 m-8">
+                                    <td onClick={() => Dropdown ? setDropdown(false) : setDropdown(true)} class="px-4 py-3 text-ms font-semibold border cursor-pointer">{item.ID}</td>
+                                    <td class="px-4 py-3 text-ms font-semibold border">{item.Name}</td>
+                                    <td class="px-4 py-3 text-ms font-semibold border">{item.Data}</td>
+                                    <td class="px-4 py-3 text-ms font-semibold border">{item.Price}</td>
+                                    <td class="px-4 py-3 text-ms font-semibold border">{item.Status}</td>
+                                   </tr>  </tbody>
                                 ]
                                 })
 
                             }
-                            </tbody>
+                           
                         </table>
                         </div>
                     </div>
