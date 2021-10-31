@@ -22,6 +22,8 @@ import AllProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Pro
 import OrdersSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Orders-SuperAdminDashboard/OrdersSuperAdminDashboard";
 import ProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/ProductsSuperAdminDashboard";
 import ReviewSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Review-SuperAdminDashboard/ReviewSuperAdminDashboard";
+import OrdersReport from "./Components/SuperAdminDashboard/Report/OrdersReport/OrdersReport";
+import OrdersTable from "./Components/SuperAdminDashboard/Report/OrdersReport/OrdersTable";
 import Report from "./Components/SuperAdminDashboard/Report/Report";
 import SuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminDashboard/SuperAdminDashboard";
 import AdminSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Admin-SuperAdminDashboard/AdminSuperAdminDashboard";
@@ -141,6 +143,8 @@ function App() {
           <Route path="/super-admin/dashboard/review/overview" component={ReviewSuperAdminDashboard} />
           <Route path="/super-admin/dashboard/massage/overview" component={SuperAdminMassage} />
           <Route path="/super-admin/dashboard/addproduct/overview" component={SuperAddProduct} />
+          <Route path="/reports/orders" component={OrdersReport} />
+          
 
                 {/* Vendor Panel Dashboard */}
 

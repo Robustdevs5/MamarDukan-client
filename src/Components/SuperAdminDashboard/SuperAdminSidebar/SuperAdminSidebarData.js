@@ -120,16 +120,16 @@ export const SidebarData = [
         cName: 'sub-nav'
       },
       {
-        title: 'Reports 2',
-        path: '/reports/reports2',
+        title: 'Orders Report',
+        path: '/reports/orders',
         icon: <IoIcons.IoIosPaper />,
         cName: 'sub-nav'
       },
-      {
-        title: 'Reports 3',
-        path: '/reports/reports3',
-        icon: <IoIcons.IoIosPaper />
-      }
+      // {
+      //   title: 'Reports 3',
+      //   path: '/reports/reports3',
+      //   icon: <IoIcons.IoIosPaper />
+      // }
     ]
   },
   {
