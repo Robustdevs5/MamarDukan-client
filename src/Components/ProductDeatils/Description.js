@@ -106,7 +106,6 @@ const Description = () => {
                     Color
                   </th>
                   <td
-                    scope="col"
                     className="px-6 py-3 text-left text-md font-medium text-gray-500 uppercase tracking-wider"
                   >
                     Black, White
@@ -120,7 +119,6 @@ const Description = () => {
                     Resolution
                   </th>
                   <td
-                    scope="col"
                     className="px-6 py-3 text-left text-md font-medium text-gray-500 uppercase tracking-wider"
                   >
                     HD 1080
@@ -135,7 +133,6 @@ const Description = () => {
                     Number Of Cameras	
                   </th>
                   <td
-                    scope="col"
                     className="px-6 py-3 text-left text-md font-medium text-gray-500 uppercase tracking-wider"
                   >
                     1
@@ -149,7 +146,6 @@ const Description = () => {
                     Night Vision	
                   </th>
                   <td
-                    scope="col"
                     className="px-6 py-3 text-left text-md font-medium text-gray-500 uppercase tracking-wider"
                   >
                     32 feet / 10 meters
@@ -172,7 +168,7 @@ const Description = () => {
       <div className="my-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 xl:gap-4">
         <div className="group relative w-full bg-white border cursor-pointer">
                 <div className="overflow-x-hidden relative border-b p-2">
-                    <img className="h-48 w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg" />
+                    <img className="h-48 w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg" alt="Product Title" />
                     
                     <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
                         <span className="font-bold">Sale</span>
@@ -214,7 +210,7 @@ const Description = () => {
             </div>
             <div className="group relative w-full bg-white border cursor-pointer">
                 <div className="overflow-x-hidden relative border-b p-2">
-                    <img className="h-48 w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg" />
+                    <img className="h-48 w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg" alt="Product Title" />
                     
                     <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
                         <span className="font-bold">Sale</span>
@@ -256,7 +252,7 @@ const Description = () => {
             </div>
             <div className="group relative w-full bg-white border cursor-pointer">
                 <div className="overflow-x-hidden relative border-b p-2">
-                    <img className="h-48 w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg" />
+                    <img className="h-48 w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg" alt="Product Title" />
                     
                     <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
                         <span className="font-bold">Sale</span>
@@ -298,7 +294,7 @@ const Description = () => {
             </div>
             <div className="group relative w-full bg-white border cursor-pointer">
                 <div className="overflow-x-hidden relative border-b p-2">
-                    <img className="h-48 w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg" />
+                    <img className="h-48 w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg" alt="Product Title" />
                     
                     <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
                         <span className="font-bold">Sale</span>
