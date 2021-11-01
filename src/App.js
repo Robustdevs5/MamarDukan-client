@@ -64,6 +64,7 @@ import ShippingAndDelivery from "./pages/ShippingAndDelivery/ShippingAndDelivery
 import Terms from "./pages/T&C/T&C";
 import Thankyou from "./pages/Thankyou/Thankyou";
 import Wishlist from "./pages/Wishlist/Wishlist";
+import Pants from "./Components/CatagoryProduct/Pants";
 export const userContext = createContext();
 
 const api = axios.create({
@@ -117,6 +118,7 @@ function App() {
           <Route path="/adminSidebar" component={AdminSidebar} />
           <Route path="/addAdmin" component={AddAdmin} />
           <Route path="/shop" component={Shop} />
+          <Route path="/pants" component={Pants} />
           <Route path="/customerService" component={CustomerService} />
           <Route path="/trackOrder" component={TrackOrder} />
           <Route path="/manageProduct" component={ManageProduct} />

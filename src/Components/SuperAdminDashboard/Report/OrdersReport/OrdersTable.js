@@ -47,8 +47,6 @@ const OrdersTable = (props) => {
                                     <td class="px-4 py-3 text-ms font-semibold border">{item.Price}</td>
                                     <td class="px-4 py-3 text-ms font-semibold border">{item.Status}</td>
                                    </tr> 
-                                   
-                                    
                                 ]
                                 })
 

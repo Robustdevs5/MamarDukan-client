@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import OrderTable from './OrderTable';
 import RecentOrders from './RecentOrders';
 import ShipingInfo from './ShipingInfo';
 
 const Orders = () => {
+    const [ord , setOrd] = useState([])
+    useEffect(() => {
+        fetch(`https://mamardukan.herokuapp.com/orders`)
+        .then (res => res.json())
+        .then (data => setOrd(data.orders))
+    }, [])
+
+    console.log("order 1" , ord)
     return (
         <div>
             <div className="flex h-96 ">
@@ -11,11 +19,11 @@ const Orders = () => {
                     <ShipingInfo />
                 </div>
                 <div className="right h-2/2 w-3/5 my-7 mx-3 bg-gray-300">
-                    <OrderTable />
+                    <OrderTable ord={ord} />
                 </div>
             </div>
             <div className="">
-                <RecentOrders />
+                <RecentOrders ord={ord} />
             </div>
         </div>
     );

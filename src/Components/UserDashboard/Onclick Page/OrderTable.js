@@ -35,10 +35,11 @@ const useStyles = makeStyles({
 
 
 
-const OrderTable = () => {
-
+const OrderTable = (props) => {
+    const {ord} = props;
     const classes = useStyles();
 
+    console.log("ordeer3", ord)
 
 
     return (
@@ -58,9 +59,7 @@ const OrderTable = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {OrderDetails
-                                // .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                .map((item) => (
+                            {ord && ord.map((item ) => (
                                     <StyledTableRow key={item.name} className={classes.tables}>
                                         {/* <StyledTableCell align="left">{i++}</StyledTableCell> */}
                                         <StyledTableCell align="left">{item.ID}
