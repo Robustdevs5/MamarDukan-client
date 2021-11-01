@@ -4,6 +4,7 @@ import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar/Navbar';
 import TopBar from '../../Components/TopBar/TopBar';
+import Login2 from './login2';
 
 const Careers = () => {
   return (
@@ -11,6 +12,7 @@ const Careers = () => {
     <TopBar />
     <Header />
     <Navbar />
+    <Login2 />
     <div className="bg-white font-open-sans">
     <div className="container mx-auto px-8 py-8 lg:py-40 relative flex flex-col lg:flex-row items-center">
         <div className="lg:w-1/2 flex flex-col items-center lg:items-start">
