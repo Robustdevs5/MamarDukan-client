@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import './Table.css'
 import TotalCart from './Totalcart';
-import CupponCart from './CupponCart'
+import CupponCart from '../Cart/CupponCart'
 import { userContext } from "../../App";
 import { TiDelete } from "react-icons/ti";
 import { Link } from "react-router-dom";
@@ -10,8 +10,6 @@ import { CgArrowLeftR,  CgArrowRightR} from "react-icons/cg";
 const Table = (props) => {
   const { onAdd , onRemove  , onDelete} = props;  
   const { cart, setCart } = useContext(userContext);
-  console.log('cart', cart);
-  // const total = quantity * price
 
   return (
     <div>

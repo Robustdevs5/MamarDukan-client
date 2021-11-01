@@ -7,6 +7,7 @@ import { useHistory } from 'react-router';
 import { NewProductOffer } from '../HomepageProductData/HomepageProductData';
 import CartButton from '../Cart/CartButton/CartButton';
 import useProducts from '../../hooks/useProducts';
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -125,6 +126,7 @@ const NewProducts = () => {
             </Slider>
             
 
+            <ToastContainer />
         </div>
     );
 };

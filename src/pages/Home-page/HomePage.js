@@ -36,7 +36,6 @@ const HomePage = () => {
       <TechnologyProducts />
       <AllInOne/>
       <MostViewedProducts />
-      <Newsletter/>
       <Footer />
     </div>
   );
