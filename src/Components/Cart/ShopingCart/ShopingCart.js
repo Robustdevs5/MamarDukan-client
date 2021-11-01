@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import { userContext } from '../../../App';
 import Footer from '../../Footer/Footer';
 import Navbar from '../../Navbar/Navbar/Navbar';
 import TopBar from '../../TopBar/TopBar';
-import Table from '../../ShopingCart/Table';
-import { userContext } from '../../../App';
-import { toast, ToastContainer } from 'react-toastify';
 import { addToDb, removeFromDb } from './CartDatabase';
+import Table from './Table';
 
 
 const ShopingCart = () => {
