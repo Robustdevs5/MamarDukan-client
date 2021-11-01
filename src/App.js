@@ -75,7 +75,7 @@ function App() {
   const [products, setProducts] = useState([])
   const [orders, setOrders] = useState([])
   const [user, setUser] = useState({});
-  const [loggedInUser, setLoggedInUser] = useState([])
+  // const [loggedInUser, setLoggedInUser] = useState([])
   const [cart, setCart] = useState([]);
   const [wishlistCart, SetWishlistCart] = useState([]);
   const [CompareCart, SetCompareCart] = useState([]);
@@ -96,7 +96,7 @@ function App() {
   // }, [orders.length])
 
 
-  const contextData = {loggedInUser, setLoggedInUser, products, setProducts, orders, setOrders, user, setUser, cart, setCart, wishlistCart, SetWishlistCart, CompareCart, SetCompareCart}
+  const contextData = { products, setProducts, orders, setOrders, user, setUser, cart, setCart, wishlistCart, SetWishlistCart, CompareCart, SetCompareCart}
   // console.log(';contextAPi', contextData)
 
   return (

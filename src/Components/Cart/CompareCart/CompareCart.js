@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import { userContext } from "../../App";
 import { removeFromDb } from './CompareCartDatabase';
 import { toast, ToastContainer} from "react-toastify";
+import useCompareCart from '../../../hooks/useCompareCart';
 
 const CompareDropdown = ({ setCompareDropdown }) => {
-    const { CompareCart, SetCompareCart } = useContext(userContext);
-
+    const { CompareCart, SetCompareCart } = useCompareCart();
+console.log('CompareCart', CompareCart)
     let totalQuantity = 0;
     let subTotal = 0;
 
