@@ -1,8 +1,8 @@
 
-import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon, SearchIcon, UserIcon } from "@heroicons/react/solid";
+import { ChevronDownIcon } from "@heroicons/react/solid";
 import { SupportAgentOutlined } from "@mui/icons-material";
+import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import styles from "../StyledComponent/TopBar.module.css";
 function classNames(...classes) {
@@ -39,7 +39,7 @@ const CustomerCare = () => {
                   <Menu.Item>
                     {({ active }) => (
                       <Link
-                        to="/helpCenter"
+                        to="/help-center"
                         className={classNames(
                           active
                             ? "bg-gray-100 text-gray-900"
@@ -55,7 +55,7 @@ const CustomerCare = () => {
                   <Menu.Item>
                     {({ active }) => (
                       <Link
-                        to="/shopping&delivery"
+                        to="/shipping-and-delivery"
                         className={classNames(
                           active
                             ? "bg-gray-100 text-gray-900"
@@ -72,7 +72,7 @@ const CustomerCare = () => {
                   <Menu.Item>
                     {({ active }) => (
                       <Link
-                        to="return&refunds"
+                        to="/return-and-refund"
                         className={classNames(
                           active
                             ? "bg-gray-100 text-gray-900"
@@ -89,7 +89,7 @@ const CustomerCare = () => {
                   <Menu.Item>
                     {({ active }) => (
                       <Link
-                        to="/customerService"
+                        to="/contact"
                         className={classNames(
                           active
                             ? "bg-gray-100 text-gray-900"

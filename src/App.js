@@ -7,14 +7,15 @@ import AdminSidebar from './Components/AdminDashboard/AdminSidebar/AdminSidebar'
 import ManageProduct from "./Components/AdminDashboard/ManageProduct/ManageProduct";
 import UpdateProduct from './Components/AdminDashboard/UpdateProduct/UpdateProduct';
 import LoginPanel from "./Components/Authentication/LoginPanel/LoginPanel";
+import SIgnIn2 from "./Components/Authentication/SignIn/Sign2";
 import SIgnIn from "./Components/Authentication/SignIn/SIgnIn";
 import SignUP from "./Components/Authentication/SignUp/SignUP";
+import ShopingCart from './Components/Cart/ShopingCart/ShopingCart';
 import CustomerService from "./Components/CustomerService/CustomerService";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
 import Shop from './Components/Shop/Shop';
 import FAQS from './Components/ShopingCart/FAQS';
-import ShopingCart from './Components/Cart/ShopingCart/ShopingCart';
 import './Components/StyledComponent/Global.css';
 import SuperAdminMassage from "./Components/SuperAdminDashboard/Massage/SuperAdminMassage";
 import SuperAddProduct from './Components/SuperAdminDashboard/Products-SuperAdminDashboard/AddProduct';
@@ -23,7 +24,6 @@ import OrdersSuperAdminDashboard from "./Components/SuperAdminDashboard/Products
 import ProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/ProductsSuperAdminDashboard";
 import ReviewSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Review-SuperAdminDashboard/ReviewSuperAdminDashboard";
 import OrdersReport from "./Components/SuperAdminDashboard/Report/OrdersReport/OrdersReport";
-import OrdersTable from "./Components/SuperAdminDashboard/Report/OrdersReport/OrdersTable";
 import Report from "./Components/SuperAdminDashboard/Report/Report";
 import SuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminDashboard/SuperAdminDashboard";
 import AdminSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Admin-SuperAdminDashboard/AdminSuperAdminDashboard";
@@ -107,6 +107,7 @@ function App() {
           <Route exact path="/" component={HomePage} />
           
           <Route path="/login" component={SIgnIn} />
+          <Route path="/login2" component={SIgnIn2} />
           <Route path="/register" component={SignUP} />
           {/* <PrivateRoute path="/dashboard" component={AdminPanel} /> */}
           {/* <PrivateRoute path="/dashboard" component={AdminPanel} /> */}

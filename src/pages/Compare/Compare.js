@@ -24,12 +24,11 @@ const Compare = () => {
                     <table className="min-w-full divide-y divide-gray-200">
                         <tbody className="">
                             <tr className="border-b border-gray-300">
-                            <th
-                                scope="col"
+                            <td
                                 className="bg-gray-50 px-6 py-3 text-left text-md font-medium text-gray-700 uppercase tracking-wider"
                             >
                                 PRODUCT
-                            </th>
+                            </td>
                             <td
                                 className="px-6 py-3 text-left text-md font-medium text-gray-700 uppercase tracking-wider"
                             >
@@ -47,12 +46,11 @@ const Compare = () => {
                             </td>
                             </tr>
                             <tr className="border-b border-gray-300">
-                            <th
-                                scope="col"
+                            <td
                                 className="bg-gray-50 px-6 py-3 text-left text-md font-medium text-gray-700 uppercase tracking-wider"
                             >
                                 RATING
-                            </th>
+                            </td>
                             <td
                                 className="px-6 py-3 text-left text-md font-medium text-gray-500 uppercase tracking-wider"
                             >
@@ -66,12 +64,11 @@ const Compare = () => {
                             </tr>
                             
                             <tr className="border-b border-gray-300">
-                            <th
-                                scope="col"
+                            <td
                                 className="bg-gray-50 px-6 py-3 text-left text-md font-medium text-gray-700 uppercase tracking-wider"
                             >
                                 PRICE	
-                            </th>
+                            </td>
                             <td
                                 className="px-6 py-3 text-left text-md font-medium text-gray-700 uppercase tracking-wider"
                             >
@@ -84,12 +81,11 @@ const Compare = () => {
                             </td>
                             </tr>
                             <tr className="border-b border-gray-300">
-                            <th
-                                scope="col"
+                            <td
                                 className="bg-gray-50 px-6 py-3 text-left text-md font-medium text-gray-700 uppercase tracking-wider"
                             >
                                 DESCRIPTION	
-                            </th>
+                            </td>
                             <td
                                 className="px-6 py-3 text-left text-md font-medium text-gray-700 uppercase tracking-wider"
                             >
@@ -102,12 +98,11 @@ const Compare = () => {
                             </td>
                             </tr>
                             <tr className="border-b border-gray-300">
-                            <th
-                                scope="col"
+                            <td
                                 className="bg-gray-50 px-6 py-3 text-left text-md font-medium text-gray-700 uppercase tracking-wider"
                             >
                                 COLOR	
-                            </th>
+                            </td>
                             <td
                                 className="px-6 py-3 text-left text-md font-medium text-gray-700 uppercase tracking-wider"
                             >
@@ -120,12 +115,11 @@ const Compare = () => {
                             </td>
                             </tr>
                             <tr className="border-b border-gray-300">
-                            <th
-                                scope="col"
+                            <td
                                 className="bg-gray-50 px-6 py-3 text-left text-md font-medium text-gray-700 uppercase tracking-wider"
                             >
                                 SIZE	
-                            </th>
+                            </td>
                             <td
                                 className="px-6 py-3 text-left text-md font-medium text-gray-700 uppercase tracking-wider"
                             >
@@ -139,12 +133,11 @@ const Compare = () => {
 
                             </tr>
                             <tr>
-                            <th
-                                scope="col"
+                            <td
                                 className="bg-gray-50 px-6 py-3 text-left text-md font-medium text-gray-700 uppercase tracking-wider"
                             >
                                	
-                            </th>
+                            </td>
                             <td
                                 className="px-6 py-3 text-left text-md font-medium text-gray-700 uppercase tracking-wider"
                             >
