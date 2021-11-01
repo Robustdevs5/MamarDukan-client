@@ -77,7 +77,7 @@ function App() {
   const [user, setUser] = useState({});
   // const [loggedInUser, setLoggedInUser] = useState([])
   const [cart, setCart] = useState([]);
-  const [wishlistCart, SetWishlistCart] = useState([]);
+  // const [wishlistCart, SetWishlistCart] = useState([]);
   const [CompareCart, SetCompareCart] = useState([]);
 
   // useEffect(() => {
@@ -96,7 +96,7 @@ function App() {
   // }, [orders.length])
 
 
-  const contextData = { products, setProducts, orders, setOrders, user, setUser, cart, setCart, wishlistCart, SetWishlistCart, CompareCart, SetCompareCart}
+  const contextData = { products, setProducts, orders, setOrders, user, setUser, cart, setCart,  CompareCart, SetCompareCart}
   // console.log(';contextAPi', contextData)
 
   return (

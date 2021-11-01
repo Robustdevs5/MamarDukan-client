@@ -69,7 +69,7 @@ const NewArrivalProduct = () => {
             <div className="my-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-6 lg:grid-rows-2 lg:grid-flow-col xl:gap-4">
                 {
                     products.products && products.products.slice(0,9).map((firstFiveProducts, index) => {
-                        return <Fragment firstFiveProducts={firstFiveProducts} key={index} >
+                        return <div firstFiveProducts={firstFiveProducts} key={index} >
                             
                             { index <= 3 ? 
                                     <div className="group relative w-full bg-white border cursor-pointer" onClick={() => handleProductClick(firstFiveProducts._id)}>
@@ -138,7 +138,7 @@ const NewArrivalProduct = () => {
                                             </div>
                                             <p className="absolute right-2 top-2 bg-white rounded-full p-2 cursor-pointer group">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 group-hover:opacity-70" fill="none" viewBox="0 0 24 24" stroke="gray">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                             </svg>
                                             </p>
                                             <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
@@ -227,7 +227,7 @@ const NewArrivalProduct = () => {
                                     </div>
                                 </div>
                             }
-                        </Fragment>
+                        </div>
                     })
                 }           
             </div>

@@ -257,10 +257,10 @@ const stripePromise = loadStripe('pk_test_51Ie9VqKA9RGUKPzpRVUr3EBr9AjVwrTUnJ23F
                             creditCart && <StripePayment setStripePayment={setStripePayment}/>
                         }
                         {
-                            paypal && <PaypalForm bankDrapImg={bankDrapImg} setBankDrapImg={setBankDrapImg} />
+                            paypal && <PaypalForm   />
                         }
                         {
-                            etransfer && <TransferForm />
+                            etransfer && <TransferForm bankDrapImg={bankDrapImg} setBankDrapImg={setBankDrapImg}/>
                         }
                     </div>
                     <div className="mt-4">

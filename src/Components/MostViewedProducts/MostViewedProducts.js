@@ -127,7 +127,7 @@ const MostViewedProducts = () => {
 
                 {
                     mostViewedProduct.map(mostViewedProduct =>
-                        <div className="p-2 py-6 hover:border-red-600 md:border rounded">
+                        <div key={mostViewedProduct._id} className="p-2 py-6 hover:border-red-600 md:border rounded">
 
                             <div className="mb-4 w-40 h-40">
                                 <img onClick={() => handleProductClick(mostViewedProduct._id)} className="rounded cursor-pointer h-full w-full" src={mostViewedProduct.img} alt="8192" />

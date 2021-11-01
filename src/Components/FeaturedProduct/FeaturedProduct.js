@@ -126,7 +126,7 @@ const FeaturedProduct = () => {
 
                 {
                     featuredProduct.map(featuredProduct =>
-                        <div className="p-2">
+                        <div key={featuredProduct._id} className="p-2">
 
                             <div className="mb-4 w-40 h-40">
                                 <img onClick={() => handleProductClick(featuredProduct._id)} className="rounded cursor-pointer h-full w-full" src={featuredProduct.img} alt="8192" />

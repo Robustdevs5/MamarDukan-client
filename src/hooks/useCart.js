@@ -3,8 +3,8 @@ import { userContext } from '../App';
 import { getStoredCart } from '../Components/Cart/ShopingCart/CartDatabase';
 
 const useCart = products => {
-    // const [cart, setCart] = useState([]);
-    const { cart, setCart } = useContext(userContext);
+    const [cart, setCart] = useState([]);
+    // const { cart, setCart } = useContext(userContext);
 
     useEffect(() => {
 

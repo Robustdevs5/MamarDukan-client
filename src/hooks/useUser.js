@@ -1,14 +1,16 @@
+
+
 import {useEffect, useContext, useState } from 'react';
 import { userContext } from '../App';
 import { getWishlistToDb } from '../Components/Cart/WishlistCart/WishListCartDatabase';
 
-const useWishlistCart = products => {
+const useUser = () => {
     const [ wishlistCart, SetWishlistCart ] = useState();
     // const { wishlistCart, SetWishlistCart } = useContext(userContext);
     
     useEffect(() => {
 
-        if (products.length) {
+        if () {
             const saveCart = getWishlistToDb();
             const storedCart = [];
             
@@ -31,4 +33,4 @@ const useWishlistCart = products => {
     return [wishlistCart, SetWishlistCart];
 };
 
-export default useWishlistCart;
+export default useUser;

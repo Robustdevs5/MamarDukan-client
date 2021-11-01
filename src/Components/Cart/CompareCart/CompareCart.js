@@ -37,7 +37,7 @@ console.log('CompareCart', CompareCart)
       >
         <div className="h-full flex flex-col  shadow-xl  ">
           <div className="flex-1 py-6 overflow-y-auto sm:px-6 px-2">
-            <h4 className="text-lg font-medium text-gray-900 border-l-4 border-red-600 pl-3">Shoping Cart</h4>
+            <h4 className="text-lg font-medium text-gray-900 border-l-4 border-red-600 pl-3 ">Shoping Cart</h4>
             <hr/>
             <div className="mt-2 px-4 overflow-hidden h-60 overflow-y-scroll">
               <div className="flow-root  ">
@@ -103,9 +103,9 @@ console.log('CompareCart', CompareCart)
                 className="flex justify-center items-center px-6 py-2 border border-transparent rounded-md shadow-sm text-base font-medium primary_BTN_Outline" >
                 View Cart </Link>
   
-              <Link to="/checkout"
+              {/* <Link to="/checkout"
                 className="flex justify-center items-center px-6 py-2 border border-transparent rounded-md shadow-sm text-base font-medium  primary_BTN" >
-                Checkout  </Link>
+                Checkout  </Link> */}
             </div>
           </div>
         </div>

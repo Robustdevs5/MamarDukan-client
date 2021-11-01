@@ -18,7 +18,8 @@ const TopBar = () => {
   const [dropdown, setDropdown] = useState(false);
   const [wishlistDropwon, setWishlistDropwon] = useState(false);
   const [compareDropdown, setCompareDropdown] = useState(false);
-  const { wishlistCart,  SetWishlistCart } = useContext(userContext);
+  const [ wishlistCart,  SetWishlistCart ] = useState(false);
+  // const { wishlistCart,  SetWishlistCart } = useContext(userContext);
   console.log(' SetWishlistCart', wishlistCart)
   const { CompareCart} = useContext(userContext);
   const { user, setUser } = useContext(userContext);
@@ -28,15 +29,15 @@ const TopBar = () => {
   let { from } = location.state || { from: { pathname: "/login" } };
 
 
-  useEffect(() => {
-    const loggedInUser = sessionStorage.getItem("user");
-    if (loggedInUser) {
-      const foundUser = JSON.parse(loggedInUser);
-      setUser(foundUser);
-    }
+  // useEffect(() => {
+  //   const loggedInUser = sessionStorage.getItem("user");
+  //   if (loggedInUser) {
+  //     const foundUser = JSON.parse(loggedInUser);
+  //     setUser(foundUser);
+  //   }
     
-    // return loggedInUser ? JSON.parse(loggedInUser) : {};
-  }, [user]);
+  //   // return loggedInUser ? JSON.parse(loggedInUser) : {};
+  // }, [user]);
 
 
   const handleLogout = () => {
@@ -136,8 +137,8 @@ const TopBar = () => {
         </div>
       </section>
       {dropdown && <CartDropdown setDropdown={setDropdown} />}
-      {wishlistDropwon && <WishlistDropwon setWishlistDropwon={setWishlistDropwon} />}
-      {compareDropdown && <CompareDropdown setCompareDropdown={setCompareDropdown} />}
+      {/* {wishlistDropwon && <WishlistDropwon setWishlistDropwon={setWishlistDropwon} />} */}
+      {/* {compareDropdown && <CompareDropdown setCompareDropdown={setCompareDropdown} />} */}
     </main>
   );
 };

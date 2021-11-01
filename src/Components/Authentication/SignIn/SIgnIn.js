@@ -11,6 +11,7 @@ import { userContext } from "../../../App";
 import Footer from '../../Footer/Footer';
 import Navbar from '../../Navbar/Navbar/Navbar';
 import TopBar from '../../TopBar/TopBar';
+import { addToDbUser } from "../../User/UserDatabase";
 import firebaseConfig from "../firebase.config";
 import './SignIn.css';
 
@@ -25,14 +26,14 @@ if (!firebase.apps.length) {
 
 const SIgnIn = () => {
 
-    const { user, setUser } = useContext(userContext);
+    // const { user, setUser } = useContext(userContext);
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     const gitProvider = new firebase.auth.GithubAuthProvider();
     const [customerStatus, setCustomerStatus] = useState(false);
     const [vendorStatus, setVendorStatus] = useState(false);
     const [superAdminStatus, setSuperAdminStatus] = useState(false);
     const [adminStatus, setAdminStatus] = useState(false);
-    const [token, setToken] = useState([]);
+    const [user, setUser] = useState([]);
 
     let history = useHistory();
     let location = useLocation();
@@ -151,8 +152,8 @@ const SIgnIn = () => {
                             });
                             e.target.reset();
                             sessionStorage.setItem('user', JSON.stringify(user));
-                            setUser(user);
-                            
+                            // setUser(user);
+                            addToDbUser(user)
                             setTimeout(history.push('/'), 8000)
                         }
                         else {

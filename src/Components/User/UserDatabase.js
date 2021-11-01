@@ -1,5 +1,5 @@
 // use local storage as your db for now
-const addToDb = id => {
+const addToDbUser = id => {
     const exists = getDb();
     let user = {};
     if (!exists) {
@@ -24,7 +24,7 @@ const addToDb = id => {
     localStorage.setItem('user', JSON.stringify(cart));
   }
   
-  const removeFromDb = id => {
+  const removeFromDbUser = id => {
     const exists = getDb();
     if (!exists) {
   
@@ -36,13 +36,13 @@ const addToDb = id => {
     }
   }
   
-  const getStoredCart = () => {
+  const getStoredCartUser = () => {
     const exists = getDb();
     return exists ? JSON.parse(exists) : {};
   }
   
-  const clearTheCart = () => {
+  const clearTheUser = () => {
     localStorage.removeItem('user');
   }
   
-  export { addToDb, removeFromDb, clearTheCart, getStoredCart }
+  export { addToDbUser, removeFromDbUser, clearTheUser, getStoredCartUser }
