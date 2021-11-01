@@ -37,7 +37,7 @@ const TopBar = () => {
   //   }
     
   //   // return loggedInUser ? JSON.parse(loggedInUser) : {};
-  // }, [user]);
+  // }, []);
 
 
   const handleLogout = () => {

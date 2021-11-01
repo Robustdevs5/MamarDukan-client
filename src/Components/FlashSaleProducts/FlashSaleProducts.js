@@ -99,7 +99,7 @@ const FlashSaleProducts = () => {
                     <div className="w-2/5 bg-white p-4 text-right border-r-2 border-gray-400">
                         <h2 className="text-gray-800 text-6xl font-bold items-center pr-4 uppercase">Flash <br/>Sale</h2>
                     </div>
-                    {/* <Countdown/> */}
+                    <Countdown/>
                 </div>               
                 <Slider {...settings} className="px-10 w-9/12">
                     {

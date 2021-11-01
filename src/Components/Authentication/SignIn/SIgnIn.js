@@ -8,10 +8,10 @@ import { Link } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { userContext } from "../../../App";
+import loginsvg from '../../../images/Mobile-login-bro.svg';
 import Footer from '../../Footer/Footer';
 import Navbar from '../../Navbar/Navbar/Navbar';
 import TopBar from '../../TopBar/TopBar';
-import { addToDbUser } from "../../User/UserDatabase";
 import firebaseConfig from "../firebase.config";
 import './SignIn.css';
 
@@ -24,16 +24,16 @@ if (!firebase.apps.length) {
 }
 
 
-const SIgnIn = () => {
+const SIgnIn2 = () => {
 
-    // const { user, setUser } = useContext(userContext);
+    const { user, setUser } = useContext(userContext);
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     const gitProvider = new firebase.auth.GithubAuthProvider();
     const [customerStatus, setCustomerStatus] = useState(false);
     const [vendorStatus, setVendorStatus] = useState(false);
     const [superAdminStatus, setSuperAdminStatus] = useState(false);
     const [adminStatus, setAdminStatus] = useState(false);
-    const [user, setUser] = useState([]);
+    const [token, setToken] = useState([]);
 
     let history = useHistory();
     let location = useLocation();
@@ -152,8 +152,8 @@ const SIgnIn = () => {
                             });
                             e.target.reset();
                             sessionStorage.setItem('user', JSON.stringify(user));
-                            // setUser(user);
-                            addToDbUser(user)
+                            setUser(user);
+                            
                             setTimeout(history.push('/'), 8000)
                         }
                         else {
@@ -326,29 +326,15 @@ const SIgnIn = () => {
         <>
             <TopBar />
             <Navbar />
-            <div className="login-container">
-                <div className="login-box">
+            <div className="bg-white font-open-sans">
+        <div className="container mx-auto px-8 py-8 lg:py-24 relative flex flex-col lg:flex-row items-center">
+            <div className="lg:w-1/2 flex flex-col items-center lg:items-start">
+            <div className="">
+                <div className="login-box2">
                     <h2>Login</h2>
                     <form onSubmit={handleSubmit}>
-                        {/* <h3 className="login-heading">Log In</h3>
-                        
-                        <input type="email" name="email" className="form-control"
-                                {...register('email', { requiblue: true })} placeholder="Your email"
-                            />
-                        {errors.name && errors.name.type === "requiblue" && <span>Name is requiblue</span>}
-                        <input type="password" name="password" className="form-control" placeholder="Your password"
-                            {...register('password', { requiblue: true})}           
-                        />
-                        {errors.email && (<span className="error">
-                                {errors.email.type === "requiblue" ? "Email is requiblue" : "Your Email pattern is not correct"}
-                            </span>
-                        )}
-
-                        <p className="error">{user.error}</p> */}
-
-
-                        <div class="user-box">
-                            <input type="text" name="email" requiblue="" />
+                        <div class="user-box text-gray-900 focus:border-gray-900">
+                            <input type="text" name="email" requiblue="" className="text-gray-900 focus:border-gray-900" />
                             <label>Username</label>
                         </div>
                         <div class="user-box">
@@ -356,65 +342,37 @@ const SIgnIn = () => {
                             <label>Password</label>
                         </div>
                         <div className="padding-l-5 flex  justify-between text-sm">
-                            <h1 className="text-blue-50 text-center">I'm</h1>
-
-                            {/* <label for="user" className=" flex items-center cursor-pointer">
-                                <input onChange={handleUserChange} className="w-6 h-4  cursor-pointer" name="user" type="radio" id='user' value="1" />
-                                <small className="text-blue-50 text-center ">user</small>
-                            </label>
-
-                            <label  for="vendor" className="flex items-center border-l-2 border-blue-400  rounded cursor-pointer">
-                                <input onChange={handleVendorChange} className="w-6 h-4 cursor-pointer" name="vendor" type="radio" id="vendor" value="1" />
-                                <small className="text-blue-50 text-center ">Vendor</small>
-                            </label>
-
-                            <label className="flex items-center border-l-2 border-blue-400 rounded cursor-pointer">
-                                <input onChange={handleAdminChange} className="w-6 h-4 cursor-pointer" name="admin" type="radio" value="1" />
-                                <small className="text-blue-50 text-center"> Admin</small>
-                            </label>
-
-                            <label className="flex items-center border-l-2 border-blue-400 rounded cursor-pointer">
-                                <input onChange={handleSuperAdminChange} className="w-6 h-4 cursor-pointer" name="superAdmin" type="radio" value="1" />
-                                <small className="text-blue-50 text-center">Super Admin</small>
-                            </label> */}
+                            <h1 className="text-gray-700 text-center">I'm</h1>
 
                             <div className="">
                                 <input
                                     className="w-6 h-4 cursor-pointer"
                                     onChange={handleUserChange}
                                     type="radio" id="user" name="fav_language" value="user" />
-                                <label className="text-blue-50 text-center border-blue-400 rounded cursor-pointer" for="user">User</label>
+                                <label className="text-gray-700 text-center border-blue-400 rounded cursor-pointer" for="user">User</label>
                             </div>
                             <div className="flex items-center border-l-2 border-blue-400">
                                 <input
                                     className="w-6 h-4 cursor-pointer"
                                     onChange={handleVendorChange}
                                     type="radio" id="vendor" name="fav_language" value="vendor" />
-                                <label className="text-blue-50 text-center" for="vendor">Vendor</label>
+                                <label className="text-gray-700 text-center" for="vendor">Vendor</label>
                             </div>
                             <div className="flex items-center border-l-2 border-blue-400">
                                 <input
                                     className="w-6 h-4 cursor-pointer"
                                     onChange={handleAdminChange}
                                     type="radio" id="admin" name="fav_language" value="admin" />
-                                <label className="text-blue-50 text-center" for="admin">Admin</label>
+                                <label className="text-gray-700 text-center" for="admin">Admin</label>
                             </div>
                             <div className="flex items-center border-l-2 border-blue-400">
                                 <input
                                     className="w-6 h-4 cursor-pointer"
                                     onChange={handleSuperAdminChange}
                                     type="radio" id="superAdmin" name="fav_language" value="superAdmin" />
-                                <label className="text-blue-50 text-center" for="superAdmin">Super Admin</label>
+                                <label className="text-gray-700 text-center" for="superAdmin">Super Admin</label>
                             </div>
                         </div>
-
-                        {/* <a href="#" className="submitBtn">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            Submit
-                        </a> */}
                         <label className="submitBtnAnimation">
                             <span className="btnAnimation"></span>
                             <span className="btnAnimation"></span>
@@ -429,12 +387,12 @@ const SIgnIn = () => {
                     <div className="social-login">
                         <div className="flex justify-between py-5">
                             <h4 className="text-white">Don't have an account?</h4>
-                            <Link to="/register" style={{ color: "#03e9f4" }}>
+                            <Link to="/register" style={{ color: "#000" }}>
                                 Create an account
                             </Link>
                         </div>
                         <button onClick={handleGoogleLogin} className="login-btn">
-                            <div className="flex justify-between">
+                            <div className="flex justify-center items-center">
                                 <h1>Google </h1>
                                 <span>
                                     <FcGoogle />
@@ -442,7 +400,7 @@ const SIgnIn = () => {
                             </div>
                         </button>
                         <button onClick={handleGitSignIn} className="login-btn">
-                            <div className="flex justify-between">
+                            <div className="flex justify-center items-center">
                                 <h1>Github </h1>
                                 <span>
                                     <AiFillGithub />
@@ -452,10 +410,16 @@ const SIgnIn = () => {
                     </div>
                 </div>
             </div>
+            </div>
+            <div className="w-full sm:w-2/3">
+                <img src={loginsvg} alt="lioigiiin" />
+            </div>
+        </div>
+    </div>
             <ToastContainer />
             <Footer />
         </>
     );
 };
 
-export default SIgnIn;
+export default SIgnIn2;

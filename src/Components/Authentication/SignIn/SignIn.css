@@ -132,7 +132,6 @@ button.login-btn span {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
-  color: #fff;
   margin-bottom: 30px;
   border: 1px solid #fff;
   outline: none;
@@ -205,8 +204,8 @@ button.login-btn span {
 
 .login-box .submitBtnAnimation:hover,
 .login-box2 .submitBtnAnimation:hover {
-  background: #03e8f407;
-  color: #fff;
+  background: #dd25002c;
+  color: #dd2400;
   border-radius: 5px;
 }
 
