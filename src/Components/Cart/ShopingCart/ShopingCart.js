@@ -5,7 +5,7 @@ import Footer from '../../Footer/Footer';
 import Navbar from '../../Navbar/Navbar/Navbar';
 import TopBar from '../../TopBar/TopBar';
 import { addToDb, removeFromDb } from './CartDatabase';
-import Table from './Table';
+import Table from './Table.js';
 
 
 const ShopingCart = () => {
