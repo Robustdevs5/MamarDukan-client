@@ -35,7 +35,7 @@ const Newsletter = () => {
                     
                         <article className="md:text-center p-3 tracking-tight text-gray-200 ">
                              We care about the protection of your data. Read our
-                            <Link to='/privacy' className='underline hover:text-blue-300 pl-2'>Privacy Policy</Link>
+                            <Link to='/privacy-policy' className='underline hover:text-blue-300 pl-2'>Privacy Policy</Link>
                         </article>
                     </div>
                 </div>

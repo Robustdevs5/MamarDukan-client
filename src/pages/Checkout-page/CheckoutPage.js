@@ -14,7 +14,7 @@ import { PaypalForm, TransferForm } from './CreditCardForm';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from './CheckoutForm';
-import Totalcart from '../../Components/ShopingCart/Totalcart';
+import Totalcart from '../../Components/Cart/Totalcart';
 import Newsletter from '../../Components/Newsletter/Newsletter';
 import axios from 'axios';
 
@@ -257,10 +257,10 @@ const stripePromise = loadStripe('pk_test_51Ie9VqKA9RGUKPzpRVUr3EBr9AjVwrTUnJ23F
                             creditCart && <StripePayment setStripePayment={setStripePayment}/>
                         }
                         {
-                            paypal && <PaypalForm bankDrapImg={bankDrapImg} setBankDrapImg={setBankDrapImg} />
+                            paypal && <PaypalForm   />
                         }
                         {
-                            etransfer && <TransferForm />
+                            etransfer && <TransferForm bankDrapImg={bankDrapImg} setBankDrapImg={setBankDrapImg}/>
                         }
                     </div>
                     <div className="mt-4">

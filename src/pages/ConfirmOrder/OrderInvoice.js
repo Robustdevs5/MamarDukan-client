@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
 import { userContext } from '../../App';
-import {Cart} from '../../Components/ShopingCart/Data'
+// import {Cart} from '../../Components/ShopingCart/Data'
 
 const Orderinfo = () => {
     // const { cart, setCart } = useContext(userContext);
-    console.log('Order' , Cart)
+    // console.log('Order' , Cart)
 
     return (
         <div className="">
             <h1 className="font-bold mb-5">Order No : #89374894yrvuefgh</h1>
-            {
+            {/* {
                 Cart.products.map((item, index) => (
                     <div item={item} key={index} className="w-full flex p-2 m-2 bg-white">
                         <div className="w-1/3 ">
@@ -19,7 +19,7 @@ const Orderinfo = () => {
                         <h4 className="w-1/3 text-center my-auto">$ {item.price}</h4>
                     </div>
                 ))
-            }
+            } */}
 
 
             <div>

@@ -9,12 +9,12 @@ import UpdateProduct from './Components/AdminDashboard/UpdateProduct/UpdateProdu
 import LoginPanel from "./Components/Authentication/LoginPanel/LoginPanel";
 import SIgnIn from "./Components/Authentication/SignIn/SIgnIn";
 import SignUP from "./Components/Authentication/SignUp/SignUP";
+import ShopingCart from './Components/Cart/ShopingCart/ShopingCart';
 import CustomerService from "./Components/CustomerService/CustomerService";
+import FAQS from './Components/FAQ/FAQS';
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import ProductDeatils from "./Components/ProductDeatils/ProductDeatils";
 import Shop from './Components/Shop/Shop';
-import FAQS from './Components/ShopingCart/FAQS';
-import ShopingCart from './Components/Cart/ShopingCart/ShopingCart';
 import './Components/StyledComponent/Global.css';
 import SuperAdminMassage from "./Components/SuperAdminDashboard/Massage/SuperAdminMassage";
 import SuperAddProduct from './Components/SuperAdminDashboard/Products-SuperAdminDashboard/AddProduct';
@@ -23,7 +23,6 @@ import OrdersSuperAdminDashboard from "./Components/SuperAdminDashboard/Products
 import ProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/ProductsSuperAdminDashboard";
 import ReviewSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Review-SuperAdminDashboard/ReviewSuperAdminDashboard";
 import OrdersReport from "./Components/SuperAdminDashboard/Report/OrdersReport/OrdersReport";
-import OrdersTable from "./Components/SuperAdminDashboard/Report/OrdersReport/OrdersTable";
 import Report from "./Components/SuperAdminDashboard/Report/Report";
 import SuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminDashboard/SuperAdminDashboard";
 import AdminSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Admin-SuperAdminDashboard/AdminSuperAdminDashboard";
@@ -62,7 +61,7 @@ import Privacy from "./pages/Privacy/Privacy";
 import Refund from "./pages/Refund/Refund";
 import ShippingAndDelivery from "./pages/ShippingAndDelivery/ShippingAndDelivery";
 import Terms from "./pages/T&C/T&C";
-import Thankyou from "./pages/Thankyou/Thankyou";
+import ConfirmOrder from "./pages/ConfirmOrder/ConfirmOrder";
 import Wishlist from "./pages/Wishlist/Wishlist";
 import Pants from "./Components/CatagoryProduct/Pants";
 export const userContext = createContext();
@@ -76,7 +75,7 @@ function App() {
   const [products, setProducts] = useState([])
   const [orders, setOrders] = useState([])
   const [user, setUser] = useState({});
-  const [loggedInUser, setLoggedInUser] = useState([])
+  // const [loggedInUser, setLoggedInUser] = useState([])
   const [cart, setCart] = useState([]);
   const [wishlistCart, SetWishlistCart] = useState([]);
   const [CompareCart, SetCompareCart] = useState([]);
@@ -97,7 +96,7 @@ function App() {
   // }, [orders.length])
 
 
-  const contextData = {loggedInUser, setLoggedInUser, products, setProducts, orders, setOrders, user, setUser, cart, setCart, wishlistCart, SetWishlistCart, CompareCart, SetCompareCart}
+  const contextData = { products, setProducts, orders, setOrders, user, setUser, cart, setCart,  CompareCart, SetCompareCart, wishlistCart, SetWishlistCart}
   // console.log(';contextAPi', contextData)
 
   return (
@@ -164,7 +163,7 @@ function App() {
           <Route path="/vendor/dashboard/messages" component={VendorMessage }/>
           
           <Route path="/checkout" component={CheckoutPage }/>
-          <Route path="/Confirm" component={Thankyou }/>
+          <Route path="/Confirm-order" component={ConfirmOrder }/>
           <Route path="/careers" component={Careers }/>
           <Route path="/blog-details" component={BlogDetails }/>
           <Route path="/about" component={About }/>

@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import { userContext } from "../../App";
 import { removeFromDb } from './CompareCartDatabase';
 import { toast, ToastContainer} from "react-toastify";
+import useCompareCart from '../../../hooks/useCompareCart';
 
 const CompareDropdown = ({ setCompareDropdown }) => {
-    const { CompareCart, SetCompareCart } = useContext(userContext);
-
+    const { CompareCart, SetCompareCart } = useCompareCart();
+console.log('CompareCart', CompareCart)
     let totalQuantity = 0;
     let subTotal = 0;
 
@@ -36,7 +37,7 @@ const CompareDropdown = ({ setCompareDropdown }) => {
       >
         <div className="h-full flex flex-col  shadow-xl  ">
           <div className="flex-1 py-6 overflow-y-auto sm:px-6 px-2">
-            <h4 className="text-lg font-medium text-gray-900 border-l-4 border-red-600 pl-3">Shoping Cart</h4>
+            <h4 className="text-lg font-medium text-gray-900 border-l-4 border-red-600 pl-3 ">Shoping Cart</h4>
             <hr/>
             <div className="mt-2 px-4 overflow-hidden h-60 overflow-y-scroll">
               <div className="flow-root  ">
@@ -102,9 +103,9 @@ const CompareDropdown = ({ setCompareDropdown }) => {
                 className="flex justify-center items-center px-6 py-2 border border-transparent rounded-md shadow-sm text-base font-medium primary_BTN_Outline" >
                 View Cart </Link>
   
-              <Link to="/checkout"
+              {/* <Link to="/checkout"
                 className="flex justify-center items-center px-6 py-2 border border-transparent rounded-md shadow-sm text-base font-medium  primary_BTN" >
-                Checkout  </Link>
+                Checkout  </Link> */}
             </div>
           </div>
         </div>

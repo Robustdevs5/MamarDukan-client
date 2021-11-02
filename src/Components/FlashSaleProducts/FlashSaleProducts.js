@@ -13,7 +13,6 @@ import useCart from '../../hooks/useCart';
 
 import star from "../../images/5star.png";
 import Countdown from './Countdown';
-import useProducts from '../../hooks/useProducts';
 import CartButton from '../Cart/CartButton/CartButton';
 import useShuffleProducts from '../../hooks/useShuffleProducts';
 import { Loader } from '../Loader/Loader';

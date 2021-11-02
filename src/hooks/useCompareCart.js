@@ -1,9 +1,9 @@
-import {useEffect, useContext } from 'react';
+import {useEffect, useContext, useState } from 'react';
 import { userContext } from '../App';
 import { getCompareToDb } from '../Components/Cart/CompareCart/CompareCartDatabase';
 
 const useCompareCart = product => {
-    const { CompareCart, SetCompareCart} = useContext(userContext);
+    const [CompareCart, SetCompareCart] = useState();
     useEffect(() => {
 
         if (product.length) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FcCheckmark } from 'react-icons/fc';
-import CustomerDetail from './CustomerDetails';
+import CustomerDetails from './CustomerDetails';
 import '../../Components/StyledComponent/Global.css'
 
 const CustomerInfo = () => {
@@ -14,11 +14,11 @@ const CustomerInfo = () => {
                 </div>
             </div>
             <div className="m-4" >
-                <CustomerDetail />
+                <CustomerDetails />
             </div>
             <div className="ml-8" >
-                <button className="primary_BTN p-2">Continue shipping</button>
-                <button className="primary_BTN_Outline p-2 ml-16">Print</button>
+                <button className="rounded primary_BTN p-2">Continue shipping</button>
+                <button className="rounded primary_BTN_Outline p-2 ml-16">Print</button>
             </div>
         </div>
     );

@@ -1,10 +1,9 @@
 import React from 'react';
 import Footer from '../../Components/Footer/Footer';
-import FooterCatagory from '../../Components/Footer/FooterCatagory';
 import Navbar from '../../Components/Navbar/Navbar/Navbar';
 import TopBar from '../../Components/TopBar/TopBar';
-import CustomerInfo from './CustomerInfo';
-import Orderinfo from './Orderinfo';
+import OrderInfo from './OrderInfo';
+import OrderInvoice from './OrderInvoice';
 
 const Thankyou = () => {
     return (
@@ -13,13 +12,12 @@ const Thankyou = () => {
             <Navbar />
             <div className="w-screen h-auto flex mb-32 mt-8">
                 <div className="w-3/5 m-2  border-r-2 border-black ">
-                    <CustomerInfo />
+                    <OrderInfo />
                 </div>
                 <div className="w-2/5 m-6 ">
-                    <Orderinfo />
+                    <OrderInvoice />
                 </div>
             </div>
-            <FooterCatagory />
             <Footer />
         </div>
     );
