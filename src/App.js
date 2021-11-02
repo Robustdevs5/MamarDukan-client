@@ -2,9 +2,12 @@ import axios from "axios";
 import React, { createContext, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddAdmin from "./Components/AdminDashboard/AddAdmin/AddAdmin";
+import AddBlog from "./Components/AdminDashboard/AddBlog/AddBlog";
 import AddProduct from "./Components/AdminDashboard/AddProduct/AddProduct";
 import AdminSidebar from './Components/AdminDashboard/AdminSidebar/AdminSidebar';
+import ManageBlog from "./Components/AdminDashboard/ManageBlog/ManageBlog";
 import ManageProduct from "./Components/AdminDashboard/ManageProduct/ManageProduct";
+import UpdateBlog from "./Components/AdminDashboard/UpdateBlog/UpdateBlog";
 import UpdateProduct from './Components/AdminDashboard/UpdateProduct/UpdateProduct';
 import LoginPanel from "./Components/Authentication/LoginPanel/LoginPanel";
 import SIgnIn from "./Components/Authentication/SignIn/SIgnIn";
@@ -53,6 +56,7 @@ import BlogDetails from "./pages/BlogDetails/BlogDetails";
 import Careers from "./pages/Careers/Careers";
 import CheckoutPage from "./pages/Checkout-page/CheckoutPage";
 import Compare from "./pages/Compare/Compare";
+import ConfirmOrder from "./pages/ConfirmOrder/ConfirmOrder";
 import Contact from './pages/Contact-page/Contact';
 import HelpCenter from "./pages/HelpCenter/HelpCenter";
 import HomePage from "./pages/Home-page/HomePage";
@@ -61,7 +65,6 @@ import Privacy from "./pages/Privacy/Privacy";
 import Refund from "./pages/Refund/Refund";
 import ShippingAndDelivery from "./pages/ShippingAndDelivery/ShippingAndDelivery";
 import Terms from "./pages/T&C/T&C";
-import ConfirmOrder from "./pages/ConfirmOrder/ConfirmOrder";
 import Wishlist from "./pages/Wishlist/Wishlist";
 export const userContext = createContext();
 
@@ -115,14 +118,18 @@ function App() {
             <LoginPanel/>
           </PrivateRoute>
           <Route path="/addProduct" component={AddProduct} />
+          <Route path="/addBlog" component={AddBlog} />
           <Route path="/adminSidebar" component={AdminSidebar} />
           <Route path="/addAdmin" component={AddAdmin} />
           <Route path="/shop" component={Shop} />
           <Route path="/customerService" component={CustomerService} />
           <Route path="/trackOrder" component={TrackOrder} />
           <Route path="/manageProduct" component={ManageProduct} />
+          <Route path="/manageBlog" component={ManageBlog } />
           <Route path="/product/:id" component={ProductDeatils} />
+          <Route path="/blog/:id" component={BlogDetails} />
           <Route path="/updateProduct/:id" component={UpdateProduct} />
+          <Route path="/updateBlog/:id" component={UpdateBlog} />
           <Route path="/contact" component={Contact} />
           <Route path="/blog" component={Blogs} />
           <Route path="/cart" component={ShopingCart} />
@@ -165,7 +172,6 @@ function App() {
           <Route path="/checkout" component={CheckoutPage }/>
           <Route path="/Confirm-order" component={ConfirmOrder }/>
           <Route path="/careers" component={Careers }/>
-          <Route path="/blog-details" component={BlogDetails }/>
           <Route path="/about" component={About }/>
           <Route path="/terms-and-conditions" component={Terms }/>
           <Route path="/privacy-policy" component={Privacy }/>

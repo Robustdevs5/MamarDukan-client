@@ -10,7 +10,6 @@ import MostViewedProducts from "../../Components/MostViewedProducts/MostViewedPr
 import Navbar from "../../Components/Navbar/Navbar/Navbar";
 import NewArrivalProduct from "../../Components/NewArrivalProduct/NewArrivalProduct";
 import NewProducts from "../../Components/NewProducts/NewProducts";
-import Newsletter from "../../Components/Newsletter/Newsletter";
 import { Policies } from "../../Components/Policies/Policies";
 import Slider from "../../Components/Slider/Slider";
 import SummerStyles from "../../Components/SummerStyles/SummerStyles";
@@ -33,7 +32,6 @@ const HomePage = () => {
       <HomePageBanner />
       <SummerStyles/>
       <ClassicProducts/>
-      <TechnologyProducts />
       <AllInOne/>
       <MostViewedProducts />
       <Footer />
