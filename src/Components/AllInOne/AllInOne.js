@@ -1,5 +1,4 @@
 import React,{useState} from 'react'
-import useProducts from '../../hooks/useProducts';
 import {Accessories} from '../Navbar/Menu/MenuItems';
 
 

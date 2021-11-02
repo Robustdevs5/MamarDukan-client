@@ -1,5 +1,5 @@
 import React from 'react';
-import {Catagory} from '../ShopingCart/Data';
+import {Catagory} from './Data';
 import './FooterCatagory.css'
 
 const FooterCatagory = () => {

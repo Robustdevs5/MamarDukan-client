@@ -1,43 +1,27 @@
-import React, { useContext } from 'react';
-import { userContext } from '../../App';
-import {Cart} from '../../Components/ShopingCart/Data'
+import React from 'react';
+import { FcCheckmark } from 'react-icons/fc';
+import CustomerDetails from './CustomerDetails';
+import '../../Components/StyledComponent/Global.css'
 
-const Orderinfo = () => {
-    // const { cart, setCart } = useContext(userContext);
-    console.log('Order' , Cart)
-
+const CustomerInfo = () => {
     return (
         <div className="">
-            <h1 className="font-bold mb-5">Order No : #89374894yrvuefgh</h1>
-            {
-                Cart.products.map((item, index) => (
-                    <div item={item} key={index} className="w-full flex p-2 m-2 bg-white">
-                        <div className="w-1/3 ">
-                            <img className="w-20 h-20" src={item.pictureUrl}></img>
-                        </div>
-                        <h1 className="w-1/3 text-center my-auto">{item.title}</h1>
-                        <h4 className="w-1/3 text-center my-auto">$ {item.price}</h4>
-                    </div>
-                ))
-            }
-
-
-            <div>
-                <div
-                    className="flex justify-between items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                    Subtotal<span className="ml-2">$ 1909.6</span></div>
-                <div
-                    className="flex justify-between items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                    Shipping Tax<span className="ml-2">$ 20</span></div>
-                <div
-                    className="flex justify-between items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                    Tax<span className="ml-2">$ 40</span></div>
-                <div
-                    className="flex justify-between items-center w-full py-4 text-sm font-extrabold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                    Total<span className="ml-2">$ 1969</span></div>
+            <div className="flex m-6" >
+                <div className="w-14 h-14 text-6xl rounded-full bg-green-200"><FcCheckmark className="w-full h-full p-2" /></div>
+                <div className="w-11/12">
+                <h1 className="text-2xl ml-2">Your Order is placed successfully</h1>
+                <h4 className="text-xl ml-2"> your order is confirmed</h4>
                 </div>
+            </div>
+            <div className="m-4" >
+                <CustomerDetails />
+            </div>
+            <div className="ml-8" >
+                <button className="rounded primary_BTN p-2">Continue shipping</button>
+                <button className="rounded primary_BTN_Outline p-2 ml-16">Print</button>
+            </div>
         </div>
     );
 };
 
-export default Orderinfo;
+export default CustomerInfo;

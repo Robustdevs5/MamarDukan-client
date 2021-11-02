@@ -1,9 +1,10 @@
 import {useEffect, useContext, useState } from 'react';
 import { userContext } from '../App';
 import { getWishlistToDb } from '../Components/Cart/WishlistCart/WishListCartDatabase';
+import useProducts from './useProducts';
 
 const useWishlistCart = products => {
-    const [ wishlistCart, SetWishlistCart ] = useState();
+    const [ wishlistCart, SetWishlistCart ] = useState([]);
     // const { wishlistCart, SetWishlistCart } = useContext(userContext);
     
     useEffect(() => {
@@ -24,7 +25,7 @@ const useWishlistCart = products => {
             SetWishlistCart(storedCart);
         }
 
-    }, [products]);
+    }, []);
 
     
 

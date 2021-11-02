@@ -14,7 +14,7 @@ import { PaypalForm, TransferForm } from './CreditCardForm';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from './CheckoutForm';
-import Totalcart from '../../Components/ShopingCart/Totalcart';
+import Totalcart from '../../Components/Cart/Totalcart';
 import Newsletter from '../../Components/Newsletter/Newsletter';
 import axios from 'axios';
 

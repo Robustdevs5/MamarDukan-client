@@ -7,7 +7,6 @@ import AdminSidebar from './Components/AdminDashboard/AdminSidebar/AdminSidebar'
 import ManageProduct from "./Components/AdminDashboard/ManageProduct/ManageProduct";
 import UpdateProduct from './Components/AdminDashboard/UpdateProduct/UpdateProduct';
 import LoginPanel from "./Components/Authentication/LoginPanel/LoginPanel";
-import SIgnIn2 from "./Components/Authentication/SignIn/Sign2";
 import SIgnIn from "./Components/Authentication/SignIn/SIgnIn";
 import SignUP from "./Components/Authentication/SignUp/SignUP";
 import ShopingCart from './Components/Cart/ShopingCart/ShopingCart';
@@ -62,7 +61,7 @@ import Privacy from "./pages/Privacy/Privacy";
 import Refund from "./pages/Refund/Refund";
 import ShippingAndDelivery from "./pages/ShippingAndDelivery/ShippingAndDelivery";
 import Terms from "./pages/T&C/T&C";
-import Thankyou from "./pages/Thankyou/Thankyou";
+import ConfirmOrder from "./pages/Thankyou/ConfirmOrder";
 import Wishlist from "./pages/Wishlist/Wishlist";
 export const userContext = createContext();
 
@@ -77,7 +76,7 @@ function App() {
   const [user, setUser] = useState({});
   // const [loggedInUser, setLoggedInUser] = useState([])
   const [cart, setCart] = useState([]);
-  // const [wishlistCart, SetWishlistCart] = useState([]);
+  const [wishlistCart, SetWishlistCart] = useState([]);
   const [CompareCart, SetCompareCart] = useState([]);
 
   // useEffect(() => {
@@ -96,7 +95,7 @@ function App() {
   // }, [orders.length])
 
 
-  const contextData = { products, setProducts, orders, setOrders, user, setUser, cart, setCart,  CompareCart, SetCompareCart}
+  const contextData = { products, setProducts, orders, setOrders, user, setUser, cart, setCart,  CompareCart, SetCompareCart, wishlistCart, SetWishlistCart}
   // console.log(';contextAPi', contextData)
 
   return (
@@ -107,7 +106,6 @@ function App() {
           <Route exact path="/" component={HomePage} />
           
           <Route path="/login" component={SIgnIn} />
-          <Route path="/login2" component={SIgnIn2} />
           <Route path="/register" component={SignUP} />
           {/* <PrivateRoute path="/dashboard" component={AdminPanel} /> */}
           {/* <PrivateRoute path="/dashboard" component={AdminPanel} /> */}
@@ -163,7 +161,7 @@ function App() {
           <Route path="/vendor/dashboard/messages" component={VendorMessage }/>
           
           <Route path="/checkout" component={CheckoutPage }/>
-          <Route path="/Confirm" component={Thankyou }/>
+          <Route path="/Confirm-order" component={ConfirmOrder }/>
           <Route path="/careers" component={Careers }/>
           <Route path="/blog-details" component={BlogDetails }/>
           <Route path="/about" component={About }/>

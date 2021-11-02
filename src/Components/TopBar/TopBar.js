@@ -12,18 +12,30 @@ import { MdShoppingCart } from "react-icons/md";
 import WishlistDropwon from "../Cart/WishlistCart/WishlistDropwon";
 import CompareDropdown from "../Cart/CompareCart/CompareDropdown";
 import { getWishlistToDb } from "../Cart/WishlistCart/WishListCartDatabase";
+import useWishlistCart from "../../hooks/useWishlistCart";
+import useCart from "../../hooks/useCart";
+import useProducts from "../../hooks/useProducts";
 
 
 const TopBar = () => {
   const [dropdown, setDropdown] = useState(false);
   const [wishlistDropwon, setWishlistDropwon] = useState(false);
-  const [compareDropdown, setCompareDropdown] = useState(false);
-  const [ wishlistCart,  SetWishlistCart ] = useState(false);
-  // const { wishlistCart,  SetWishlistCart } = useContext(userContext);
+  const [compareDropdown, setCompareDropdown] = useState(false); 
+  const { wishlistCart,  SetWishlistCart } = useContext(userContext);
+  
   console.log(' SetWishlistCart', wishlistCart)
   const { CompareCart} = useContext(userContext);
   const { user, setUser } = useContext(userContext);
-  const { cart } = useContext(userContext);
+  // const [ cart ] = useCart();
+  const [products, setProducts] = useProducts(); 
+  console.log('products',products )
+  const [cart, setCart] = useCart(products);
+  
+  console.log('cart',products )
+//   useEffect(() => {
+    
+// }, []);
+  // const { cart } = useContext(userContext);
   let history = useHistory();
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/login" } };
@@ -138,7 +150,7 @@ const TopBar = () => {
       </section>
       {dropdown && <CartDropdown setDropdown={setDropdown} />}
       {/* {wishlistDropwon && <WishlistDropwon setWishlistDropwon={setWishlistDropwon} />} */}
-      {/* {compareDropdown && <CompareDropdown setCompareDropdown={setCompareDropdown} />} */}
+      {compareDropdown && <CompareDropdown setCompareDropdown={setCompareDropdown} />}
     </main>
   );
 };
