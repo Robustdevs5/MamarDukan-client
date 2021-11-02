@@ -41,11 +41,11 @@ const OrdersTable = (props) => {
                                 return [
                                                                
                                     <tr item={item} key={index} class="text-gray-700 m-8">
-                                    <td  onClick={() => handleModalOpen(item._id)} class="px-4 py-3 text-ms font-semibold border cursor-pointer">{item.ID}</td>
-                                    <td class="px-4 py-3 text-ms font-semibold border">{item.Name}</td>
-                                    <td class="px-4 py-3 text-ms font-semibold border">{item.Data}</td>
-                                    <td class="px-4 py-3 text-ms font-semibold border">{item.Price}</td>
-                                    <td class="px-4 py-3 text-ms font-semibold border">{item.Status}</td>
+                                    <td  onClick={() => handleModalOpen(item._id)} class="px-4 py-3 text-ms font-semibold border cursor-pointer">{item._id}</td>
+                                    <td class="px-4 py-3 text-ms font-semibold border">{item.user.name}</td>
+                                    <td class="px-4 py-3 text-ms font-semibold border">{item.order.orderDate}</td>
+                                    <td class="px-4 py-3 text-ms font-semibold border">{item.order.price}</td>
+                                    <td class="px-4 py-3 text-ms font-semibold border">{item.order.status}</td>
                                    </tr> 
                                 ]
                                 })

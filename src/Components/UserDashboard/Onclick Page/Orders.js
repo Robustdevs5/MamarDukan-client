@@ -6,7 +6,7 @@ import ShipingInfo from './ShipingInfo';
 const Orders = () => {
     const [ord , setOrd] = useState([])
     useEffect(() => {
-        fetch(`https://mamardukan.herokuapp.com/orders`)
+        fetch(`http://localhost:5000/orders`)
         .then (res => res.json())
         .then (data => setOrd(data.orders))
     }, [])
