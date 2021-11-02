@@ -29,9 +29,22 @@ const TopBar = () => {
   // const [ cart ] = useCart();
   const [products, setProducts] = useProducts(); 
   console.log('products',products )
-  const [cart, setCart] = useCart(products);
+  const [cartItem, setCartItem] = useState();
+  const [cart, setCart] = useCart(cartItem);
   
-  console.log('cart',products )
+ 
+  console.log('cart cart',cart )
+  
+  setTimeout(async function(){ 
+    try{
+      console.log('cart',products.products.length )
+      setCartItem(products.products)
+    }
+    catch(err) {
+        console.log('error f', err)
+    }
+}, 3000);
+
 //   useEffect(() => {
     
 // }, []);

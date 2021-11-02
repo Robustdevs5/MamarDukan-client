@@ -61,7 +61,7 @@ import Privacy from "./pages/Privacy/Privacy";
 import Refund from "./pages/Refund/Refund";
 import ShippingAndDelivery from "./pages/ShippingAndDelivery/ShippingAndDelivery";
 import Terms from "./pages/T&C/T&C";
-import ConfirmOrder from "./pages/Thankyou/ConfirmOrder";
+import ConfirmOrder from "./pages/ConfirmOrder/ConfirmOrder";
 import Wishlist from "./pages/Wishlist/Wishlist";
 export const userContext = createContext();
 
