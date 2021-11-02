@@ -32,7 +32,6 @@ const HomePage = () => {
       <HomePageBanner />
       <SummerStyles/>
       <ClassicProducts/>
-      <TechnologyProducts />
       <AllInOne/>
       <MostViewedProducts />
       <Footer />
