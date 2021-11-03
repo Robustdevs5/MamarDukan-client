@@ -11,7 +11,7 @@ const ShopSidebar = () => {
             .then(res => res.json())
             .then(data => setProduct(data.products))
     }, [])
-    console.log(product);
+    //console.log(product);
 
 
     //Department unique Names
@@ -23,7 +23,7 @@ const ShopSidebar = () => {
             uniqDeptName.push(element);
         }
     }
-    console.log(uniqDeptName)
+    //console.log(uniqDeptName)
 
 
     //Department unique Names
@@ -35,7 +35,7 @@ const ShopSidebar = () => {
             uniqBrandName.push(element);
         }
     }
-    console.log(uniqBrandName)
+    //console.log(uniqBrandName)
 
 
     const handleDepartmentClick =(dept)=>{

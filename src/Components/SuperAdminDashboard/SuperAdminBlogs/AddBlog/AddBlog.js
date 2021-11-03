@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import { DashboardContainer } from '../../Style/AddSuperAdminStyle';
 import SuperAdminSidebar from '../../SuperAdminSidebar/SuperAdminSidebar';
 import TopbarSuperAdminDashboard from '../../Topbar-SuperAdminDashboard/TopbarSuperAdminDashboard';
@@ -18,7 +19,7 @@ const AddBlog = () => {
             name: e.target.name.value,
             description: e.target.description.value,
             category: e.target.category.value,
-            date: new Date(),
+            date: new Date().toDateString('dd/MM/yyyy HH:MM:SS'),
             img: imageURL
         };
         console.log(blogInfo);
@@ -36,7 +37,9 @@ const AddBlog = () => {
             .then(data => {
                 setDbStatus(data);
                 if (data) {
-                    alert('Blog added successfully.')
+                    toast.success("Blog added Successfully", {
+                        position: "bottom-right",
+                    });
                     // e.target.reset();
                 }
             })
@@ -181,6 +184,7 @@ const AddBlog = () => {
                     </section>
                 </div>
             </DashboardContainer>
+            <ToastContainer /> 
             </div>
         </>
 

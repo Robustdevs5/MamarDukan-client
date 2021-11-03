@@ -18,11 +18,11 @@ const HowToBuy = () => {
           </div>
           <section className="bg-gray-50">
             <div className="p-4 mt-4">
-                <h1 className="text-4xl text-center font-semibold mb-6">Follow the steps to buy product</h1>
-                <div className="container">
-                <div className="flex flex-col md:grid grid-cols-12 text-gray-50">
-
-                    <div className="flex md:contents">
+                <h1 className="text-center text-4xl border-l-4 border-red-600 pl-4 font-semibold mb-8">Follow the steps to buy product</h1>
+                <div className="container flex">
+                    <div className="w-full md:w-1/2">
+                        <div className="flex flex-col md:grid grid-cols-12 text-gray-50">
+                        <div className="flex md:contents">
                     <div className="col-start-2 col-end-4 mr-10 md:mx-auto relative">
                         <div className="h-full w-6 flex items-center justify-center">
                         <div className="h-full w-1 bg-green-900 pointer-events-none"></div>
@@ -75,7 +75,11 @@ const HowToBuy = () => {
                         <h3 className="font-semibold text-lg mb-1">Checkout Cart</h3>
                     </div>
                     </div>
-                    <div className="flex md:contents">
+                        </div>
+                    </div>
+                    <div className="w-full md:w-1/2">
+                        <div className="flex flex-col md:grid grid-cols-12 text-gray-50">
+                        <div className="flex md:contents">
                     <div className="col-start-2 col-end-4 mr-10 md:mx-auto relative">
                         <div className="h-full w-6 flex items-center justify-center">
                         <div className="h-full w-1 bg-green-600 pointer-events-none"></div>
@@ -128,8 +132,8 @@ const HowToBuy = () => {
                         <h3 className="font-semibold text-lg mb-1 text-gray-400">Delivery</h3>
                     </div>
                     </div>
-
-                </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             </section>
