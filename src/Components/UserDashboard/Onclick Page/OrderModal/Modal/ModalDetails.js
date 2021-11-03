@@ -1,23 +1,81 @@
 import React ,{useEffect, useState}from 'react';
-import { Loader } from '../Loader/Loader';
+import { AiOutlineMail, AiOutlineNumber } from 'react-icons/ai';
+import { FaDollarSign, FaMapMarkerAlt, FaStaylinked } from 'react-icons/fa';
+import { FiPhoneCall } from 'react-icons/fi';
+import { MdDateRange } from 'react-icons/md';
+import { Loader } from '../../../../Loader/Loader';
 
 const ModalDetails = ({modalId}) => {
     
-    const [modalProducts, setModalProducts] = useState([])
+    const [modalProducts, setModalProducts] = useState({})
     useEffect(() => {
-        fetch(`https://mamardukan.herokuapp.com/products/${modalId}`)
+        fetch(`http://localhost:5000/orders/${modalId}`)
           .then(res => res.json())
-          .then(data => setModalProducts(data.product))
+          .then(data => setModalProducts(data.order))
       }, [modalId])
       console.log('modalProducts', modalProducts)
     return (
         <section class="text-gray-900 body-font overflow-hidden w-full bg-white">
             
-            {modalProducts.length ==0 ? <Loader/>
-            :
+            {modalProducts ? 
+            
             <div class="container mx-auto">
-                <div class="lg:w-4/5 mx-auto">
+                <div className="flex items-center py-1">
+                    <AiOutlineNumber className="h-4 w-4 mx-3 fill-current"></AiOutlineNumber>
+                    <h3 className="">
+                        <span className="font-bold">OrderID : </span>
+                        {modalProducts.orderId ? modalProducts.orderId : ""}
+                    </h3>
+                </div>
+                <div className="flex items-center py-1">
+                    <FaStaylinked className="h-4 w-4 mx-3 fill-current"></FaStaylinked>
+                    <h3 className="">
+                        <span className="font-bold">Status : </span>
+                        {modalProducts.status}
+                    </h3>
+                </div>
+                <div className="flex items-center py-1">
+                    <FaMapMarkerAlt className="h-4 w-4 mx-3 fill-current"></FaMapMarkerAlt>
+                    <h3 className="">
+                        <span className="font-bold">Address : </span>
+                        {modalProducts.address}
+                    </h3>
+                </div>
+                <div className="flex items-center py-1">
+                    <MdDateRange className="h-4 w-4 mx-3 fill-current"></MdDateRange>
+                    <h3 className="">
+                        <span className="font-bold">Date : </span>
+                        {(new Date(modalProducts.date).toLocaleDateString())}
+                    </h3>
+                </div>
+                <div className="flex items-center py-1">
+                    <AiOutlineMail className="h-4 w-4 mx-3 fill-current"></AiOutlineMail>
+                    <h3 className="">
+                        <span className="font-bold">Email : </span>
+                        {modalProducts.email}
+                    </h3>
+                </div>
+                <div className="flex items-center py-1">
+                    <FiPhoneCall className="h-4 w-4 mx-3 fill-current"></FiPhoneCall>
+                    <h3 className="">
+                        <span className="font-bold">Phone : </span>
+                        {modalProducts.phone}
+                    </h3>
+                </div>                
+                <div className="flex items-center py-1">
+                    <FaDollarSign className="h-4 w-4 mx-3 fill-current"></FaDollarSign>
+                    <h3 className="">
+                        <span className="font-bold">Price : </span>
+                        {modalProducts.price}
+                    </h3>
+                </div>
 
+
+                {/* <div class="lg:w-4/5 mx-auto">
+    
+                <div className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200">
+                    <img alt="ecommerce" src={modalProducts.img} />
+                </div>
     
                 <div class=" w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                     <h2 class="text-sm title-font text-gray-500 tracking-widest">BRAND NAME: {modalProducts.brand}</h2>
@@ -120,8 +178,8 @@ const ModalDetails = ({modalId}) => {
                     </div>
                 </div>
                 </div>
-    
-            </div>
+     */}
+            </div>: <Loader/>
         }
       </section>
     );

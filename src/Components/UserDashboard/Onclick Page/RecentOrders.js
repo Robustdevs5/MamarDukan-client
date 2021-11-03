@@ -3,6 +3,7 @@ import { OrderDetails1 } from './OrderAPI';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { useHistory } from 'react-router';
+import OrderModal from './OrderModal/Modal/OrderModal';
 
 
 
@@ -42,7 +43,8 @@ const RecentOrders = (props) => {
 
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(6);
-    
+    const [modalUpdateStatus, setModalStatus] = useState(false);
+    const [modalId, setModalId] = useState(null);
     const history = useHistory();
 
     // pagination........................................................
@@ -58,6 +60,12 @@ const RecentOrders = (props) => {
     const handleProductClick = (id) => {
         history.push(`/product/${id}`);
     }
+
+    const handleModal = (item)=>{
+        setModalId(item._id)
+        setModalStatus(true);
+        
+    }
     
     return (
         <div className="p-8">
@@ -68,7 +76,7 @@ const RecentOrders = (props) => {
                 <table class="w-full">
                     <thead>
                     <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
-                        <th class="px-4 py-3">Id</th>
+                        <th class="px-4 py-3">Order Id</th>
                         <th class="px-4 py-3">Date</th>
                         <th class="px-4 py-3">Product</th>
                         <th class="px-4 py-3">Payment</th>
@@ -83,19 +91,25 @@ const RecentOrders = (props) => {
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((item) => (
                                     <tr item={item} key={item._id} class="text-gray-700">
-                        <td onClick={() => setOrderID(item._id)} class="px-4 py-3 text-ms font-semibold border">{item._id}</td>
-                        <td class="px-4 py-3 text-ms font-semibold border">{item.order.orderDate}</td>
+                        <td class="px-4 py-3 text-ms font-semibold border">{item.order.orderId ? item.order.orderId : item._id}</td>
+                        <td class="px-4 py-3 text-ms font-semibold border">{(new Date(item.order.orderDate).toLocaleDateString())}</td>
                         <td class="px-4 py-3 text-ms font-semibold border">{item?.product?.product?.name || ""}</td>
                         <td class="px-4 py-3 text-ms font-semibold border">Paid</td>
                         <td class="py-3 px-6 text-center border"> 
                             <span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">{item.order.status}</span>
                         </td>
                         <td class="px-4 py-3 text-ms font-semibold border">$ {item.order.price}</td>
-                        <td class="px-4 py-3 text-ms font-semibold border">Details</td>
+                        <td onClick={() => handleModal(item)}  class=" px-4 py-3 text-ms font-semibold">
+                        <span class="cursor-pointer bg-red-700 text-white py-1 px-3 rounded-full text-xs">Details</span>
+                        </td>
                     </tr>
                                 ))}
 
                     </tbody>
+                    {modalUpdateStatus && <OrderModal
+                setModalStatus={setModalStatus}
+                modalId={modalId}
+            />}
                     <TablePagination
                         // className="flex items-end justify-end"
                         rowsPerPageOptions={[]}
