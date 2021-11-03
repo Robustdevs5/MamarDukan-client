@@ -2,12 +2,9 @@ import axios from "axios";
 import React, { createContext, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddAdmin from "./Components/AdminDashboard/AddAdmin/AddAdmin";
-import AddBlog from "./Components/AdminDashboard/AddBlog/AddBlog";
 import AddProduct from "./Components/AdminDashboard/AddProduct/AddProduct";
 import AdminSidebar from './Components/AdminDashboard/AdminSidebar/AdminSidebar';
-import ManageBlog from "./Components/AdminDashboard/ManageBlog/ManageBlog";
 import ManageProduct from "./Components/AdminDashboard/ManageProduct/ManageProduct";
-import UpdateBlog from "./Components/AdminDashboard/UpdateBlog/UpdateBlog";
 import UpdateProduct from './Components/AdminDashboard/UpdateProduct/UpdateProduct';
 import LoginPanel from "./Components/Authentication/LoginPanel/LoginPanel";
 import SIgnIn from "./Components/Authentication/SignIn/SIgnIn";
@@ -27,6 +24,9 @@ import ProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Produc
 import ReviewSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Review-SuperAdminDashboard/ReviewSuperAdminDashboard";
 import OrdersReport from "./Components/SuperAdminDashboard/Report/OrdersReport/OrdersReport";
 import Report from "./Components/SuperAdminDashboard/Report/Report";
+import AddBlog from "./Components/SuperAdminDashboard/SuperAdminBlogs/AddBlog/AddBlog";
+import ManageBlog from "./Components/SuperAdminDashboard/SuperAdminBlogs/ManageBlog/ManageBlog";
+import UpdateBlog from "./Components/SuperAdminDashboard/SuperAdminBlogs/UpdateBlog/UpdateBlog";
 import SuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminDashboard/SuperAdminDashboard";
 import AdminSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Admin-SuperAdminDashboard/AdminSuperAdminDashboard";
 import CustomerSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Customers-SuperAdminDashboard/CustomerSuperAdminDashboard";
@@ -99,7 +99,6 @@ function App() {
 
 
   const contextData = { products, setProducts, orders, setOrders, user, setUser, cart, setCart,  CompareCart, SetCompareCart, wishlistCart, SetWishlistCart}
-  // console.log(';contextAPi', contextData)
 
   return (
     <userContext.Provider value={contextData}>
@@ -116,14 +115,13 @@ function App() {
             <LoginPanel/>
           </PrivateRoute>
           <Route path="/addProduct" component={AddProduct} />
-          <Route path="/addBlog" component={AddBlog} />
+          
           <Route path="/adminSidebar" component={AdminSidebar} />
           <Route path="/addAdmin" component={AddAdmin} />
           <Route path="/shop" component={Shop} />
           <Route path="/customerService" component={CustomerService} />
           <Route path="/trackOrder" component={TrackOrder} />
           <Route path="/manageProduct" component={ManageProduct} />
-          <Route path="/manageBlog" component={ManageBlog } />
           <Route path="/product/:id" component={ProductDeatils} />
           <Route path="/blog/:id" component={BlogDetails} />
           <Route path="/updateProduct/:id" component={UpdateProduct} />
@@ -150,6 +148,8 @@ function App() {
           <Route path="/super-admin/dashboard/massage/overview" component={SuperAdminMassage} />
           <Route path="/super-admin/dashboard/addproduct/overview" component={SuperAddProduct} />
           <Route path="/reports/orders" component={OrdersReport} />
+          <Route path="/super-admin/dashboard/blogs/addBlog" component={AddBlog} />
+          <Route path="/super-admin/dashboard/blogs/overview" component={ManageBlog } />
           
 
                 {/* Vendor Panel Dashboard */}

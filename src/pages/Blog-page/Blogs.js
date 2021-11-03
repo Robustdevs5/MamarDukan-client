@@ -51,7 +51,7 @@ const Blogs = () => {
                 <div onClick={() => handleBlogClick(blog._id)} className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
                 </div>
                   <div className="cursor-pointer absolute bottom-0 left-0 bg-custom px-4 py-2 text-white text-sm hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
-                    {blog.category  }
+                    {blog.category}
                   </div>
                   <div className="text-sm absolute top-0 right-0 bg-custom px-4 text-white rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3 hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
                     <span className="font-bold">{blog.date}</span>

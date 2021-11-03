@@ -1,31 +1,40 @@
 import axios from 'axios';
-import React, { useState } from 'react';
-import Logo from "../../Navbar/Logo/Logo";
-import AdminSidebar from '../AdminSidebar/AdminSidebar';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import { DashboardContainer } from '../../Style/AddSuperAdminStyle';
+import SuperAdminSidebar from '../../SuperAdminSidebar/SuperAdminSidebar';
+import TopbarSuperAdminDashboard from '../../Topbar-SuperAdminDashboard/TopbarSuperAdminDashboard';
 
-
-
-const AddBlog = () => {
+const UpdateBlog = () => {
 
     const [imageURL, setImageURL] = useState(null);
     const [imageURLStatus, setImageURLStatus] = useState();
     const [dbStatus, setDbStatus] = useState(false);
+    const [blog, setBlog] = useState([]);
 
+    const { id } = useParams();
+
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/blogs/${id}`)
+        .then(res => res.json())
+        .then(data => setBlog(data.blog))
+    }, [id])
 
     const handleSubmit = e => {
+
         const blogInfo = {
-            name: e.target.name.value,
-            description: e.target.description.value,
-            category: e.target.category.value,
-            date: new Date(),
-            img: imageURL
+            name: e.target.name.value || blog.name,
+            description: e.target.description.value || blog.description,
+            category: e.target.category.value || blog.category,
+            img: imageURL || blog.img
         };
         console.log(blogInfo);
 
 
-        const url = `http://localhost:5000/blogs`;
+        const url = `http://localhost:5000/blogs/${id}`;
         fetch(url, {
-            method: 'POST',
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -33,13 +42,11 @@ const AddBlog = () => {
         })
             .then(res => res.json())
             .then(data => {
-                setDbStatus(data);
                 if (data) {
-                    alert('Blog added successfully.')
-                    // e.target.reset();
+                    setDbStatus(data);
+                    alert('Blog Updated');
                 }
             })
-
         e.preventDefault();
     }
 
@@ -56,8 +63,7 @@ const AddBlog = () => {
                 setImageURL(response.data.data.display_url);
                 setImageURLStatus(true);
                 if (response) {
-                    // alert('Image Uploaded Successfully')
-
+                    alert('Image Uploaded Successfully')
                 }
             })
             .catch(function (error) {
@@ -70,19 +76,22 @@ const AddBlog = () => {
     return (
         <>
             <div className=" bg-gray-800 ">
-                <div className="w-screen h-20 p-6">
+                {/* <div className="w-screen h-20 p-6">
                     <Logo />
-                </div>
+                </div> */}
 
-                <div className="flex  md:flex-row flex-col">
-                    <AdminSidebar />
+                <DashboardContainer>
+                    <SuperAdminSidebar/>
+                
+                <div className="md:w-5/6 w-full h-screen scrollBar">
+                    <TopbarSuperAdminDashboard/>
 
                     <section className="mx-10">
-                        <h1 className="font-bold text-white p-4 text-2xl">Add a new Blog</h1>
+                        <h1 className="font-bold text-white p-4 text-2xl">Update Blog</h1>
                         <div class="  ">
 
                             <form
-                                class=" shadow-md rounded bg-blue-100 p-6 pb-8 mb-4 grid grid-cols-2 gap-4"
+                                class=" shadow-md rounded bg-blue-100 p-6 pb-8 mb-4 grid grid-cols-3 gap-4"
                                 onSubmit={handleSubmit}
                             >
                                 <div class="mb-4">
@@ -96,8 +105,7 @@ const AddBlog = () => {
                                         class="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
                                         type="text"
                                         name="name"
-                                        placeholder="Name"
-                                        required
+                                        defaultValue={blog.name}
                                     />
                                 </div>
 
@@ -106,16 +114,17 @@ const AddBlog = () => {
                                         class="block text-gray-700 text-sm font-bold mb-2"
                                         for="category"
                                     >
-                                        Category
+                                        Category: <span className="text-blue-600">{blog.category}</span>
                                     </label>
                                     <select className="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600" name="category" id="cars">
-                                        <option value="None">None</option>
+
+                                    <option value="None">None</option>
                                         <option value="Marketing">Marketing</option>
                                         <option value="Branding">Branding</option>
                                         <option value="Promotion">Promotion</option>
                                         <option value="Social Media">Social Media</option>
                                         <option value="How To">How To</option>
-                                        <option value="How To">How To</option>
+                                        <option value="E-commerce">E-commerce</option>
                                     </select>
                                 </div>{" "}
 
@@ -131,14 +140,13 @@ const AddBlog = () => {
                                         onChange={handleImageUpload}
                                         type="file"
                                         name="image"
-                                        placeholder="image"
-                                        required
                                     />
                                     {imageURLStatus ?
                                         <small className="text-green-600">Image Uploaded</small>
                                         :
                                         <small className="text-red-700">Upload Image</small>
                                     }
+                                    <img className="w-12 mx-36" src={blog.img} alt="blog title" />
 
                                 </div>{" "}
 
@@ -149,38 +157,29 @@ const AddBlog = () => {
                                     >
                                         Description
                                     </label>
-                                    <textarea
-                                        class="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
+                                    <input
+                                        class="shadow appearance-none h-24 border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
                                         type="textarea"
                                         name="description"
-                                        placeholder="Description"
+                                        defaultValue={blog.description}
                                     />
                                 </div>
                                 <div class="flex items-end justify-end">
-                                    {imageURLStatus ? <button
+                                    <button
                                         class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                         type="submit"
                                     >
                                         Submit
                                     </button>
-                                        :
-                                        <button
-                                            class="bg-blue-300 text-white font-bold py-2 px-4 rounded"
-                                            type="submit"
-                                            disabled
-                                        >
-                                            Submit
-                                        </button>
-                                    }
                                 </div>
                             </form>
                         </div>
                     </section>
                 </div>
+                </DashboardContainer>
             </div>
         </>
-
     );
 };
 
-export default AddBlog;
+export default UpdateBlog;
