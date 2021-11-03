@@ -1,8 +1,8 @@
+import { TablePagination } from '@mui/material';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import star from "../../images/5star.png";
-import { TablePagination } from '@mui/material';
-
+import CartButton from '../Cart/CartButton/CartButton';
 
 
 const DepartmentShop = (props) => {
@@ -33,10 +33,17 @@ const DepartmentShop = (props) => {
             {props
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map(product =>
-                    <div className="p-2">
+                    <div className="group relative p-2">
 
-                        <div className="mb-4 w-44 h-44">
+                        <div className="overflow-x-hidden relative mb-4 w-full h-full md:w-44 md:h-44">
                             <img onClick={() => handleProductClick(product._id)} className="rounded cursor-pointer h-full w-full" src={product.img} alt="8192" />
+                            <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
+                                            <span className="font-bold">Sale</span>
+                                        </div>
+                                        <div className="w-full bottom-0 flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
+                                            <CartButton cartProduct={product}/>
+        
+                                        </div>
                         </div>
 
                         <div className="flex py-3">
