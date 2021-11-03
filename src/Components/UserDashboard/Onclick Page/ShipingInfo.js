@@ -6,7 +6,8 @@ import { MdOutlinePayments, MdPayment } from 'react-icons/md';
 
 
 
-const ShipingInfo = () => {
+const ShipingInfo = (props) => {
+    
     return (
         <div className="">
             <h1 className="font-bold text-2xl m-2 mt-16">Shiping Information</h1>

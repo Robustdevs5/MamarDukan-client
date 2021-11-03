@@ -120,7 +120,7 @@ export const SidebarData = [
       },
       {
         title: 'Order Review',
-        path: '/dashboard/overview/add-users',
+        path: '/dashboard/overview/review',
         icon: <IoIcons.IoIosPaper />
       }
     ]
