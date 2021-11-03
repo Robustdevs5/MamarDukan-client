@@ -12,7 +12,7 @@ const StyledTableCell = withStyles((theme) => ({
         color: theme.palette.common.black,
     },
     body: {
-        fontSize: 14,
+        fontSize: 13,
     },
 }))(TableCell);
 
@@ -28,7 +28,7 @@ const StyledTableRow = withStyles((theme) => ({
 
 const useStyles = makeStyles({
     table: {
-        minWidth: 500,
+        minWidth: 400,
     },
 });
 
@@ -37,7 +37,7 @@ const useStyles = makeStyles({
 
 
 const OrderTable = (props) => {
-    const {ord} = props;
+    const {ord , setOrderID} = props;
     const classes = useStyles();
 
     const [page, setPage] = useState(0);
@@ -71,11 +71,11 @@ const OrderTable = (props) => {
                             <TableRow>
                                 {/* <StyledTableCell>ID</StyledTableCell> */}
 
-                                <StyledTableCell align="left">Order Id</StyledTableCell>
+                                <StyledTableCell className="w-2/5" align="left">Order Id</StyledTableCell>
                                 {/* <StyledTableCell align="left">Name</StyledTableCell> */}
-                                <StyledTableCell align="left">Date</StyledTableCell>
-                                <StyledTableCell align="left">Price</StyledTableCell>
-                                <StyledTableCell align="left">Status</StyledTableCell>
+                                <StyledTableCell className="w-1/5" align="left">Date</StyledTableCell>
+                                <StyledTableCell className="w-1/5" align="left">Price</StyledTableCell>
+                                <StyledTableCell className="w-1/5" align="left">Status</StyledTableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -84,7 +84,7 @@ const OrderTable = (props) => {
                             .map((item ) => (
                                     <StyledTableRow key={item.name} className={classes.tables}>
                                         {/* <StyledTableCell align="left">{i++}</StyledTableCell> */}
-                                        <StyledTableCell align="left">{item._id}
+                                        <StyledTableCell onClick={() => setOrderID(item._id)} align="left">{item._id}
                                         </StyledTableCell>
                                         {/* <StyledTableCell align="left">{item.user.name || "Product 101"}
                                         </StyledTableCell> */}

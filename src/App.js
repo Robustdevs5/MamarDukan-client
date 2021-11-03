@@ -64,6 +64,7 @@ import Terms from "./pages/T&C/T&C";
 import ConfirmOrder from "./pages/ConfirmOrder/ConfirmOrder";
 import Wishlist from "./pages/Wishlist/Wishlist";
 import Pants from "./Components/CatagoryProduct/Pants";
+import OrderReview from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Orders-SuperAdminDashboard/Order-Review/OrderReview";
 export const userContext = createContext();
 
 const api = axios.create({
@@ -145,7 +146,7 @@ function App() {
           <Route path="/super-admin/dashboard/massage/overview" component={SuperAdminMassage} />
           <Route path="/super-admin/dashboard/addproduct/overview" component={SuperAddProduct} />
           <Route path="/reports/orders" component={OrdersReport} />
-          
+          <Route path="/dashboard/overview/review" component={OrderReview} />
 
                 {/* Vendor Panel Dashboard */}
 

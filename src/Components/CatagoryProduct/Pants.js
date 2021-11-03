@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import Product from './Product';
 
 const Pants = () => {
-    const [product, setProduct] = useState([]);
+    const [product1, setProduct] = useState([]);
 
     useEffect(() => {
-        fetch(`https://mamardukan.herokuapp.com/products/catagory?=pants`)
+        fetch(`http://localhost:5000/products/catagory?=Man`)
             .then(res => res.json())
             .then(data => setProduct(data.products))
     }, [])
     return (
         <div>
-            <Product />
+            <Product product1={product1} />
         </div>
     );
 };

@@ -12,14 +12,16 @@ const Orders = () => {
     }, [])
 
     console.log("order 1" , ord)
+    const [OrderID , setOrderID] = useState("")
+    console.log("id id" , OrderID)
     return (
         <div>
             <div className="flex h-96 ">
                 <div className="left h-2/2 w-2/5 my-7 mx-3 bg-gray-300">
-                    <ShipingInfo />
+                    <ShipingInfo OrderID={OrderID} />
                 </div>
                 <div className="right h-2/2 w-3/5 my-7 mx-3 bg-gray-300">
-                    <OrderTable ord={ord} />
+                    <OrderTable setOrderID={setOrderID} ord={ord} />
                 </div>
             </div>
             <div className="">

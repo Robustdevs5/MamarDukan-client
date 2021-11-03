@@ -1,33 +1,45 @@
-import React from 'react';
-import TopBar from '../TopBar/TopBar';
-import Navbar from '../Navbar/Navbar/Navbar'
-import { FAQs } from './Data'
-import './FAQ.css'
-import Footer from '../Footer/Footer'
-import FooterCatagory from '../Footer/FooterCatagory';
-import Newsletter from '../Newsletter/Newsletter';
-
-
+import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
+import Navbar from "../Navbar/Navbar/Navbar";
+import TopBar from "../TopBar/TopBar";
+import { FAQs } from "./Data";
 
 const FAQS = () => {
-    return (
-        <div >
-            <TopBar />
-            <Navbar /><div className="FAQ">
-                <h1 className="text-center font-extrabold text-5xl pt-7 pb-7">Frequantly Ask Question</h1>
-                {
-                    FAQs.map((item, index) => <div className="Box p-6" key={index} item={item}>
-                        <h1 className="w-1/3 mx-auto "> {item.Title}</h1>
-                        <h3 className="w-1/3 mx-auto "> {item.H1}</h3>
-                        <p className="w-1/3 mx-auto "> {item.Pteg}</p>
+    console.log("data faq " , FAQs);
+  return (
+    <>
+      <TopBar />
+      <Header />
+      <Navbar />
 
-                    </div>)
-                }
-            </div>
-            <FooterCatagory />
-            <Newsletter />
-            <Footer />
-        </div>
-    );
+      <div className="w-full text-center justify-center item-center ">
+        <h1 className="font-bold text-5xl text-gray-700 py-16">
+        FAQS        </h1>
+      </div>
+      <div className="container mx-auto px-4">
+        <div className="w-full md:w-10/12 mx-auto pt-8 pb-16 text-lg">
+          {
+              FAQs.map((item) => {
+                  return(
+                  <div  item={item} >
+                <h1 className="my-10 font-semibold text-2xl md:text-3xl font-heading text-grey-500">
+                {item.Title ? item.Title : ""}
+                </h1>
+                <p className="font-bold mt-4 text-xl">
+                {item.H1}
+             </p>
+                <p className="mt-4 text-xl">{item.Pteg}
+              </p>
+              </div>)
+              })
+          }
+                
+         </div>
+      </div>
+
+      <Footer />
+    </>
+  );
 };
+
 export default FAQS;

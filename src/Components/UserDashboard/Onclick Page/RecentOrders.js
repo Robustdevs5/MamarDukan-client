@@ -12,7 +12,7 @@ const StyledTableCell = withStyles((theme) => ({
         color: theme.palette.common.black,
     },
     body: {
-        fontSize: 14,
+        fontSize: 15,
     },
 }))(TableCell);
 
@@ -71,7 +71,7 @@ const RecentOrders = (props) => {
                                 {/* <StyledTableCell>ID</StyledTableCell> */}
 
                                 <StyledTableCell align="left">Order Id</StyledTableCell>
-                                <StyledTableCell align="left">Name</StyledTableCell>
+                                {/* <StyledTableCell align="left">Name</StyledTableCell> */}
                                 <StyledTableCell align="left">Date</StyledTableCell>
                                 <StyledTableCell align="left">Price</StyledTableCell>
                                 <StyledTableCell align="left">Status</StyledTableCell>
@@ -85,8 +85,8 @@ const RecentOrders = (props) => {
                                         {/* <StyledTableCell align="left">{i++}</StyledTableCell> */}
                                         <StyledTableCell align="left">{item._id}
                                         </StyledTableCell>
-                                        <StyledTableCell align="left">{item.Name || "Product 101"}
-                                        </StyledTableCell>
+                                        {/* <StyledTableCell align="left">{item.Name || "Product 101"}
+                                        </StyledTableCell> */}
                                         <StyledTableCell align="left">{item.order.orderDate}
                                         </StyledTableCell>
                                         <StyledTableCell align="left">{item.order.price}

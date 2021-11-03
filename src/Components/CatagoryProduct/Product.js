@@ -7,7 +7,7 @@ import { TablePagination } from '@mui/material';
 
 const Product = (props) => {
 
-    const [product] = props;
+    const {product1} = props;
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(12);
     const history = useHistory();
@@ -33,7 +33,7 @@ const Product = (props) => {
 
     return (
         <div className="grid gap-12 grid-cols-4">
-            {product
+            {product1
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map(product =>
                     <div className="p-2">
@@ -68,7 +68,7 @@ const Product = (props) => {
                 // className="flex items-end justify-end"
                 rowsPerPageOptions={[]}
                 component="div"
-                count={product.length}
+                count={product1.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 onPageChange={handleChangePage}
