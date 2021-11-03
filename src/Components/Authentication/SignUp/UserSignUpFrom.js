@@ -1,8 +1,5 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { AiFillMail } from "react-icons/ai"
-import { BsLockFill } from "react-icons/bs"
-import { TiTick } from "react-icons/ti"
 // import  '../../StyledComponent/Signup.css';
 const UserSignUpFrom = () => {
     const {
@@ -34,7 +31,7 @@ const UserSignUpFrom = () => {
       }
 
     return (
-        <form onSubmit={handleSubmit(handleSignup)} autoComplete="off" className="">
+        <form onSubmit={handleSubmit(handleSignup)} autoComplete="off" id="registration" className="">
           <h1>Vendor Registration form</h1>
           <span>use your email for registration</span>
             <input type="text" placeholder="Name" />

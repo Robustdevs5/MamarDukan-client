@@ -58,7 +58,7 @@ const BlogDetails = () => {
             <div className="w-full lg:w-8/12"> 
                 <div className="w-full mx-auto pb-8">
                     <div className="relative overflow-hidden rounded-2xl">
-                    <img className="w-full h-full inset-0 object-cover" src={blog.img} alt="{blog.name}" />
+                    <img className="w-full h-full inset-0 object-cover" src={blog.img} alt={blog.name} />
                     </div>
                 </div>   
                 <article className="">

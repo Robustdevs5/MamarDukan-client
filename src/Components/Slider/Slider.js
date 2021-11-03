@@ -30,8 +30,8 @@ const Sliders = () => {
                         </div>
                         <div className="slider-blog-content">
                             <h2>Welcome To Mamar Dukan</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, deserunt!</p>
-                            <button className="bg-yellow-500 hover:bg-blue-700 text-gray-800 hover:text-blue-50 font-bold py-3 px-6 rounded-full">Shop Now</button>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            <button className="primary_BTN py-3 px-6 rounded-full">Shop Now</button>
                         </div>
                     </div>
                     <div className="sin-slider-blog cursor-pointer">
@@ -40,8 +40,8 @@ const Sliders = () => {
                         </div>
                         <div className="slider-blog-content">
                             <h2>Welcome To Mamar Dukan</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, deserunt!</p>
-                            <button className="bg-yellow-500 hover:bg-blue-700 text-gray-800 hover:text-blue-50 font-bold py-3 px-6 rounded-full">Shop Now</button>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            <button className="primary_BTN font-bold py-3 px-6 rounded-full">Shop Now</button>
                         </div>
                     </div>
                     <div className="sin-slider-blog cursor-pointer">
@@ -50,8 +50,8 @@ const Sliders = () => {
                         </div>
                         <div className="slider-blog-content">
                             <h2>Welcome To Mamar Dukan</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, deserunt!</p>
-                            <button className="bg-yellow-500 hover:bg-blue-700 text-gray-800 hover:text-blue-50 font-bold py-3 px-6 rounded-full">Shop Now</button>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            <button className="primary_BTN font-bold py-3 px-6 rounded-full">Shop Now</button>
                         </div>
                     </div>
                 </Slider>

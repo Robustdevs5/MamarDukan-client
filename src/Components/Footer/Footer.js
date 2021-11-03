@@ -23,7 +23,7 @@ const Footer = () => {
         {name: "Returns & refunds" , link: "/return-and-refund"},
         {name: "Join with Affiliate" , link: "/affiliates"},
         {name: "Careers" , link: "/careers"},
-        {name: "Sell on mamar dukan" , link: "/seller"},
+        {name: "Sell on mamar dukan" , link: "/register/#registration"},
     ]
     const services = [
         {name: "About Mamar Dukan" , link: "/about"},

@@ -1,15 +1,16 @@
 import React, { useContext, useState } from 'react';
-import AccountInformation from './Onclick Page/AccountInformation';
-import UpdateProfile from './Onclick Page/UpdateProfile';
-import Orders from './Onclick Page/Orders';
-import Address from './Onclick Page/Address';
-import ChangePassword from './Onclick Page/ChangePassword';
-import Vendor from './Onclick Page/Vendor';
-import "./userDashboard.css";
-import { BsListCheck, BsPencilSquare, BsCart } from 'react-icons/bs';
+import { BsListCheck, BsPencilSquare } from 'react-icons/bs';
 import { FaCartPlus, FaLock, FaMapMarkerAlt, FaRegUser } from 'react-icons/fa';
 import { IoMdLogOut } from 'react-icons/io';
 import { userContext } from '../../App';
+import AccountInformation from './Onclick Page/AccountInformation';
+import Address from './Onclick Page/Address';
+import ChangePassword from './Onclick Page/ChangePassword';
+import Orders from './Onclick Page/Orders';
+import Report from './Onclick Page/Report';
+import UpdateProfile from './Onclick Page/UpdateProfile';
+import Vendor from './Onclick Page/Vendor';
+import "./userDashboard.css";
 
 
 
@@ -46,7 +47,13 @@ const Sidebar = () => {
             Title: 'Vendor',
             name: 'Become A Vendor',
             icon: <FaCartPlus className="h-6 w-5 mx-3 fill-current"></FaCartPlus>
-        }, {
+        }, 
+        {
+            Title: 'Report',
+            name: 'Report',
+            icon: <IoMdLogOut className="h-6 w-5 mx-3 fill-current"></IoMdLogOut>
+        },
+        {
             Title: 'Logout',
             name: 'Logout',
             icon: <IoMdLogOut className="h-6 w-5 mx-3 fill-current"></IoMdLogOut>
@@ -99,6 +106,7 @@ const Sidebar = () => {
                     {active === 'Address' && <Address />}
                     {active === 'Password' && <ChangePassword />}
                     {active === 'Vendor' && <Vendor />}
+                    {active === 'Report' && <Report />}
                     {active === 'Logout' && <Vendor />}
                 </div>
             </div>

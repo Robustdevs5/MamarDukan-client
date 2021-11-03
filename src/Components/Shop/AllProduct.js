@@ -1,7 +1,7 @@
+import { TablePagination } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import star from "../../images/5star.png";
-import { TablePagination } from '@mui/material';
 
 
 
@@ -9,7 +9,7 @@ const AllProduct = () => {
 
     const [product, setProduct] = useState([]);
     const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = useState(12);
+    const [rowsPerPage, setRowsPerPage] = useState(15);
     const history = useHistory();
 
 
@@ -38,13 +38,14 @@ const AllProduct = () => {
 
 
     return (
-        <div className="grid gap-12 grid-cols-4">
+        <>
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
             {product
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map(product =>
-                    <div className="p-2">
+                    <div className="p-2 bg-white">
 
-                        <div className="mb-4 w-44 h-44">
+                        <div className="mb-4 w-full h-full md:w-44 md:h-44">
                             <img onClick={() => handleProductClick(product._id)} className="rounded cursor-pointer h-full w-full" src={product.img} alt="8192" />
                         </div>
 
@@ -69,19 +70,24 @@ const AllProduct = () => {
                     </div>
                 )
             }
-
-            <TablePagination
-                // className="flex items-end justify-end"
-                rowsPerPageOptions={[]}
-                component="div"
-                count={product.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-                checkboxSelection
-            />
+            
         </div>
+        <section className="w-full block">
+        <div className="flex items-center justify-center">
+        <TablePagination
+            // className="flex items-end justify-end"
+            rowsPerPageOptions={[]}
+            component="div"
+            count={product.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+            checkboxSelection
+        />
+        </div>
+        </section>      
+        </>
     );
 };
 

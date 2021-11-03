@@ -153,7 +153,7 @@ const Contact = () => {
               </div>
               <div className="md:flex md:items-center">
                 <div className="md:w-1/3">
-                  <button className="btn shadow bg-red-400 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+                  <button className="btn shadow bg-custom hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
                     Send
                   </button>
                 </div>
