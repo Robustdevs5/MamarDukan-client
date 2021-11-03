@@ -3,7 +3,7 @@ import { userContext } from '../App';
 import { getCompareToDb } from '../Components/Cart/CompareCart/CompareCartDatabase';
 
 const useCompareCart = product => {
-    const [CompareCart, SetCompareCart] = useState();
+    const [CompareCart, SetCompareCart] = useState([]);
     useEffect(() => {
 
         if (product.length) {

@@ -26,31 +26,8 @@ const TopBar = () => {
   console.log(' SetWishlistCart', wishlistCart)
   const { CompareCart} = useContext(userContext);
   const { user, setUser } = useContext(userContext);
-  // const { cart, setCart } = useContext(userContext);
-  // const [ cart ] = useCart();
-  const [products, setProducts] = useProducts(); 
-  console.log('products',products.products )
-  const [cartItem, setCartItem] = useState(products);
-  // let cartItem 
-  const [cart, setCart] = useCart(products.products);
-  
- 
-  console.log('cart cart',cart )
-  console.log('cart cartItem', cartItem )
-//   console.log('cartItem',cartItem )
+  const { cart, setCart } = useContext(userContext);
 
-//   setTimeout(() => {
-
-//     if(products){
-//     cartItem = products
-//     }
-
-// }, 3000);
-
-//   useEffect(() => {
-    
-// }, []);
-  // const { cart } = useContext(userContext);
   let history = useHistory();
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/login" } };

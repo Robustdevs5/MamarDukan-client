@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
+import { Loader } from '../../Components/Loader/Loader';
 import Navbar from '../../Components/Navbar/Navbar/Navbar';
 import TopBar from '../../Components/TopBar/TopBar';
 
@@ -41,7 +42,7 @@ const Blogs = () => {
       <Navbar />
       <div className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
         <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
-        {
+        { blogs &&
           blogs
           .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
           .map(blog =>
@@ -73,7 +74,7 @@ const Blogs = () => {
         )}
           <small className="mb-16"></small>
 
-          {blogs.length > 2 ?
+          {blogs && blogs.length > 2 ?
               <TablePagination
                   // className=""
                   rowsPerPageOptions={[]}
@@ -89,6 +90,7 @@ const Blogs = () => {
           }
         </div>
       </div>
+      { !blogs && <Loader/>}
       <Footer />
     </>
   );
