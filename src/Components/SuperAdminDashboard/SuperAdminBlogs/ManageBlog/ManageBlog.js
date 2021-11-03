@@ -129,7 +129,7 @@ const ManageBlog = () => {
                                         .map((blog) => (
                                             <StyledTableRow key={blog.name} className={classes.tables}>
                                                 <StyledTableCell align="left">{blog.name}</StyledTableCell>
-                                                <StyledTableCell align="left"><img className="w-32" src={blog.img} alt={blog.name} /></StyledTableCell>
+                                                <StyledTableCell align="left"><img className="w-20" src={blog.img} alt={blog.name} /></StyledTableCell>
                                                 <StyledTableCell align="left">{blog.category}</StyledTableCell>
 
                                                 <StyledTableCell align="left">
