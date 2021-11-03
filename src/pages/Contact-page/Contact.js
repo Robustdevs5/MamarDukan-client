@@ -6,8 +6,8 @@ import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar/Navbar';
 import TopBar from '../../Components/TopBar/TopBar';
-import ContactFrom from './ContactFrom';
 import './Contact.css';
+import ContactFrom from './ContactFrom';
 
 const Contact = () => {
     return (

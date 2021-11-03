@@ -88,8 +88,7 @@ const Terms = () => {
             agreement.{" "}
           </p>
         </div>
-      </div>
-
+        </div>
       <Footer />
     </>
   );

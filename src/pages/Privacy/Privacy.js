@@ -115,8 +115,7 @@ This website uses Google Analytics, a web analytics service provided by Google, 
             ut euismod arcu urna a lectus. Mauris at dapibus metus.
           </p>
         </div>
-      </div>
-
+        </div>
       <Footer />
     </>
   );
