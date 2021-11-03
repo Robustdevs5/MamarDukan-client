@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import star from "../../images/5star.png";
+import CartButton from '../Cart/CartButton/CartButton';
 import { FeaturedProducts } from '../HomepageProductData/HomepageProductData';
 import '../StyledComponent/SliderNextandPrevs.css';
 
@@ -96,10 +97,17 @@ const FeaturedProduct = () => {
 
                 {
                     featuredProduct.map(featuredProduct =>
-                        <div key={featuredProduct._id} className="p-2">
+                        <div key={featuredProduct._id} className="p-2 group relative ">
 
-                            <div className="mb-4 w-40 h-40">
+                            <div className="overflow-x-hidden relative mb-4 w-40 h-40">
                                 <img onClick={() => handleProductClick(featuredProduct._id)} className="rounded cursor-pointer h-full w-full" src={featuredProduct.img} alt="8192" />
+                                <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
+                                            <span className="font-bold">Sale</span>
+                                        </div>
+                                        <div className="w-full bottom-0 flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
+                                            <CartButton cartProduct={featuredProduct}/>
+        
+                                        </div>
                             </div>
 
                             <div className="flex py-3">
