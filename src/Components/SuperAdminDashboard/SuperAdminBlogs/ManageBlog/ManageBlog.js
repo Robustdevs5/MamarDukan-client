@@ -4,6 +4,7 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
+import { toast, ToastContainer } from 'react-toastify';
 import { DashboardContainer } from '../../Style/AddSuperAdminStyle';
 import SuperAdminSidebar from '../../SuperAdminSidebar/SuperAdminSidebar';
 import TopbarSuperAdminDashboard from '../../Topbar-SuperAdminDashboard/TopbarSuperAdminDashboard';
@@ -65,7 +66,7 @@ const ManageBlog = () => {
     const deleted = () => {
         fetch(`http://localhost:5000/blogs`)
             .then(res => res.json())
-            .then(data => setBlogs(data.products))
+            .then(data => setBlogs(data.blog))
     }
 
 
@@ -76,7 +77,9 @@ const ManageBlog = () => {
             .then(res => res.json())
             .then(data => {
                 if (data) {
-                    // alert('Product Deleted')
+                    toast.success("Blog Deleted Successfully", {
+                        position: "bottom-right",
+                    });
                     deleted();
                 }
             })
@@ -115,6 +118,7 @@ const ManageBlog = () => {
                                     <TableRow>
 
                                         <StyledTableCell align="left">Name</StyledTableCell>
+                                        <StyledTableCell align="left">Image</StyledTableCell>
                                         <StyledTableCell align="left">Category</StyledTableCell>
                                         <StyledTableCell align="right" className="">Action</StyledTableCell>
                                     </TableRow>
@@ -125,6 +129,7 @@ const ManageBlog = () => {
                                         .map((blog) => (
                                             <StyledTableRow key={blog.name} className={classes.tables}>
                                                 <StyledTableCell align="left">{blog.name}</StyledTableCell>
+                                                <StyledTableCell align="left"><img className="w-32" src={blog.img} alt={blog.name} /></StyledTableCell>
                                                 <StyledTableCell align="left">{blog.category}</StyledTableCell>
 
                                                 <StyledTableCell align="left">
@@ -156,21 +161,21 @@ const ManageBlog = () => {
                                 </TableBody>
                             </Table>
                         </TableContainer>
-
-                        <TablePagination
-                            rowsPerPageOptions={[]}
-                            component="div"
-                            count={blogs.length}
-                            rowsPerPage={rowsPerPage}
-                            page={page}
-                            onPageChange={handleChangePage}
-                            onRowsPerPageChange={handleChangeRowsPerPage}
-                            checkboxSelection
-                        />
-
+                        <div className="flex items-center justify-center text-white">
+                            <TablePagination
+                                rowsPerPageOptions={[]}
+                                component="div"
+                                count={blogs.length}
+                                rowsPerPage={rowsPerPage}
+                                page={page}
+                                onPageChange={handleChangePage}
+                                onRowsPerPageChange={handleChangeRowsPerPage}
+                                checkboxSelection
+                            />
+                        </div>
                     </div>
 
-
+                    <ToastContainer />                                
                 </div>
             </div>
             </DashboardContainer>

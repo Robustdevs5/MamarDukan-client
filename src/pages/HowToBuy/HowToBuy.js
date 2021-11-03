@@ -41,7 +41,7 @@ const HowToBuy = () => {
                         <div className="h-full w-1 bg-green-900 pointer-events-none"></div>
                         </div>
                         <div className="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-green-900 shadow text-center">
-                        <i className="fas fa-check-circle text-white">1</i>
+                        <i className="fas fa-check-circle text-white">2</i>
                         </div>
                     </div>
                     <div className="bg-green-900 col-start-4 col-end-12 p-4 rounded-xl my-4 mr-auto shadow-md w-full">
@@ -55,7 +55,7 @@ const HowToBuy = () => {
                         <div className="h-full w-1 bg-green-800 pointer-events-none"></div>
                         </div>
                         <div className="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-green-800 shadow text-center">
-                        <i className="fas fa-check-circle text-white">2</i>
+                        <i className="fas fa-check-circle text-white">3</i>
                         </div>
                     </div>
                     <div className="bg-green-800 col-start-4 col-end-12 p-4 rounded-xl my-4 mr-auto shadow-md w-full">
@@ -68,7 +68,7 @@ const HowToBuy = () => {
                         <div className="h-full w-1 bg-green-700 pointer-events-none"></div>
                         </div>
                         <div className="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-green-700 shadow text-center">
-                        <i className="fas fa-check-circle text-white">3</i>
+                        <i className="fas fa-check-circle text-white">4</i>
                         </div>
                     </div>
                     <div className="bg-green-700 col-start-4 col-end-12 p-4 rounded-xl my-4 mr-auto shadow-md w-full">
@@ -81,7 +81,7 @@ const HowToBuy = () => {
                         <div className="h-full w-1 bg-green-600 pointer-events-none"></div>
                         </div>
                         <div className="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-green-600 shadow text-center">
-                        <i className="fas fa-check-circle text-white">4</i>
+                        <i className="fas fa-check-circle text-white">5</i>
                         </div>
                     </div>
                     <div className="bg-green-600 col-start-4 col-end-12 p-4 rounded-xl my-4 mr-auto shadow-md w-full">
@@ -94,7 +94,7 @@ const HowToBuy = () => {
                         <div className="h-full w-1 bg-green-500 pointer-events-none"></div>
                         </div>
                         <div className="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-green-500 shadow text-center">
-                        <i className="fas fa-check-circle text-white">5</i>
+                        <i className="fas fa-check-circle text-white">6</i>
                         </div>
                     </div>
                     <div className="bg-green-500 col-start-4 col-end-12 p-4 rounded-xl my-4 mr-auto shadow-md w-full">
@@ -107,7 +107,7 @@ const HowToBuy = () => {
                         <div className="h-full w-1 bg-green-400 pointer-events-none"></div>
                         </div>
                         <div className="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-green-400 shadow text-center">
-                        <i className="fas fa-check-circle text-white">6</i>
+                        <i className="fas fa-check-circle text-white">7</i>
                         </div>
                     </div>
                     <div className="bg-green-400 col-start-4 col-end-12 p-4 rounded-xl my-4 mr-auto shadow-md w-full">
@@ -121,7 +121,7 @@ const HowToBuy = () => {
                         <div className="h-full w-1 bg-custom pointer-events-none"></div>
                         </div>
                         <div className="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-custom shadow text-center">
-                        <i className="fas fa-exclamation-circle text-gray-400">7</i>
+                        <i className="fas fa-exclamation-circle text-gray-400">8</i>
                         </div>
                     </div>
                     <div className="bg-custom col-start-4 col-end-12 p-4 rounded-xl my-4 mr-auto shadow-md w-full">

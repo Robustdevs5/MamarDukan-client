@@ -13,7 +13,6 @@ import NewProducts from "../../Components/NewProducts/NewProducts";
 import { Policies } from "../../Components/Policies/Policies";
 import Slider from "../../Components/Slider/Slider";
 import SummerStyles from "../../Components/SummerStyles/SummerStyles";
-import TechnologyProducts from "../../Components/TechnologyProducts/TechnologyProducts";
 import TopBar from "../../Components/TopBar/TopBar";
 
 const HomePage = () => {
@@ -26,7 +25,6 @@ const HomePage = () => {
       <NewProducts />
       <FeaturedProduct />
       <NewArrivalProduct />
-      <TechnologyProducts />
       <BestRatedProduct />
       <FlashSaleProducts />
       <HomePageBanner />

@@ -1,10 +1,8 @@
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import star from "../../images/5star.png";
-import { useHistory } from 'react-router';
 import { MostViewedProduct } from '../HomepageProductData/HomepageProductData';
 
 
@@ -20,34 +18,6 @@ const MostViewedProducts = () => {
     }, [])
     // console.log(mostViewedProduct);
 
-
-    function SampleNextArrow(props) {
-        const { className, style, onClick } = props;
-        return (
-            <div className={className}
-                style={{ ...style, display: "block" }}
-                onClick={onClick} >
-
-                <KeyboardArrowRightIcon className="arrow" color="primary" />
-
-            </div>
-        );
-    }
-
-    function SamplePrevArrow(props) {
-        const { className, style, onClick } = props;
-        return (
-            <div className={className}
-                style={{ ...style, display: "block" }}
-                onClick={onClick} >
-
-                <KeyboardArrowLeftIcon className="arrow" color="primary" />
-
-            </div>
-        );
-    }
-
-
     const settings = {
         className: "center",
         dots: false,
@@ -60,8 +30,8 @@ const MostViewedProducts = () => {
         autoplaySpeed: 3000,
         autoplay: true,
         pauseOnHover: true,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />,
+        //nextArrow: <SampleNextArrow />,
+        //prevArrow: <SamplePrevArrow />,
 
         responsive: [
             {

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { toast, ToastContainer } from 'react-toastify';
 import { DashboardContainer } from '../../Style/AddSuperAdminStyle';
 import SuperAdminSidebar from '../../SuperAdminSidebar/SuperAdminSidebar';
 import TopbarSuperAdminDashboard from '../../Topbar-SuperAdminDashboard/TopbarSuperAdminDashboard';
@@ -18,7 +19,7 @@ const UpdateBlog = () => {
     useEffect(() => {
         fetch(`http://localhost:5000/blogs/${id}`)
         .then(res => res.json())
-        .then(data => setBlog(data.blog))
+        .then(data => setBlog(data.result))
     }, [id])
 
     const handleSubmit = e => {
@@ -43,8 +44,10 @@ const UpdateBlog = () => {
             .then(res => res.json())
             .then(data => {
                 if (data) {
+                    toast.success("Blog Updated Successfully", {
+                        position: "bottom-right",
+                    });
                     setDbStatus(data);
-                    alert('Blog Updated');
                 }
             })
         e.preventDefault();
@@ -157,7 +160,7 @@ const UpdateBlog = () => {
                                     >
                                         Description
                                     </label>
-                                    <input
+                                    <textarea
                                         class="shadow appearance-none h-24 border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
                                         type="textarea"
                                         name="description"
@@ -177,6 +180,7 @@ const UpdateBlog = () => {
                     </section>
                 </div>
                 </DashboardContainer>
+                <ToastContainer /> 
             </div>
         </>
     );

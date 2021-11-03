@@ -35,6 +35,7 @@ import SuperAdminManageUser from "./Components/SuperAdminDashboard/SuperAdminMan
 import VendorSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Vendor-SuperAdminDashboard/VendorSuperAdminDashboard";
 import TrackOrder from './Components/TrackOrder/TrackOrder';
 import Dashboard from './Components/UserDashboard/Dashboard';
+import VendorSupport from "./Components/VendorDashboard/Support/Support";
 import VendorAddProduct from "./Components/VendorDashboard/VendorAddProduct/VendorAddProduct";
 import VendorAllProducts from "./Components/VendorDashboard/VendorAllProducts/VendorAllProducts";
 import VendorProductOverview from "./Components/VendorDashboard/VendorAllProducts/VendorProductOverview";
@@ -166,6 +167,7 @@ function App() {
           <Route path="/vendor/dashboard/stock-status" component={VendorStockStatus }/>
           <Route path="/vendor/dashboard/reports" component={VendorReport }/>
           <Route path="/vendor/dashboard/messages" component={VendorMessage }/>
+          <Route path="/vendor/dashboard/support" component={VendorSupport }/>
           
           <Route path="/checkout" component={CheckoutPage }/>
           <Route path="/Confirm-order" component={ConfirmOrder }/>
