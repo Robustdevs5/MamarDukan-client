@@ -162,7 +162,7 @@ const SignUP = () => {
                     )}
                     <input type="password" name="password" className="form-control"
                         {...register('password', { required: true, minLength: 6, pattern: /\d{1}/ })}
-                        placeholder="Your Password" onBlur={handleBlur}
+                        placeholder="Your Password" 
                     />
                     {errors.password && (
                         <span className="error">
@@ -178,7 +178,7 @@ const SignUP = () => {
 
                     <input type="password" name="confirmPassword"
                         {...register('confirmPassword', { required: true, minLength: 6, pattern: /\d{1}/ })}
-                        placeholder="Confirm Your Password" className="form-control" onChange={handleBlur}
+                        placeholder="Confirm Your Password" className="form-control" onChange={handleBlur(e)}
                     />
                     {errors.confirmPassword && (
                         <span className="error">
