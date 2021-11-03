@@ -16,16 +16,16 @@ const Orders = () => {
     console.log("id id" , OrderID)
     return (
         <div>
-            <div className="flex h-96 ">
-                <div className="left h-2/2 w-2/5 my-7 mx-3 bg-gray-300">
+            {/* <div className="flex h-96 ">
+                {/* <div className="left h-2/2 w-2/5 my-7 mx-3 bg-gray-300">
                     <ShipingInfo OrderID={OrderID} />
-                </div>
-                <div className="right h-2/2 w-3/5 my-7 mx-3 bg-gray-300">
+                </div> */}
+                {/* <div className="right h-2/2 w-3/5 my-7 mx-3 bg-gray-300">
                     <OrderTable setOrderID={setOrderID} ord={ord} />
-                </div>
-            </div>
+                </div> */}
+            {/* </div> */} 
             <div className="">
-                <RecentOrders ord={ord} />
+                <RecentOrders setOrderID={setOrderID} ord={ord} />
             </div>
         </div>
     );

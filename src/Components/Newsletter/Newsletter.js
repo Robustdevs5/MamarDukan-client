@@ -2,10 +2,36 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
+import { toast, ToastContainer } from 'react-toastify';
+import { useForm } from 'react-hook-form';
 
 const Newsletter = () => {
+    
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = (data) => {
+        const newsletterDetail = { 
+            name: "From Newsletter",
+            email: data.email
+        }
+        fetch('http://localhost:5000/message', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newsletterDetail)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data){                
+                toast.success(data.message, {
+                    position: "bottom-right",
+                });
+            }
+        })
+    }
+    
     return (
-        <div className="primary_BG_color mx-auto pl-5">
+        <section className="primary_BG_color mx-auto pl-5">
             <dl className=" space-y-10 my-8 p-5 md:space-y-0  md:gap-x-8 md:gap-y-10">
                 <div className="md:grid md:grid-cols-2 py-8 relative items-center">
                     <div>
@@ -18,20 +44,25 @@ const Newsletter = () => {
                             Sign up for our newsletter to stay up to date.
                         </article>
                     </div>
+
                     <div className='md:pt-0 pt-3'>
-                        <from className=" tracking-tight md:justify-center md:flex">
-                            <input 
-                                type='email' placeholder='Email' 
-                                className="px-5 w-80 mr-5 h-10 focus:outline-none rounded "
-                            />
-                            <button className='items-center rounded py-2 md:mt-0 mt-2 px-5 primary_BTN capitalize font-bold'>
+                        <form onSubmit={handleSubmit(onSubmit)} className=" tracking-tight md:justify-center md:flex">
+                            
+                            <div className=" flex-row ">
+                                <input name="Last Name" type="text" placeholder="Last Name" 
+                                        {...register("Name", {required: true})}
+                                        className="px-5 w-80 mr-5 h-10 focus:outline-none rounded" />
+                                    <span className="text-red-500">{errors.lastName?.type === 'required' && "Last name is required"}</span>
+                            </div>
+
+                            <button className='h-10 items-center rounded py-2 md:mt-0 mt-2 px-5 primary_BTN capitalize font-bold'>
                                 <div className='flex items-center'>
                                     <FontAwesomeIcon className="mr-3" icon={faLocationArrow} />
                                     <p>Notify me</p>
                                 </div>
                             </button>
                         
-                        </from>
+                        </form>
                     
                         <article className="md:text-center p-3 tracking-tight text-gray-200 ">
                              We care about the protection of your data. Read our
@@ -40,7 +71,8 @@ const Newsletter = () => {
                     </div>
                 </div>
             </dl>
-        </div>
+            <ToastContainer/>
+        </section>
     );
 };
 
