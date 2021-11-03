@@ -1,11 +1,9 @@
-import { faEye, faHeart } from '@fortawesome/free-regular-svg-icons';
-import { faChartBar, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { Fragment } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import useShuffleProducts from '../../hooks/useShuffleProducts';
 import star from "../../images/5star.png";
+import CartButton from '../Cart/CartButton/CartButton';
 import { ComputerTechnology } from '../HomepageProductData/HomepageProductData';
 import { Loader } from '../Loader/Loader';
 
@@ -91,32 +89,8 @@ const BestRatedProduct = () => {
                                             <span className="font-bold">Sale</span>
                                         </div>
                                         <div className="w-full bottom-0 flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
-                    
-                                                        <button
-                                                            className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                                        >
-                                                            <FontAwesomeIcon icon={faShoppingBag} />
-                                                        </button>
-                    
-                                                        <button
-                                                            className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                                        >
-                                                            <FontAwesomeIcon icon={faEye} />
-                                                        </button>
-                    
-                                                        <button
-                                                            className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                                        >
-                                                            <FontAwesomeIcon icon={faHeart} />
-                                                        </button >
-                    
-                                                        <button
-                                                            className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                                        >
-                                                            <FontAwesomeIcon icon={faChartBar} />
-                                                        </button>
-                    
-                                                    </div>
+                                            <CartButton cartProduct={firstFiveProducts}/>
+                                        </div>
                                     </div>
                                     <div className="px-3">
                                         <div className="flex py-3">
