@@ -1,6 +1,6 @@
 import React from 'react';
-import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
+import * as FaIcons from 'react-icons/fa';
 import * as IoIcons from 'react-icons/io';
 import * as RiIcons from 'react-icons/ri';
 
@@ -81,6 +81,26 @@ export const SidebarData = [
       {
         title: 'Add Product',
         path: '/super-admin/dashboard/addproduct/overview',
+        icon: <IoIcons.IoIosPaper />
+      }
+    ]
+  },
+  {
+    title: 'Blogs',
+    path: '/super-admin/dashboard/blogs/overview',
+    icon: <FaIcons.FaCartPlus />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
+
+    subNav: [
+      {
+        title: 'Blog Overview',
+        path: '/super-admin/dashboard/blogs/overview',
+        icon: <IoIcons.IoIosPaper />
+      },
+      {
+        title: 'Add New Blog',
+        path: '/super-admin/dashboard/blogs/addBlog',
         icon: <IoIcons.IoIosPaper />
       }
     ]

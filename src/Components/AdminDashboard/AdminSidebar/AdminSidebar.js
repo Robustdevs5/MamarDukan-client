@@ -45,6 +45,28 @@ const AdminSidebar = () => {
                     ></FontAwesomeIcon>{" "}
                     Manage Product
                 </button>
+                <br />
+                <button
+                    className="group  bg-gray-500 hover:bg-pink-600 focus:bg-blue-500 border-0 m-4 p-4  rounded-2xl"
+                    onClick={() => history.push("/addBlog")}
+                >
+                    <FontAwesomeIcon
+                        className="text-light"
+                        icon={faWindows}
+                    ></FontAwesomeIcon>{" "}
+                    Add Blog
+                </button>
+                <br />
+                <button
+                    className="group  bg-gray-500 hover:bg-pink-600 focus:bg-blue-500 border-0 m-4 p-4  rounded-2xl"
+                    onClick={() => history.push("/manageBlog")}
+                >
+                    <FontAwesomeIcon
+                        className="text-light"
+                        icon={faWindows}
+                    ></FontAwesomeIcon>{" "}
+                    Manage Blog
+                </button>
             </div>
         </div>
     );

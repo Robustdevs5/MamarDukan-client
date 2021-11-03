@@ -1,14 +1,13 @@
+import { TablePagination } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import '../Style/style-superadmindashboard.css'
-import { TableBodyData, TableHeadData, TableBodyRow, Table, DashboardTitle } from '../Style/AddSuperAdminStyle';
-import { SidebarData } from './TableTitle';
 import { AiFillDelete, AiFillEdit, AiFillEye } from "react-icons/ai";
 import { ImSearch } from 'react-icons/im';
 import { ToastContainer } from 'react-toastify';
+import { DashboardTitle, Table, TableBodyData, TableBodyRow, TableHeadData } from '../Style/AddSuperAdminStyle';
+import '../Style/style-superadmindashboard.css';
 import OrderDeleteModal from './OrderDeleteModal';
-import { useHistory } from 'react-router';
 import OrderStatusModal from './OrderStatusModal';
-import Jahid from './Jahid';
+import { SidebarData } from './TableTitle';
 
 
 const RecentOrdersSuperAdminDashboard = () => {
@@ -20,8 +19,18 @@ const RecentOrdersSuperAdminDashboard = () => {
     const [modalUpdateStatus, setModalUpdateStatus] = useState(false);
     const [deleteId, setDeleteId] = useState(null);
     const [updateId, setUpdateId] = useState(null);
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
 
+    // pagination................................
+    const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(event.target.value);
+        setPage(0);
+    };
 
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+    };
 
 
     const filterData = (e) => {
@@ -161,7 +170,9 @@ const RecentOrdersSuperAdminDashboard = () => {
                                 </TableBodyRow>
                             })
                             :
-                            products.map((item, index) => {
+                            products
+                            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                            .map((item, index) => {
                                 return <TableBodyRow item={item} key={index} >
 
                                     <TableBodyData>{item.color}</TableBodyData>
@@ -220,8 +231,18 @@ const RecentOrdersSuperAdminDashboard = () => {
                 updateId={updateId}
                 deleted={deleted}
             />}
-
-
+            <div className="flex items-center justify-center">
+                <TablePagination
+                    rowsPerPageOptions={[]}
+                    component="div"
+                    count={products.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onPageChange={handleChangePage}
+                    onRowsPerPageChange={handleChangeRowsPerPage}
+                    checkboxSelection
+                />
+            </div>
             <ToastContainer />
         </div>
     );

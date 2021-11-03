@@ -115,7 +115,7 @@ const Contact = () => {
           <div className="flex flex-wrap">
             <div className="w-full md:w-6/12 px-4 text-center">
               <div className="w-full h-full bg-center bg-cover">
-                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1267&amp;q=80" />
+                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1267&amp;q=80" alt="Contact team member" />
               </div>          
             </div>
             <div className="w-full md:w-6/12 px-4 text-center">

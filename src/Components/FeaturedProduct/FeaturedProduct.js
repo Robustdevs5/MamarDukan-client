@@ -1,13 +1,11 @@
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import star from "../../images/5star.png";
 import { FeaturedProducts } from '../HomepageProductData/HomepageProductData';
-import { useHistory } from 'react-router';
 import '../StyledComponent/SliderNextandPrevs.css';
 
 
@@ -22,34 +20,6 @@ const FeaturedProduct = () => {
             .then(data => setFeaturedProduct(data.products))
     }, [])
     // console.log(featuredProduct);
-
-
-
-    function SampleNextArrow(props) {
-        const { className, style, onClick } = props;
-        return (
-            <div className={className}
-                style={{ ...style, display: "block" }}
-                onClick={onClick} >
-
-                <KeyboardArrowRightIcon className="arrow" color="primary" />
-
-            </div>
-        );
-    }
-
-    function SamplePrevArrow(props) {
-        const { className, style, onClick } = props;
-        return (
-            <div className={className}
-                style={{ ...style, display: "block" }}
-                onClick={onClick} >
-
-                <KeyboardArrowLeftIcon className="arrow" color="primary" />
-
-            </div>
-        );
-    }
 
 
     var settings = {

@@ -24,6 +24,9 @@ import ProductsSuperAdminDashboard from "./Components/SuperAdminDashboard/Produc
 import ReviewSuperAdminDashboard from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Review-SuperAdminDashboard/ReviewSuperAdminDashboard";
 import OrdersReport from "./Components/SuperAdminDashboard/Report/OrdersReport/OrdersReport";
 import Report from "./Components/SuperAdminDashboard/Report/Report";
+import AddBlog from "./Components/SuperAdminDashboard/SuperAdminBlogs/AddBlog/AddBlog";
+import ManageBlog from "./Components/SuperAdminDashboard/SuperAdminBlogs/ManageBlog/ManageBlog";
+import UpdateBlog from "./Components/SuperAdminDashboard/SuperAdminBlogs/UpdateBlog/UpdateBlog";
 import SuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminDashboard/SuperAdminDashboard";
 import AdminSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Admin-SuperAdminDashboard/AdminSuperAdminDashboard";
 import CustomerSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Customers-SuperAdminDashboard/CustomerSuperAdminDashboard";
@@ -32,6 +35,7 @@ import SuperAdminManageUser from "./Components/SuperAdminDashboard/SuperAdminMan
 import VendorSuperAdminDashboard from "./Components/SuperAdminDashboard/SuperAdminManageUser/Vendor-SuperAdminDashboard/VendorSuperAdminDashboard";
 import TrackOrder from './Components/TrackOrder/TrackOrder';
 import Dashboard from './Components/UserDashboard/Dashboard';
+import VendorSupport from "./Components/VendorDashboard/Support/Support";
 import VendorAddProduct from "./Components/VendorDashboard/VendorAddProduct/VendorAddProduct";
 import VendorAllProducts from "./Components/VendorDashboard/VendorAllProducts/VendorAllProducts";
 import VendorProductOverview from "./Components/VendorDashboard/VendorAllProducts/VendorProductOverview";
@@ -53,6 +57,7 @@ import BlogDetails from "./pages/BlogDetails/BlogDetails";
 import Careers from "./pages/Careers/Careers";
 import CheckoutPage from "./pages/Checkout-page/CheckoutPage";
 import Compare from "./pages/Compare/Compare";
+import ConfirmOrder from "./pages/ConfirmOrder/ConfirmOrder";
 import Contact from './pages/Contact-page/Contact';
 import HelpCenter from "./pages/HelpCenter/HelpCenter";
 import HomePage from "./pages/Home-page/HomePage";
@@ -61,7 +66,6 @@ import Privacy from "./pages/Privacy/Privacy";
 import Refund from "./pages/Refund/Refund";
 import ShippingAndDelivery from "./pages/ShippingAndDelivery/ShippingAndDelivery";
 import Terms from "./pages/T&C/T&C";
-import ConfirmOrder from "./pages/ConfirmOrder/ConfirmOrder";
 import Wishlist from "./pages/Wishlist/Wishlist";
 import Pants from "./Components/CatagoryProduct/Pants";
 import OrderReview from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Orders-SuperAdminDashboard/Order-Review/OrderReview";
@@ -98,7 +102,6 @@ function App() {
 
 
   const contextData = { products, setProducts, orders, setOrders, user, setUser, cart, setCart,  CompareCart, SetCompareCart, wishlistCart, SetWishlistCart}
-  // console.log(';contextAPi', contextData)
 
   return (
     <userContext.Provider value={contextData}>
@@ -115,6 +118,7 @@ function App() {
             <LoginPanel/>
           </PrivateRoute>
           <Route path="/addProduct" component={AddProduct} />
+          
           <Route path="/adminSidebar" component={AdminSidebar} />
           <Route path="/addAdmin" component={AddAdmin} />
           <Route path="/shop" component={Shop} />
@@ -123,7 +127,9 @@ function App() {
           <Route path="/trackOrder" component={TrackOrder} />
           <Route path="/manageProduct" component={ManageProduct} />
           <Route path="/product/:id" component={ProductDeatils} />
+          <Route path="/blog/:id" component={BlogDetails} />
           <Route path="/updateProduct/:id" component={UpdateProduct} />
+          <Route path="/updateBlog/:id" component={UpdateBlog} />
           <Route path="/contact" component={Contact} />
           <Route path="/blog" component={Blogs} />
           <Route path="/cart" component={ShopingCart} />
@@ -146,7 +152,9 @@ function App() {
           <Route path="/super-admin/dashboard/massage/overview" component={SuperAdminMassage} />
           <Route path="/super-admin/dashboard/addproduct/overview" component={SuperAddProduct} />
           <Route path="/reports/orders" component={OrdersReport} />
-          <Route path="/dashboard/overview/review" component={OrderReview} />
+          <Route path="/super-admin/dashboard/blogs/addBlog" component={AddBlog} />
+          <Route path="/super-admin/dashboard/blogs/overview" component={ManageBlog } />
+          
 
                 {/* Vendor Panel Dashboard */}
 
@@ -162,11 +170,11 @@ function App() {
           <Route path="/vendor/dashboard/stock-status" component={VendorStockStatus }/>
           <Route path="/vendor/dashboard/reports" component={VendorReport }/>
           <Route path="/vendor/dashboard/messages" component={VendorMessage }/>
+          <Route path="/vendor/dashboard/support" component={VendorSupport }/>
           
           <Route path="/checkout" component={CheckoutPage }/>
           <Route path="/Confirm-order" component={ConfirmOrder }/>
           <Route path="/careers" component={Careers }/>
-          <Route path="/blog-details" component={BlogDetails }/>
           <Route path="/about" component={About }/>
           <Route path="/terms-and-conditions" component={Terms }/>
           <Route path="/privacy-policy" component={Privacy }/>
