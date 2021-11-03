@@ -37,7 +37,7 @@ const useStyles = makeStyles({
 
 
 const RecentOrders = (props) => {
-    const {ord} = props;
+    const {ord , setOrderID} = props;
     const classes = useStyles();
 
     const [page, setPage] = useState(0);
@@ -61,41 +61,41 @@ const RecentOrders = (props) => {
     
     return (
         <div className="p-8">
-            <h1 className="font-bold text-2xl my-8">Orders</h1>
+            <h4 class="text-3xl font-semibold text-center text-gray-800 dark:text-gray-200">Recent Orders</h4>
+            <section class="container mx-auto py-6 font-mono">
+            <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+                <div class="w-full overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                    <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                        <th class="px-4 py-3">Id</th>
+                        <th class="px-4 py-3">Date</th>
+                        <th class="px-4 py-3">Product</th>
+                        <th class="px-4 py-3">Payment</th>
+                        <th class="px-4 py-3">Status</th>
+                        <th class="px-4 py-3">Total</th>
+                        <th class="px-4 py-3">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody class="bg-white">
 
-            <div>
-                <TableContainer component={Paper}>
-                    <Table className={classes.table} aria-label="customized table">
-                        <TableHead>
-                            <TableRow>
-                                {/* <StyledTableCell>ID</StyledTableCell> */}
-
-                                <StyledTableCell align="left">Order Id</StyledTableCell>
-                                {/* <StyledTableCell align="left">Name</StyledTableCell> */}
-                                <StyledTableCell align="left">Date</StyledTableCell>
-                                <StyledTableCell align="left">Price</StyledTableCell>
-                                <StyledTableCell align="left">Status</StyledTableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {ord
+                    {ord
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((item) => (
-                                    <StyledTableRow key={item._id} className={classes.tables}>
-                                        {/* <StyledTableCell align="left">{i++}</StyledTableCell> */}
-                                        <StyledTableCell align="left">{item._id}
-                                        </StyledTableCell>
-                                        {/* <StyledTableCell align="left">{item.Name || "Product 101"}
-                                        </StyledTableCell> */}
-                                        <StyledTableCell align="left">{item.order.orderDate}
-                                        </StyledTableCell>
-                                        <StyledTableCell align="left">{item.order.price}
-                                        </StyledTableCell>
-                                        <StyledTableCell align="left">{item.order.status}</StyledTableCell>
-                                    </StyledTableRow>
+                                    <tr item={item} key={item._id} class="text-gray-700">
+                        <td onClick={() => setOrderID(item._id)} class="px-4 py-3 text-ms font-semibold border">{item._id}</td>
+                        <td class="px-4 py-3 text-ms font-semibold border">{item.order.orderDate}</td>
+                        <td class="px-4 py-3 text-ms font-semibold border">{item?.product?.product?.name || ""}</td>
+                        <td class="px-4 py-3 text-ms font-semibold border">Paid</td>
+                        <td class="py-3 px-6 text-center border"> 
+                            <span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">{item.order.status}</span>
+                        </td>
+                        <td class="px-4 py-3 text-ms font-semibold border">$ {item.order.price}</td>
+                        <td class="px-4 py-3 text-ms font-semibold border">Details</td>
+                    </tr>
                                 ))}
-                        </TableBody>
-                    </Table>
+
+                    </tbody>
                     <TablePagination
                         // className="flex items-end justify-end"
                         rowsPerPageOptions={[]}
@@ -107,9 +107,11 @@ const RecentOrders = (props) => {
                         onRowsPerPageChange={handleChangeRowsPerPage}
                         checkboxSelection
                     />
-                </TableContainer>
-                
+                </table>
+                </div>
             </div>
+            </section>
+
         </div>
     );
 };
