@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import Logo from '../../Navbar/Logo/Logo';
-import AdminSidebar from '../AdminSidebar/AdminSidebar';
+import { toast, ToastContainer } from 'react-toastify';
+import { DashboardContainer } from '../../Style/AddSuperAdminStyle';
+import SuperAdminSidebar from '../../SuperAdminSidebar/SuperAdminSidebar';
+import TopbarSuperAdminDashboard from '../../Topbar-SuperAdminDashboard/TopbarSuperAdminDashboard';
 
 const UpdateBlog = () => {
 
@@ -17,7 +19,7 @@ const UpdateBlog = () => {
     useEffect(() => {
         fetch(`http://localhost:5000/blogs/${id}`)
         .then(res => res.json())
-        .then(data => setBlog(data.blog))
+        .then(data => setBlog(data.result))
     }, [id])
 
     const handleSubmit = e => {
@@ -42,8 +44,10 @@ const UpdateBlog = () => {
             .then(res => res.json())
             .then(data => {
                 if (data) {
+                    toast.success("Blog Updated Successfully", {
+                        position: "bottom-right",
+                    });
                     setDbStatus(data);
-                    alert('Product Updated');
                 }
             })
         e.preventDefault();
@@ -75,12 +79,15 @@ const UpdateBlog = () => {
     return (
         <>
             <div className=" bg-gray-800 ">
-                <div className="w-screen h-20 p-6">
+                {/* <div className="w-screen h-20 p-6">
                     <Logo />
-                </div>
+                </div> */}
 
-                <div className="flex  md:flex-row flex-col">
-                    <AdminSidebar />
+                <DashboardContainer>
+                    <SuperAdminSidebar/>
+                
+                <div className="md:w-5/6 w-full h-screen scrollBar">
+                    <TopbarSuperAdminDashboard/>
 
                     <section className="mx-10">
                         <h1 className="font-bold text-white p-4 text-2xl">Update Blog</h1>
@@ -114,9 +121,13 @@ const UpdateBlog = () => {
                                     </label>
                                     <select className="shadow appearance-none border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600" name="category" id="cars">
 
-                                        <option value="None">None</option>
-                                        <option value="Man">Man</option>
-                                        <option value="Women">Women</option>
+                                    <option value="None">None</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="Branding">Branding</option>
+                                        <option value="Promotion">Promotion</option>
+                                        <option value="Social Media">Social Media</option>
+                                        <option value="How To">How To</option>
+                                        <option value="E-commerce">E-commerce</option>
                                     </select>
                                 </div>{" "}
 
@@ -138,7 +149,7 @@ const UpdateBlog = () => {
                                         :
                                         <small className="text-red-700">Upload Image</small>
                                     }
-                                    <img className="w-12 mx-36" src={blog.img} alt="" />
+                                    <img className="w-12 mx-36" src={blog.img} alt="blog title" />
 
                                 </div>{" "}
 
@@ -149,7 +160,7 @@ const UpdateBlog = () => {
                                     >
                                         Description
                                     </label>
-                                    <input
+                                    <textarea
                                         class="shadow appearance-none h-24 border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-blue-600"
                                         type="textarea"
                                         name="description"
@@ -168,6 +179,8 @@ const UpdateBlog = () => {
                         </div>
                     </section>
                 </div>
+                </DashboardContainer>
+                <ToastContainer /> 
             </div>
         </>
     );

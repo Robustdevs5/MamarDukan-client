@@ -1,14 +1,14 @@
 import { faEye, faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faChartBar, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React,{Fragment, useState} from 'react'
-import useProducts from '../../hooks/useProducts';
+import React, { Fragment, useState } from 'react';
 import { useHistory } from 'react-router';
-
+import { Link } from 'react-router-dom';
+import useProducts from '../../hooks/useProducts';
+import star from "../../images/5star.png";
 import { ComputerTechnology } from '../HomepageProductData/HomepageProductData';
 
-import star from "../../images/5star.png";
-import { Link } from 'react-router-dom';
+
 
 
 
@@ -131,10 +131,10 @@ const NewArrivalProduct = () => {
                                         </div>
                                     </div>
                             : index == 4 ?
-                                    <div className="relative w-full bg-white border cursor-pointer row-span-2 col-span-2" onClick={() => handleProductClick(firstFiveProducts._id)}>
+                                    <div className="relative w-full bg-white border cursor-pointer row-span-1 md:row-span-2 col-span-2" onClick={() => handleProductClick(firstFiveProducts._id)}>
                                         <div className="overflow-x-hidden relative border-b p-2">
                                             <div className="h-screen w-auto">
-                                                <img  className="h-full w-full" src={firstFiveProducts.img} alt='first Five Products' />
+                                                <img  className="h-full w-full object-cover p-4" src={firstFiveProducts.img} alt='first Five Products' />
                                             </div>
                                             <p className="absolute right-2 top-2 bg-white rounded-full p-2 cursor-pointer group">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 group-hover:opacity-70" fill="none" viewBox="0 0 24 24" stroke="gray">

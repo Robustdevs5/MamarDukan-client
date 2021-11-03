@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import Logo from "../../Navbar/Logo/Logo";
-import AdminSidebar from '../AdminSidebar/AdminSidebar';
+import { toast, ToastContainer } from 'react-toastify';
+import { DashboardContainer } from '../../Style/AddSuperAdminStyle';
+import SuperAdminSidebar from '../../SuperAdminSidebar/SuperAdminSidebar';
+import TopbarSuperAdminDashboard from '../../Topbar-SuperAdminDashboard/TopbarSuperAdminDashboard';
 
 
 
@@ -17,7 +19,7 @@ const AddBlog = () => {
             name: e.target.name.value,
             description: e.target.description.value,
             category: e.target.category.value,
-            date: new Date(),
+            date: new Date().toDateString('dd/MM/yyyy HH:MM:SS'),
             img: imageURL
         };
         console.log(blogInfo);
@@ -35,7 +37,9 @@ const AddBlog = () => {
             .then(data => {
                 setDbStatus(data);
                 if (data) {
-                    alert('Blog added successfully.')
+                    toast.success("Blog added Successfully", {
+                        position: "bottom-right",
+                    });
                     // e.target.reset();
                 }
             })
@@ -70,12 +74,14 @@ const AddBlog = () => {
     return (
         <>
             <div className=" bg-gray-800 ">
-                <div className="w-screen h-20 p-6">
+                {/* <div className="w-screen h-20 p-6">
                     <Logo />
-                </div>
-
-                <div className="flex  md:flex-row flex-col">
-                    <AdminSidebar />
+                </div> */}
+                <DashboardContainer>
+                    <SuperAdminSidebar/>
+                
+                    <div className="md:w-5/6 w-full h-screen scrollBar">
+                        <TopbarSuperAdminDashboard/>
 
                     <section className="mx-10">
                         <h1 className="font-bold text-white p-4 text-2xl">Add a new Blog</h1>
@@ -115,7 +121,7 @@ const AddBlog = () => {
                                         <option value="Promotion">Promotion</option>
                                         <option value="Social Media">Social Media</option>
                                         <option value="How To">How To</option>
-                                        <option value="How To">How To</option>
+                                        <option value="E-commerce">E-commerce</option>
                                     </select>
                                 </div>{" "}
 
@@ -177,6 +183,8 @@ const AddBlog = () => {
                         </div>
                     </section>
                 </div>
+            </DashboardContainer>
+            <ToastContainer /> 
             </div>
         </>
 

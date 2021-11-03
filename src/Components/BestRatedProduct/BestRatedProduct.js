@@ -1,14 +1,14 @@
-import React,{Fragment, useState} from 'react'
 import { faEye, faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faChartBar, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { Fragment } from 'react';
 import { useHistory } from 'react-router';
-
-import star from "../../images/5star.png";
 import { Link } from 'react-router-dom';
-import { ComputerTechnology } from '../HomepageProductData/HomepageProductData';
 import useShuffleProducts from '../../hooks/useShuffleProducts';
+import star from "../../images/5star.png";
+import { ComputerTechnology } from '../HomepageProductData/HomepageProductData';
 import { Loader } from '../Loader/Loader';
+
 
 
 const BestRatedProduct = () => {
@@ -49,7 +49,7 @@ const BestRatedProduct = () => {
                                     <div className="relative w-full bg-white border cursor-pointer row-span-2 col-span-2" onClick={() => handleProductClick(firstFiveProducts._id)}>
                                         <div className="overflow-x-hidden relative border-b p-2">
                                             <div className="h-screen w-auto">
-                                                <img  className="h-full w-full" src={firstFiveProducts.img} alt='first Five Products' />
+                                                <img  className="h-full w-full p-4" src={firstFiveProducts.img} alt={firstFiveProducts.name} />
                                             </div>
                                             <p className="absolute right-2 top-2 bg-white rounded-full p-2 cursor-pointer group">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 group-hover:opacity-70" fill="none" viewBox="0 0 24 24" stroke="gray">
@@ -85,7 +85,7 @@ const BestRatedProduct = () => {
                                 :
                                 <div className="group relative w-full bg-white border cursor-pointer" onClick={() => handleProductClick(firstFiveProducts._id)}>
                                     <div className="overflow-x-hidden relative border-b p-2">
-                                        <img className="h-48 w-full object-cover" src={firstFiveProducts.img} alt=''/>
+                                        <img className="h-48 w-full object-cover" src={firstFiveProducts.img} alt={firstFiveProducts.name} />
                                         
                                         <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
                                             <span className="font-bold">Sale</span>
