@@ -78,6 +78,8 @@ const api = axios.create({
 function App() {
   const [allUser, setAllUser] = useState([])
   const [products, setProducts] = useState([])
+  
+  // const [products, setProducts] = useProducts(); 
   const [orders, setOrders] = useState([])
   const [user, setUser] = useState({});
   // const [loggedInUser, setLoggedInUser] = useState([])

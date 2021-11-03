@@ -98,8 +98,7 @@ const Refund = () => {
             3 : Customer cancels a paid order before it has been dispatched{" "}
           </p>
         </div>
-      </div>
-
+        </div>
       <Footer />
     </>
   );

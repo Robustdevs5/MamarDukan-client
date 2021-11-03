@@ -45,7 +45,7 @@ const HowToBuy = () => {
                         </div>
                     </div>
                     <div className="bg-green-900 col-start-4 col-end-12 p-4 rounded-xl my-4 mr-auto shadow-md w-full">
-                        <h3 className="font-semibold text-lg mb-1">Add To Cart</h3>
+                        <h3 className="font-semibold text-lg mb-1">Product Add To Cart</h3>
                     </div>
                     </div>
 
@@ -59,7 +59,7 @@ const HowToBuy = () => {
                         </div>
                     </div>
                     <div className="bg-green-800 col-start-4 col-end-12 p-4 rounded-xl my-4 mr-auto shadow-md w-full">
-                        <h3 className="font-semibold text-lg mb-1">View Cart </h3>
+                        <h3 className="font-semibold text-lg mb-1">View the Cart </h3>
                     </div>
                     </div>
                     <div className="flex md:contents">
@@ -72,7 +72,7 @@ const HowToBuy = () => {
                         </div>
                     </div>
                     <div className="bg-green-700 col-start-4 col-end-12 p-4 rounded-xl my-4 mr-auto shadow-md w-full">
-                        <h3 className="font-semibold text-lg mb-1">Checkout Cart</h3>
+                        <h3 className="font-semibold text-lg mb-1">Checkout the Cart</h3>
                     </div>
                     </div>
                         </div>
@@ -89,7 +89,7 @@ const HowToBuy = () => {
                         </div>
                     </div>
                     <div className="bg-green-600 col-start-4 col-end-12 p-4 rounded-xl my-4 mr-auto shadow-md w-full">
-                        <h3 className="font-semibold text-lg mb-1">Shipping Address</h3>
+                        <h3 className="font-semibold text-lg mb-1">Fill-up Shipping Address form</h3>
                     </div>
                     </div>
                     <div className="flex md:contents">
@@ -102,7 +102,7 @@ const HowToBuy = () => {
                         </div>
                     </div>
                     <div className="bg-green-500 col-start-4 col-end-12 p-4 rounded-xl my-4 mr-auto shadow-md w-full">
-                        <h3 className="font-semibold text-lg mb-1">Payment</h3>
+                        <h3 className="font-semibold text-lg mb-1">Complete Payment</h3>
                     </div>
                     </div>
                     <div className="flex md:contents">
@@ -111,7 +111,7 @@ const HowToBuy = () => {
                         <div className="h-full w-1 bg-green-400 pointer-events-none"></div>
                         </div>
                         <div className="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-green-400 shadow text-center">
-                        <i className="fas fa-check-circle text-white">7</i>
+                            <i className="fas fa-check-circle text-white">7</i>
                         </div>
                     </div>
                     <div className="bg-green-400 col-start-4 col-end-12 p-4 rounded-xl my-4 mr-auto shadow-md w-full">
@@ -122,14 +122,14 @@ const HowToBuy = () => {
                     <div className="flex md:contents">
                     <div className="col-start-2 col-end-4 mr-10 md:mx-auto relative">
                         <div className="h-full w-6 flex items-center justify-center">
-                        <div className="h-full w-1 bg-custom pointer-events-none"></div>
+                        <div className="h-full w-1 bg-green-400 pointer-events-none"></div>
                         </div>
-                        <div className="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-custom shadow text-center">
-                        <i className="fas fa-exclamation-circle text-gray-400">8</i>
+                        <div className="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-green-400 shadow text-center">
+                            <i className="fas fa-check-circle text-white">8</i>
                         </div>
                     </div>
-                    <div className="bg-custom col-start-4 col-end-12 p-4 rounded-xl my-4 mr-auto shadow-md w-full">
-                        <h3 className="font-semibold text-lg mb-1 text-gray-400">Delivery</h3>
+                    <div className="bg-green-400 col-start-4 col-end-12 p-4 rounded-xl my-4 mr-auto shadow-md w-full">
+                        <h3 className="font-semibold text-lg mb-1 text-white">Delivery</h3>
                     </div>
                     </div>
                         </div>

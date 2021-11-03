@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import TopBar from "../../Components/TopBar/TopBar";
-import Navbar from "../../Components/Navbar/Navbar/Navbar";
-import AllProduct from './AllProduct';
-import star from "../../images/5star.png";
 import { TablePagination } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
+import Navbar from "../../Components/Navbar/Navbar/Navbar";
+import TopBar from "../../Components/TopBar/TopBar";
+import star from "../../images/5star.png";
 import Footer from '../Footer/Footer';
 import Newsletter from '../Newsletter/Newsletter';
+import AllProduct from './AllProduct';
 
 // import noUiSlider from 'nouislider';
 // import noUiSlider from 'nouislider/dist/nouislider.mjs';
@@ -23,7 +23,7 @@ const Shop = () => {
     const [allProductStatus, setAllProductStatus] = useState(true);
     const [deptProductStatus, setDeptProductStatus] = useState(false);
     const [brandProductStatus, setBrandProductStatus] = useState(false);
-    const [rowsPerPage, setRowsPerPage] = useState(12);
+    const [rowsPerPage, setRowsPerPage] = useState(15);
     const [page, setPage] = useState(0);
 
     const history = useHistory();
@@ -77,7 +77,7 @@ const Shop = () => {
         setAllProductStatus(false)
         setBrandProductStatus(false)
     }
-    console.log(deptProduct);
+    //console.log(deptProduct);
 
 
     const handleAllProductClick = () => {
@@ -268,13 +268,13 @@ const Shop = () => {
                         <span className="text-base text-gray-600"> Products found</span>
                     </h3>
 
-                    <div className="grid gap-12 grid-cols-4">
+                    <div className="grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
                         {deptProduct
                             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                             .map(product =>
-                                <div className="p-2">
+                                <div className="p-2 bg-white">
 
-                                    <div className="mb-4 w-44 h-44">
+                                    <div className="mb-4 w-full h-full md:w-44 md:h-44">
                                         <img onClick={() => handleProductClick(product._id)} className="rounded cursor-pointer hover:text-yellow-400 h-full w-full" src={product.img} alt="8192" />
                                     </div>
 
@@ -302,9 +302,13 @@ const Shop = () => {
 
                         <small className="mb-16"></small>
 
-                        {deptProduct.length > 10 ?
+                        
+                    </div>
+                    {deptProduct.length > 10 ?
+                        <section className="w-full block">
+                            <div className="flex items-center justify-center">
                             <TablePagination
-                                // className=""
+                                className=""
                                 rowsPerPageOptions={[]}
                                 component="div"
                                 count={deptProduct.length}
@@ -314,9 +318,11 @@ const Shop = () => {
                                 onRowsPerPageChange={handleChangeRowsPerPage}
                                 checkboxSelection
                             />
+                            </div>
+                            </section>
                             : ""
+                            
                         }
-                    </div>
                 </div>}
 
 
@@ -329,13 +335,13 @@ const Shop = () => {
                         <span className="text-base text-gray-600"> Products found</span>
                     </h3>
 
-                    <div className="grid gap-12 grid-cols-4">
+                    <div className="grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
                         {brandProduct
                             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                             .map(product =>
-                                <div className="p-2">
+                                <div className="p-2 bg-white">
 
-                                    <div className="mb-4 w-44 h-44">
+                                    <div className="mb-4 w-full h-full md:w-44 md:h-44">
                                         <img onClick={() => handleProductClick(product._id)} className="rounded cursor-pointer hover:text-yellow-400 h-full w-full" src={product.img} alt="8192" />
                                     </div>
 
@@ -360,10 +366,12 @@ const Shop = () => {
                                 </div>
                             )
                         }
-
+                    </div>
                         <small className="mb-16"></small>
 
                         {brandProduct.length > 10 ?
+                        <section className="w-full block">
+                            <div className="flex items-center justify-center text-white">
                             <TablePagination
                                 className=""
                                 rowsPerPageOptions={[]}
@@ -375,9 +383,12 @@ const Shop = () => {
                                 onRowsPerPageChange={handleChangeRowsPerPage}
                                 checkboxSelection
                             />
+                            </div>
+                            </section>
                             : ""
+                            
                         }
-                    </div>
+                    
                 </div>}
 
             </div>
