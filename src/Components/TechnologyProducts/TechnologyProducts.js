@@ -5,8 +5,8 @@ import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import star from "../../images/5star.png";
+import CartButton from '../Cart/CartButton/CartButton';
 import { ComputerTechnology } from '../HomepageProductData/HomepageProductData';
-
 
 
 const TechnologyProducts = () => {
@@ -104,7 +104,7 @@ const TechnologyProducts = () => {
             <div className="px-8 bg-gray-100">
                 <ul className="md:flex md:justify-between items-center  mb-10">
                     <div>
-                        <h1 className="tracking-tight uppercase sm:text-2xl text-gray-800 font-bold py-2 my-4 md:py-1 md:pl-3 md:my-0 md:border-red-600 mb-10 border-l-4"> Computer & Technology</h1>
+                        <h1 className="tracking-tight uppercase text-2xl text-gray-800 font-bold py-2 my-4 md:py-1 pl-3 md:my-0 border-red-600 mb-10 border-l-4"> Computer & Technology</h1>
                     </div>
                     <div className="flex">
                         {
@@ -124,10 +124,17 @@ const TechnologyProducts = () => {
 
                 {
                     technologyProduct.map(technologyProduct =>
-                        <div key={technologyProduct._id} className="p-2 hover:border-red-600 md:border rounded">
+                        <div key={technologyProduct._id} className="group relative p-2 hover:border-red-600 md:border rounded">
                             <div className="relative">
-                                <div className="mb-4 w-10/12 h-40">
+                                <div className="overflow-x-hidden relative mb-4 w-10/12 h-40">
                                     <img onClick={() => handleProductClick(technologyProduct._id)} className="rounded cursor-pointer h-full w-full" src={technologyProduct.img} alt="8192" />
+                                    <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
+                                            <span className="font-bold">Sale</span>
+                                        </div>
+                                        <div className="w-full bottom-0 flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
+                                            <CartButton cartProduct={technologyProduct}/>
+        
+                                        </div>
                                 </div>
                                 {/* <div className="absolute bottom-0 left-0 bg-custom px-2 py-1 text-white text-sm rounded-full transition duration-500 ease-in-out">
                                    <span className="font-bold"> Computer</span>

@@ -1,22 +1,19 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { loadStripe } from '@stripe/stripe-js';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { TiDelete } from 'react-icons/ti';
 import { toast, ToastContainer } from 'react-toastify';
-import StripePayment from './StripePayment';
 import { userContext } from '../../App';
+import { removeFromDb } from '../../Components/Cart/ShopingCart/CartDatabase';
+import Totalcart from '../../Components/Cart/Totalcart';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar/Navbar';
-import { removeFromDb } from '../../Components/Cart/ShopingCart/CartDatabase';
+import Newsletter from '../../Components/Newsletter/Newsletter';
 import TopBar from '../../Components/TopBar/TopBar';
 import img from '../../images/bn15.jpg';
 import { PaypalForm, TransferForm } from './CreditCardForm';
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
-import CheckoutForm from './CheckoutForm';
-import Totalcart from '../../Components/Cart/Totalcart';
-import Newsletter from '../../Components/Newsletter/Newsletter';
-import axios from 'axios';
+import StripePayment from './StripePayment';
 
 const CheckoutPage = () => {
     
@@ -146,7 +143,7 @@ const stripePromise = loadStripe('pk_test_51Ie9VqKA9RGUKPzpRVUr3EBr9AjVwrTUnJ23F
                     <form onSubmit={handleSubmit(onSubmit)} className="justify-center w-full mx-auto">
                         <div className="">
                             <div className="space-x-0 lg:flex lg:space-x-4">
-                                <div className="w-full lg:w-1/2 ">
+                                <div className="w-full">
                                     <label for="firstName" className="block mb-3 text-sm font-semibold text-gray-500">Full 
                                         Name</label>
                                     <input name="Last Name" type="text" placeholder="Last Name" 

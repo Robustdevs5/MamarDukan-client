@@ -33,6 +33,49 @@ export const Cloth = [
   },
 ];
 
+export const Categories = [
+  {
+    title: "Ephone",
+    img: "https://cdn-dgijh.nitrocdn.com/BIjtIohnXhjzStiBjRtrXSbTaWlmZHIX/assets/static/optimized/rev-9aa57ee/themes/sw_emarket/layout2/wp-content/uploads/2017/07/cat4.jpg",
+  },
+  {
+    title: "Fashion",
+    img: "https://cdn-dgijh.nitrocdn.com/BIjtIohnXhjzStiBjRtrXSbTaWlmZHIX/assets/static/optimized/rev-9aa57ee/themes/sw_emarket/layout2/wp-content/uploads/2017/07/cat5.jpg",
+  },
+  {
+    title: "Furniture",
+    img: "https://cdn-dgijh.nitrocdn.com/BIjtIohnXhjzStiBjRtrXSbTaWlmZHIX/assets/static/optimized/rev-9aa57ee/themes/sw_emarket/layout2/wp-content/uploads/2017/07/cat7.jpg",
+  },
+  {
+    title: "Headphone",
+    img: "https://cdn-dgijh.nitrocdn.com/BIjtIohnXhjzStiBjRtrXSbTaWlmZHIX/assets/static/optimized/rev-9aa57ee/themes/sw_emarket/layout2/wp-content/uploads/2017/07/cat4.jpg",
+  },
+  {
+    title: "Smartphone",
+    img: "https://cdn-dgijh.nitrocdn.com/BIjtIohnXhjzStiBjRtrXSbTaWlmZHIX/assets/static/optimized/rev-9aa57ee/themes/sw_emarket/layout2/wp-content/uploads/2017/07/cat3.jpg",
+  },
+  {
+    title: "Towels could",
+    img: "https://cdn-dgijh.nitrocdn.com/BIjtIohnXhjzStiBjRtrXSbTaWlmZHIX/assets/static/optimized/rev-9aa57ee/themes/sw_emarket/layout2/wp-content/uploads/2017/07/cat2.jpg",
+  },
+  {
+    title: "Watches",
+    img: "https://cdn-dgijh.nitrocdn.com/BIjtIohnXhjzStiBjRtrXSbTaWlmZHIX/assets/static/optimized/rev-9aa57ee/themes/sw_emarket/layout2/wp-content/uploads/2017/07/cat1.jpg",
+  },
+  {
+    title: "Sweaters",
+    img: "https://cdn-dgijh.nitrocdn.com/BIjtIohnXhjzStiBjRtrXSbTaWlmZHIX/assets/static/optimized/rev-9aa57ee/themes/sw_emarket/layout2/wp-content/uploads/2017/07/cat6.jpg",
+  },
+  {
+    title: "T-Shirts",
+    img: "https://cdn-dgijh.nitrocdn.com/BIjtIohnXhjzStiBjRtrXSbTaWlmZHIX/assets/static/optimized/rev-9aa57ee/themes/sw_emarket/layout2/wp-content/uploads/2017/07/cat2.jpg",
+  },
+  {
+    title: "Jackets",
+    img: "https://cdn-dgijh.nitrocdn.com/BIjtIohnXhjzStiBjRtrXSbTaWlmZHIX/assets/static/optimized/rev-9aa57ee/themes/sw_emarket/layout2/wp-content/uploads/2017/07/cat3.jpg",
+  }
+];
+
 export const Accessories = [
   {
     title: "Watches",

@@ -8,7 +8,7 @@ const CheckoutForm = ({ setStripePayment }) => {
 
     const [paymentError, setPaymentError] = useState(null)
     const [paymentSuccess, setPaymentSuccess] = useState(null)
-
+console.log('paymentSuccess', paymentSuccess)
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -42,7 +42,7 @@ const CheckoutForm = ({ setStripePayment }) => {
                 </label>
                 <br />
 
-                <button className="btn btn-success mb-3 mt-3 d-flex primary_BTN_Outline py-2 px-5" type="submit" disabled={!stripe}>
+                <button className="btn btn-success mb-3 mt-3 d-flex primary_BTN_Outline py-2 px-5" disabled={!stripe}>
                     Pay
                 </button>
             </form>

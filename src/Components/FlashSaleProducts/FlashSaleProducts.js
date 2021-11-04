@@ -1,21 +1,14 @@
-import { faEye, faHeart } from '@fortawesome/free-regular-svg-icons';
-import { faChartBar, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
-import { toast } from 'react-toastify';
-import { ComputerTechnology } from '../HomepageProductData/HomepageProductData';
-import { addToDb } from '../Cart/ShopingCart/CartDatabase';
-import useCart from '../../hooks/useCart';
-// import Modal from '../Modal/Modal';
-
-import star from "../../images/5star.png";
-import Countdown from './Countdown';
-import CartButton from '../Cart/CartButton/CartButton';
 import useShuffleProducts from '../../hooks/useShuffleProducts';
+// import Modal from '../Modal/Modal';
+import star from "../../images/5star.png";
+import CartButton from '../Cart/CartButton/CartButton';
+import { ComputerTechnology } from '../HomepageProductData/HomepageProductData';
 import { Loader } from '../Loader/Loader';
+import Countdown from './Countdown';
 
 
 const FlashSaleProducts = () => {
@@ -76,7 +69,7 @@ const FlashSaleProducts = () => {
             <div className="px-3 bg-gray-100">
                 <ul className="md:flex md:justify-between items-center  ">
                     <div>
-                        <h1 className="tracking-tight uppercase sm:text-2xl text-gray-800 font-bold py-2 my-4 md:py-1 md:pl-3 md:my-0 md:border-red-600 mb-10 border-l-4"> Flash sales </h1>
+                        <h1 className="tracking-tight uppercase text-2xl text-gray-800 font-bold py-2 my-4 md:py-1 pl-3 md:my-0 border-red-600 mb-10 border-l-4"> Flash sales </h1>
                     </div>
                     <div className="flex">
                         {
@@ -94,12 +87,14 @@ const FlashSaleProducts = () => {
             </div>
 
             <div className="h-full w-full bg-cover relative py-16 bg-no-repeat bg-right" style={{backgroundImage:"url(https://demo2.madrasthemes.com/tokoo/wp-content/uploads/2018/07/bg-lady-1.jpg)"}}>
-                <div className="w-3/5 flex pb-12">
-                    <div className="w-2/5 bg-white p-4 text-right border-r-2 border-gray-400">
-                        <h2 className="text-gray-800 text-6xl font-bold items-center pr-4 uppercase">Flash <br/>Sale</h2>
-                    </div>
-                    <Countdown/>
-                </div>               
+                <div className="hidden md:block">
+                    <div className="w-3/5 flex pb-12">
+                        <div className="w-2/5 bg-white p-4 text-right border-r-2 border-gray-400">
+                            <h2 className="text-gray-800 text-6xl font-bold items-center pr-4 uppercase">Flash <br/>Sale</h2>
+                        </div>
+                        <Countdown/>
+                    </div>  
+                </div>             
                 <Slider {...settings} className="px-10 w-9/12">
                     {
                         shuffleProduct && shuffleProduct.slice(0,32).map(flashSaleProducts =>

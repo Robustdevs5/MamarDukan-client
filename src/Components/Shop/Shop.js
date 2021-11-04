@@ -4,9 +4,11 @@ import { useHistory } from 'react-router';
 import Navbar from "../../Components/Navbar/Navbar/Navbar";
 import TopBar from "../../Components/TopBar/TopBar";
 import star from "../../images/5star.png";
+import CartButton from '../Cart/CartButton/CartButton';
 import Footer from '../Footer/Footer';
 import Newsletter from '../Newsletter/Newsletter';
 import AllProduct from './AllProduct';
+
 
 // import noUiSlider from 'nouislider';
 // import noUiSlider from 'nouislider/dist/nouislider.mjs';
@@ -272,10 +274,17 @@ const Shop = () => {
                         {deptProduct
                             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                             .map(product =>
-                                <div className="p-2 bg-white">
+                                <div className="group relative p-2 bg-white">
 
-                                    <div className="mb-4 w-full h-full md:w-44 md:h-44">
+                                    <div className="overflow-x-hidden relative mb-4 w-full h-full md:w-44 md:h-44">
                                         <img onClick={() => handleProductClick(product._id)} className="rounded cursor-pointer hover:text-yellow-400 h-full w-full" src={product.img} alt="8192" />
+                                        <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
+                                            <span className="font-bold">Sale</span>
+                                        </div>
+                                        <div className="w-full bottom-0 flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
+                                            <CartButton cartProduct={product}/>
+        
+                                        </div>
                                     </div>
 
                                     <div className="flex py-3">
@@ -339,10 +348,17 @@ const Shop = () => {
                         {brandProduct
                             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                             .map(product =>
-                                <div className="p-2 bg-white">
+                                <div className="group relative p-2 bg-white">
 
-                                    <div className="mb-4 w-full h-full md:w-44 md:h-44">
+                                    <div className="overflow-x-hidden relative mb-4 w-full h-full md:w-44 md:h-44">
                                         <img onClick={() => handleProductClick(product._id)} className="rounded cursor-pointer hover:text-yellow-400 h-full w-full" src={product.img} alt="8192" />
+                                        <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
+                                            <span className="font-bold">Sale</span>
+                                        </div>
+                                        <div className="w-full bottom-0 flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
+                                            <CartButton cartProduct={product}/>
+        
+                                        </div>
                                     </div>
 
                                     <div className="flex py-3">

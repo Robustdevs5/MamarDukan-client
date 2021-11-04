@@ -1,152 +1,132 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { AiFillMail } from "react-icons/ai"
-import { BsLockFill } from "react-icons/bs"
-import { userContext } from '../../../App';
-// import '../../StyledComponent/Signup.module.css';
-import { AiFillGithub } from "react-icons/ai";
-import { FcGoogle } from 'react-icons/fc';
 import { toast } from 'react-toastify';
-
+import Imageupload from './Imageupload';
 const VendorSingupFrom = () => {
-  const [user, setUser] = useState({
-    username: '',
-    email:'',
-    password: '',
-  })
-  const is_valid_email = email =>  /(.+)@(.+){2,}\.(.+){2,}/.test(email); 
-  const hasNumber = input => /\d/.test(input);
-  const handleOnChange = (e) => {
-    const newUserInfo = {
-        ...user
+
+      // async function handleSignup(userInfo) {
+      //   console.log(userInfo)
+        // setLoading(true)
+        // try {
+        //   if (donatedBefore)
+        //     userInfo.lastDonationDate = donationDate.lastDonationDate
+        //   if(doctor)
+        //     userInfo.role = "doctor"
+    
+        //   const { data } = await signUp(userInfo)
+        //   if (!data.user) {
+        //     useErrorToast(data.message)
+        //     return setLoading(false)
+        //   }
+        //   localStorage.setItem("profile", JSON.stringify(data))
+        //   return setCurrentUser(data.user)
+        // } catch (err) {
+        //   useErrorToast(err.message)
+        //   return setLoading(false)
+        // }
+      // }
+      const [password, setPassword] = useState();
+      const [confirmPassword, setConfirmPassword] = useState();
+      const [shopurl, setShopUrl] = useState(' ');
+      const [imageURL, setImageURL] = useState(0);
+      const { register, handleSubmit, formState: { errors } } = useForm();
+   
+        // Checking passwords
+        const handleBlur = (e) => {
+          if (e.target.name === "password") {
+              setPassword(e.target.value);
+          }
+          if (e.target.name === "confirmPassword") {
+              setConfirmPassword(e.target.value);
+          }
       };
-    let isValid = true;
-    if(e.target.name === 'email'){
-        isValid = is_valid_email(e.target.value);
-      }
-      if(e.target.name === "password"){
-        isValid = e.target.value.length > 8 && hasNumber(e.target.value);
-      }
-      newUserInfo[e.target.name] = e.target.value;
-      newUserInfo.isValid = isValid;
-      setUser(newUserInfo);
-}
 
-const [password, setPassword] = useState();
-    const [confirmPassword, setConfirmPassword] = useState();
-    // Checking passwords
-    const handleBlur = (e) => {
-      if (e.target.name === "password") {
-          setPassword(e.target.value);
-      }
-      if (e.target.name === "confirmPassword") {
-          setConfirmPassword(e.target.value);
-      }
-  };
-
-  // Two passwords match
-  const checkPasswords = () => {
-      return password === confirmPassword;
-  };
+      // Two passwords match
+      const checkPasswords = () => {
+          return password === confirmPassword;
+      };
 
 
- // React hook form
- const { register, handleSubmit, formState: { errors } } = useForm();
-
- const onSubmit = (data) => {
-     console.log(data)
-     const passwordsMatch = checkPasswords();
-     // const emailMatch = emailCheck();
-     const userInfo = {
-         name: data.name,
-         email: data.email,
-         password: data.password,
-         shopUrl: data.shopUrl,
-         shopName: data.shopName,
-         phoneNumber: data?.PhoneNumber,
-     };
-
-     if (passwordsMatch) {
-         const userSignUp = `https://mamardukan.herokuapp.com/user/anotheruser`;
-         fetch(userSignUp, {
-             method: 'POST',
-             headers: {
-                 'Content-Type': 'application/json'
-             },
-             body: JSON.stringify(userInfo)
-         })
-             .then(async res => await res.json())
-             .then(async user => {
-                 console.log('user10', user)
-                 user ? alert(user.message) : alert("failed")
-             })
-             .catch(error => {
-                 alert(error.message);
-                 console.log(error);
-             });
-     } else {
-         toast.error("Your Passwords don't match!", {
-             position: "top-right",
-         });
-     };
- };
-
-
-    // const {
-    //     register,
-    //     handleSubmit,
-    //     formState: { errors },
-    //   } = useForm()
-  //     async function handleSignup(userInfo) {
-  //       try { 
-
-  //       } catch (err) { 
-
-  //       }
-  //     }
-  //     console.log("User",user)
-  //     const [password1, setPassword] = useState('');
-  //     const [confirmPassword, setConfirmPassword] = useState('');
-
-
-  //     const checkPasswords = (confirmPassword) => {
-  //       return user.password === confirmPassword;
-  //   };
-  //   const passwordsMatch = checkPasswords();
-  //   const handleBlur = (e) => {
-  //     if (e.target.name === "password") {
-  //         setPassword(e.target.value);
-  //     }
-  //     if (e.target.name === "confirmPassword") {
-  //         setConfirmPassword(e.target.value);
-  //     }
-  // };
-
-    // console.log("passwordsMatch",passwordsMatch)
-
-
+      const onSubmit = (data) => {
+          console.log(data)
+          const passwordsMatch = checkPasswords();
+          const userInfo = {
+              name: data.name,
+              email: data.email,
+              password: data.password,
+              shopUrl: data.shopUrl,
+              shopName: data.shopName,
+              username: data.username,
+              img: imageURL,
+              phoneNumber: data.PhoneNumber,
+          };
+          console.log('user info', userInfo)
+  
+          if (passwordsMatch) {
+              const userSignUp = `http://localhost:5000/user/register-vendor`;
+              fetch(userSignUp, {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(userInfo)
+              })
+                  .then(async res => await res.json())
+                  .then(async user => {
+                      toast.error(user.message, {
+                        position: "bottom-right",
+                    });
+                  })
+                  .catch(error => {
+                      toast.error(error.message, {
+                        position: "bottom-right",
+                    });
+                  });
+          } else {
+              toast.error("Your Passwords don't match!", {
+                  position: "bottom-right",
+              });
+          };
+      };
+  
     return (
-        <form onSubmit={handleSubmit(onSubmit)} autoComplete="off" className="">
-          <h1>Create an account</h1>
-          <div class="social-AuthContainer">
-            <a href="#" class="social"><AiFillGithub/></a>
-            <a href="#" class="social"><FcGoogle/></a>
-          </div>
+        <form onSubmit={handleSubmit(onSubmit)} autoComplete="off" >
+          <h1>Vendor Registration form</h1>
+          <span>use your email for registration</span>
 
-          <span>or use your email for registration</span>
-           <input  id="username"
-                label="User Name"
-                name="username"
-                onChange={handleOnChange}
-                autoComplete="username"  type="text" placeholder="Name" />
-            <input   id="email"
-                label="Email Address"
-                name="email"
-                onChange={handleOnChange}
-                autoComplete="email" type="email" placeholder="Email" />
-            <input type="password" name="password" className="form-control"
+            <label className="w-full">
+                <input type="text" 
+                    name="name" className="form-control "
+                    {...register('name', { required: true })} placeholder="Your Name"
+                />
+                {errors.name && errors.name.type === "required" && 
+                <span className="error">Name is required</span>}
+
+            </label>
+            <label className="w-full">
+                <input type="text" 
+                    name="username" className="form-control "
+                    {...register('username', { required: true })} placeholder="Your username"
+                />
+                {errors.username && errors.username.type === "required" && 
+                <span className="error">username is required</span>}
+
+            </label>
+            <label className="w-full">
+                <input type="email" 
+                    name="email" className="form-control" placeholder="Your Email"
+                    {...register('email', { required: true, pattern: /\S+@\S+\.\S+/ })}
+                />
+                {errors.email && (
+                    <span className="error">
+                        {errors.email.type === "required" ? "Email is required" : "Your Email pattern is not correct"}
+                    </span>
+                )}
+            </label>
+            <label className="w-full">
+                <input type="password" name="password" className="form-control"
                         {...register('password', { required: true, minLength: 6, pattern: /\d{1}/ })}
-                        placeholder="Your Password" 
+                        placeholder="Your Password" onBlur={handleBlur}
                     />
                     {errors.password && (
                         <span className="error">
@@ -159,7 +139,8 @@ const [password, setPassword] = useState();
                         </span>
                     )}
 
-
+            </label>
+            <label className="w-full">
                     <input type="password" name="confirmPassword"
                         {...register('confirmPassword', { required: true, minLength: 6, pattern: /\d{1}/ })}
                         placeholder="Confirm Your Password" className="form-control" onChange={handleBlur}
@@ -175,13 +156,35 @@ const [password, setPassword] = useState();
                         </span>
                     )}
 
+            </label>
+            <label className="w-full">
+                    <input type="text" name="shopName" className="form-control" placeholder="Shop Name"
+                        {...register('shopName', { required: true })} />
+                        {errors.shopName && errors.shopName.type === "required" && <small className="error">Shop Name is required</small>}
+            </label>
+            <label className="w-full">
+                        <input onInput={e => setShopUrl(e.target.value.trim())} type="text" name="shopUrl" className="form-control"
+                            {...register('shopUrl', { required: false })}
+                            // value={shopurl}
+                            placeholder="Shop Url"
+                        />
+                        <small className='text-gray-900 font-bold'>{`https://mamardukan.com/${shopurl}`}</small>
+                        {errors.name && errors.name.type === "required" && <small className="error">Shop Url is required</small>}
+            </label>
+            <label className="w-full">
+                <input type="number" name="PhoneNumber" className="form-control"
+                    {...register('PhoneNumber',
+                        {
+                            maxLength: { value: 11, message: "error message" }
+                        })}
+                    placeholder="Phone Number"
+                />
+                {errors.name && errors.name.type === "required" && <small className="error">Phone Number is required</small>}
 
-          <a href="#">Forgot your password?</a>
-          
-          <button>Sign In</button>
+             </label>
+             <Imageupload imageURLStatus={imageURL} setImageURLStatus={setImageURL}/>
+            <button type="submit">Vendor account</button>
         </form>
     );
 };
-
-
 export default VendorSingupFrom;

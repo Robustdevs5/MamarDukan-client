@@ -1,16 +1,16 @@
 import React, { Fragment, useContext, useState } from 'react';
-import { toast } from 'react-toastify';
-import useProducts from '../../../hooks/useProducts';
-import useCart from '../../../hooks/useCart';
-import useWishlistCart from '../../../hooks/useWishlistCart';
-import { AddWishlistToDb } from '../WishlistCart/WishListCartDatabase';
-import { addToDb } from '../ShopingCart/CartDatabase';
-import { AddCompareToDb } from '../CompareCart/CompareCartDatabase';
-import { userContext } from '../../../App';
-import Modal from '../../Modal/Modal';
 import { AiFillHeart, AiOutlineEye, AiOutlineHeart } from "react-icons/ai";
-import { HiPresentationChartBar, HiOutlinePresentationChartBar } from "react-icons/hi";
+import { HiOutlinePresentationChartBar, HiPresentationChartBar } from "react-icons/hi";
 import { MdShoppingCart } from 'react-icons/md';
+import { toast } from 'react-toastify';
+import { userContext } from '../../../App';
+import useCart from '../../../hooks/useCart';
+import useProducts from '../../../hooks/useProducts';
+import useWishlistCart from '../../../hooks/useWishlistCart';
+import Modal from '../../Modal/Modal';
+import { AddCompareToDb } from '../CompareCart/CompareCartDatabase';
+import { addToDb } from '../ShopingCart/CartDatabase';
+import { AddWishlistToDb } from '../WishlistCart/WishListCartDatabase';
 
 
 
@@ -114,14 +114,14 @@ const CartButton = ({cartProduct}) => {
             <button
                 onClick={() => handleAddToCart(cartProduct)}
                 title='add to cart'
-                className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2">
+                className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-2 px-2">
                 <MdShoppingCart />
             </button>
 
             <button
                 onClick={() => handleModalOpen(cartProduct._id)}
                 title='view products'
-                className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2">
+                className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-2 px-2">
                 <AiOutlineEye />
             </button>
 
@@ -129,8 +129,8 @@ const CartButton = ({cartProduct}) => {
                 onClick={() => handleAddToWishlist(cartProduct)}
                 title='add to wishlist'
                 className={
-                    love ? "rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2 cursor-not-allowed" 
-                    : "rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2 cursor-pointer"}>
+                    love ? "rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-2 px-2 cursor-not-allowed" 
+                    : "rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-2 px-2 cursor-pointer"}>
                 {love ? <AiFillHeart className='text-red-500'/> : <AiOutlineHeart/>}
                 
             </button >
@@ -139,8 +139,8 @@ const CartButton = ({cartProduct}) => {
                 onClick={() => handleCompare(cartProduct)}
                 title='add to compare list'
                 className={
-                    compare ? "rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2 cursor-not-allowed" 
-                    : "rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2 cursor-pointer"}>
+                    compare ? "rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-2 px-2 cursor-not-allowed" 
+                    : "rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-2 px-2 cursor-pointer"}>
                 
                 {compare ? <HiPresentationChartBar className='text-red-500'/> :<HiOutlinePresentationChartBar/>}
             </button>
