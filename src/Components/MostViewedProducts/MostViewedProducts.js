@@ -80,7 +80,7 @@ const MostViewedProducts = () => {
                             <h1 className="tracking-tight uppercase text-2xl text-gray-800 font-bold py-2 my-4 md:py-1 pl-3 md:my-0 border-red-600 mb-10 border-l-4"> Most viewed Products</h1>
                         </li>
                     </div>
-                    <div className="flex">
+                    <div className="hidden md:block">
                         {
                             MostViewedProduct.map((item, index) =>
                                 <li key={index} className={item.cls}>
