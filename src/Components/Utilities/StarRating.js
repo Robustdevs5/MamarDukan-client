@@ -1,33 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { FaStar } from 'react-icons/fa';
-import Tamal from './tamal';
 import ProductReview from './ProductReview';
+import { useParams } from 'react-router';
 
-const StarRating = () => {
+const StarRating = ({review, setReview, singleProduct}) => {
     const [ rating, setRating ]=useState(0)
-    const [orders, setOrders] = useState([]);
-    console.log('orders', orders)
+    // const [review, setReview] = useState([]);
+    
+    console.log("singleProductId",singleProduct)
+    console.log('review', review)
     useEffect(() => {
-        
-        fetch('http://localhost:3000/orders')
+        fetch('http://localhost:5000/review/')
             .then(res => res.json())
-            .then(data => setOrders(data));
-            // async function fetchFunction() {
-            //     try{
-            //       const response = await fetch(`https://mamardukan.herokuapp.com/products`);
-            //       await response.then(res => res.json())
-            //           .then(data => {
-            //               setProducts(data)
-                          
-            //                 console.log('data', data);
-            //         });;
-            //     }
-            //     catch(err) {
-            //     //   throw err;
-            //       console.log(err);
-            //     }
-            //   }
-    }, []);
+            .then(data => setReview(data.review));
+    }, [review]);
+
+    
     
     return (
         <div>
@@ -39,109 +27,29 @@ const StarRating = () => {
                                 <h3 className="text-sm text-grey-darker font-medium">All review</h3>
                             </div>
                             <hr/>
-                            <div class="border border-blue-300 shadow rounded-md p-4 max-w-lg w-full mx-auto my-2">
-                                <div class="animate-pulse flex space-x-4">
-                                    <div class="rounded-full bg-blue-400 h-12 w-12">kk</div>
-                                    <div class="flex-1 space-y-4 py-1">
-                                        <div class="h-4 bg-blue-400 rounded w-3/4">k</div>
-                                        <div class="space-y-2">
-                                            <div class="h-4 bg-blue-400 rounded">kk</div>
-                                            <div class="h-4 bg-blue-400 rounded w-5/6">kkk</div>
+                            {
+                                review && review.map(review => {
+                                    console.log('review.review', review.result.review)
+                                   return <div key={review._id} class="border  shadow rounded-md p-4 max-w-lg w-full mx-auto my-2">
+                                        <div class="flex space-x-4">
+                                            <div class="rounded-full  h-12 w-12">{review.result.name}</div>
+                                            <div class="flex-1 space-y-4 py-1 px-5">
+                                                <div class="h-4 flex items-center rounded w-3/4 text-gray-700 font-bold">
+                                                    {review.result.review}
+                                                    <FaStar size={20} className="px-1 text-yellow-400"/>
+                                                    {review.result.reviewRating}
+                                                </div>
+                                                <div class="space-y-2 flex items-center">
+                                                    <div class="h-4  rounded w-5/6">{(new Date(review.result.date).toLocaleDateString())}</div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                })
+                            }
+                         
                             <hr/>
-                            <div class="border border-blue-300 shadow rounded-md p-4 max-w-lg w-full mx-auto my-2">
-                                <div class="animate-pulse flex space-x-4">
-                                    <div class="rounded-full bg-blue-400 h-12 w-12">kk</div>
-                                    <div class="flex-1 space-y-4 py-1">
-                                        <div class="h-4 bg-blue-400 rounded w-3/4">k</div>
-                                        <div class="space-y-2">
-                                            <div class="h-4 bg-blue-400 rounded">kk</div>
-                                            <div class="h-4 bg-blue-400 rounded w-5/6">kkk</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr/>
-                            <div class="border border-blue-300 shadow rounded-md p-4 max-w-lg w-full mx-auto my-2">
-                                <div class="animate-pulse flex space-x-4">
-                                    <div class="rounded-full bg-blue-400 h-12 w-12">kk</div>
-                                    <div class="flex-1 space-y-4 py-1">
-                                        <div class="h-4 bg-blue-400 rounded w-3/4">k</div>
-                                        <div class="space-y-2">
-                                            <div class="h-4 bg-blue-400 rounded">kk</div>
-                                            <div class="h-4 bg-blue-400 rounded w-5/6">kkk</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr/>
-                            <div class="border border-blue-300 shadow rounded-md p-4 max-w-lg w-full mx-auto my-2">
-                                <div class="animate-pulse flex space-x-4">
-                                    <div class="rounded-full bg-blue-400 h-12 w-12">kk</div>
-                                    <div class="flex-1 space-y-4 py-1">
-                                        <div class="h-4 bg-blue-400 rounded w-3/4">k</div>
-                                        <div class="space-y-2">
-                                            <div class="h-4 bg-blue-400 rounded">kk</div>
-                                            <div class="h-4 bg-blue-400 rounded w-5/6">kkk</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr/>
-                            <div class="border border-blue-300 shadow rounded-md p-4 max-w-lg w-full mx-auto my-2">
-                                <div class="animate-pulse flex space-x-4">
-                                    <div class="rounded-full bg-blue-400 h-12 w-12">kk</div>
-                                    <div class="flex-1 space-y-4 py-1">
-                                        <div class="h-4 bg-blue-400 rounded w-3/4">k</div>
-                                        <div class="space-y-2">
-                                            <div class="h-4 bg-blue-400 rounded">kk</div>
-                                            <div class="h-4 bg-blue-400 rounded w-5/6">kkk</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr/>
-                            <div class="border border-blue-300 shadow rounded-md p-4 max-w-lg w-full mx-auto my-2">
-                                <div class="animate-pulse flex space-x-4">
-                                    <div class="rounded-full bg-blue-400 h-12 w-12">kk</div>
-                                    <div class="flex-1 space-y-4 py-1">
-                                        <div class="h-4 bg-blue-400 rounded w-3/4">k</div>
-                                        <div class="space-y-2">
-                                            <div class="h-4 bg-blue-400 rounded">kk</div>
-                                            <div class="h-4 bg-blue-400 rounded w-5/6">kkk</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr/>
-                            <div class="border border-blue-300 shadow rounded-md p-4 max-w-lg w-full mx-auto my-2">
-                                <div class="animate-pulse flex space-x-4">
-                                    <div class="rounded-full bg-blue-400 h-12 w-12">kk</div>
-                                    <div class="flex-1 space-y-4 py-1">
-                                        <div class="h-4 bg-blue-400 rounded w-3/4">k</div>
-                                        <div class="space-y-2">
-                                            <div class="h-4 bg-blue-400 rounded">kk</div>
-                                            <div class="h-4 bg-blue-400 rounded w-5/6">kkk</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr/>
-                            <div class="border border-blue-300 shadow rounded-md p-4 max-w-lg w-full mx-auto my-2">
-                                <div class="animate-pulse flex space-x-4">
-                                    <div class="rounded-full bg-blue-400 h-12 w-12">kk</div>
-                                    <div class="flex-1 space-y-4 py-1">
-                                        <div class="h-4 bg-blue-400 rounded w-3/4">k</div>
-                                        <div class="space-y-2">
-                                            <div class="h-4 bg-blue-400 rounded">kk</div>
-                                            <div class="h-4 bg-blue-400 rounded w-5/6">kkk</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <hr/>
                         </div>
                     </div>
@@ -153,11 +61,10 @@ const StarRating = () => {
                             </div>
                             <hr/>
                             
-                            <ProductReview rating={rating} setRating={setRating}/>
+                            <ProductReview singleProduct={singleProduct} rating={rating} setRating={setRating}/>
                             
                             
                         </div>
-                        {/* <Tamal/> */}
 
                     </div>
                 </div>
