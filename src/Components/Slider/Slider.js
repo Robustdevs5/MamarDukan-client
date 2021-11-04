@@ -69,11 +69,11 @@ const Sliders = () => {
     return (
         
         <>
-         <div className="w-full flex justify-center items-center my-2">
+         <div className="w-full md:flex justify-center items-center my-2">
             <div className="w-full md:w-1/4 bg-white p-4 text-center md:text-right border-r-4 border-gray-400">
                 <h2 className="text-gray-800 text-4xl font-bold items-center pr-4 uppercase">Flash Sale</h2>
             </div>
-            <div className="w-full md:w-2/4 items-center justify-center">
+            <div className="w-full md:w-2/4 py-4 md:py-0 items-center justify-center">
                 
                 <div className="flex mt-2 text-center text-gray-800 ">
                     <div className="flex-1">
@@ -110,8 +110,8 @@ const Sliders = () => {
                             <img src={slider1} alt="Slider Avatar" />
                         </div>
                         <div className="slider-blog-content">
-                            <h5 className="text-white font-bold pb-2 uppercase text-2xl">Top Brands</h5>
-                            <h3 className="font-bold md:font-black text-white pb-5 uppercase text-5xl">New Collections</h3>                            
+                            <h5 className="text-white font-bold pb-2 uppercase text-lg md:text-2xl">Top Brands</h5>
+                            <h3 className="font-bold md:font-black text-white pb-5 uppercase text2xl md:text-5xl">New Collections</h3>                            
                             <button className="primary_BTN py-3 px-6 rounded-full"><Link to="/shop"
                             >Shop Now</Link></button>
                         </div>
@@ -121,8 +121,8 @@ const Sliders = () => {
                             <img src={slider2} alt="Slider Avatar" />
                         </div>
                         <div className="slider-blog-content">
-                            <h5 className="text-white font-bold pb-2 uppercase text-2xl">For men & women</h5>
-                            <h3 className="font-bold md:font-black text-white pb-5 uppercase text-5xl">Smart Watches</h3>
+                            <h5 className="text-white font-bold pb-2 uppercase text-lg md:text-2xl">For men & women</h5>
+                            <h3 className="font-bold md:font-black text-white pb-5 uppercase text2xl md:text-5xl">Smart Watches</h3>
                             
                             <button className="primary_BTN font-bold py-3 px-6 rounded-full"><Link to="/shop">Shop Now</Link></button>
                         </div>
@@ -132,8 +132,8 @@ const Sliders = () => {
                             <img src={slider3} alt="Slider Avatar" />
                         </div>
                         <div className="slider-blog-content">
-                            <h5 className="text-white font-bold pb-2 uppercase text-2xl">Winter 2021</h5>
-                            <h3 className="font-bold md:font-black text-white pb-5 uppercase text-5xl">Women Fashion</h3>
+                            <h5 className="text-white font-bold pb-2 uppercase text-lg md:text-2xl">Winter 2021</h5>
+                            <h3 className="font-bold md:font-black text-white pb-5 uppercase text2xl md:text-5xl">Women Fashion</h3>
                             <button className="primary_BTN font-bold py-3 px-6 rounded-full"><Link to="/shop">Shop Now</Link></button>
                         </div>
                     </div>
