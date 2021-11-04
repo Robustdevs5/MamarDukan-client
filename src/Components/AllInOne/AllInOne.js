@@ -21,7 +21,7 @@ export default function AllInOne() {
                 {Categories.map((cat, index) => (
                     <div className="w-full rounded-lg shadow border-1 border-gray-300 overflow-hidden flex flex-col justify-center items-center">
                         <div>
-                            <img className="object-center object-cover h-auto w-full" src={cat.img} alt="Author" />
+                        <Link to="/shop"> <img className="object-center object-cover h-auto w-full" src={cat.img} alt="Author" /></Link>
                         </div>
                         <div className="text-center py-8 sm:py-6">
                             <p className="text-xl text-gray-800 font-bold mb-2"><Link to="/shop">{cat.title}</Link></p>

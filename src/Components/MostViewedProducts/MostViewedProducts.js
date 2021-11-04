@@ -83,7 +83,7 @@ const MostViewedProducts = () => {
                         {
                             MostViewedProduct.map((item, index) =>
                                 <li key={index} className={item.cls}>
-                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 primary_BTN_Outline rounded  duration-300">{item.title}</Link>
+                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 primary_BTN rounded duration-300">{item.title}</Link>
                                 </li>
                             )
                         }
