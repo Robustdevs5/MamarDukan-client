@@ -37,7 +37,6 @@
   font-weight: 500;
 }
 
-
 body {
   overflow-x: hidden;
 }
@@ -48,22 +47,21 @@ body {
   left: 5%;
 } */
 .slick-dots li button:before {
-  font-size: 12px;
+  font-size: 15px !important;
+  opacity: 1 !important;
 }
 
 .slick-dots li.slick-active button:before {
-  opacity: 0.9;
-  color: #dd2400;
+  opacity: 0.9 !important;
+  color: #dd2400 !important;
 }
 
 .slick-dots li button:before {
-  color: #fff;
+  color: #fff !important;
 }
 
-
-
 .slider-blog .slick-dots li button:before {
-  color: #777;
+  color: #777 !important;
 }
 .slider-img img {
   height: 400px;
@@ -94,6 +92,10 @@ body {
   .promotion-post {
     padding-top: 40px;
   }
+}
+.css-levciy-MuiTablePagination-displayedRows {
+  font-weight: 600 !important;
+  font-size: 18px !important;
 }
 /* Background color */
 .primary_BG_color {
