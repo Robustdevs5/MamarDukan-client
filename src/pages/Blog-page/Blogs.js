@@ -15,7 +15,7 @@ const Blogs = () => {
   const [page, setPage] = useState(0);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/blogs`)
+        fetch(`https://mamar-dukan.herokuapp.com/blogs`)
             .then(res => res.json())
             .then(data => setBlogs(data.blog))
     }, [])

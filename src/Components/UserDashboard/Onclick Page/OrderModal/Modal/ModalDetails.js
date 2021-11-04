@@ -9,7 +9,7 @@ const ModalDetails = ({modalId}) => {
     
     const [modalProducts, setModalProducts] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:5000/orders/${modalId}`)
+        fetch(`https://mamar-dukan.herokuapp.com/orders/${modalId}`)
           .then(res => res.json())
           .then(data => setModalProducts(data.order))
       }, [modalId])

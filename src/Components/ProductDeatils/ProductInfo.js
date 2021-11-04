@@ -8,7 +8,7 @@ const ProductInfo = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`https://mamardukan.herokuapp.com/products/${id}`)
+    fetch(`https://mamar-dukan.herokuapp.com/products/${id}`)
       .then(res => res.json())
       .then(data => setProduct([data.product]))
   }, [id])

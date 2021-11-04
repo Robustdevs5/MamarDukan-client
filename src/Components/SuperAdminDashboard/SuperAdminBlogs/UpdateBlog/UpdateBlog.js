@@ -17,7 +17,7 @@ const UpdateBlog = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/blogs/${id}`)
+        fetch(`https://mamar-dukan.herokuapp.com/blogs/${id}`)
         .then(res => res.json())
         .then(data => setBlog(data.result))
     }, [id])
@@ -33,7 +33,7 @@ const UpdateBlog = () => {
         console.log(blogInfo);
 
 
-        const url = `http://localhost:5000/blogs/${id}`;
+        const url = `https://mamar-dukan.herokuapp.com/blogs/${id}`;
         fetch(url, {
             method: 'PATCH',
             headers: {

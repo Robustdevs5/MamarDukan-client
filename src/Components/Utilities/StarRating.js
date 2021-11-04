@@ -14,7 +14,7 @@ const StarRating = () => {
             .then(data => setOrders(data));
             // async function fetchFunction() {
             //     try{
-            //       const response = await fetch(`https://mamardukan.herokuapp.com/products`);
+            //       const response = await fetch(`https://mamar-dukan.herokuapp.com/products`);
             //       await response.then(res => res.json())
             //           .then(data => {
             //               setProducts(data)

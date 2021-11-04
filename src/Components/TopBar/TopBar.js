@@ -56,7 +56,7 @@ const TopBar = () => {
       <section className=" flex justify-between  items-center  ">
         <div className="flex justify-between items-center">
           <div className="mx-0 sm:mx-4 hidden md:block ">
-            <p className="text-base text-white font-semibold">Helping buyers and sellers to attain their goals</p>
+            {/* <p className="text-base text-white font-semibold">Helping buyers and sellers to attain their goals</p> */}
           </div>
 
 

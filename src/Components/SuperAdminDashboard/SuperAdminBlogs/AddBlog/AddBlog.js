@@ -25,7 +25,7 @@ const AddBlog = () => {
         console.log(blogInfo);
 
 
-        const url = `http://localhost:5000/blogs`;
+        const url = `https://mamar-dukan.herokuapp.com/blogs`;
         fetch(url, {
             method: 'POST',
             headers: {

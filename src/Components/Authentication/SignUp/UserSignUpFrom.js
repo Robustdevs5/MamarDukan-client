@@ -48,7 +48,7 @@ console.log(";setImageURLStatus", imageURLStatus)
   
           console.log('user info', userInfo)
           if (passwordsMatch) {
-              const userSignUp = `http://localhost:5000/user/register-user`;
+              const userSignUp = `https://mamar-dukan.herokuapp.com/user/register-user`;
               fetch(userSignUp, {
                   method: 'POST',
                   headers: {

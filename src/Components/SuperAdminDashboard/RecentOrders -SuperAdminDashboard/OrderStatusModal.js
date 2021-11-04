@@ -26,7 +26,7 @@ const OrderStatusModal = ({ setModalUpdateStatus, updateId, deleted }) => {
             size
         };
 
-        const url = `https://mamardukan.herokuapp.com/products/${updateId}`;
+        const url = `https://mamar-dukan.herokuapp.com/products/${updateId}`;
         fetch(url, {
             method: 'PATCH',
             headers: {

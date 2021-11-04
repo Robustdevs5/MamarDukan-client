@@ -34,7 +34,7 @@ const Shop = () => {
 
     //Fetching Product//////////////////////////////////
     useEffect(() => {
-        fetch(`https://mamardukan.herokuapp.com/products`)
+        fetch(`https://mamar-dukan.herokuapp.com/products`)
             .then(res => res.json())
             .then(data => setProduct(data.products))
     }, [])
@@ -72,7 +72,7 @@ const Shop = () => {
 
 
     const handleDepartmentClick = (dept) => {
-        fetch(`https://mamardukan.herokuapp.com/products/department?department=${dept}`)
+        fetch(`https://mamar-dukan.herokuapp.com/products/department?department=${dept}`)
             .then(res => res.json())
             .then(data => setDeptProduct(data.result))
         setDeptProductStatus(true)
@@ -98,7 +98,7 @@ const Shop = () => {
         // let checkBox = document.getElementById(`${brand}`);
         // var text = document.getElementById("brand");
 
-        fetch(`https://mamardukan.herokuapp.com/products/brand?brand=${brand}`)
+        fetch(`https://mamar-dukan.herokuapp.com/products/brand?brand=${brand}`)
             .then(res => res.json())
             .then(data => setBrandProduct(data.result))
         setDeptProductStatus(false)

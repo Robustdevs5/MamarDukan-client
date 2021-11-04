@@ -1,37 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar/Navbar';
 import TopBar from '../TopBar/TopBar';
 import '../Authentication/SignIn/SignIn.css';
 import OrderModal from '../UserDashboard/Onclick Page/OrderModal/Modal/OrderModal';
+import ConfirmOrder from '../../pages/ConfirmOrder/ConfirmOrder';
 
 
 
 const TrackOrder = () => {
 
    
+    const {Data , setData} =useState([])
 
     const handleSubmit = (e) => {
-        const input = document.getElementById('order').value
-        handleModal(input)
         e.preventDefault()
-        console.log('TrackOrder' , input)
-
-
+    
     }
+    const input = document.getElementById('order').value
+
+    useEffect(() => {
+        fetch(`https://mamar-dukan.herokuapp.com/orders/${input}`)
+        .then (res => res.json())
+        .then (data => setData(data.orders))
+    }, [])
+    console.log('TrackOrder' , input)
 
 
     
 
-    const [modalUpdateStatus, setModalStatus] = useState(false);
-    const [modalId, setModalId] = useState(null);
-    // }
-    const handleModal = (item)=>{
-        setModalId(item)
-        setModalStatus(true);
-        
-    }
+    
+
+    
     
 
 
@@ -56,9 +57,8 @@ const TrackOrder = () => {
                 </form>
                     
             </div>
-            {modalUpdateStatus && <OrderModal
-                    setModalStatus={setModalStatus}
-                    modalId={modalId} />}
+
+            {Data && <ConfirmOrder /> }
 
             <ToastContainer />
             <Footer />

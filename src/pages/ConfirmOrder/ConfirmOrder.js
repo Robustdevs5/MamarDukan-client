@@ -5,7 +5,7 @@ import TopBar from '../../Components/TopBar/TopBar';
 import OrderInfo from './OrderInfo';
 import OrderInvoice from './OrderInvoice';
 
-const Thankyou = () => {
+const ConfirmOrder = () => {
     return (
         <div>
             <TopBar />
@@ -23,4 +23,4 @@ const Thankyou = () => {
     );
 };
 
-export default Thankyou;
+export default ConfirmOrder;

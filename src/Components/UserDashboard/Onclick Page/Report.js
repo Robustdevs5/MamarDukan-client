@@ -28,7 +28,7 @@ console.log("Report" , report);
 const handleSubmit = (e) => {
  e.preventDefault();
  if (report) {
-  const RepoteRoute = `http://localhost:5000/report`;
+  const RepoteRoute = `https://mamar-dukan.herokuapp.com/report`;
   fetch(RepoteRoute, {
       method: 'POST',
       headers: {

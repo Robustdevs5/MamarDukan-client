@@ -5,7 +5,7 @@ import AllProduct from './AllProduct';
 const AllProductsSuperAdminDashboard = () => {
     const [Product , setProduct] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/products`)
+        fetch(`https://mamar-dukan.herokuapp.com/products`)
         .then (res => res.json())
         .then (data => setProduct(data.products))
     }, [])

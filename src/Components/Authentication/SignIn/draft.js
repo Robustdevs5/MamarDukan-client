@@ -118,7 +118,7 @@ const SIgnIn = () => {
             email: data.email,
             password: data.password
         };
-        const userSignUp = `https://mamardukan.herokuapp.com/user/login`;
+        const userSignUp = `https://mamar-dukan.herokuapp.com/user/login`;
         fetch(userSignUp, {
             method: 'POST',
             headers: {

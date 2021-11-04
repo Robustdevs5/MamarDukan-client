@@ -6,7 +6,7 @@ const Tamal = () => {
     const [Rating, setRating] = useState(0);
     console.log('Rating', Rating)
     useEffect(() => {
-        fetch(`http://localhost:5000/review`)
+        fetch(`https://mamar-dukan.herokuapp.com/review`)
             .then(res => res.json())
             .then(data => {
                 setTamalRating(data.review);
