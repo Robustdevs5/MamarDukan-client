@@ -1,8 +1,8 @@
-import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import { useHistory } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
 import { DashboardContainer } from '../../Style/AddSuperAdminStyle';
@@ -138,9 +138,8 @@ const ManageBlog = () => {
                                                         className="p-3 rounded-full bg-blue-400 hover:bg-blue-800 hover:text-gray-100" 
                                                         >
                                                         {/* Delete */}
-                                                        <FontAwesomeIcon
-                                                            icon={faEdit}
-                                                        ></FontAwesomeIcon>
+                                                        <FaEdit
+                                                        />
                                                         {/* Update */}
                                                     </button>
                                                 </StyledTableCell>
@@ -151,9 +150,8 @@ const ManageBlog = () => {
                                                         className="p-3 rounded-full bg-red-400 hover:bg-red-800 hover:text-gray-100" 
                                                         >
                                                         {/* Delete */}
-                                                        <FontAwesomeIcon
-                                                            icon={faTrashAlt}
-                                                        ></FontAwesomeIcon>
+                                                        <FaTrashAlt
+                                                        />
                                                     </button>
                                                 </StyledTableCell>
                                             </StyledTableRow>

@@ -88,7 +88,7 @@ export const SidebarData = [
   {
     title: 'Blogs',
     path: '/super-admin/dashboard/blogs/overview',
-    icon: <FaIcons.FaCartPlus />,
+    icon: <FaIcons.FaBloggerB />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 

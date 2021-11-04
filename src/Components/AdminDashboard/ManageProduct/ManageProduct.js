@@ -1,12 +1,11 @@
 import { TableContainer, TablePagination } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import Logo from '../../Navbar/Logo/Logo';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 import { Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { useHistory } from 'react-router';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 
 
 const StyledTableCell = withStyles((theme) => ({
@@ -163,9 +162,8 @@ const ManageProduct = () => {
                                                         className="p-3 rounded-full bg-blue-400 hover:bg-blue-800 hover:text-gray-100" 
                                                         >
                                                         {/* Delete */}
-                                                        <FontAwesomeIcon
-                                                            icon={faEdit}
-                                                        ></FontAwesomeIcon>
+                                                        <FaEdit
+                                                        />
                                                         {/* Update */}
                                                     </button>
                                                 </StyledTableCell>
@@ -176,9 +174,8 @@ const ManageProduct = () => {
                                                         className="p-3 rounded-full bg-red-400 hover:bg-red-800 hover:text-gray-100" 
                                                         >
                                                         {/* Delete */}
-                                                        <FontAwesomeIcon
-                                                            icon={faTrashAlt}
-                                                        ></FontAwesomeIcon>
+                                                        <FaTrashAlt
+                                                        />
                                                     </button>
                                                 </StyledTableCell>
                                             </StyledTableRow>

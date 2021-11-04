@@ -1,6 +1,5 @@
 // font awesome
-import { faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import React, { useContext  } from "react";
@@ -15,6 +14,7 @@ import firebaseConfig from "../firebase.config";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './SignIn.css';
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
@@ -206,10 +206,10 @@ const SIgnIn = () => {
                     <h4>Or Continue With</h4>
                     <br />
                     <button onClick={handleGoogleLogin} className="login-btn">
-                        <span><FontAwesomeIcon icon={faGoogle}/></span> Google
+                        <span><FaGoogle /></span> Google
                     </button>
                     <button onClick={handleGitSignIn} className="login-btn">
-                        <span><FontAwesomeIcon icon={faGithub}/></span>Github
+                        <span><FaGithub /></span>Github
                     </button>                      
                 </div>
             </div>

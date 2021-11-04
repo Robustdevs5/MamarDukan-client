@@ -1,7 +1,5 @@
-import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
-import { faHeadset, faMapMarkerAlt, faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { FaEnvelope, FaHeadset, FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar/Navbar';
@@ -27,7 +25,7 @@ const Contact = () => {
                         <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                           <div className="px-4 py-5 flex-auto">
                           <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-custom">
-                              <FontAwesomeIcon className="iconbutton" icon={faEnvelope} />
+                              <FaEnvelope className="iconbutton"  />
                             </div>
                             <h6 className="text-xl font-semibold">Contact Directly</h6>
                             <p className="mt-2 text-blueGray-500">
@@ -41,7 +39,7 @@ const Contact = () => {
                         <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                           <div className="px-4 py-5 flex-auto">
                             <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-custom">
-                              <FontAwesomeIcon className="iconbutton" icon={faMapMarkerAlt} />
+                              <FaMapMarkerAlt className="iconbutton"  />
                             </div>
                             <h6 className="text-xl font-semibold">Head Quater</h6>
                             <p className="mt-2 mb-4 text-blueGray-500">
@@ -55,7 +53,7 @@ const Contact = () => {
                         <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                           <div className="px-4 py-5 flex-auto">
                             <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-custom">
-                              <FontAwesomeIcon className="iconbutton" icon={faEnvelope} />
+                              <faEnvelope className="iconbutton"  />
                             </div>
                             <h6 className="text-xl font-semibold">Work With Us</h6>
                             <p className="mt-2 text-blueGray-500">
@@ -69,7 +67,7 @@ const Contact = () => {
                         <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                           <div className="px-4 py-5 flex-auto">
                             <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-custom">
-                              <FontAwesomeIcon className="iconbutton" icon={faHeadset} />
+                              <FaHeadset className="iconbutton"  />
                             </div>
                             <h6 className="text-xl font-semibold">Customer Service</h6>
                             <p className="mt-2 text-blueGray-500">
@@ -83,7 +81,7 @@ const Contact = () => {
                         <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                           <div className="px-4 py-5 flex-auto">
                             <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-custom">
-                              <FontAwesomeIcon className="iconbutton" icon={faPhoneAlt} />
+                              <FaPhoneAlt className="iconbutton"  />
                             </div>
                             <h6 className="text-xl font-semibold">Media Relations</h6>
                             <p className="mt-2 text-blueGray-500">
@@ -97,7 +95,7 @@ const Contact = () => {
                         <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                           <div className="px-4 py-5 flex-auto">
                             <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-custom">
-                              <FontAwesomeIcon className="iconbutton" icon={faPhoneAlt} />
+                              <faPhoneAlt className="iconbutton" />
                             </div>
                             <h6 className="text-xl font-semibold">Vendor Support</h6>
                             <p className="mt-2 text-blueGray-500">

@@ -255,34 +255,26 @@ export const Menu = [
       "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
   },
   {
-    title: "Page",
-    path: "/page",
-    class:
-      "py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
-    toggleClass:
-      "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
-  },
-  {
     title: "Shop",
     path: "/shop",
     class:
-      "py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
+      "py-2 flex items-center  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
     toggleClass:
       "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
   },
   {
     title: "men",
-    path: "/men",
+    path: "/shop",
     class:
-      "py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
+      "py-2 flex items-center   px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
     toggleClass:
       "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
   },
   {
     title: "women",
-    path: "/women",
+    path: "/shop",
     class:
-      "py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
+      "py-2 flex items-center   px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
     toggleClass:
       "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
   },
