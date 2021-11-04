@@ -1,6 +1,7 @@
-import { faCcMastercard, faCcPaypal, faCcVisa } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import React from 'react';
+import { FaCcMastercard, FaCcVisa } from 'react-icons/fa';
+import { ImPaypal } from 'react-icons/im';
 import Newsletter from '../Newsletter/Newsletter';
 import '../StyledComponent/Footer.css';
 import FooterCatagory from './FooterCatagory';
@@ -46,9 +47,9 @@ const Footer = () => {
                 <div className="PaymentGateway">
                             <h4 className="title">Payment Method</h4>
                                 <div className="iconwraper">
-                                    <FontAwesomeIcon className="iconbutton" icon={faCcVisa} />
-                                    <FontAwesomeIcon className="iconbutton" icon={faCcMastercard} />
-                                    <FontAwesomeIcon className="iconbutton" icon={faCcPaypal} />
+                                    <FaCcVisa className="iconbutton"  />
+                                    <FaCcMastercard className="iconbutton"  />
+                                    <ImPaypal className="iconbutton"  />
                                 </div>
                         </div>
                 </FooterCol>

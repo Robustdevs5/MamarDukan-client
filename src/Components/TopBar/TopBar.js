@@ -1,20 +1,15 @@
 
-import React, { useState, useEffect, useContext } from "react";
-import CartDropdown from "../Cart/ShopingCart/CartDropdown";
-import { useHistory, useLocation } from "react-router";
-import { userContext } from "../../App";
-import CustomerCare from "./CustomerCare";
-import styles from "../StyledComponent/TopBar.module.css";
-import { Link } from "react-router-dom";
-import { AiOutlineHeart,AiOutlineSearch } from "react-icons/ai";
+import React, { useContext, useState } from "react";
+import { AiOutlineHeart, AiOutlineSearch } from "react-icons/ai";
 import { FaChartBar, FaUserCircle } from "react-icons/fa";
 import { MdShoppingCart } from "react-icons/md";
-import WishlistDropwon from "../Cart/WishlistCart/WishlistDropwon";
+import { useHistory, useLocation } from "react-router";
+import { Link } from "react-router-dom";
+import { userContext } from "../../App";
 import CompareDropdown from "../Cart/CompareCart/CompareDropdown";
-import { getWishlistToDb } from "../Cart/WishlistCart/WishListCartDatabase";
-import useWishlistCart from "../../hooks/useWishlistCart";
-import useCart from "../../hooks/useCart";
-import useProducts from "../../hooks/useProducts";
+import CartDropdown from "../Cart/ShopingCart/CartDropdown";
+import styles from "../StyledComponent/TopBar.module.css";
+import CustomerCare from "./CustomerCare";
 
 
 const TopBar = () => {
@@ -60,16 +55,16 @@ const TopBar = () => {
     <main className="h-20 pl-0 sticky top-0 z-50 primary_BG_color ">
       <section className=" flex justify-between  items-center  ">
         <div className="flex justify-between items-center">
-          <div className="mx-0 sm:mx-4 hidden sm:block ">
-            <p className="text-lg sm:text-2xl text-white font-bold ">Mamar Dukan</p>
+          <div className="mx-0 sm:mx-4 hidden md:block ">
+            <p className="text-base text-white font-semibold">Helping buyers and sellers to attain their goals</p>
           </div>
 
 
         
         </div>
         
-        <div className='flex justify-end items-center w-9/12'>
-        <form action="" className=" sm:w-3/5 w-full h-10  items-center flex flex-row">
+        <div className='flex justify-end items-center w-full md:w-9/12'>
+        <form action="" className=" md:w-3/5 w-full h-10  items-center flex flex-row">
             <input
               type="text"
               placeholder="Search"

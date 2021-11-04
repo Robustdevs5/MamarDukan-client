@@ -33,6 +33,49 @@ export const Cloth = [
   },
 ];
 
+export const Categories = [
+  {
+    title: "Ephone",
+    img: "https://cdn-dgijh.nitrocdn.com/BIjtIohnXhjzStiBjRtrXSbTaWlmZHIX/assets/static/optimized/rev-9aa57ee/themes/sw_emarket/layout2/wp-content/uploads/2017/07/cat4.jpg",
+  },
+  {
+    title: "Fashion",
+    img: "https://cdn-dgijh.nitrocdn.com/BIjtIohnXhjzStiBjRtrXSbTaWlmZHIX/assets/static/optimized/rev-9aa57ee/themes/sw_emarket/layout2/wp-content/uploads/2017/07/cat5.jpg",
+  },
+  {
+    title: "Furniture",
+    img: "https://cdn-dgijh.nitrocdn.com/BIjtIohnXhjzStiBjRtrXSbTaWlmZHIX/assets/static/optimized/rev-9aa57ee/themes/sw_emarket/layout2/wp-content/uploads/2017/07/cat7.jpg",
+  },
+  {
+    title: "Headphone",
+    img: "https://cdn-dgijh.nitrocdn.com/BIjtIohnXhjzStiBjRtrXSbTaWlmZHIX/assets/static/optimized/rev-9aa57ee/themes/sw_emarket/layout2/wp-content/uploads/2017/07/cat4.jpg",
+  },
+  {
+    title: "Smartphone",
+    img: "https://cdn-dgijh.nitrocdn.com/BIjtIohnXhjzStiBjRtrXSbTaWlmZHIX/assets/static/optimized/rev-9aa57ee/themes/sw_emarket/layout2/wp-content/uploads/2017/07/cat3.jpg",
+  },
+  {
+    title: "Towels could",
+    img: "https://cdn-dgijh.nitrocdn.com/BIjtIohnXhjzStiBjRtrXSbTaWlmZHIX/assets/static/optimized/rev-9aa57ee/themes/sw_emarket/layout2/wp-content/uploads/2017/07/cat2.jpg",
+  },
+  {
+    title: "Watches",
+    img: "https://cdn-dgijh.nitrocdn.com/BIjtIohnXhjzStiBjRtrXSbTaWlmZHIX/assets/static/optimized/rev-9aa57ee/themes/sw_emarket/layout2/wp-content/uploads/2017/07/cat1.jpg",
+  },
+  {
+    title: "Sweaters",
+    img: "https://cdn-dgijh.nitrocdn.com/BIjtIohnXhjzStiBjRtrXSbTaWlmZHIX/assets/static/optimized/rev-9aa57ee/themes/sw_emarket/layout2/wp-content/uploads/2017/07/cat6.jpg",
+  },
+  {
+    title: "T-Shirts",
+    img: "https://cdn-dgijh.nitrocdn.com/BIjtIohnXhjzStiBjRtrXSbTaWlmZHIX/assets/static/optimized/rev-9aa57ee/themes/sw_emarket/layout2/wp-content/uploads/2017/07/cat2.jpg",
+  },
+  {
+    title: "Jackets",
+    img: "https://cdn-dgijh.nitrocdn.com/BIjtIohnXhjzStiBjRtrXSbTaWlmZHIX/assets/static/optimized/rev-9aa57ee/themes/sw_emarket/layout2/wp-content/uploads/2017/07/cat3.jpg",
+  }
+];
+
 export const Accessories = [
   {
     title: "Watches",
@@ -212,34 +255,26 @@ export const Menu = [
       "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
   },
   {
-    title: "Page",
-    path: "/page",
-    class:
-      "py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
-    toggleClass:
-      "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
-  },
-  {
     title: "Shop",
     path: "/shop",
     class:
-      "py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
+      "py-2 flex items-center  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
     toggleClass:
       "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
   },
   {
     title: "men",
-    path: "/men",
+    path: "/shop",
     class:
-      "py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
+      "py-2 flex items-center   px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
     toggleClass:
       "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
   },
   {
     title: "women",
-    path: "/women",
+    path: "/shop",
     class:
-      "py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
+      "py-2 flex items-center   px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
     toggleClass:
       "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
   },

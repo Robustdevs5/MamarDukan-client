@@ -2,16 +2,11 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import ShopDropDownMenu from "../Shop-DropDownMenu/ShopDropDownMenu";
 import { Menu } from "./MenuItems";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBars,
-  faTimes,
-  faCaretDown,
-} from "@fortawesome/free-solid-svg-icons";
 import Logo from "../Logo/Logo";
 import SocialMedia from "../SocialMedia/SocialMedia";
 import WomenDropDownMenu from "../women-DropDownMenu/womenDropDownMenu";
 import MenDropDownMenu from "../Men-DropDownMenu/MenDropDownMenu";
+import { FaBars, FaCaretDown, FaShoppingBag, FaTimes } from "react-icons/fa";
 
 const NavbarSection = ({ toggle, closeMobileMenu, isOpen }) => {
   const [dropDown, setDropDown] = useState(false);
@@ -28,10 +23,8 @@ const NavbarSection = ({ toggle, closeMobileMenu, isOpen }) => {
 
         {/*============== Toogle menu ===========*/}
         <div className="px-4 cursor-pointer md:hidden" onClick={toggle}>
-          <FontAwesomeIcon
-            className="text-white"
-            icon={isOpen ? faTimes : faBars}
-          />
+        {isOpen ? <FaTimes className="text-white" /> : <FaBars className="text-white" />}
+
         </div>
 
                 <ul className='text-white text-center md:flex hidden'>
@@ -48,8 +41,9 @@ const NavbarSection = ({ toggle, closeMobileMenu, isOpen }) => {
                                     <div className='py-5'>
                                     <Link to={item.path} className={item.class}>
                                         {item.title}
-                                        <FontAwesomeIcon className="ml-3 text-white" icon={faCaretDown} />
-                                    
+                                        <FaCaretDown
+                                          className="ml-3 text-white"
+                                        />                                    
                                     </Link>
                                     </div>
                                     {dropDown && <ShopDropDownMenu/>}
@@ -68,9 +62,8 @@ const NavbarSection = ({ toggle, closeMobileMenu, isOpen }) => {
                   <div className="py-5">
                     <Link to={item.path} className={item.class}>
                       {item.title}
-                      <FontAwesomeIcon
+                      <FaCaretDown
                         className="ml-3 text-white"
-                        icon={faCaretDown}
                       />
                     </Link>
                   </div>
@@ -90,9 +83,8 @@ const NavbarSection = ({ toggle, closeMobileMenu, isOpen }) => {
                   <div className="py-5">
                     <Link to={item.path} className={item.class}>
                       {item.title}
-                      <FontAwesomeIcon
+                      <FaCaretDown
                         className="ml-3 text-white"
-                        icon={faCaretDown}
                       />
                     </Link>
                   </div>

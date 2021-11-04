@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import star from "../../images/5star.png";
 import CartButton from '../Cart/CartButton/CartButton';
 import { FeaturedProducts } from '../HomepageProductData/HomepageProductData';
+import { Loader } from '../Loader/Loader';
 import '../StyledComponent/SliderNextandPrevs.css';
 
 
@@ -80,7 +81,7 @@ const FeaturedProduct = () => {
                             <h1 className="tracking-tight uppercase text-2xl text-gray-800 font-bold py-2 my-4 md:py-1 pl-3 md:my-0 border-red-600 mb-10 border-l-4"> Featured Product</h1>
                         </li>
                     </div>
-                    <div className="flex">
+                    <div className="hidden md:block">
                         {
                             FeaturedProducts.map((item, index) =>
                                 <li key={index} className={item.cls}>
@@ -132,6 +133,8 @@ const FeaturedProduct = () => {
                     )}
 
             </Slider>
+            { !featuredProduct && <Loader/>
+            }
 
         </div>
     );

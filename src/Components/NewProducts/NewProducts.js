@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
-import star from "../../images/5star.png";
-import { useHistory } from 'react-router';
-import { NewProductOffer } from '../HomepageProductData/HomepageProductData';
-import CartButton from '../Cart/CartButton/CartButton';
-import useProducts from '../../hooks/useProducts';
 import { ToastContainer } from 'react-toastify';
-
+import useProducts from '../../hooks/useProducts';
+import star from "../../images/5star.png";
+import CartButton from '../Cart/CartButton/CartButton';
+import { NewProductOffer } from '../HomepageProductData/HomepageProductData';
+import { Loader } from '../Loader/Loader';
 
 
 const NewProducts = () => {
@@ -67,11 +67,11 @@ const NewProducts = () => {
                             <h1 className="tracking-tight uppercase text-2xl text-gray-800 font-bold py-2 my-4 md:py-1 pl-3 md:my-0 border-red-600 mb-10 border-l-4"> Deal of the day</h1>
                         </li>
                     </div>
-                    <div className="flex">
+                    <div className="hidden md:block">
                         {
                             NewProductOffer.map((item, index) =>
                                 <li key={index} className={item.cls}>
-                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 primary_BTN_Outline rounded duration-300">{item.title}</Link>
+                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 primary_BTN  rounded duration-300">{item.title}</Link>
                                 </li>
                             )
                         }
@@ -119,7 +119,8 @@ const NewProducts = () => {
 
             </Slider>
             
-
+            { !products.products && <Loader/>
+            }
             <ToastContainer />
         </div>
     );

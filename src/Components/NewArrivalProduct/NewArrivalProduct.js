@@ -5,6 +5,7 @@ import useProducts from '../../hooks/useProducts';
 import star from "../../images/5star.png";
 import CartButton from '../Cart/CartButton/CartButton';
 import { ComputerTechnology } from '../HomepageProductData/HomepageProductData';
+import { Loader } from '../Loader/Loader';
 
 const NewArrivalProduct = () => {
   
@@ -50,7 +51,7 @@ const NewArrivalProduct = () => {
                         {
                             ComputerTechnology.map((item, index) =>
                                 <li key={index} className={item.cls}>
-                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 primary_BTN duration-300">{item.title}
+                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 primary_BTN  rounded duration-300">{item.title}
                                     </Link>
                                 </li>
                             )
@@ -179,6 +180,8 @@ const NewArrivalProduct = () => {
                     })
                 }           
             </div>
+            { !products.products && <Loader/>
+            }
         </div>
     );
 };
