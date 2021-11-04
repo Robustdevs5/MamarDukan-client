@@ -15,13 +15,13 @@
 
 .slider-blog-content {
   position: absolute;
-  top: 20%;
+  top: 30%;
   left: 10%;
   right: 10%;
-  border: 1px solid gray;
-  width: 350px;
+  /* border: 1px solid gray; */
+  width: 60%;
   padding: 25px;
-  text-align: center;
+  text-align: left;
 }
 
 .slider-blog-content h2 {
@@ -88,6 +88,7 @@ body {
   }
   .slider-blog-content {
     top: 13%;
+    width: 80%;
   }
   .promotion-post {
     padding-top: 40px;
