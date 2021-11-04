@@ -77,7 +77,7 @@ const FeaturedProduct = () => {
                 <ul className="md:flex md:justify-between items-center md:border-b md:border-blue-300 mb-10">
                     <div>
                         <li>
-                            <h1 className="tracking-tighter uppercase sm:text-3xl text-gray-800 font-bold py-2 my-4 md:py-2 md:my-0 border-b-2 border-blue-500 md:border-none"> Featured Product</h1>
+                            <h1 className="tracking-tight uppercase text-2xl text-gray-800 font-bold py-2 my-4 md:py-1 pl-3 md:my-0 border-red-600 mb-10 border-l-4"> Featured Product</h1>
                         </li>
                     </div>
                     <div className="flex">
