@@ -7,6 +7,7 @@ import p2 from '../../images/promotion-2.jpg';
 import slider1 from '../../images/slider-11.jpg';
 import slider2 from '../../images/slider-12.jpg';
 import slider3 from '../../images/slider-13.jpg';
+import Countdown from '../FlashSaleProducts/Countdown';
 import '../StyledComponent/Global.css';
 
 const Sliders = () => {
@@ -21,7 +22,15 @@ const Sliders = () => {
         arrows: false,
     };
     return (
+        <>
+         <div className="w-3/5 flex pb-2">
+            <div className="w-2/5 bg-white p-4 text-right border-r-2 border-gray-400">
+                <h2 className="text-gray-800 text-2xl font-bold items-center pr-4 uppercase">Flash <br/>Sale</h2>
+            </div>
+            <Countdown/>
+        </div>   
         <div className="mx-2 xs:grid-cols-1 md:grid grid-cols-3 gap-2 slider pt-4">
+            
             <div className="md:col-span-2 slider-blog">
                 <Slider {...settings}>
                     <div className="sin-slider-blog cursor-pointer">
@@ -65,6 +74,7 @@ const Sliders = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 

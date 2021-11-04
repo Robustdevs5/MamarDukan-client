@@ -67,6 +67,7 @@ import Refund from "./pages/Refund/Refund";
 import ShippingAndDelivery from "./pages/ShippingAndDelivery/ShippingAndDelivery";
 import Terms from "./pages/T&C/T&C";
 import Wishlist from "./pages/Wishlist/Wishlist";
+import SmoothScroll from './Components/SmoothScroll/SmoothScroll';
 import Pants from "./Components/CatagoryProduct/Pants";
 import OrderReview from "./Components/SuperAdminDashboard/Products-SuperAdminDashboard/Orders-SuperAdminDashboard/Order-Review/OrderReview";
 export const userContext = createContext();
@@ -108,6 +109,7 @@ function App() {
   return (
     <userContext.Provider value={contextData}>
       <Router>
+        <SmoothScroll></SmoothScroll>
         <Switch>
 
           <Route exact path="/" component={HomePage} />
