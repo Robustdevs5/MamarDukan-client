@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,10 +8,53 @@ import p2 from '../../images/promotion-2.jpg';
 import slider1 from '../../images/slider-11.jpg';
 import slider2 from '../../images/slider-12.jpg';
 import slider3 from '../../images/slider-13.jpg';
-import Countdown from '../FlashSaleProducts/Countdown';
 import '../StyledComponent/Global.css';
 
+const calculateTimeLeft = () => {
+    let year = 2022;
+    let difference = +new Date(`10/01/${year}`) - +new Date();
+    let timeLeft = {};
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60)
+    };
+  }
+
+  return timeLeft;
+
+}
+
 const Sliders = () => {
+    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+        useEffect(() => {
+            const timer=setTimeout(() => {
+            setTimeLeft(calculateTimeLeft());
+            }, 1000);
+            // Clear timeout if the component is unmounted
+            return () => clearTimeout(timer);
+        });
+
+
+        const timerComponents = [];
+
+        console.log('time', timeLeft.days)
+            Object.keys(timeLeft).forEach((interval) => {
+            if (!timeLeft[interval]) {
+                return;
+            }
+
+            timerComponents.push(
+                <span>
+                    {timeLeft[interval]} {interval}{" "}
+                </span>
+            );
+            });
+
     const settings = {
         dots: false,
         infinite: true,
@@ -22,15 +65,43 @@ const Sliders = () => {
         fade: true,
         arrows: false,
     };
+
     return (
+        
         <>
-         <div className="w-3/5 flex pb-2">
-            <div className="w-2/5 bg-white p-4 text-right border-r-2 border-gray-400">
-                <h2 className="text-gray-800 text-2xl font-bold items-center pr-4 uppercase">Flash <br/>Sale</h2>
+         <div className="w-full flex justify-center items-center my-2">
+            <div className="w-full md:w-1/4 bg-white p-4 text-center md:text-right border-r-4 border-gray-400">
+                <h2 className="text-gray-800 text-4xl font-bold items-center pr-4 uppercase">Flash Sale</h2>
             </div>
-            <Countdown/>
+            <div className="w-full md:w-2/4 items-center justify-center">
+                
+                <div className="flex mt-2 text-center text-gray-800 ">
+                    <div className="flex-1">
+                        <h4 className="text-lg font-bold text-gray-900"> Sales Ends in</h4>
+                    </div>
+                    <div className="flex-1">
+                        <h4 className="text-2xl font-bold items-center uppercase">{timeLeft.days}</h4>
+                        <p className="text-md font-semibold text-gray-600">Days</p>
+                    </div>
+                    <div className="flex-1">
+                        <h4 className="text-2xl font-bold items-center uppercase">{timeLeft.hours}</h4>
+                        <p className="text-md font-semibold text-gray-600">Hours</p>
+                    </div>
+                    <div className="flex-1">
+                        <h4 className="text-2xl font-bold items-center uppercase">{timeLeft.minutes}</h4>
+                        <p className="text-md font-semibold text-gray-600">Mins</p>
+                    </div>
+                    <div className="flex-1">
+                        <h4 className="text-2xl font-bold items-center uppercase">{timeLeft.seconds}</h4>
+                        <p className="text-md font-semibold text-gray-600">Sec</p>
+                    </div>
+                </div>
+            </div>
+            <div className="w-full md:w-1/4 text-center">
+                <button className="primary_BTN font-bold py-3 px-6 rounded-full"><Link to="/shop">Shop Now</Link></button>
+            </div>
         </div>   
-        <div className="mx-2 xs:grid-cols-1 md:grid grid-cols-3 gap-2 slider pt-4">
+        <div className="mx-2 xs:grid-cols-1 md:grid grid-cols-3 gap-2 slider">
             
             <div className="md:col-span-2 slider-blog">
                 <Slider {...settings}>

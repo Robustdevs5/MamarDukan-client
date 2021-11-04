@@ -75,7 +75,7 @@ const FlashSaleProducts = () => {
                         {
                             ComputerTechnology.map((item, index) =>
                                 <li key={index} className={item.cls}>
-                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 primary_BTN duration-300">{item.title}
+                                    <Link to={item.path} className="py-1 px-2 mx-3 md:mx-0 primary_BTN  rounded duration-300">{item.title}
                                     </Link>
                                 </li>
                             )
