@@ -13,6 +13,7 @@ const Newsletter = () => {
             name: "From Newsletter",
             email: data.email
         }
+        console.log('data', data)
         fetch('http://localhost:5000/message', {
             method: 'POST',
             headers: {
@@ -49,10 +50,12 @@ const Newsletter = () => {
                         <form onSubmit={handleSubmit(onSubmit)} className=" tracking-tight md:justify-center md:flex">
                             
                             <div className=" flex-row ">
-                                <input name="Last Name" type="text" placeholder="Last Name" 
-                                        {...register("Name", {required: true})}
+                                <div>
+                                    <input name="email" type="email" placeholder="Email" 
+                                        {...register("email", {required: true})}
                                         className="px-5 w-80 mr-5 h-10 focus:outline-none rounded" />
-                                    <span className="text-red-500">{errors.lastName?.type === 'required' && "Last name is required"}</span>
+                                </div>
+                                <span className="text-red-500">{errors.email?.type === 'required' && "Email is required"}</span>
                             </div>
 
                             <button className='h-10 items-center rounded py-2 md:mt-0 mt-2 px-5 primary_BTN capitalize font-bold'>

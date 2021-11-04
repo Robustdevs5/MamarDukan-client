@@ -1,10 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import Tamal from './tamal';
+import ProductReview from './ProductReview';
 
 const StarRating = () => {
     const [ rating, setRating ]=useState(0)
-    const [ hoverRating, setHoverRating] = useState(null)
+    const [orders, setOrders] = useState([]);
+    console.log('orders', orders)
+    useEffect(() => {
+        
+        fetch('http://localhost:3000/orders')
+            .then(res => res.json())
+            .then(data => setOrders(data));
+            // async function fetchFunction() {
+            //     try{
+            //       const response = await fetch(`https://mamardukan.herokuapp.com/products`);
+            //       await response.then(res => res.json())
+            //           .then(data => {
+            //               setProducts(data)
+                          
+            //                 console.log('data', data);
+            //         });;
+            //     }
+            //     catch(err) {
+            //     //   throw err;
+            //       console.log(err);
+            //     }
+            //   }
+    }, []);
     
     return (
         <div>
@@ -129,50 +152,17 @@ const StarRating = () => {
                                 <h3 className="text-sm text-grey-darker font-medium">Write a review</h3>
                             </div>
                             <hr/>
-                            <textarea 
-                                placeholder="write something about this product" 
-                                className="text-grey-darkest flex-1 p-3 m-1 bg-transparent focus:outline-none outline-none bg-gray-100 rounded resize-none" 
-                                rows="5" 
-                                name="tt">
-                                    This product is awesome.
-                            </textarea>
                             
-                            <div className='flex px-5'>
-                                {
-                                    [...Array(5)].map((star, i) => {
-                                        const ratingValue = i + 1;
-
-                                        return (
-                                        <label >
-                                            <input 
-                                            
-                                                    className='hidden'
-                                                    type='radio'
-                                                    name="rating"
-                                                    value={ratingValue}
-                                                    onClick={()=> setRating(ratingValue)}
-                                            />
-                                            <FaStar
-                                            
-                                                    className='cursor-pointer'
-                                                    color={ratingValue <= (hoverRating  || rating) ? '#ffc107' : '#e4e5e9'}
-                                                    size={20}
-                                                    onMouseEnter={() => setHoverRating(ratingValue)}
-                                                    onMouseLeave={() => setHoverRating(null)}
-                                            />
-                                        </label> 
-
-                                        )
-                                    })
-                                }
-                                <small className='px-8 text-base tracking-tighter'>{rating} star</small>
-                            </div>
-                            <button type='submit' className='mt-6 primary_BTN px-5 py-1 rounded'>Review</button>
+                            <ProductReview rating={rating} setRating={setRating}/>
+                            
+                            
                         </div>
                         {/* <Tamal/> */}
+
                     </div>
                 </div>
             </div>
+            
         </div>
     );
 };

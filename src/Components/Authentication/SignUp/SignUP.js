@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import Topbar from '../../TopBar/TopBar'
 import Navbar from '../../Navbar/Navbar/Navbar';
 import Footer from '../../Footer/Footer';
-import UserSignUpFrom from './UserSignUpFrom';
+import UserSignUpFrom from './VendorSingupFrom';
 import  '../../StyledComponent/Signup.css';
-import VendorSingupFrom from './VendorSingupFrom';
-import Newsletter from '../../Newsletter/Newsletter';
+import VendorSingupFrom from './UserSignUpFrom';
+import { CgArrowLeftR,  CgArrowRightR} from "react-icons/cg";
 
 const SignUP = () => {
     const [isAuthContainerActive, setIsAuthContainerActive] = useState(false);
@@ -31,20 +31,23 @@ const SignUP = () => {
                         <div class="overlay-AuthContainer">
                         <div class="overlay">
                             <div class="overlay-panel overlay-left">
-                                <h1>Welcome Back!</h1>
-                                <p>To keep connected with us please login with your personal info</p>
-                                <button class="ghost" id="signIn" onClick={handleLogin}>Sign In</button>
+                                <h1>To buy products!</h1>
+                                <p>Please sign up with your personal info and keep connected with us</p>
+                                <button class="ghost flex items-center" id="signIn" onClick={handleLogin}>
+                                    <CgArrowLeftR size={30} className='pr-2'/> Sign Up
+                                </button>
                             </div>
-                            <div class="overlay-panel overlay-right">
-                                <h1>Hello, Friend!</h1>
-                                <p>Enter your personal details and start journey with us</p>
-                                <button class="ghost" id="signUp" onClick={handleRegister}>Sign Up</button>
+                            <div class="overlay-panel overlay-right tracking-tight">
+                                <h1>Are you interested?</h1>
+                                <p>To sell products on Mamar Dukan. Enter your personal details and start journey with us</p>
+                                <button class="ghost flex items-center" id="signUp" onClick={handleRegister}>
+                                    Vendor account <CgArrowRightR size={30} className='pl-2'/>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <Newsletter/>
             <Footer/>
         </div>
     );
