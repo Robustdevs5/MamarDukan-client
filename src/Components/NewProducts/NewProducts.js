@@ -7,7 +7,7 @@ import useProducts from '../../hooks/useProducts';
 import star from "../../images/5star.png";
 import CartButton from '../Cart/CartButton/CartButton';
 import { NewProductOffer } from '../HomepageProductData/HomepageProductData';
-
+import { Loader } from '../Loader/Loader';
 
 
 const NewProducts = () => {
@@ -118,7 +118,8 @@ const NewProducts = () => {
 
             </Slider>
             
-
+            { !products.products && <Loader/>
+            }
             <ToastContainer />
         </div>
     );
