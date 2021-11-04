@@ -134,10 +134,10 @@ const Message = () => {
                         rowsPerPageOptions={[]}
                         component="div"
                         count={Report.length}
-                        ReportrowsPerPage={ReportrowsPerPage}
-                        Reportpage={Reportpage}
-                        onReportpageChange={ReporthandleChangePage}
-                        onReportrowsPerPageChange={ReporthandleChangeRowsPerPage}
+                        rowsPerPage={ReportrowsPerPage}
+                        page={Reportpage}
+                        onPageChange={ReporthandleChangePage}
+                        onRowsPerPageChange={ReporthandleChangeRowsPerPage}
                         checkboxSelection
                     />
 

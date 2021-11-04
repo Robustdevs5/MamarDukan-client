@@ -17,7 +17,9 @@ const ModalDetails = ({modalId}) => {
             :
             <div class="container mx-auto">
                 <div class="lg:w-4/5 mx-auto">
-
+                <div className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200">
+                    <img alt="ecommerce" src={modalProducts.img} />
+                </div>
     
                 <div class=" w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                     <h2 class="text-sm title-font text-gray-500 tracking-widest">BRAND NAME: {modalProducts.brand}</h2>
