@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaCcMastercard, FaCcVisa, FaChevronUp } from 'react-icons/fa';
 import { ImPaypal } from 'react-icons/im';
 import Newsletter from '../Newsletter/Newsletter';
