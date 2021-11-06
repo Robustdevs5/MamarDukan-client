@@ -29,7 +29,7 @@ const AddProduct = () => {
         console.log(productInfo);
 
 
-        const url = `https://mamardukan.herokuapp.com/products`;
+        const url = `https://mamar-dukan.herokuapp.com/products`;
         fetch(url, {
             method: 'POST',
             headers: {

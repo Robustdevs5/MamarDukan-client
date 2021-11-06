@@ -20,7 +20,7 @@ const RecentOrdersSuperAdminDashboard = () => {
     const [deleteId, setDeleteId] = useState(null);
     const [updateId, setUpdateId] = useState(null);
     const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = useState(10);
+    const [rowsPerPage, setRowsPerPage] = useState(15);
 
     // pagination................................
     const handleChangeRowsPerPage = (event) => {
@@ -55,21 +55,21 @@ const RecentOrdersSuperAdminDashboard = () => {
 
 
     useEffect(() => {
-        // fetch(`http://mamardukan.herokuapp.com/orders`)
-        fetch(`https://mamardukan.herokuapp.com/products`)
+        fetch(`https://mamar-dukan.herokuapp.com/orders`)
+        // fetch(`https://mamar-dukan.herokuapp.com/products`)
             .then(res => res.json())
             .then(data =>
-                setProducts(data.products)
+                setProducts(data.orders)
             )
     }, [])
-    // console.log(products);
+    console.log("pooo",products);
 
 
     // Delete...........................................................
     const deleted = () => {
-        fetch(`https://mamardukan.herokuapp.com/products`)
+        fetch(`https://mamar-dukan.herokuapp.com/orders`)
             .then(res => res.json())
-            .then(data => setProducts(data.products))
+            .then(data => setProducts(data.orders))
     }
 
 
@@ -132,24 +132,22 @@ const RecentOrdersSuperAdminDashboard = () => {
                             tableFilter.map((item, index) => {
                                 return <TableBodyRow item={item} key={index} >
 
-                                    <TableBodyData>{item.color}</TableBodyData>
+                                    <TableBodyData>{item.order.orderId}</TableBodyData>
                                     <TableBodyData>
                                         <div className='flex px-5 items-center'>
-                                            <div className='h-10 px-5'>
-                                                <img className="rounded cursor-pointer h-full w-full"
-                                                    src={item.img} alt="Best Products" />
-                                            </div>
-                                            <p>{item.name}</p>
+                                            
+                                            <p> {item?.product.product.name}</p>
                                         </div>
                                     </TableBodyData>
 
-                                    <TableBodyData>3</TableBodyData>
-                                    <TableBodyData>${item.price}</TableBodyData>
-                                    <TableBodyData>{item.size}</TableBodyData>
-                                    <TableBodyData>{(new Date(item.date).toLocaleDateString())}</TableBodyData>
-                                    {/* <TableBodyData>{item.color}</TableBodyData> */}
-                                    <TableBodyData>{item.status || "Pending"}</TableBodyData>
-                                    <TableBodyData>{item.multiVendorSeller.sellerName}</TableBodyData>
+                                    <TableBodyData>{item?.product.product.quantity}</TableBodyData>
+                                    <TableBodyData>${item.product.product?.price}</TableBodyData>
+                                    <TableBodyData>{item.product.product?.size}</TableBodyData>
+
+                                
+                                    <TableBodyData>{(new Date(item.order.orderDate).toLocaleDateString())}</TableBodyData>
+                                    <TableBodyData>${item.order.status}</TableBodyData>
+
                                     <TableBodyData>
                                         <div className='flex items-center text-2xl'>
                                             <button className='text-blue-800 p-1 hover:bg-gray-900 rounded-full hover:text-gray-50'><AiFillEye /></button>
@@ -175,24 +173,20 @@ const RecentOrdersSuperAdminDashboard = () => {
                             .map((item, index) => {
                                 return <TableBodyRow item={item} key={index} >
 
-                                    <TableBodyData>{item.color}</TableBodyData>
+                                    <TableBodyData>{item?.order.orderId}</TableBodyData>
                                     <TableBodyData>
                                         <div className='flex px-5 items-center'>
-                                            <div className='h-10 px-5'>
-                                                <img className="rounded cursor-pointer h-full w-full"
-                                                    src={item.img} alt="Best Products" />
-                                            </div>
-                                            <p>{item.name}</p>
+                                            
+                                            <p> {item.product.product?.name}</p>
                                         </div>
                                     </TableBodyData>
+                                    <TableBodyData>{item?.product.product?.quantity}</TableBodyData>
+                                    <TableBodyData>${item.product.product?.price}</TableBodyData>
+                                    <TableBodyData>{item.product.product?.size}</TableBodyData>
+                                    <TableBodyData>{(new Date(item.order.orderDate).toLocaleDateString())}</TableBodyData>
+                                    <TableBodyData>{item.order.status}</TableBodyData>
 
-                                    <TableBodyData>3</TableBodyData>
-                                    <TableBodyData>${item.price}</TableBodyData>
-                                    <TableBodyData>{item.size}</TableBodyData>
-                                    <TableBodyData>{(new Date(item.date).toLocaleDateString())}</TableBodyData>
-                                    {/* <TableBodyData>{item.color}</TableBodyData> */}
-                                    <TableBodyData>{item.status || "Pending"}</TableBodyData>
-                                    <TableBodyData>{item.multiVendorSeller.sellerName}</TableBodyData>
+                            
                                     <TableBodyData>
                                         <div className='flex items-center text-2xl'>
                                             <button className='text-blue-800 p-1 hover:bg-gray-900 rounded-full hover:text-gray-50'><AiFillEye /></button>
@@ -215,7 +209,7 @@ const RecentOrdersSuperAdminDashboard = () => {
                         }
 
                     </tbody>
-                    {notFound && <p className="text-red-600 p-4 flex items-center justify-center">No product found!</p>}
+                    {notFound && <p className="text-red-600 p-4 flex items-center justify-center">No Order found!</p>}
 
                 </div>
             </Table>

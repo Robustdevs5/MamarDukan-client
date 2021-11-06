@@ -7,6 +7,5 @@ export const SidebarData = [
     {title: 'Date'},
     // {title: 'Color'},
     {title: 'Status'},
-    {title: 'Seller'},
     {title: 'Actions'}
 ]

@@ -1,7 +1,7 @@
-import { faCcMastercard, faCcPaypal, faCcVisa } from '@fortawesome/free-brands-svg-icons';
-import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from "react";
+
+import React from 'react';
+import { FaCcMastercard, FaCcVisa, FaChevronUp } from 'react-icons/fa';
+import { ImPaypal } from 'react-icons/im';
 import Newsletter from '../Newsletter/Newsletter';
 import '../StyledComponent/Footer.css';
 import FooterCatagory from './FooterCatagory';
@@ -65,9 +65,9 @@ const Footer = () => {
                 <div className="PaymentGateway">
                             <h4 className="title">Payment Method</h4>
                                 <div className="iconwraper">
-                                    <FontAwesomeIcon className="iconbutton" icon={faCcVisa} />
-                                    <FontAwesomeIcon className="iconbutton" icon={faCcMastercard} />
-                                    <FontAwesomeIcon className="iconbutton" icon={faCcPaypal} />
+                                    <FaCcVisa className="iconbutton"  />
+                                    <FaCcMastercard className="iconbutton"  />
+                                    <ImPaypal className="iconbutton"  />
                                 </div>
                         </div>
                 </FooterCol>
@@ -76,7 +76,7 @@ const Footer = () => {
             <div>
                 {showButton && (
                     <button onClick={scrollToTop} className="fixed bottom-2 right-5 w-10 h-10 font-bold text-md bg-custom text-white cursor-pointer rounded-full border shadow-lg hover:bg-white hover:border-red-500 hover:text-red-500">
-                    <FontAwesomeIcon icon={faChevronUp} />
+                    <FaChevronUp />
                     </button>
                 )}
             </div>   

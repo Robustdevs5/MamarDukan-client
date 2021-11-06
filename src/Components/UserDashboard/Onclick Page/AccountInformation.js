@@ -14,7 +14,7 @@ const AccountInformation = () => {
 
     
     // useEffect(() => {
-    //     // fetch('http://localhost:5000/user/profile' , { 
+    //     // fetch('https://mamar-dukan.herokuapp.com/user/profile' , { 
     //     //    headers : {
     //     //     Method: 'GET',
     //     //     Authorization : user.token 

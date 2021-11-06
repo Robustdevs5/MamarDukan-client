@@ -81,8 +81,9 @@ const NewProducts = () => {
             <Slider {...settings} className="px-8">
 
                 {
-                   products.products && products.products.map(newProduct =>
-                        <div className="p-2 border rounded hover:shadow-2xl group hover:border-blue-900 shadow px-6">
+                   products.products && products.products.map(newProduct => {
+                            // console.log('test',newProduct.order.review == null? 'ok': newProduct.order.review)
+                         return <div className="p-2 border rounded hover:shadow-2xl group hover:border-blue-900 shadow px-6">
 
                             <div className="mb-4 w-40 h-40  pb-5">
                                 <img onClick={() => handleProductClick(newProduct._id)} className="rounded cursor-pointer h-full w-full"
@@ -107,13 +108,13 @@ const NewProducts = () => {
 
                                 <div className="flex">
                                     <img src={star} style={{ width: '60px', height: '15px' }} alt="" />
-                                    <p className="text-gray-600 text-xs px-1">(0)</p>
+                                    <p className="text-gray-600 text-xs px-1">{newProduct.order.review == null? '5': newProduct.order.review}</p>
                                 </div>
 
                                 <p className="text-gray-600 text-xs px-1">Sold: 10</p>
                             </div>
                         </div>
-                    )}
+          })}
 
             </Slider>
             <ToastContainer />

@@ -5,12 +5,12 @@ const useProducts = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
         
-        fetch('https://mamardukan.herokuapp.com/products')
+        fetch('https://mamar-dukan.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data));
             // async function fetchFunction() {
             //     try{
-            //       const response = await fetch(`https://mamardukan.herokuapp.com/products`);
+            //       const response = await fetch(`https://mamar-dukan.herokuapp.com/products`);
             //       await response.then(res => res.json())
             //           .then(data => {
             //               setProducts(data)

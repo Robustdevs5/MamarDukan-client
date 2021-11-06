@@ -63,7 +63,7 @@ const VendorSingupFrom = () => {
           console.log('user info', userInfo)
   
           if (passwordsMatch) {
-              const userSignUp = `http://localhost:5000/user/register-vendor`;
+              const userSignUp = `https://mamar-dukan.herokuapp.com/user/register-vendor`;
               fetch(userSignUp, {
                   method: 'POST',
                   headers: {

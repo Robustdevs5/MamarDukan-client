@@ -1,51 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar/Navbar';
 import TopBar from '../TopBar/TopBar';
 import '../Authentication/SignIn/SignIn.css';
+import OrderModal from '../UserDashboard/Onclick Page/OrderModal/Modal/OrderModal';
+import ConfirmOrder from '../../pages/ConfirmOrder/ConfirmOrder';
 
 
 
 const TrackOrder = () => {
 
+   
+    const {Data , setData} =useState([])
 
     const handleSubmit = (e) => {
-
-        const orderInfo = {
-            orderId: e.target.orderId.value,
-            email: e.target.email.value
-        };
-
-        const userSignUp = `https://mamardukan.herokuapp.com/`;
-        fetch(userSignUp, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(orderInfo)
-        })
-            .then(async res => await res.json())
-            .then(async user => {
-                console.log('user10', user)
-                // user ? alert(user.message) : alert("failed")
-                //     if (user) {
-                //         toast.success(user.message, {
-                //             position: "bottom-right",
-                //         });
-                //     }
-                //     sessionStorage.setItem('user', JSON.stringify(user));
-                //     history.push('/')
-                // })
-                // .catch(error => {
-                // alert(error.message);
-                // console.log(error);
-                //     toast.error(error.message, {
-                //         position: "bottom-right",
-                //     });
-            });
+        e.preventDefault()
+    
     }
+    const input = document.getElementById('order').value
 
+    useEffect(() => {
+        fetch(`https://mamar-dukan.herokuapp.com/orders/${input}`)
+        .then (res => res.json())
+        .then (data => setData(data.orders))
+    }, [])
+    console.log('TrackOrder' , input)
+
+
+    
+
+    
+
+    
+    
 
 
     return (
@@ -62,15 +50,15 @@ const TrackOrder = () => {
                     </div>
 
                     <label className="flex items-start py-2 text-gray-700">Order ID*</label>
-                    <input type="text" name="orderId" className="form-control" placeholder="Order ID" required />
-
-                    <label className="flex items-start py-2 text-gray-700">Email Address*</label>
-                    <input type="email" name="email" className="form-control" placeholder="Your Email" required />
+                    <input id="order" type="text" name="orderId" className="form-control"  placeholder="Order ID" required />
 
                     <input type="submit" value="Submit" className="submit-button btn" />
 
                 </form>
+                    
             </div>
+
+            {Data && <ConfirmOrder /> }
 
             <ToastContainer />
             <Footer />

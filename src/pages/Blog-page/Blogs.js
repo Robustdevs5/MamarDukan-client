@@ -1,7 +1,6 @@
-import { faClock } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { TablePagination } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import { FaClock } from 'react-icons/fa';
 import { useHistory } from 'react-router';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
@@ -16,7 +15,7 @@ const Blogs = () => {
   const [page, setPage] = useState(0);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/blogs`)
+        fetch(`https://mamar-dukan.herokuapp.com/blogs`)
             .then(res => res.json())
             .then(data => setBlogs(data.blog))
     }, [])
@@ -77,7 +76,7 @@ const Blogs = () => {
             </div>
             <div className="px-6 py-4 flex flex-row items-center">
               <span href="#" className="py-1 text-sm font-regular text-gray-900 mr-1 flex flex-row items-center">
-                <FontAwesomeIcon classNameName="iconbutton" icon={faClock} />
+                <FaClock classNameName="iconbutton"  />
                 <span className="ml-1">{WordCount(blog.description)} mins read</span></span>
             </div>
           </div>

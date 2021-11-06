@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
 import { toast, ToastContainer } from 'react-toastify';
 import { useForm } from 'react-hook-form';
+import { FaLocationArrow } from 'react-icons/fa';
+
 
 const Newsletter = () => {
     
@@ -14,7 +14,7 @@ const Newsletter = () => {
             email: data.email
         }
         console.log('data', data)
-        fetch('http://localhost:5000/message', {
+        fetch('https://mamar-dukan.herokuapp.com/message', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -60,7 +60,7 @@ const Newsletter = () => {
 
                             <button className='h-10 items-center rounded py-2 md:mt-0 mt-2 px-5 primary_BTN capitalize font-bold'>
                                 <div className='flex items-center'>
-                                    <FontAwesomeIcon className="mr-3" icon={faLocationArrow} />
+                                    <FaLocationArrow className="mr-3"  />
                                     <p>Notify me</p>
                                 </div>
                             </button>

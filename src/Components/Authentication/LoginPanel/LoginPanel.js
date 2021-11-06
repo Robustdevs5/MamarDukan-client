@@ -53,7 +53,7 @@ const LoginPanel = () => {
 
 
     // useEffect(() => {
-    //     fetch('https://mamardukan.herokuapp.com/user/login-admin', {
+    //     fetch('https://mamar-dukan.herokuapp.com/user/login-admin', {
     //         method: 'POST',
     //         headers: { 'content-type': 'application/json' },
     //         body: JSON.stringify({ email: user.email, password: user.password })

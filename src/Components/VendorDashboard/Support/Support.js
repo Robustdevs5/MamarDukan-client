@@ -1,7 +1,5 @@
-import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import VendorSidebar from '../VendorSidebar/VendorSidebar';
 import VendorNavbar from '../VendorTopbar/VendorNavbar';
 
@@ -19,7 +17,7 @@ const VendorSupport = () => {
                         <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                             <div className="px-4 py-5 flex-auto">
                             <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-custom">
-                                <FontAwesomeIcon className="iconbutton" icon={faEnvelope} />
+                                <FaEnvelope className="iconbutton"  />
                             </div>
                             <h6 className="text-xl font-semibold">Contact Directly to Support</h6>
                             <p className="mt-2 text-blueGray-500">
@@ -33,7 +31,7 @@ const VendorSupport = () => {
                         <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                             <div className="px-4 py-5 flex-auto">
                             <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-custom">
-                                <FontAwesomeIcon className="iconbutton" icon={faMapMarkerAlt} />
+                                <FaMapMarkerAlt className="iconbutton" />
                             </div>
                             <h6 className="text-xl font-semibold">Contact Directly to Head Quater</h6>
                             <p className="mt-2 mb-4 text-blueGray-500">
@@ -47,7 +45,7 @@ const VendorSupport = () => {
                         <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                             <div className="px-4 py-5 flex-auto">
                             <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-custom">
-                                <FontAwesomeIcon className="iconbutton" icon={faEnvelope} />
+                                <faEnvelope className="iconbutton" />
                             </div>
                             <h6 className="text-xl font-semibold">Contact Directly to Admin</h6>
                             <p className="mt-2 text-blueGray-500">

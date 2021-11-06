@@ -16,7 +16,7 @@ const UpdateProduct = () => {
 
 
     useEffect(() => {
-        fetch(`https://mamardukan.herokuapp.com/products/${id}`)
+        fetch(`https://mamar-dukan.herokuapp.com/products/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data.product))
     }, [id])
@@ -39,7 +39,7 @@ const UpdateProduct = () => {
         console.log(productInfo);
 
 
-        const url = `https://mamardukan.herokuapp.com/products/${id}`;
+        const url = `https://mamar-dukan.herokuapp.com/products/${id}`;
         fetch(url, {
             method: 'PATCH',
             headers: {

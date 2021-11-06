@@ -62,7 +62,7 @@ const CheckoutPage = () => {
         
         console.log('orderDetail data', orderDetail)
 
-        fetch('http://localhost:5000/orders', {
+        fetch('https://mamar-dukan.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

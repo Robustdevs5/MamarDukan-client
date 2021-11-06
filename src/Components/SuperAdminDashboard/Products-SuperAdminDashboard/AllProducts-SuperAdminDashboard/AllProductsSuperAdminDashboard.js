@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SuperAdminSidebar from '../../SuperAdminSidebar/SuperAdminSidebar';
 import AllProduct from './AllProduct';
-import { Product } from './Product';
 
 const AllProductsSuperAdminDashboard = () => {
+    const [Product , setProduct] = useState([]);
+    useEffect(() => {
+        fetch(`https://mamar-dukan.herokuapp.com/products`)
+        .then (res => res.json())
+        .then (data => setProduct(data.products))
+    }, [])
     return (
     <div className=" bg-gray-800 ">
         <div className="flex flex-wrap">
