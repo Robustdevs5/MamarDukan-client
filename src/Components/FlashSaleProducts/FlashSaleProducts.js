@@ -7,7 +7,7 @@ import useShuffleProducts from '../../hooks/useShuffleProducts';
 import star from "../../images/5star.png";
 import CartButton from '../Cart/CartButton/CartButton';
 import { ComputerTechnology } from '../HomepageProductData/HomepageProductData';
-import { Loader } from '../Loader/Loader';
+//import { Loader } from '../Loader/Loader';
 import Countdown from './Countdown';
 
 
@@ -136,8 +136,7 @@ const FlashSaleProducts = () => {
                    
                 </Slider>
             </div> 
-            { !shuffleProduct && <Loader/>
-            }
+            
         </div>
     );
 };

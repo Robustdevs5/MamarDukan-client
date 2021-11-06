@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick.css";
 import star from "../../images/5star.png";
 import CartButton from '../Cart/CartButton/CartButton';
 import { FeaturedProducts } from '../HomepageProductData/HomepageProductData';
-import { Loader } from '../Loader/Loader';
+//import { Loader } from '../Loader/Loader';
 import '../StyledComponent/SliderNextandPrevs.css';
 
 
@@ -133,8 +133,7 @@ const FeaturedProduct = () => {
                     )}
 
             </Slider>
-            { !featuredProduct && <Loader/>
-            }
+           
 
         </div>
     );

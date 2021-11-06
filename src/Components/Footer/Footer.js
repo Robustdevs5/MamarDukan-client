@@ -1,12 +1,31 @@
 import { faCcMastercard, faCcPaypal, faCcVisa } from '@fortawesome/free-brands-svg-icons';
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import Newsletter from '../Newsletter/Newsletter';
 import '../StyledComponent/Footer.css';
 import FooterCatagory from './FooterCatagory';
 import FooterCol from './FooterCol';
 
 const Footer = () => {
+    const [showButton, setShowButton] = useState(false);
+
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+            setShowButton(true);
+        } else {
+            setShowButton(false);
+        }
+        });
+    }, []);
+
+    const scrollToTop = () => {
+        window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+        });
+    };
     const Shotcut = [
         {name: "Track your order" , link: "/trackOrder"},
         {name: "Terms and Conditions" , link: "/terms-and-conditions"},
@@ -53,7 +72,14 @@ const Footer = () => {
                         </div>
                 </FooterCol>
             </div>
-            <p className="copyright">Copyright @ 2021 Robust Devs. All rights reserved.</p>       
+            <p className="text-center text-gray-700">Copyright @ 2021 Robust Devs. All rights reserved.</p>  
+            <div>
+                {showButton && (
+                    <button onClick={scrollToTop} className="fixed bottom-2 right-5 w-10 h-10 font-bold text-md bg-custom text-white cursor-pointer rounded-full border shadow-lg hover:bg-white hover:border-red-500 hover:text-red-500">
+                    <FontAwesomeIcon icon={faChevronUp} />
+                    </button>
+                )}
+            </div>   
         </div>
     );
 };

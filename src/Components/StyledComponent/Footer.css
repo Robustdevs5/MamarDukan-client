@@ -7,7 +7,7 @@
   grid-auto-rows: 1fr;
   grid-gap: 2px;
   color: #022335;
-  background-image: url('../../images//footer-bg.png');
+  background-image: url("../../images//footer-bg.png");
 }
 
 .footer > div {
@@ -27,9 +27,4 @@
 }
 .title {
   font-weight: bold;
-}
-
-.copyright {
-  text-align: center;
-  color: #fff;
 }

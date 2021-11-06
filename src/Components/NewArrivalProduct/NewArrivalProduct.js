@@ -5,7 +5,7 @@ import useProducts from '../../hooks/useProducts';
 import star from "../../images/5star.png";
 import CartButton from '../Cart/CartButton/CartButton';
 import { ComputerTechnology } from '../HomepageProductData/HomepageProductData';
-import { Loader } from '../Loader/Loader';
+//import { Loader } from '../Loader/Loader';
 
 const NewArrivalProduct = () => {
   
@@ -180,8 +180,7 @@ const NewArrivalProduct = () => {
                     })
                 }           
             </div>
-            { !products.products && <Loader/>
-            }
+            
         </div>
     );
 };
