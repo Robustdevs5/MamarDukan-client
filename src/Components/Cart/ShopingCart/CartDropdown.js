@@ -32,7 +32,7 @@ const CartDropdown = ({ setDropdown }) => {
     }
     return (
         <div
-        className="  max-width-full absolute  top-16 mt-2 md:right-0 md:mx-32  right-2 z-50 rounded-xl bg-gray-100"
+        className="  max-width-full absolute top-32 md:top-16 mt-2 md:right-0 md:mx-32  right-2 z-50 rounded-xl bg-gray-100"
         onMouseEnter={() => setDropdown(true)}
         onMouseLeave={() => setDropdown(false)}
       >

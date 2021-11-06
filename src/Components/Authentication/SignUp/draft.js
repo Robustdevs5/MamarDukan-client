@@ -21,10 +21,9 @@ const SignUP = () => {
     // const [allUser, setAllUser] = useState([]);
     const [emailStatus, setEmailStatus] = useState(false);
     const {allUser, setAllUser} = useContext(userContext);
-    console.log('sign in all user', allUser)
 
     useEffect(() => {
-        const user = `https://mamardukan.herokuapp.com/user`;
+        const user = `https://mamar-dukan.herokuapp.com/user`;
         fetch(user)
             .then(res => res.json())
             .then(data => {
@@ -57,9 +56,7 @@ const SignUP = () => {
 
     // email check
     const emailCheck = (e) => {
-        // console.log(allUser.email)
         // if (e.target.name === "email") {
-        //     console.log(e.target.value)
             // for (let i = 0; i < allUser.length; i++) {
             //     if (allUser[i].email === e.target.value) {
             //         setEmailStatus(true);
@@ -81,7 +78,6 @@ const SignUP = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data)
         const passwordsMatch = checkPasswords();
         // const emailMatch = emailCheck();
         const userInfo = {
@@ -94,7 +90,7 @@ const SignUP = () => {
         };
 
         if (passwordsMatch) {
-            const userSignUp = `https://mamardukan.herokuapp.com/user/anotheruser`;
+            const userSignUp = `https://mamar-dukan.herokuapp.com/user/anotheruser`;
             fetch(userSignUp, {
                 method: 'POST',
                 headers: {
@@ -104,12 +100,10 @@ const SignUP = () => {
             })
                 .then(async res => await res.json())
                 .then(async user => {
-                    console.log('user10', user)
                     user ? alert(user.message) : alert("failed")
                 })
                 .catch(error => {
                     alert(error.message);
-                    console.log(error);
                 });
         } else {
             toast.error("Your Passwords don't match!", {

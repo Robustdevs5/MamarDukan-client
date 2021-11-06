@@ -83,7 +83,6 @@ const NewProducts = () => {
 
                 {
                    products.products && products.products.map(newProduct => {
-                            // console.log('test',newProduct.order.review == null? 'ok': newProduct.order.review)
                          return <div className="p-2 border rounded hover:shadow-2xl group hover:border-blue-900 shadow px-6">
 
                             <div className="mb-4 w-40 h-40  pb-5">

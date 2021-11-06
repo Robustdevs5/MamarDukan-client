@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ShopDropDownMenu from "../Shop-DropDownMenu/ShopDropDownMenu";
 import { Menu } from "./MenuItems";
@@ -7,11 +7,21 @@ import SocialMedia from "../SocialMedia/SocialMedia";
 import WomenDropDownMenu from "../women-DropDownMenu/womenDropDownMenu";
 import MenDropDownMenu from "../Men-DropDownMenu/MenDropDownMenu";
 import { FaBars, FaCaretDown, FaShoppingBag, FaTimes } from "react-icons/fa";
+import { userContext } from "../../../App";
 
 const NavbarSection = ({ toggle, closeMobileMenu, isOpen }) => {
   const [dropDown, setDropDown] = useState(false);
   const [womenDropDown, setWomenDropDown] = useState(false);
   const [menDropDown, setMenDropDown] = useState(false);
+
+  const { user, setUser } = useContext(userContext);
+  useEffect(() => {
+    const loggedInUser = sessionStorage.getItem("user");
+    if (loggedInUser) {
+        const foundUser = JSON.parse(loggedInUser);
+          setUser(foundUser)
+      }
+    }, []);
 
   return (
     <Fragment>
@@ -96,11 +106,34 @@ const NavbarSection = ({ toggle, closeMobileMenu, isOpen }) => {
             return (
               <li key={index} className="flex items-center ">
                 <Link to={item.path} className={item.class}>
-                  {item.title}
+                  {item.title} 
                 </Link>
               </li>
+              
             );
           })}
+          <li className="flex items-center ">
+            {
+              user.role === "user" &&  <Link to='/user/dashboard' className="py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg">
+                    Dashboard
+                </Link>
+            }
+            {
+              user.role === "vendor" &&  <Link to='/vendor/dashboard/overview' className="py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg">
+                    Dashboard
+                </Link>
+            }
+            {
+              user.role === "admin" &&  <Link to='/super-admin/dashboard/overview' className="py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg">
+                    Dashboard
+                </Link>
+            }
+            {
+              user.role === "super-admin" &&  <Link to='/super-admin/dashboard/overview' className="py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg">
+                    Dashboard
+                </Link>
+            }
+          </li>
         </ul>
 
         <SocialMedia />

@@ -19,7 +19,7 @@ const ProductReview = ({rating, setRating, singleProduct}) => {
             productId: singleProduct._id,
         };
 
-        const userSignUp = `http://localhost:5000/review`;
+        const userSignUp = `https://mamar-dukan.herokuapp.com/review`;
         fetch(userSignUp, {
             method: 'POST',
             headers: {
@@ -38,7 +38,6 @@ const ProductReview = ({rating, setRating, singleProduct}) => {
             })
             .catch(error => {
                 alert(error.message);
-                console.log(error);
             });
     };
 

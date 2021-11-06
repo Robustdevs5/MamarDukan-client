@@ -12,6 +12,7 @@ import loginsvg from '../../../images/Mobile-login-bro.svg';
 import Footer from '../../Footer/Footer';
 import Navbar from '../../Navbar/Navbar/Navbar';
 import TopBar from '../../TopBar/TopBar';
+import { addToDbUser } from "../../User/UserDatabase";
 import firebaseConfig from "../firebase.config";
 import './SignIn.css';
 
@@ -54,6 +55,7 @@ const SIgnIn2 = () => {
                 sessionStorage.setItem("user", JSON.stringify(googleUser));
                 // sessionStorage.setItem("name", displayName);
                 // sessionStorage.setItem("photo", photoURL);
+                addToDbUser()
                 handleAuthToken();
             })
             .catch((error) => {
@@ -127,14 +129,13 @@ const SIgnIn2 = () => {
             email: e.target.email.value,
             password: e.target.password.value
         };
-        console.log(userInfo);
 
         //////////////Customer/////////////
         if (customerStatus) {
 
             try {
 
-                const userSignUp = `https://mamardukan.herokuapp.com/user/login-user`;
+                const userSignUp = `https://mamar-dukan.herokuapp.com/user/login-user`;
                 fetch(userSignUp, {
                     method: 'POST',
                     headers: {
@@ -144,7 +145,6 @@ const SIgnIn2 = () => {
                 })
                     .then(async res => await res.json())
                     .then(async user => {
-                        console.log(user)
                         // user ? alert(user.message) : alert("failed")
                         if (user.success) {
                             toast.success(user.message, {
@@ -153,8 +153,9 @@ const SIgnIn2 = () => {
                             e.target.reset();
                             sessionStorage.setItem('user', JSON.stringify(user));
                             setUser(user);
+                            addToDbUser(user)
                             
-                            setTimeout(history.push('/'), 8000)
+                            setTimeout(history.replace(from), 8000)
                         }
                         else {
                             toast.error(user.message, {
@@ -174,7 +175,7 @@ const SIgnIn2 = () => {
 
             try {
 
-                const userSignUp = `https://mamardukan.herokuapp.com/user/login-vendor`;
+                const userSignUp = `https://mamar-dukan.herokuapp.com/user/login-vendor`;
                 fetch(userSignUp, {
                     method: 'POST',
                     headers: {
@@ -184,7 +185,6 @@ const SIgnIn2 = () => {
                 })
                     .then(async res => await res.json())
                     .then(async user => {
-                        console.log(user)
                         if (user.success) {
                             toast.success(user.message, {
                                 position: "bottom-right",
@@ -192,7 +192,7 @@ const SIgnIn2 = () => {
                             e.target.reset();
                             sessionStorage.setItem('user', JSON.stringify(user));
                             setUser(user);
-                            history.push('/');
+                            history.replace(from);
                         }
                         else {
                             toast.error(user.message, {
@@ -211,7 +211,7 @@ const SIgnIn2 = () => {
 
             try {
 
-                const userSignUp = `https://mamardukan.herokuapp.com/user/login-admin`;
+                const userSignUp = `https://mamar-dukan.herokuapp.com/user/login-admin`;
                 fetch(userSignUp, {
                     method: 'POST',
                     headers: {
@@ -221,7 +221,6 @@ const SIgnIn2 = () => {
                 })
                     .then(async res => await res.json())
                     .then(async user => {
-                        console.log('usesmall0', user.message)
 
                         if (user.success) {
                             toast.success(user.message, {
@@ -230,7 +229,7 @@ const SIgnIn2 = () => {
                             e.target.reset();
                             sessionStorage.setItem('user', JSON.stringify(user));
                             setUser(user);
-                            history.push('/');
+                            history.replace(from);
                         }
                         else {
                             toast.error(user.message, {
@@ -250,7 +249,7 @@ const SIgnIn2 = () => {
 
             try {
 
-                const userSignUp = `https://mamardukan.herokuapp.com/user/login-super-admin`;
+                const userSignUp = `https://mamar-dukan.herokuapp.com/user/login-super-admin`;
                 fetch(userSignUp, {
                     method: 'POST',
                     headers: {
@@ -260,7 +259,6 @@ const SIgnIn2 = () => {
                 })
                     .then(async res => await res.json())
                     .then(async user => {
-                        console.log('usesmall0', user.message)
                         if (user.success) {
                             toast.success(user.message, {
                                 position: "bottom-right",
@@ -268,7 +266,7 @@ const SIgnIn2 = () => {
                             e.target.reset();
                             sessionStorage.setItem('user', JSON.stringify(user));
                             setUser(user);
-                            history.push('/');
+                            history.replace(from);
                         }
                         else {
                             toast.error(user.message, {

@@ -7,7 +7,6 @@ import useCompareCart from '../../../hooks/useCompareCart';
 
 const CompareDropdown = ({ setCompareDropdown }) => {
     const { CompareCart, SetCompareCart } = useCompareCart();
-console.log('CompareCart', CompareCart)
     let totalQuantity = 0;
     let subTotal = 0;
 

@@ -12,14 +12,14 @@ const BlogDetails = () => {
     const { id } = useParams();
   
     useEffect(() => {
-      fetch(`http://localhost:5000/blogs/${id}`)
+      fetch(`https://mamar-dukan.herokuapp.com/blogs/${id}`)
         .then(res => res.json())
         .then(data => setBlog(data.result))
     }, [id])
     
 
     useEffect(() => {
-        fetch(`http://localhost:5000/blogs`)
+        fetch(`https://mamar-dukan.herokuapp.com/blogs`)
             .then(res => res.json())
             .then(data => setRecentBlogs(data.blog))
     }, [])
@@ -38,10 +38,8 @@ const BlogDetails = () => {
             uniqCatName.push(element);
         }
     }
-    console.log(uniqCatName)
 
     const handleCategoryClick =(dept)=>{
-        console.log(dept);
    }
 
   return (

@@ -5,7 +5,7 @@ const Pants = () => {
     const [product1, setProduct] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/catagory?=Man`)
+        fetch(`https://mamar-dukan.herokuapp.com/products/catagory?=Man`)
             .then(res => res.json())
             .then(data => setProduct(data.products))
     }, [])

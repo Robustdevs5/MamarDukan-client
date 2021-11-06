@@ -15,11 +15,10 @@ const AllProduct = () => {
 
     //Fetching Product.............................................
     useEffect(() => {
-        fetch(`https://mamardukan.herokuapp.com/products`)
+        fetch(`https://mamar-dukan.herokuapp.com/products`)
             .then(res => res.json())
             .then(data => setProduct(data.products))
     }, [])
-    //console.log(product);
 
 
     // pagination........................................................

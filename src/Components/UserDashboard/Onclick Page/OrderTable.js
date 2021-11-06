@@ -59,7 +59,6 @@ const OrderTable = (props) => {
         history.push(`/product/${id}`);
     }
 
-    console.log("ordeer3", ord)
 
 
     return (

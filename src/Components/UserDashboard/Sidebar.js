@@ -53,11 +53,6 @@ const Sidebar = () => {
             name: 'Report',
             icon: <IoMdLogOut className="h-6 w-5 mx-3 fill-current"></IoMdLogOut>
         },
-        {
-            Title: 'Logout',
-            name: 'Logout',
-            icon: <IoMdLogOut className="h-6 w-5 mx-3 fill-current"></IoMdLogOut>
-        },
     ]
 
 
@@ -107,7 +102,6 @@ const Sidebar = () => {
                     {active === 'Password' && <ChangePassword />}
                     {active === 'Vendor' && <Vendor />}
                     {active === 'Report' && <Report />}
-                    {active === 'Logout' && <Vendor />}
                 </div>
             </div>
         </section>

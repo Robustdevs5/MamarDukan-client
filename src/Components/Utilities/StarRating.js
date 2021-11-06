@@ -7,10 +7,8 @@ const StarRating = ({review, setReview, singleProduct}) => {
     const [ rating, setRating ]=useState(0)
     // const [review, setReview] = useState([]);
     
-    console.log("singleProductId",singleProduct)
-    console.log('review', review)
     useEffect(() => {
-        fetch('http://localhost:5000/review/')
+        fetch('https://mamar-dukan.herokuapp.com/review/')
             .then(res => res.json())
             .then(data => setReview(data.review));
     }, [review]);
@@ -29,7 +27,6 @@ const StarRating = ({review, setReview, singleProduct}) => {
                             <hr/>
                             {
                                 review && review.map(review => {
-                                    console.log('review.review', review.result.review)
                                    return <div key={review._id} class="border  shadow rounded-md p-4 max-w-lg w-full mx-auto my-2">
                                         <div class="flex space-x-4">
                                             <div class="rounded-full  h-12 w-12">{review.result.name}</div>

@@ -19,7 +19,7 @@ const WishlistDropwon = ({ setWishlistDropwon }) => {
 
     return (
         <div
-        className="max-width-full absolute  top-16 right-16  md:left-2/4   md:right-1/4  z-50 rounded-xl bg-gray-100 mt-2"
+        className="max-width-full absolute top-32 md:top-16 right-16  md:left-2/4   md:right-1/4  z-50 rounded-xl bg-gray-100 mt-2"
         onMouseEnter={() => setWishlistDropwon(true)}
         onMouseLeave={() => setWishlistDropwon(false)}
       >
@@ -56,9 +56,7 @@ const WishlistDropwon = ({ setWishlistDropwon }) => {
                               color: {product.color}
                             </p>
                           </div>
-                          <div className="flex-1 flex items-end justify-between text-sm">
-                            <p className="text-gray-500">Quantity: {product.quantity}</p>
-    
+                          <div className="flex-1 flex items-end justify-between text-sm">    
                             <div className="flex">
                               <button
                                 type="button"

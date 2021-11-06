@@ -5,7 +5,6 @@ import TopBar from "../TopBar/TopBar";
 import { FAQs } from "./Data";
 
 const FAQS = () => {
-    console.log("data faq " , FAQs);
   return (
     <>
       <TopBar />

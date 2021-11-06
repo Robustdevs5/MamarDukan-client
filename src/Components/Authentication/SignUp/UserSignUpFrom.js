@@ -16,7 +16,6 @@ const  UserSignUpFrom = () => {
       const { register, handleSubmit, formState: { errors } } = useForm();
       const [imageURLStatus, setImageURLStatus] = useState(0);
 
-console.log(";setImageURLStatus", imageURLStatus)
         // Checking passwords
         const handleBlur = (e) => {
           if (e.target.name === "password") {
@@ -34,7 +33,6 @@ console.log(";setImageURLStatus", imageURLStatus)
 
 
       const onSubmit = (data) => {
-          console.log(data)
           const passwordsMatch = checkPasswords();
           // const emailMatch = emailCheck();
           const userInfo = {
@@ -46,9 +44,8 @@ console.log(";setImageURLStatus", imageURLStatus)
                 phoneNumber: data.PhoneNumber,
           };
   
-          console.log('user info', userInfo)
           if (passwordsMatch) {
-              const userSignUp = `http://localhost:5000/user/register-user`;
+              const userSignUp = `https://mamar-dukan.herokuapp.com/user/register-user`;
               fetch(userSignUp, {
                   method: 'POST',
                   headers: {

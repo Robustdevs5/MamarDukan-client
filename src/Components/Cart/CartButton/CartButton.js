@@ -24,8 +24,6 @@ const CartButton = ({cartProduct}) => {
     const [wishlistCart, SetWishlistCart] = useWishlistCart(products);
     const { CompareCart, SetCompareCart} = useContext(userContext);
     
-    // console.log('CompareCart', CompareCart)
-    // console.log('wishlistCart', wishlistCart)
 
     /**================ Add Cart ====================*/
     const handleAddToCart = (cartProduct) => {

@@ -10,17 +10,15 @@ const UpdateProduct = () => {
     const [imageURLStatus, setImageURLStatus] = useState();
     const [dbStatus, setDbStatus] = useState(false);
     const [product, setProduct] = useState([]);
-    console.log('products', product.color)
 
     const { id } = useParams();
 
 
     useEffect(() => {
-        fetch(`https://mamardukan.herokuapp.com/products/${id}`)
+        fetch(`https://mamar-dukan.herokuapp.com/products/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data.product))
     }, [id])
-    console.log(product);
 
 
     const handleSubmit = e => {
@@ -36,10 +34,9 @@ const UpdateProduct = () => {
             brand: e.target.brand.value || product.brand,
             img: imageURL || product.img
         };
-        console.log(productInfo);
 
 
-        const url = `https://mamardukan.herokuapp.com/products/${id}`;
+        const url = `https://mamar-dukan.herokuapp.com/products/${id}`;
         fetch(url, {
             method: 'PATCH',
             headers: {
@@ -59,14 +56,12 @@ const UpdateProduct = () => {
 
 
     const handleImageUpload = (event) => {
-        console.log(event.target.files[0]);
         const imageData = new FormData()
         imageData.set('key', 'ca6c9c7b95b538d35b5137a6b8deb060');
         imageData.append('image', event.target.files[0])
 
         axios.post('https://api.imgbb.com/1/upload', imageData)
             .then(function (response) {
-                console.log(response.data.data.display_url);
                 setImageURL(response.data.data.display_url);
                 setImageURLStatus(true);
                 if (response) {
@@ -74,7 +69,6 @@ const UpdateProduct = () => {
                 }
             })
             .catch(function (error) {
-                console.log(error);
             });
     }
 

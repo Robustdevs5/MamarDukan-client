@@ -13,7 +13,7 @@ const ProductDeatils = () => {
     const { id } = useParams();
 
     useEffect(() => {
-      fetch(`http://localhost:5000/products/${id}`)
+      fetch(`https://mamar-dukan.herokuapp.com/products/${id}`)
         .then(res => res.json())
         .then(data => setSingleProducts([data.product]))
 

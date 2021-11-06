@@ -23,12 +23,11 @@ const Report = () => {
       setReport(newUserInfo);
 }
 
-console.log("Report" , report);
 
 const handleSubmit = (e) => {
  e.preventDefault();
  if (report) {
-  const RepoteRoute = `http://localhost:5000/report`;
+  const RepoteRoute = `https://mamar-dukan.herokuapp.com/report`;
   fetch(RepoteRoute, {
       method: 'POST',
       headers: {
@@ -38,12 +37,10 @@ const handleSubmit = (e) => {
   })
       .then(async res => await res.json())
       .then(async user => {
-          console.log('report', user)
           user ? alert(user.message) : alert("failed")
       })
       .catch(error => {
           alert(error.message);
-          console.log(error);
       });
 } else {
   toast.error("Your Passwords don't match!", {

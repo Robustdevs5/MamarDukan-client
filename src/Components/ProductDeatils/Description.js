@@ -6,19 +6,13 @@ import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
-<<<<<<< HEAD
 import React, { Fragment, useEffect, useState } from "react";
 import CartButton from '../Cart/CartButton/CartButton';
-=======
-import React from "react";
-import { FaChartBar, FaEye, FaHeart, FaShoppingBag } from "react-icons/fa";
->>>>>>> c82f39acd22a0ac137ab04e1c6c5b3caad1e3c10
 import StarRating from "../Utilities/StarRating";
 
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-  console.log("props",props)
 
   return (
     <Typography
@@ -65,13 +59,12 @@ const Description = ({review, setReview, singleProduct}) => {
   }
 
   const [categoryProducts, setCategoryProducts] = useState([])
-  console.log('categoryProducts',singleProduct.order)
 
   
   const {category , _id} = singleProduct;
 
   useEffect(() => {
-      fetch(`http://localhost:5000/products/category?category=${category}`)
+      fetch(`https://mamar-dukan.herokuapp.com/products/category?category=${category}`)
       .then(res => res.json())
       .then(data => setCategoryProducts(data.result))
 
@@ -178,7 +171,6 @@ const Description = ({review, setReview, singleProduct}) => {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
         </TabPanel>
         <TabPanel value={value} index={2}>
           <StarRating review={review} setReview={setReview} singleProduct={singleProduct}/>
@@ -199,101 +191,10 @@ const Description = ({review, setReview, singleProduct}) => {
                       </div>
                   </div>
                   <div className="p-4 flex justify-between ">
-=======
-    </div>
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <StarRating/>
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Item Four
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-      <div className="my-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 xl:gap-4">
-        <div className="group relative w-full bg-white border cursor-pointer">
-                <div className="overflow-x-hidden relative border-b p-2">
-                    <img className="h-48 w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg" alt="Product Title" />
-                    
-                    <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
-                        <span className="font-bold">Sale</span>
-                    </div>
-                    <div className="w-full bottom-0 flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
-
-                                    <button
-                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                    >
-                                        <FaShoppingBag  />
-                                    </button>
-
-                                    <button
-                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                    >
-                                        <FaEye />
-                                    </button>
-
-                                    <button
-                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                    >
-                                        <FaHeart />
-                                    </button >
-
-                                    <button
-                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                    >
-                                        <FaChartBar  />
-                                    </button>
-
-                                </div>
-                </div>
-                <div className="p-4 flex justify-between ">
-                    <div>
-                    <p className="text-md font-semibold text-gray-900 mb-0">Russell Hobbs Kettle Premium Stainlessteel</p>
-                    <p className="font-bold text-red-900 mt-0">$340</p>
-                    </div>
-                </div>
-            </div>
-            <div className="group relative w-full bg-white border cursor-pointer">
-                <div className="overflow-x-hidden relative border-b p-2">
-                    <img className="h-48 w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg" alt="Product Title" />
-                    
-                    <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
-                        <span className="font-bold">Sale</span>
-                    </div>
-                    <div className="w-full bottom-0 flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
-
-                                    <button
-                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                    >
-                                        <faShoppingBag  />
-                                    </button>
-
-                                    <button
-                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                    >
-                                        <faEye  />
-                                    </button>
-
-                                    <button
-                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                    >
-                                        <faHeart />
-                                    </button >
-
-                                    <button
-                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                    >
-                                        <faChartBar  />
-                                    </button>
-
-                                </div>
-                </div>
-                <div className="p-4 flex justify-between ">
->>>>>>> c82f39acd22a0ac137ab04e1c6c5b3caad1e3c10
                     <div>
                       <p className="text-md font-semibold text-gray-900 mb-0">{categoryProduct.name}</p>
                       <p className="font-bold text-red-900 mt-0">${categoryProduct.price}</p>
                     </div>
-<<<<<<< HEAD
                   </div>
 
               </div>
@@ -307,88 +208,6 @@ const Description = ({review, setReview, singleProduct}) => {
     {/* </Fragment>
     })
       } */}
-=======
-                    <div className="w-full bottom-0 flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
-
-                                    <button
-                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                    >
-                                        <faShoppingBag  />
-                                    </button>
-
-                                    <button
-                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                    >
-                                        <faEye  />
-                                    </button>
-
-                                    <button
-                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                    >
-                                        <faHeart  />
-                                    </button >
-
-                                    <button
-                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                    >
-                                        <faChartBar  />
-                                    </button>
-
-                                </div>
-                </div>
-                <div className="p-4 flex justify-between ">
-                    <div>
-                    <p className="text-md font-semibold text-gray-900 mb-0">Russell Hobbs Kettle Premium Stainlessteel</p>
-                    <p className="font-bold text-red-900 mt-0">$340</p>
-                    </div>
-                </div>
-            </div>
-            <div className="group relative w-full bg-white border cursor-pointer">
-                <div className="overflow-x-hidden relative border-b p-2">
-                    <img className="h-48 w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg" alt="Product Title" />
-                    
-                    <div className="text-sm absolute top-2 left-2 bg-custom px-4 py-2 text-white rounded flex flex-col items-center justify-center hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
-                        <span className="font-bold">Sale</span>
-                    </div>
-                    <div className="w-full bottom-0 flex bg-gray-50 justify-between px-2 absolute transform duration-900 opacity-0 group-hover:opacity-100">
-
-                                    <button
-                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                    >
-                                        <faShoppingBag  />
-                                    </button>
-
-                                    <button
-                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                    >
-                                        <faEye  />
-                                    </button>
-
-                                    <button
-                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                    >
-                                        <faHeart  />
-                                    </button >
-
-                                    <button
-                                        className="rounded-full hover:bg-yellow-400 text-xl text-gray-600 hover:text-gray-800 py-1 px-2"
-                                    >
-                                        <faChartBar  />
-                                    </button>
-
-                                </div>
-                </div>
-                <div className="p-4 flex justify-between ">
-                    <div>
-                    <p className="text-md font-semibold text-gray-900 mb-0">Russell Hobbs Kettle Premium Stainlessteel</p>
-                    <p className="font-bold text-red-900 mt-0">$340</p>
-                    </div>
-                </div>
-            </div>
-            
-      </div>
-      </TabPanel>
->>>>>>> c82f39acd22a0ac137ab04e1c6c5b3caad1e3c10
     </div>
   );
 }

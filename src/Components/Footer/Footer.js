@@ -46,7 +46,7 @@ const Footer = () => {
                 <FooterCol key={4} menuTitle={"ABOUT US"} menuItems={ourAddress}>
                 <div className="PaymentGateway">
                             <h4 className="title">Payment Method</h4>
-                                <div className="iconwraper">
+                                <div className="iconwraper flex">
                                     <FaCcVisa className="iconbutton"  />
                                     <FaCcMastercard className="iconbutton"  />
                                     <ImPaypal className="iconbutton"  />

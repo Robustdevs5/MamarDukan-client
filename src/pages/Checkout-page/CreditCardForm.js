@@ -44,7 +44,6 @@ export const TransferForm = ({setBankDrapImg, bankDrapImg}) => {
     
     const [imageURLStatus, setImageURLStatus] = useState();
       const handleImageUpload = (event) => {
-        console.log(event.target.files[0]);
         const imageData = new FormData()
         imageData.set('key', 'ca6c9c7b95b538d35b5137a6b8deb060');
         imageData.append('image', event.target.files[0])

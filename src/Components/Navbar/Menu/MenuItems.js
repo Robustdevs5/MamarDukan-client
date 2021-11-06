@@ -294,22 +294,22 @@ export const Menu = [
     toggleClass:
       "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
   },
-  {
-    title: "Dashboard",
-    path: "/user/dashboard",
-    class:
-      "py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
-    toggleClass:
-      "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
-  },
-  {
-    title: "SA Dashboard",
-    path: "/super-admin/dashboard/overview",
-    class:
-      "py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
-    toggleClass:
-      "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
-  },
+  // {
+  //   title: "Dashboard",
+  //   path: "/user/dashboard",
+  //   class:
+  //     "py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
+  //   toggleClass:
+  //     "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
+  // },
+  // {
+  //   title: "SA Dashboard",
+  //   path: "/super-admin/dashboard/overview",
+  //   class:
+  //     "py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
+  //   toggleClass:
+  //     "py-3  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg",
+  // },
   {
     title: "Track your order",
     path: "/trackOrder",

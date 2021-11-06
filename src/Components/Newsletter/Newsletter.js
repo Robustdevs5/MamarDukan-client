@@ -13,8 +13,7 @@ const Newsletter = () => {
             name: "From Newsletter",
             email: data.email
         }
-        console.log('data', data)
-        fetch('http://localhost:5000/message', {
+        fetch('https://mamar-dukan.herokuapp.com/message', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

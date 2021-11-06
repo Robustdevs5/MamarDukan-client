@@ -32,7 +32,6 @@ const Countdown = () => {
 
       const timerComponents = [];
 
-    console.log('time', timeLeft.days)
         Object.keys(timeLeft).forEach((interval) => {
         if (!timeLeft[interval]) {
             return;

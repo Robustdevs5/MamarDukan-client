@@ -45,7 +45,7 @@ const ManageBlog = () => {
 
     //Fetching Product............................
     useEffect(() => {
-        fetch(`http://localhost:5000/blogs`)
+        fetch(`https://mamar-dukan.herokuapp.com/blogs`)
             .then(res => res.json())
             .then(data => setBlogs(data.blog))
     }, [])
@@ -64,14 +64,14 @@ const ManageBlog = () => {
 
     //Delete.......................................
     const deleted = () => {
-        fetch(`http://localhost:5000/blogs`)
+        fetch(`https://mamar-dukan.herokuapp.com/blogs`)
             .then(res => res.json())
             .then(data => setBlogs(data.blog))
     }
 
 
     const handleDeleteBlog = (id) => {
-        fetch(`http://localhost:5000/blogs/${id}`, {
+        fetch(`https://mamar-dukan.herokuapp.com/blogs/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())

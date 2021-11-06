@@ -8,13 +8,15 @@ const Logo = ({closeMobileMenu}) => {
             onClick={closeMobileMenu} 
             className='flex justify-self-start cursor-pointer text-xl'
         >
-            <FaCartPlus 
+            {/* <FaCartPlus 
                 className="mr-3 text-white text-3xl" 
-                 />
+                 /> */}
             <strong 
-                className='uppercase text-gray-200 font-bold text-lg md:font-extrabold md:text-2xl'>
-                Mamar
-                <span  className='text-red-600'> Dukan  </span>
+                className='uppercase text-gray-200 font-bold text-normal md:font-bold md:text-xl'>
+                {/* Mamar */}
+                
+                    Shop by Department
+                {/* <span  className='text-red-600'> Dukan  </span> */}
             </strong>
             
         </Link>

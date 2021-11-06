@@ -19,7 +19,6 @@ const useShuffleProducts = () => {
                 setShuffleProduct(array)
             }
             catch(err) {
-                console.log('error f', err)
             }
         }, 6000);
     }

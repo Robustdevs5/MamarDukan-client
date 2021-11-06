@@ -6,7 +6,6 @@ import CartButton from '../Cart/CartButton/CartButton';
 
 
 const DepartmentShop = (props) => {
-    console.log(props);
 
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(12);

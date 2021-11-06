@@ -9,7 +9,6 @@ import AdminSidebar from '../AdminSidebar/AdminSidebar';
 const AdminPanel = () => {
 
     const { user, setUser } = useContext(userContext);
-    console.log(user);
     
 
     return (

@@ -17,7 +17,7 @@ const UpdateBlog = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/blogs/${id}`)
+        fetch(`https://mamar-dukan.herokuapp.com/blogs/${id}`)
         .then(res => res.json())
         .then(data => setBlog(data.result))
     }, [id])
@@ -30,10 +30,9 @@ const UpdateBlog = () => {
             category: e.target.category.value || blog.category,
             img: imageURL || blog.img
         };
-        console.log(blogInfo);
 
 
-        const url = `http://localhost:5000/blogs/${id}`;
+        const url = `https://mamar-dukan.herokuapp.com/blogs/${id}`;
         fetch(url, {
             method: 'PATCH',
             headers: {
@@ -55,14 +54,13 @@ const UpdateBlog = () => {
 
 
     const handleImageUpload = (event) => {
-        console.log(event.target.files[0]);
         const imageData = new FormData()
         imageData.set('key', 'ca6c9c7b95b538d35b5137a6b8deb060');
         imageData.append('image', event.target.files[0])
 
         axios.post('https://api.imgbb.com/1/upload', imageData)
             .then(function (response) {
-                console.log(response.data.data.display_url);
+                https://mamar-dukan.herokuapp.comresponse.data.data.display_url);
                 setImageURL(response.data.data.display_url);
                 setImageURLStatus(true);
                 if (response) {
@@ -70,7 +68,6 @@ const UpdateBlog = () => {
                 }
             })
             .catch(function (error) {
-                console.log(error);
             });
     }
 

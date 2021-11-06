@@ -1,15 +1,20 @@
 
 import React, { useContext, useState } from "react";
-import { AiOutlineHeart, AiOutlineSearch } from "react-icons/ai";
-import { FaChartBar, FaUserCircle } from "react-icons/fa";
+import { AiOutlineHeart } from "react-icons/ai";
+import { FaCartPlus, FaChartBar, FaUserCircle } from "react-icons/fa";
 import { MdShoppingCart } from "react-icons/md";
 import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { userContext } from "../../App";
+import useProducts from "../../hooks/useProducts";
 import CompareDropdown from "../Cart/CompareCart/CompareDropdown";
+import WishlistDropwon from "../Cart/WishlistCart/WishlistDropwon";
 import CartDropdown from "../Cart/ShopingCart/CartDropdown";
 import styles from "../StyledComponent/TopBar.module.css";
+import profile from "../../images/profile.png";
 import CustomerCare from "./CustomerCare";
+import SearchBar from "./SearchBar";
+import { toast } from "react-toastify";
 
 
 const TopBar = () => {
@@ -18,25 +23,13 @@ const TopBar = () => {
   const [compareDropdown, setCompareDropdown] = useState(false); 
   const { wishlistCart,  SetWishlistCart } = useContext(userContext);
   
-  console.log(' SetWishlistCart', wishlistCart)
   const { CompareCart} = useContext(userContext);
   const { user, setUser } = useContext(userContext);
   const { cart, setCart } = useContext(userContext);
-
+  const [products, setProducts] = useProducts(); 
   let history = useHistory();
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/login" } };
-
-
-  // useEffect(() => {
-  //   const loggedInUser = sessionStorage.getItem("user");
-  //   if (loggedInUser) {
-  //     const foundUser = JSON.parse(loggedInUser);
-  //     setUser(foundUser);
-  //   }
-    
-  //   // return loggedInUser ? JSON.parse(loggedInUser) : {};
-  // }, []);
 
 
   const handleLogout = () => {
@@ -44,6 +37,10 @@ const TopBar = () => {
     // window.localStorage.clear(); //clear all localstorage
     window.sessionStorage.removeItem("user"); //remove one item
     history.replace(from);
+    toast.success("You have signed out", {
+        position: "bottom-left",
+    });
+    window.location.reload();
   };
 
 
@@ -52,26 +49,21 @@ const TopBar = () => {
   };
   
   return (
-    <main className="h-20 pl-0 sticky top-0 z-50 primary_BG_color ">
-      <section className=" flex justify-between  items-center  ">
-        <div className="flex justify-between items-center">
-          <div className="mx-0 sm:mx-4 hidden md:block ">
-            <p className="text-base text-white font-semibold">Helping buyers and sellers to attain their goals</p>
+    <main className="md:h-20 pl-0 sticky top-0 z-50 primary_BG_color ">
+      <section className=" pt-5 md:pt-0 md:grid md:grid-cols-2 md:items-center  ">
+
+        <div className=" flex justify-evenly  items-center  ">
+            <div className=''>
+                  <strong  className='flex uppercase text-gray-200 font-bold text-lg md:font-extrabold md:text-2xl'>
+                    <FaCartPlus className="mr-3 text-white text-3xl"  />
+                      Mamar
+                    <span  className='text-red-600'> Dukan  </span>
+                </strong>
+            </div>
+            <SearchBar className={styles.topBar_search_input}  placeholder="Enter a product Name..." data={products} />
           </div>
-
-
         
-        </div>
-        
-        <div className='flex justify-end items-center w-full md:w-9/12'>
-        <form action="" className=" md:w-3/5 w-full h-10  items-center flex flex-row">
-            <input
-              type="text"
-              placeholder="Search"
-              className={styles.topBar_search_input}
-            />
-            <AiOutlineSearch size={33} className={styles.topBar_search_icon} />
-          </form>
+        <div className='flex justify-evenly md:justify-end  items-center w-full '>
           
           <div onMouseEnter={() => setCompareDropdown(true)}
               onMouseLeave={() => setCompareDropdown(false)}>
@@ -116,27 +108,42 @@ const TopBar = () => {
 
 
           <div className='flex items-center'>
-              <FaUserCircle size={30} className="h-8 ml-2  hidden sm:block text-white fill-current text-white-600"></FaUserCircle>
-              <div>
-                  {user.email ?
-                    <button className={styles.topBar_login_register} onClick={handleUserDashboard}>{user.username}</button>
-                  :
-                    <Link to="/login">
-                      <p className={styles.topBar_login_register}>Login </p>{" "}
-                    </Link> }
+              {user.email ?
+                  <div className="h-8 ml-2 w-10 hidden sm:block text-white fill-current text-white-600">
+                    <img src={user.img || profile} className="h-full w-full rounded-full " alt="" />
+                </div>
+                :  
+                <FaUserCircle size={30} className="h-8 ml-2  hidden sm:block text-white fill-current text-white-600"></FaUserCircle>
 
-                  { user.email ?
-                    <button className={styles.topBar_login_register} onClick={handleLogout}>Logout</button>
-                  :
-                    <Link to="/register">
-                      <p className={styles.topBar_login_register}> Register</p>{" "}
-                    </Link> }
+                }
+
+              <div>
+                  {user.email &&
+                  <>
+                    
+                    <button className={styles.topBar_login_register} onClick={handleUserDashboard}>{user.username}</button>
+                    <Link to="/login">
+                        {/* <button  className={styles.topBar_login_register}>Login </button>{" "} */}
+                        <button className={styles.topBar_login_register} onClick={handleLogout}>Logout </button>
+                      </Link> 
+                  </>
+                  }
+                  
+                  {!user.email && <>
+                      <Link to="/login">
+                        <button  className={styles.topBar_login_register}>Login </button>
+                      </Link> 
+                      <Link to="/register">
+                        <button className={styles.topBar_login_register}> Register</button>
+                      </Link> 
+                    </>
+                  }
               </div>
           </div>
         </div>
       </section>
       {dropdown && <CartDropdown setDropdown={setDropdown} />}
-      {/* {wishlistDropwon && <WishlistDropwon setWishlistDropwon={setWishlistDropwon} />} */}
+      {wishlistDropwon && <WishlistDropwon setWishlistDropwon={setWishlistDropwon} />}
       {compareDropdown && <CompareDropdown setCompareDropdown={setCompareDropdown} />}
     </main>
   );

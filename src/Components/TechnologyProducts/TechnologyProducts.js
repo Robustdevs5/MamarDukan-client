@@ -14,11 +14,10 @@ const TechnologyProducts = () => {
     const [technologyProduct, setTechnologyProduct] = useState([]);
 
     useEffect(() => {
-        fetch(`https://mamardukan.herokuapp.com/products/department?department=Computer`)
+        fetch(`https://mamar-dukan.herokuapp.com/products/department?department=Computer`)
             .then(res => res.json())
             .then(data => setTechnologyProduct(data.result))
     }, [])
-    // console.log(technologyProduct);
 
 
     function SampleNextArrow(props) {

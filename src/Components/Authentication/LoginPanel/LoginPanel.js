@@ -17,27 +17,23 @@ const LoginPanel = () => {
 
 
     // const { user, setUser } = useContext(userContext);
-    // console.log(user);
+ 
 
 
-    useEffect(() => {
-        const loggedInUser = sessionStorage.getItem("user");
-        if (loggedInUser) {
-            const foundUser = JSON.parse(loggedInUser);
+    // useEffect(() => {
+    //     const loggedInUser = sessionStorage.getItem("user");
+    //     if (loggedInUser) {
+    //         const foundUser = JSON.parse(loggedInUser);
 
-            console.log('found user role1', foundUser.role)
-            if (foundUser.role === "user") {
-                console.log('found user role', foundUser.role)
-                setCheckCustomer(true)
-            } else if (foundUser.role === "admin") {
-                console.log('found user role2', foundUser.role)
-                setCheckAdmin(true)
-            } else if (foundUser.role === "superadmin") {
-                console.log('found user role2', foundUser.role)
-                setSuperAdmin(true)
-            }
-        }
-    }, []);
+    //         if (foundUser.role === "user") {
+    //             setCheckCustomer(true)
+    //         } else if (foundUser.role === "admin") {
+    //             setCheckAdmin(true)
+    //         } else if (foundUser.role === "superadmin") {
+    //             setSuperAdmin(true)
+    //         }
+    //     }
+    // }, []);
 
 
 
@@ -53,7 +49,7 @@ const LoginPanel = () => {
 
 
     // useEffect(() => {
-    //     fetch('https://mamardukan.herokuapp.com/user/login-admin', {
+    //     fetch('https://mamar-dukan.herokuapp.com/user/login-admin', {
     //         method: 'POST',
     //         headers: { 'content-type': 'application/json' },
     //         body: JSON.stringify({ email: user.email, password: user.password })
@@ -65,7 +61,6 @@ const LoginPanel = () => {
     //             }
     //         })
     // }, [user])
-    // console.log(checkAdmin);
 
 
 

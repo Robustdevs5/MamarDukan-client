@@ -6,6 +6,7 @@ import TopBar from "../../Components/TopBar/TopBar";
 import star from "../../images/5star.png";
 import CartButton from '../Cart/CartButton/CartButton';
 import Footer from '../Footer/Footer';
+import { Loader } from '../Loader/Loader';
 import Newsletter from '../Newsletter/Newsletter';
 import AllProduct from './AllProduct';
 
@@ -17,7 +18,7 @@ import AllProduct from './AllProduct';
 
 
 
-const Shop = () => {
+const Shop = ({brand}) => {
 
     const [product, setProduct] = useState([]);
     const [deptProduct, setDeptProduct] = useState([]);
@@ -34,7 +35,7 @@ const Shop = () => {
 
     //Fetching Product//////////////////////////////////
     useEffect(() => {
-        fetch(`https://mamardukan.herokuapp.com/products`)
+        fetch(`https://mamar-dukan.herokuapp.com/products`)
             .then(res => res.json())
             .then(data => setProduct(data.products))
     }, [])
@@ -72,14 +73,13 @@ const Shop = () => {
 
 
     const handleDepartmentClick = (dept) => {
-        fetch(`https://mamardukan.herokuapp.com/products/department?department=${dept}`)
+        fetch(`https://mamar-dukan.herokuapp.com/products/department?department=${dept}`)
             .then(res => res.json())
             .then(data => setDeptProduct(data.result))
         setDeptProductStatus(true)
         setAllProductStatus(false)
         setBrandProductStatus(false)
     }
-    //console.log(deptProduct);
 
 
     const handleAllProductClick = () => {
@@ -98,7 +98,7 @@ const Shop = () => {
         // let checkBox = document.getElementById(`${brand}`);
         // var text = document.getElementById("brand");
 
-        fetch(`https://mamardukan.herokuapp.com/products/brand?brand=${brand}`)
+        fetch(`https://mamar-dukan.herokuapp.com/products/brand?brand=${brand}`)
             .then(res => res.json())
             .then(data => setBrandProduct(data.result))
         setDeptProductStatus(false)
@@ -129,13 +129,13 @@ const Shop = () => {
                     <div className="px-5 py-5 bg-blue-100 text-gray-800 rounded mb-8">
 
                         <h1
-                            className="text-2xl my-8 cursor-pointer hover:text-yellow-400"
+                            className="text-2xl my-8 cursor-pointer hover:text-yellow-400 border-l-4 border-red-600 pl-5"
                             onClick={handleAllProductClick}
                         >
                             All Product
                         </h1>
 
-                        <h1 className="text-lg mb-5">PRODUCT DEPARTMENT</h1>
+                        <h1 className="text-lg mb-5 border-l-2 border-red-600 pl-2">PRODUCT DEPARTMENT</h1>
                         {
                             uniqDeptName.map(uniqDeptName =>
                                 <p
@@ -149,7 +149,7 @@ const Shop = () => {
 
 
                     <div className="px-5 py-5 bg-blue-100 text-gray-800 rounded">
-                        <h1 className="text-lg mb-5">PRODUCT BRAND</h1>
+                        <h1 className="text-lg mb-5 border-l-4 border-red-600 pl-5">PRODUCT BRAND</h1>
                         {uniqBrandName.map(uniqBrandName =>
                             <div className="flex items-center">
                                 <input
@@ -171,13 +171,13 @@ const Shop = () => {
 
 
                     <div className="px-5 mt-8 py-5 bg-blue-100 text-gray-800 rounded">
-                        <h1 className="text-lg mb-5">BY PRICE</h1>
+                        <h1 className="text-lg mb-5 border-l-4 border-red-600 pl-2">BY PRICE</h1>
                         <input type="range" name="" id="" min="0" Max="100000" />
                     </div>
 
 
                     <div className="px-5 mt-8 py-5 bg-blue-100 text-gray-800 rounded">
-                        <h1 className="text-lg mb-5">BY COLOR</h1>
+                        <h1 className="text-lg mb-5 border-l-4 border-red-600 pl-2">BY COLOR</h1>
 
                         <input type="color"
                             className="cursor-pointer hover:text-yellow-400 w-8 h-8 p-1 rounded-full mr-1 hover:bg-black"
@@ -218,7 +218,7 @@ const Shop = () => {
 
 
                     <div className="px-5 mt-8 py-5 bg-blue-100 text-gray-800 rounded">
-                        <h1 className="text-lg mb-8">BY SIZE</h1>
+                        <h1 className="text-lg mb-8 border-l-4 border-red-600 pl-2">BY SIZE</h1>
 
                         <div className="flex items-center">
                             <label
@@ -262,7 +262,7 @@ const Shop = () => {
                         <AllProduct />
                     </div>}
 
-
+                {product.length === 0 && <Loader/>}
                 {/* ......................Product by Department.................. */}
                 {deptProductStatus && <div className="px-10 pt-10">
                     <h3 className="mb-4">

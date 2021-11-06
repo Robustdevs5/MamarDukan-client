@@ -118,7 +118,7 @@ const SIgnIn = () => {
             email: data.email,
             password: data.password
         };
-        const userSignUp = `https://mamardukan.herokuapp.com/user/login`;
+        const userSignUp = `https://mamar-dukan.herokuapp.com/user/login`;
         fetch(userSignUp, {
             method: 'POST',
             headers: {
@@ -128,7 +128,6 @@ const SIgnIn = () => {
         })
             .then(async res => await res.json())
             .then(async user => {
-                console.log('user10', user)
                 // user ? alert(user.message) : alert("failed")
                 if(user) {
                     toast.success(user.message, {
@@ -140,7 +139,6 @@ const SIgnIn = () => {
             })
             .catch(error => {
                 // alert(error.message);
-                // console.log(error);
                 toast.error(error.message, {
                     position: "bottom-right",
                 });

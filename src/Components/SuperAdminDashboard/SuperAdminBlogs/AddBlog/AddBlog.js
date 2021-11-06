@@ -22,10 +22,9 @@ const AddBlog = () => {
             date: new Date().toDateString('dd/MM/yyyy HH:MM:SS'),
             img: imageURL
         };
-        console.log(blogInfo);
 
 
-        const url = `http://localhost:5000/blogs`;
+        const url = `https://mamar-dukan.herokuapp.com/blogs`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -49,14 +48,12 @@ const AddBlog = () => {
 
 
     const handleImageUpload = (event) => {
-        console.log(event.target.files[0]);
         const imageData = new FormData()
         imageData.set('key', 'ca6c9c7b95b538d35b5137a6b8deb060');
         imageData.append('image', event.target.files[0])
 
         axios.post('https://api.imgbb.com/1/upload', imageData)
             .then(function (response) {
-                console.log(response.data.data.display_url);
                 setImageURL(response.data.data.display_url);
                 setImageURLStatus(true);
                 if (response) {
@@ -65,7 +62,6 @@ const AddBlog = () => {
                 }
             })
             .catch(function (error) {
-                console.log(error);
             });
     }
 

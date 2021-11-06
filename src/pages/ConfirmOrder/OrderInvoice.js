@@ -4,7 +4,6 @@ import { userContext } from '../../App';
 
 const Orderinfo = () => {
     // const { cart, setCart } = useContext(userContext);
-    // console.log('Order' , Cart)
 
     return (
         <div className="">

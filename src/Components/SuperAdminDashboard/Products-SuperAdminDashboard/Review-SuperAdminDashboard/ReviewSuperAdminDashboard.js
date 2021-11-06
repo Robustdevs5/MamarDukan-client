@@ -6,11 +6,10 @@ const ReviewSuperAdminDashboard = () => {
 
     const [Review1 , setReview] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/orders`)
+        fetch(`https://mamar-dukan.herokuapp.com/orders`)
         .then (res => res.json())
         .then (data => setReview(data.orders))
     }, [])
-    console.log("Review" , Review1)
     return (
         <div className=" bg-gray-800 ">
         {/* <div className="w-screen h-20 p-6">

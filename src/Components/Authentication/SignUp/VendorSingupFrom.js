@@ -5,7 +5,6 @@ import Imageupload from './Imageupload';
 const VendorSingupFrom = () => {
 
       // async function handleSignup(userInfo) {
-      //   console.log(userInfo)
         // setLoading(true)
         // try {
         //   if (donatedBefore)
@@ -48,7 +47,6 @@ const VendorSingupFrom = () => {
 
 
       const onSubmit = (data) => {
-          console.log(data)
           const passwordsMatch = checkPasswords();
           const userInfo = {
               name: data.name,
@@ -60,10 +58,9 @@ const VendorSingupFrom = () => {
               img: imageURL,
               phoneNumber: data.PhoneNumber,
           };
-          console.log('user info', userInfo)
   
           if (passwordsMatch) {
-              const userSignUp = `http://localhost:5000/user/register-vendor`;
+              const userSignUp = `https://mamar-dukan.herokuapp.com/user/register-vendor`;
               fetch(userSignUp, {
                   method: 'POST',
                   headers: {

@@ -18,7 +18,8 @@ const Totalcart = ({setPriceTotal}) => {
     const shipping = subTotal > 0 ? 15 : 0;
     const tax = (subTotal + shipping) * 0.10;
     const Total = subTotal + shipping + tax;
-    setPriceTotal(Total)
+    // const totalPrice = setPriceTotal(Total)
+    setPriceTotal = Total
 
     return (
         <div className="pt-12 md:pt-0 2xl:ps-4 tracking-tight">

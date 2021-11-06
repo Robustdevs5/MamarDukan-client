@@ -25,7 +25,7 @@ const OrderDeleteModal = ({ setModalDeleteStatus, deleteId, deleted }) => {
         setOpen(false)
         setModalDeleteStatus(false)
 
-        fetch(`https://mamardukan.herokuapp.com/products/${deleteId}`, {
+        fetch(`https://mamar-dukan.herokuapp.com/products/${deleteId}`, {
             method: "DELETE"
         })
             .then(res => res.json())

@@ -26,10 +26,9 @@ const AddProduct = () => {
             date: new Date(),
             img: imageURL
         };
-        console.log(productInfo);
 
 
-        const url = `https://mamardukan.herokuapp.com/products`;
+        const url = `https://mamar-dukan.herokuapp.com/products`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -51,14 +50,12 @@ const AddProduct = () => {
 
 
     const handleImageUpload = (event) => {
-        console.log(event.target.files[0]);
         const imageData = new FormData()
         imageData.set('key', 'ca6c9c7b95b538d35b5137a6b8deb060');
         imageData.append('image', event.target.files[0])
 
         axios.post('https://api.imgbb.com/1/upload', imageData)
             .then(function (response) {
-                console.log(response.data.data.display_url);
                 setImageURL(response.data.data.display_url);
                 setImageURLStatus(true);
                 if (response) {
@@ -67,7 +64,6 @@ const AddProduct = () => {
                 }
             })
             .catch(function (error) {
-                console.log(error);
             });
     }
 

@@ -9,11 +9,10 @@ const VendorDashboardProduct = () => {
     const [categories, setCategories] = useState([]);
     //Fetching Product.............................................
     useEffect(() => {
-        fetch(`https://mamardukan.herokuapp.com/products`)
+        fetch(`https://mamar-dukan.herokuapp.com/products`)
             .then(res => res.json())
             .then(data => setCategories(data.products))
     }, [])
-    console.log(categories);
 
     return (
         <div className='w-full font-medium grid grid-cols-1 md:grid-cols-3 mx-4 mt-30 tracking-tight '>

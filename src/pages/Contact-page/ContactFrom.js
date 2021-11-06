@@ -12,7 +12,7 @@ const ContactFrom = () => {
             Number: data.Number,
             message: data.message,
         }
-        fetch('http://localhost:5000/message', {
+        fetch('https://mamar-dukan.herokuapp.com/message', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

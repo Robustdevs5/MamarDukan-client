@@ -18,7 +18,6 @@ const Navbar = () => {
         const hideMenu = () => {
             if(window.innerWidth > 768 && isOpen) {
                 setIsOpen(false);
-                console.log('working');
             }
         };
 

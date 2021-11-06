@@ -16,7 +16,6 @@ const TrackOrder = () => {
         const input = document.getElementById('order').value
         handleModal(input)
         e.preventDefault()
-        console.log('TrackOrder' , input)
 
 
     }

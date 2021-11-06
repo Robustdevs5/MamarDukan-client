@@ -4,8 +4,8 @@ import { getWishlistToDb } from '../Components/Cart/WishlistCart/WishListCartDat
 import useProducts from './useProducts';
 
 const useWishlistCart = products => {
-    const [ wishlistCart, SetWishlistCart ] = useState([]);
-    // const { wishlistCart, SetWishlistCart } = useContext(userContext);
+    // const [ wishlistCart, SetWishlistCart ] = useState([]);
+    const { wishlistCart, SetWishlistCart } = useContext(userContext);
     
     useEffect(() => {
 

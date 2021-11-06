@@ -4,19 +4,17 @@ import React, { useEffect, useState } from 'react';
 const Message = () => {
     const [messageDetails, setMessage] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/message`)
+        fetch(`https://mamar-dukan.herokuapp.com/message`)
         .then (res => res.json())
         .then (data => setMessage(data.result.message))
     }, []) 
     
     const [Report, setReport] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/report`)
+        fetch(`https://mamar-dukan.herokuapp.com/report`)
         .then (res => res.json())
         .then (data => setReport(data.result.Report))
     }, [])
-    console.log("Message" , messageDetails)
-    // console.log("Report" , Report)
 
     
 

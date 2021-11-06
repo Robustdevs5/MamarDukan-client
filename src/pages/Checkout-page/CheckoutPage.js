@@ -41,7 +41,6 @@ const CheckoutPage = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data) => {
-        console.log('submit data',data)
         
         const orderDetail = { 
             quantity: totalQuantity,
@@ -60,9 +59,8 @@ const CheckoutPage = () => {
             cardnumber:'57575757575757575577'
         }
         
-        console.log('orderDetail data', orderDetail)
 
-        fetch('http://localhost:5000/orders', {
+        fetch('https://mamar-dukan.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -108,22 +106,6 @@ const CheckoutPage = () => {
         });
       }
     
-    
-
-    ///Payment Method
-
-    const options = {
-        // passing the client secret obtained from the server
-        clientSecret: 'sk_test_51Ie9VqKA9RGUKPzp3Jloro2oCc90GABGEqBmodtmXZ0k0GPkWddfmkxo7tSTcS31clTD99OOklULUjzdzOXjkc020092gccmOY',
-      };
-
-// Make sure to call `loadStripe` outside of a component’s render to avoid
-// recreating the `Stripe` object on every render.
-const stripePromise = loadStripe('pk_test_51Ie9VqKA9RGUKPzpRVUr3EBr9AjVwrTUnJ23FXdzTUEAQ3Hz96sf5aQJICuFTgluBvc76FAftBtEQ06nW7BUbSCC00D9J8tnWt');
-
-// const CheckoutIndex = () => {
-  
-//  }
 
     return (
         <>
@@ -132,10 +114,7 @@ const stripePromise = loadStripe('pk_test_51Ie9VqKA9RGUKPzpRVUr3EBr9AjVwrTUnJ23F
             <Navbar />
 
         <div className="container p-5 mx-auto">
-            <div className="h-40 w-full absolute">
-                <img src={img} alt="title" className="w-full h-full opacity-30 " />
-            </div>
-            <h2 className=" relative  my-14 font-bold md:text-4xl text-center text-heading pb-5 capitalize ">Checkout</h2>
+            <h2 className="  my-14 font-bold md:text-4xl text-center text-heading pb-5 capitalize ">Checkout</h2>
             <div className="flex flex-col w-full px-0 mb-10 mx-auto md:flex-row">
                 <div className="bg-gray-50 p-5 rounded flex flex-col md:w-full">
                     <h2 className="mb-4 font-bold md:text-xl text-heading pl-2 border-l-2 border-red-600">Shipping Address
