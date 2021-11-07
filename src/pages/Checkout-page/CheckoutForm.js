@@ -2,13 +2,11 @@
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useState } from 'react';
 
-const CheckoutForm = ({ setStripePayment }) => {
+const CheckoutForm = ({ setOpen,setModalStatus, paymentSuccess, setPaymentSuccess }) => {
     const stripe = useStripe();
     const elements = useElements();
 
     const [paymentError, setPaymentError] = useState(null)
-    const [paymentSuccess, setPaymentSuccess] = useState(null)
-    console.log('paymentSuccess', paymentSuccess);
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -27,10 +25,11 @@ const CheckoutForm = ({ setStripePayment }) => {
             setPaymentError(error.message);
             setPaymentSuccess(null);
         } else {
-            setPaymentSuccess(paymentMethod.id);
-            console.log('paymentMethod', paymentMethod.id);
+            setPaymentSuccess(paymentMethod);
             setPaymentError(null);
-            setStripePayment(paymentMethod.id)
+            setModalStatus(false);
+            setOpen(false);
+            // setStripePayment(paymentMethod.id)
         }
     };
 
@@ -43,7 +42,7 @@ const CheckoutForm = ({ setStripePayment }) => {
                 </label>
                 <br />
 
-                <button type='submit' className="btn btn-success mb-3 mt-3 d-flex primary_BTN_Outline py-2 px-5" disabled={!stripe}>
+                <button className="btn btn-success mb-3 mt-3 d-flex primary_BTN_Outline py-2 px-5" disabled={!stripe}>
                     Pay
                 </button>
             </form>

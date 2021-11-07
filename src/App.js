@@ -235,10 +235,10 @@ function App() {
             <VendorSupport/>
           </PrivateRoute>
           
-          <PrivateRoute path="/checkout">
+          <Route path="/checkout">
             <CheckoutPage/>
-          </PrivateRoute>
-          <PrivateRoute path="/Confirm-order">
+          </Route>
+          <PrivateRoute path="/Confirm-order/:orderDetails">
             <ConfirmOrder/>
           </PrivateRoute>
 

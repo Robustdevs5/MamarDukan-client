@@ -10,7 +10,6 @@ const Privacy = () => {
       <TopBar />
       <Header />
       <Navbar />
-
       <div className="w-full text-center justify-center item-center ">
         <h1 className="font-bold text-5xl text-gray-700 py-16">
         Privacy and Confidentiality

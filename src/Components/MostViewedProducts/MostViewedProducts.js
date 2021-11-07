@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import star from "../../images/5star.png";
 import CartButton from '../Cart/CartButton/CartButton';
 import { MostViewedProduct } from '../HomepageProductData/HomepageProductData';
-import { Loader } from '../Loader/Loader';
+//import { Loader } from '../Loader/Loader';
 
 const MostViewedProducts = () => {
 
@@ -131,8 +131,7 @@ const MostViewedProducts = () => {
                     )}
 
             </Slider>
-            { !mostViewedProduct && <Loader/>
-            }
+            
         </div>
     );
 };

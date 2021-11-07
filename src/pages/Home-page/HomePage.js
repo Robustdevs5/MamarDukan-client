@@ -31,6 +31,7 @@ const HomePage = () => {
       <AllInOne/>
       <MostViewedProducts />
       <Footer />
+      
     </div>
   );
 };

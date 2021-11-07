@@ -2,9 +2,10 @@ import { loadStripe } from '@stripe/stripe-js';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { TiDelete } from 'react-icons/ti';
+import { useHistory } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
 import { userContext } from '../../App';
-import { removeFromDb } from '../../Components/Cart/ShopingCart/CartDatabase';
+import { clearTheCart, removeFromDb } from '../../Components/Cart/ShopingCart/CartDatabase';
 import Totalcart from '../../Components/Cart/Totalcart';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
@@ -12,8 +13,8 @@ import Navbar from '../../Components/Navbar/Navbar/Navbar';
 import Newsletter from '../../Components/Newsletter/Newsletter';
 import TopBar from '../../Components/TopBar/TopBar';
 import img from '../../images/bn15.jpg';
+import CheckoutModal from './CheckoutModal';
 import { PaypalForm, TransferForm } from './CreditCardForm';
-import StripePayment from './StripePayment';
 
 const CheckoutPage = () => {
     
@@ -23,11 +24,15 @@ const CheckoutPage = () => {
     const [creditCart, setCreditCart] = useState (false);
     const [paypal, setPaypal] = useState(false);
     const [etransfer, setEtransfer] = useState(false);
-    const [stripePayment, setStripePayment] = useState();
+    const [orderDetails, setOrderDetails] = useState();
     const [deliveryPrice, setDeliveryPrice] = useState(0);
     const [priceTotal, setPriceTotal] = useState(0);
     const [bankDrapImg, setBankDrapImg] = useState(null);
-   
+    const [paymentSuccess, setPaymentSuccess] = useState(null)
+    const [modalUpdateStatus, setModalStatus] = useState(false);
+    const [orderSubmit, setOrderSubmit] = useState(false);
+
+    console.log('orderDetails', orderDetails)
     let productId = 0;
     let totalQuantity = 0;
 
@@ -35,8 +40,8 @@ const CheckoutPage = () => {
       productId = product._id
       totalQuantity = product.quantity;
     }
- 
-    let paymentMethod = creditCart  ? "creditCart" : etransfer ? 'etransfer' : paypal  ? 'paypal' : 'not found'
+    let card = paymentSuccess && paymentSuccess.card.brand
+    let paymentMethod = creditCart  ? card : etransfer ? 'etransfer' : paypal  ? 'paypal' : 'not found'
     let deliveryMethod = deliveryPrice >= 20  ? "express" :'standard'
 
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -48,7 +53,7 @@ const CheckoutPage = () => {
             name: data.Name,
             email: data.email,
             phone: data.phoneNumber,
-            bankDrap: bankDrapImg,
+            bankDrap: bankDrapImg || 'others payment',
             address: data.address,
             city: data.city,
             postcode:data.postcode,
@@ -56,10 +61,7 @@ const CheckoutPage = () => {
             deliveryMethod: deliveryMethod,
             price:priceTotal + deliveryPrice,
             paymentMethod:paymentMethod,
-            cardnumber:'57575757575757575577'
-        }
-        
-
+            cardnumber: paymentSuccess.created        }
         fetch('https://mamar-dukan.herokuapp.com/orders', {
             method: 'POST',
             headers: {
@@ -71,8 +73,12 @@ const CheckoutPage = () => {
         .then(data => {
             if(data){                
                 toast.success(data.message, {
-                    position: "bottom-right",
+                    position: "bottom-left",
                 });
+                clearTheCart();
+                console.log('data', data.createdOrder._id);
+                setOrderDetails(data.createdOrder._id);
+                setOrderSubmit(true)
             }
         })
     }
@@ -82,6 +88,7 @@ const CheckoutPage = () => {
         setCreditCart(true);
         setPaypal(false);
         setEtransfer(false);
+        setModalStatus(true)
     }
 
     const handlePaypal = () => {
@@ -105,7 +112,11 @@ const CheckoutPage = () => {
           position: "bottom-right",
         });
       }
-    
+
+      const history = useHistory();
+    const handleProductClick = () => {
+            history.push(`/Confirm-order/${orderDetails}`);
+    }
 
     return (
         <>
@@ -125,7 +136,7 @@ const CheckoutPage = () => {
                                 <div className="w-full">
                                     <label for="firstName" className="block mb-3 text-sm font-semibold text-gray-500">Full 
                                         Name</label>
-                                    <input name="Last Name" type="text" placeholder="Last Name" 
+                                    <input name="Name" type="text" placeholder="Name" value={user.username}
                                         {...register("Name", {required: true})}
                                         className="h-12 w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600" />
                                     <span className="text-red-500">{errors.lastName?.type === 'required' && "Last name is required"}</span>
@@ -135,7 +146,7 @@ const CheckoutPage = () => {
                                 <div className="w-full">
                                     <label for="Email"
                                         className="block mb-3 text-sm font-semibold text-gray-500">Email</label>
-                                    <input name="Last Name" type="text" placeholder="Email" 
+                                    <input name="Last Name" type="text" placeholder="Email" value={user.email}
                                         {...register("email", {required: true})}
                                         className="h-12 w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600" />
                                     <span className="text-red-500">{errors.email?.type === 'required' && "Email is required"}</span>
@@ -215,32 +226,49 @@ const CheckoutPage = () => {
                     <div className="pt-6 mt-10 border-t border-gray-300">
                         <h2 className="mb-4 font-bold md:text-xl text-heading pl-2 border-l-2 border-red-600">Payment</h2>
                         <div className="mt-2">
-                            <label className="inline-flex items-center">
-                                <input onChange = { handleCreditCart } type="radio" className="form-radio h-5 w-5" name="accountType" value="personal" />
-                                <span className="ml-2">Pay using stripe</span>
+                            {/* <label className="inline-flex items-center"> */}
+                                {/* <p onClick = { handleCreditCart } type="radio" className="primary_BTN form-radio " name="accountType" value="personal">Pay using stripe</p> */}
+                                {/* <span className="ml-2"></span> */}
                                 
+                            {/* </label> */}
+                            <label className="inline-flex items-center ml-6">
+                                <span className={creditCart ? "ml-2 w-5 h-5 bg-red-600 rounded-full " : 'ml-2 w-5 h-5 bg-white rounded-full border-2 border-gray-700' }></span>
+                                <p onClick = { handleCreditCart } className="cursor-pointer pl-3 hover:underline">Pay using stripe</p>
                             </label>
                             <label className="inline-flex items-center ml-6">
+                                <span className={paypal ? "ml-2 w-5 h-5 bg-red-600 rounded-full " : 'ml-2 w-5 h-5 bg-white rounded-full border-2 border-gray-700' }></span>
+                                <p onClick = { handlePaypal } className="cursor-pointer pl-3 hover:underline">Paypal</p>
+                            </label>
+                            <label className="inline-flex items-center ml-6">
+                                <span className={etransfer ? "ml-2 w-5 h-5 bg-red-600 rounded-full " : 'ml-2 w-5 h-5 bg-white rounded-full border-2 border-gray-700' }></span>
+                                <p onClick = { handleEtransfer } className="cursor-pointer pl-3 hover:underline">eTransfer</p>
+                            </label>
+                                {
+                                    paymentSuccess && <p style={{ color: 'green' }}>Your payment was successful</p>
+                                }
+                            {/* <label className="inline-flex items-center ml-6">
                                 <input onChange = { handlePaypal } type="radio" className="form-radio h-5 w-5" name="accountType" value="busines" />
                                 <span className="ml-2">Paypal</span>
                             </label>
                             <label className="inline-flex items-center ml-6">
                                 <input onChange={ handleEtransfer } type="radio" className="form-radio h-5 w-5" name="accountType" value="etransfer" />
                                 <span className="ml-2">eTransfer</span>
-                            </label>
+                            </label> */}
+                            {creditCart && <CheckoutModal
+                                paymentSuccess={paymentSuccess} setPaymentSuccess={setPaymentSuccess} setModalStatus={setModalStatus}
+                            />}
+                            {
+                                paypal && <PaypalForm   />
+                            }
+                            {
+                                etransfer && <TransferForm bankDrapImg={bankDrapImg} setBankDrapImg={setBankDrapImg}/>
+                            }
                         </div>
-                        {
-                            creditCart && <StripePayment setStripePayment={setStripePayment}/>
-                        }
-                        {
-                            paypal && <PaypalForm   />
-                        }
-                        {
-                            etransfer && <TransferForm bankDrapImg={bankDrapImg} setBankDrapImg={setBankDrapImg}/>
-                        }
+                     
                     </div>
                     <div className="mt-4">
                         <button type="submit"
+                        onClick={handleProductClick}
                             className="w-full px-6 py-2 text-gray-50 primary_BTN">Process to order</button>
                     </div>
                     </form>
@@ -279,7 +307,11 @@ const CheckoutPage = () => {
                 </div>
             </div>
         </div>
-        
+                        {/* {
+                            // creditCart && <StripePayment/>
+                            creditCart && <StripePayment/>
+                        } */}
+                         
         <ToastContainer />
         <Newsletter/>
         <Footer />           
