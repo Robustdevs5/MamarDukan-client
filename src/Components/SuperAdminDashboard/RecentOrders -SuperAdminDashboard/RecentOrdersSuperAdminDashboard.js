@@ -149,7 +149,8 @@ const RecentOrdersSuperAdminDashboard = () => {
 
                                     <TableBodyData>
                                         <div className='flex items-center text-2xl'>
-                                            <button className='text-blue-800 p-1 hover:bg-gray-900 rounded-full hover:text-gray-50'><AiFillEye /></button>
+                                            <button 
+                                                onClick={() => handleDelete(item._id)} className='text-blue-800 p-1 hover:bg-gray-900 rounded-full hover:text-gray-50'><AiFillEye /></button>
 
                                             <button
                                                 onClick={() => handleUpdate(item._id)}
@@ -157,11 +158,6 @@ const RecentOrdersSuperAdminDashboard = () => {
                                                 <AiFillEdit />
                                             </button>
 
-                                            <button
-                                                onClick={() => handleDelete(item._id)}
-                                                className='text-pink-700 p-1 hover:bg-gray-900 rounded-full '>
-                                                <AiFillDelete />
-                                            </button>
                                         </div>
                                     </TableBodyData>
                                 </TableBodyRow>
@@ -188,18 +184,12 @@ const RecentOrdersSuperAdminDashboard = () => {
                             
                                     <TableBodyData>
                                         <div className='flex items-center text-2xl'>
-                                            <button className='text-blue-800 p-1 hover:bg-gray-900 rounded-full hover:text-gray-50'><AiFillEye /></button>
+                                            <button  onClick={() => handleDelete(item._id)} className='text-blue-800 p-1 hover:bg-gray-900 rounded-full hover:text-gray-50'><AiFillEye /></button>
 
                                             <button
                                                 onClick={() => handleUpdate(item._id)}
-                                                className='text-yellow-400 p-1 hover:bg-gray-900 rounded-full '>
+                                                className='text-gray-900 hover:text-yellow-400 p-1 hover:bg-gray-900 rounded-full '>
                                                 <AiFillEdit />
-                                            </button>
-
-                                            <button
-                                                onClick={() => handleDelete(item._id)}
-                                                className='text-pink-700 p-1 hover:bg-gray-900 rounded-full '>
-                                                <AiFillDelete />
                                             </button>
                                         </div>
                                     </TableBodyData>

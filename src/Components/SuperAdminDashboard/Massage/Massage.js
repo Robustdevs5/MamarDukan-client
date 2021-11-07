@@ -48,15 +48,12 @@ const Message = () => {
 
         <div class="w-screen grid grid-cols-1 pb-20">
         <div class="w-screen grid grid-cols-1 overflow-x-hidden">
-    <main className=" grid grid-cols-4 gap-4 bg-gray-200">
-            <div className=" overflow-y-auto overflow-hidden">
+            <main className=" grid grid-cols-4 gap-4 bg-gray-100">
+            <div className=" overflow-y-auto overflow-hidden h-screen">
                 <div className="px-4 py-2 flex items-center justify-between border-l border-r border-b">
-                    <button className="text-sm flex items-center font-semibold text-gray-600">
+                    <button className="flex items-center mt-3 text-2xl font-bold text-gray-900 m-2 border-l-2 border-red-600 pl-2 tracking-tighter">
                         <span>Subscriber Message</span>
                         <i className="ml-2 fa fa-angle-down justify-between" aria-hidden="true"></i>
-                    </button>
-                    <button className="text-sm flex items-center font-semibold text-gray-600">
-                        <i className="fa fa-bars" aria-hidden="true"></i>
                     </button>
                 </div>
                 <div className="pt-3 pb-4 ">
@@ -64,14 +61,14 @@ const Message = () => {
                 {messageDetails
                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         .map((item ) => (
-                                    <a item={item} key={item._id} href="#" className="block bg-white py-3 border-t">
+                                    <div item={item} key={item._id}  className="block bg-white py-3 border-t">
                                         <div className="px-4 py-2 flex  justify-between">
                                             <span className="text-sm font-semibold text-gray-900">{item.name}</span>
                                             <span className="text-sm font-semibold text-gray-600">{(new Date(item.date).toLocaleDateString())}</span>
                                         </div>
                                         <span className="text-sm font-semibold text-gray-900 px-4 py-2">{item.email}</span>
                                         <p className="px-4 py-2 text-sm font-semibold text-gray-700">{item.message}</p>
-                                    </a>
+                                    </div>
                                 ))}
                                 <TablePagination
                         rowsPerPageOptions={[]}
@@ -94,16 +91,16 @@ const Message = () => {
                     </a> */}
                 </div>
             </div>
-            <div className="col-span-2 flex flex-col  inline-block overflow-y-auto overflow-hidden bg-gray-100">
+            <div className="col-span-2 flex flex-col  inline-block overflow-y-auto overflow-hidden h-screen bg-gray-100">
                 
                 <div className="shadow-lg">
                     <div className="pt-3 pb-4 ">
-                        <a href="#" className="block bg-white py-3 border-t">
-                            <div className="px-4 py-2 flex  justify-between">
+                        <div className="px-4 py-2 flex items-center justify-between border-l border-r border-b">
+                            <button className="flex items-center mt-3 text-2xl font-bold text-gray-900 m-2 border-l-2 border-red-600 pl-2 tracking-tighter">
                                 <span>User Report</span>
-                             
-                            </div>
-                        </a>
+                                <i className="ml-2 fa fa-angle-down justify-between" aria-hidden="true"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -114,7 +111,7 @@ const Message = () => {
                             .slice(Reportpage * ReportrowsPerPage, Reportpage * ReportrowsPerPage + ReportrowsPerPage)
                             .map((item) => (
                                 <div className="w-full shadow-lg pt-4 ml-2 mr-2 rounded-lg">
-                        <a href="#" className="block bg-white py-3 border-t pb-4">
+                        <div  className="block bg-white py-3 border-t pb-4">
                             <div className="px-4 py-2 flex  justify-between">
                                 <span className="text-sm font-semibold text-gray-900">{item.name}</span>
                                 <div className="flex">
@@ -124,7 +121,7 @@ const Message = () => {
                             </div>
                             <div className="px-4 py-2"><span className="text-xl font-semibold text-gray-900">{item.subject}</span></div>
                             <p className="w-max px-4 py-2 text-sm font-semibold text-gray-700">{item.message}</p>
-                        </a>
+                        </div>
                     </div>
                             ))
                         }

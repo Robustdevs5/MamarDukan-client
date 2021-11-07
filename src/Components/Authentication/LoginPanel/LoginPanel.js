@@ -16,9 +16,18 @@ const LoginPanel = () => {
     const [superAdmin, setSuperAdmin] = useState(false);
 
 
-    // const { user, setUser } = useContext(userContext);
+    const { user, setUser } = useContext(userContext);
  
+    if (user) {
 
+        if (user.role === "user") {
+            setCheckCustomer(true)
+        } else if (user.role === "admin") {
+            setCheckAdmin(true)
+        } else if (user.role === "superadmin") {
+            setSuperAdmin(true)
+        }
+    }
 
     // useEffect(() => {
     //     const loggedInUser = sessionStorage.getItem("user");

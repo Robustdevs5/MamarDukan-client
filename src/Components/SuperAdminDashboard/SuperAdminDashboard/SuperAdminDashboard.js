@@ -11,18 +11,24 @@ import BarCharts from '../Products-SuperAdminDashboard/Orders-SuperAdminDashboar
 import FeaturesSuperAdminDashboard from '../Features-SuperAdminDashboard/FeaturesSuperAdminDashboard';
 import RecentOrdersSuperAdminDashboard from '../RecentOrders -SuperAdminDashboard/RecentOrdersSuperAdminDashboard';
 import { DashboardContainer } from '../Style/AddSuperAdminStyle';
+import TopBar from '../../TopBar/TopBar';
+import Navbar from '../../Navbar/Navbar/Navbar';
 
 const SuperAdminDashboard = () => {
     return (
         <div className=" ">
-        {/* <div className="w-screen h-20 p-6">
-            <Logo />
-        </div> */}
+        <TopBar/>
+        <Navbar/>
         <DashboardContainer>
             <SuperAdminSidebar/>
 
             <div className="md:w-5/6 w-full h-screen scrollBar">
                 <TopbarSuperAdminDashboard/>
+                <div className='flex items-center justify-between pt-2 pb-14 px-5 shadow-lg' style={{background: `linear-gradient(90deg,#0c2646 0,#204065 60%,#2a5788)` }}>
+                
+                    <BarChart/>
+                    {/* <BarChart/> */}
+                </div>
                 {/* <h1 className="mt-5 text-2xl font-bold  m-2 border-l-4 tracking-tight border-red-600 pl-2 w-52 bg-gray-200">
                     Sales   
                 </h1> */}

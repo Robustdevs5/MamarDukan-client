@@ -39,7 +39,7 @@ const NewArrivalProduct = () => {
 
 
     return (
-        <div className="my-20 w-full px-5">
+        <div className="my-20 w-full">
             <div className="px-3 bg-gray-100">
                 <ul className="md:flex md:justify-between items-center  ">
                     <div>

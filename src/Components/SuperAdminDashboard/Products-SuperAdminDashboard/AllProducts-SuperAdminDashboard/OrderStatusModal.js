@@ -9,24 +9,24 @@ const OrderStatusModal = ({ setModalUpdateStatus, updateId, deleted }) => {
 
     const [open, setOpen] = useState(true)
     const cancelButtonRef = useRef(null)
-console.log(updateId)
+
     if (open === false) {
         setModalUpdateStatus(false)
     }
 
-    ///////Approve Button......................................
-    const handleApprove = () => {
+    ///////Pending Button......................................
+    const handlePending = () => {
         setOpen(false)
         setModalUpdateStatus(false)
 
         const size = "P"
 
         const orderStatus = {
-            orderId: updateId,
-            status: "Approved"
+            updateId,
+            size
         };
 
-        const url = `https://mamar-dukan.herokuapp.com/orders/${updateId}`;
+        const url = `https://mamar-dukan.herokuapp.com/products/${updateId}`;
         fetch(url, {
             method: 'PATCH',
             headers: {
@@ -129,8 +129,8 @@ console.log(updateId)
                                 <button
                                     type="button"
                                     className="mt-3 w-full inline-flex justify-center rounded-md border border-yellow-300 shadow-sm px-4 py-2 bg-yellow-300 text-base font-medium text-yellow-700 hover:bg-yellow-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                                    onClick={handleApprove}
-                                    // ref={cancelButtonRef}
+                                    onClick={handlePending}
+                                    ref={cancelButtonRef}
                                 >
                                     Pending
                                 </button>

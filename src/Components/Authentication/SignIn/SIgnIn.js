@@ -25,7 +25,7 @@ if (!firebase.apps.length) {
 }
 
 
-const SIgnIn2 = () => {
+const SIgnIn = () => {
 
     const { user, setUser } = useContext(userContext);
     const googleProvider = new firebase.auth.GoogleAuthProvider();
@@ -39,7 +39,6 @@ const SIgnIn2 = () => {
     let history = useHistory();
     let location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
-
 
 
     // Google sign in
@@ -332,8 +331,8 @@ const SIgnIn2 = () => {
                     <h2>Login</h2>
                     <form onSubmit={handleSubmit}>
                         <div class="user-box text-gray-900 focus:border-gray-900">
-                            <input type="text" name="email" requiblue="" className="text-gray-900 focus:border-gray-900" />
-                            <label>Username</label>
+                            <input type="text" name="email" requiblue="" className="text-gray-900 focus:border-gray-900 " />
+                            <label>Email</label>
                         </div>
                         <div class="user-box">
                             <input type="password" name="password" requiblue="" />
@@ -407,17 +406,51 @@ const SIgnIn2 = () => {
                         </button>
                     </div>
                 </div>
+                
             </div>
             </div>
             <div className="w-full sm:w-2/3">
                 <img src={loginsvg} alt="lioigiiin" />
             </div>
+            </div>
+         </div>
+         <div className='w-5/12 border-2 p-2 border-gray-600 mx-10 hidden md:block'>
+            <ol>
+                <strong>Login info</strong>
+                <li >
+                    <p>User:</p>
+                    <div className='flex border-2 p-2 border-red-300'>
+                        <p className=' px-2'>User@gmail.com</p>
+                        <p>10203040</p>
+                    </div>
+                </li>
+                <li >
+                    <p>Vendor:</p>
+                    <div className='flex border-2 p-2 border-red-300'>
+                        <p className=' px-2'>vendor@gmail.com</p>
+                        <p>10203040</p>
+                    </div>
+                </li>
+                <li >
+                    <p>admin:</p>
+                    <div className='flex border-2 p-2 border-red-300'>
+                        <p className=' px-2'>admin@gmail.com</p>
+                        <p>10203040</p>
+                    </div>
+                </li>
+                <li >
+                    <p>Super-Admin:</p>
+                    <div className='flex border-2 p-2 border-red-300'>
+                        <p className=' px-2'>superadmin@gmail.com</p>
+                        <p>10203040</p>
+                    </div>
+                </li>
+            </ol>
         </div>
-    </div>
             <ToastContainer />
             <Footer />
         </>
     );
 };
 
-export default SIgnIn2;
+export default SIgnIn;

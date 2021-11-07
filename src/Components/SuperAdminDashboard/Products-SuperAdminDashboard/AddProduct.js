@@ -1,16 +1,22 @@
 import React from 'react';
+import Navbar from '../../Navbar/Navbar/Navbar';
+import TopBar from '../../TopBar/TopBar';
+import { DashboardContainer } from '../Style/AddSuperAdminStyle';
 import SuperAdminSidebar from '../SuperAdminSidebar/SuperAdminSidebar';
 import AddProductFrom from './AddProductFrom';
 
 const AddProduct = () => {
     return (
-    <div className=" bg-gray-800 ">
-        <div className="flex flex-wrap">
+        <div className=" ">
+        <TopBar/>
+        <Navbar/>
+        <DashboardContainer>
             <SuperAdminSidebar/>
-            <div className="sm:w-4/5 w-screen mx-auto">
+
+            <div className="md:w-5/6 w-full h-screen scrollBar">
                 <AddProductFrom />
             </div>
-        </div>
+        </DashboardContainer>
     </div>
     );
 };

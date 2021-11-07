@@ -5,6 +5,8 @@ import React, { useEffect, useState } from 'react';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import { useHistory } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
+import Navbar from "../../../Navbar/Navbar/Navbar";
+import TopBar from "../../../TopBar/TopBar";
 import { DashboardContainer } from '../../Style/AddSuperAdminStyle';
 import SuperAdminSidebar from '../../SuperAdminSidebar/SuperAdminSidebar';
 import TopbarSuperAdminDashboard from '../../Topbar-SuperAdminDashboard/TopbarSuperAdminDashboard';
@@ -94,19 +96,17 @@ const ManageBlog = () => {
 
 
     return (
-        <div className=" bg-gray-800 ">
-            {/* <div className="w-screen h-20 p-6">
-                <Logo />
-            </div> */}
+        <div className=" ">
+            <TopBar/>
+            <Navbar/>
+            <DashboardContainer>
+                <SuperAdminSidebar/>
 
-                <DashboardContainer>
-                    <SuperAdminSidebar/>
-                
                 <div className="md:w-5/6 w-full h-screen scrollBar">
                     <TopbarSuperAdminDashboard/>
 
-                <div className="sm:w-4/5 w-screen mx-4">
-                    <h1 className="mt-3 text-2xl font-bold text-white m-2 ">
+                <div className="sm:w-4/5  mx-4">
+                    <h1 className="mt-3 text-2xl font-bold text-gray-900 m-2 border-l-2 border-red-600 pl-2 tracking-tighter">
                         Manage Blog
                     </h1>
 

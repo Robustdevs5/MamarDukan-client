@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
 import { DashboardContainer } from '../../Style/AddSuperAdminStyle';
 import SuperAdminSidebar from '../../SuperAdminSidebar/SuperAdminSidebar';
@@ -15,7 +15,7 @@ const UpdateBlog = () => {
 
     const { id } = useParams();
 
-
+    const history = useHistory();
     useEffect(() => {
         fetch(`https://mamar-dukan.herokuapp.com/blogs/${id}`)
         .then(res => res.json())
@@ -47,6 +47,7 @@ const UpdateBlog = () => {
                         position: "bottom-right",
                     });
                     setDbStatus(data);
+                    history.push('/super-admin/dashboard/blogs/overview');
                 }
             })
         e.preventDefault();
@@ -71,7 +72,10 @@ const UpdateBlog = () => {
             });
     }
 
-
+    // const history = useHistory();
+    // const handleUpdateBlog = (id) => {
+    //     history.push(`/updateBlog/${id}`);
+    // }
 
     return (
         <>

@@ -28,26 +28,19 @@ const TopBar = () => {
   const { cart, setCart } = useContext(userContext);
   const [products, setProducts] = useProducts(); 
   let history = useHistory();
-  let location = useLocation();
-  let { from } = location.state || { from: { pathname: "/login" } };
 
 
   const handleLogout = () => {
     // sessionStorage.clear();
     // window.localStorage.clear(); //clear all localstorage
     window.sessionStorage.removeItem("user"); //remove one item
-    history.replace(from);
-    toast.success("You have signed out", {
-        position: "bottom-left",
-    });
-    window.location.reload();
+      toast.success("You have signed out", {
+          position: "bottom-left",
+      });
+    // window.location.reload();
   };
 
 
-  const handleUserDashboard = () => {
-    history.push('/dashboard');
-  };
-  
   return (
     <main className="md:h-20 pl-0 sticky top-0 z-50 primary_BG_color ">
       <section className=" pt-5 md:pt-0 md:grid md:grid-cols-2 md:items-center  ">
@@ -121,11 +114,8 @@ const TopBar = () => {
                   {user.email &&
                   <>
                     
-                    <button className={styles.topBar_login_register} onClick={handleUserDashboard}>{user.username}</button>
-                    <Link to="/login">
-                        {/* <button  className={styles.topBar_login_register}>Login </button>{" "} */}
-                        <button className={styles.topBar_login_register} onClick={handleLogout}>Logout </button>
-                      </Link> 
+                    <button className={styles.topBar_login_register} >{user.username}</button>
+                    <a href='/login' className={styles.topBar_login_register} onClick={handleLogout}>Logout </a>
                   </>
                   }
                   

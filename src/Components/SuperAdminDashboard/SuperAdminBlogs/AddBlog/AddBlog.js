@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
+import Navbar from '../../../Navbar/Navbar/Navbar';
+import TopBar from '../../../TopBar/TopBar';
 import { DashboardContainer } from '../../Style/AddSuperAdminStyle';
 import SuperAdminSidebar from '../../SuperAdminSidebar/SuperAdminSidebar';
 import TopbarSuperAdminDashboard from '../../Topbar-SuperAdminDashboard/TopbarSuperAdminDashboard';
@@ -69,18 +71,17 @@ const AddBlog = () => {
 
     return (
         <>
-            <div className=" bg-gray-800 ">
-                {/* <div className="w-screen h-20 p-6">
-                    <Logo />
-                </div> */}
-                <DashboardContainer>
-                    <SuperAdminSidebar/>
-                
-                    <div className="md:w-5/6 w-full h-screen scrollBar">
-                        <TopbarSuperAdminDashboard/>
+           <div className=" ">
+            <TopBar/>
+            <Navbar/>
+            <DashboardContainer>
+                <SuperAdminSidebar/>
+
+                <div className="md:w-5/6 w-full h-screen scrollBar">
+                    <TopbarSuperAdminDashboard/>
 
                     <section className="mx-10">
-                        <h1 className="font-bold text-white p-4 text-2xl">Add a new Blog</h1>
+                        <h1 className="mt-3 text-2xl font-bold text-gray-900 m-2 border-l-2 border-red-600 pl-2 tracking-tighter">Add a new Blog</h1>
                         <div class="  ">
 
                             <form

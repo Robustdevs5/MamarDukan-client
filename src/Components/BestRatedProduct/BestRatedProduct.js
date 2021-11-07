@@ -18,11 +18,11 @@ const BestRatedProduct = () => {
     }
 
     return (
-        <div className="px-8 ">
+        <div className="my-20 w-full">
            <div className="px-3 bg-gray-100">
-                <ul className="md:flex md:justify-between items-center  ">
+               <ul className="md:flex md:justify-between items-center  ">
                     <div>
-                        <h1 className="tracking-tight uppercase text-2xl text-gray-800 font-bold py-2 my-4 md:py-1 pl-3 md:my-0 border-red-600 mb-10 border-l-4"> Best Rated Product</h1>
+                        <h1 className="tracking-tight uppercase text-2xl text-gray-800 font-bold py-2 my-4 md:py-1 pl-3 md:my-0 border-red-600 mb-10 border-l-4"> Best Rated Product </h1>
                     </div>
                     <div className="hidden md:block">
                         {

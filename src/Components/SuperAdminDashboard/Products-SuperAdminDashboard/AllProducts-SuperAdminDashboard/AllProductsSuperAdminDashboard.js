@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import Navbar from '../../../Navbar/Navbar/Navbar';
+import TopBar from '../../../TopBar/TopBar';
+import { DashboardContainer } from '../../Style/AddSuperAdminStyle';
 import SuperAdminSidebar from '../../SuperAdminSidebar/SuperAdminSidebar';
 import AllProduct from './AllProduct';
 
 const AllProductsSuperAdminDashboard = () => {
-    const [Product , setProduct] = useState([]);
-    useEffect(() => {
-        fetch(`https://mamar-dukan.herokuapp.com/products`)
-        .then (res => res.json())
-        .then (data => setProduct(data.products))
-    }, [])
+
     return (
-    <div className=" bg-gray-800 ">
-        <div className="flex flex-wrap">
-            <SuperAdminSidebar/>
-            <div className="sm:w-4/5 w-screen mx-auto">
-               <AllProduct Data={Product} />
-            </div>
+        <div className=" ">
+            <TopBar/>
+            <Navbar/>
+            <DashboardContainer>
+                <SuperAdminSidebar/>
+
+                <div className="md:w-5/6 w-full h-screen scrollBar">
+                    <AllProduct />
+                </div>
+            </DashboardContainer>
         </div>
-    </div>
     );
 };
 

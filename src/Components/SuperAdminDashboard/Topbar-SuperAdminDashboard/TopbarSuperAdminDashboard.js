@@ -1,31 +1,46 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { MdNotificationsActive } from "react-icons/md";
 import {FcSms } from 'react-icons/fc';
 import {ImSearch} from 'react-icons/im';
 import BarChart from '../SuperAdminDashboard/BarChart';
+import { userContext } from '../../../App';
+import { FaUserCircle } from 'react-icons/fa';
+import profile from "../../../images/profile.png";
+import SearchBar from "../../TopBar/SearchBar";
+import useProducts from "../../../hooks/useProducts";
 
 const TopbarSuperAdminDashboard = () => {
+    const { user, setUser } = useContext(userContext);
+    const [products, setProducts] = useProducts(); 
     return (
         <div className=" w-full ">
             <div className="flex flex-wrap items-center justify-between shadow  py-3 sticky top-0 bg-white ">
 
-                <form action="" className=" flex">
+                {/* <form action="" className=" flex">
                     <input
                         type="text"
                         placeholder="Search"
                         className="ml-2 rounded-l-full w-full py-2 pl-2 sm:px-5 text-gray-900 leading-tight outline-none border-none"
                     />
-                   
                     <button type="submit" className='text-2xl m-0 font-lg sm:mr-2 cursor-pointer text-white rounded-r-2xl focus:outline-none w-16 flex items-center justify-center  bg-red-600 hover:bg-red-800  py-2'>
                         <ImSearch className="" />
                     </button>
-                </form>
+                </form> */}
+                <SearchBar  placeholder="product Name..." data={products}/>
+
 
 
                 <div className="flex md:mt-0 mt-4">
                     <div className="flex items-center border rounded-full border-red-300 py-1 px-2">
-                        <img src="https://simgbb.com/avatar/wNhFXn8SYdNf.png" alt="placeholder" className='h-8 rounded-full mr-2' />
-                        <strong>Juned Ahmed</strong>
+                        {user.email ?
+                            <div className="h-8 ml-2 w-10 hidden sm:block text-white fill-current text-white-600">
+                                <img src={user.img || profile} className="h-full w-full rounded-full  mr-2" alt="" />
+                            </div>
+                            :  
+                            <FaUserCircle size={30} className="h-8 ml-2  hidden sm:block text-white fill-current text-white-600"></FaUserCircle>
+
+                        }
+                        <strong>{user.username}</strong>
                     </div>
                     <div className="flex">
                         
@@ -45,11 +60,11 @@ const TopbarSuperAdminDashboard = () => {
                 </div>
             </div>
             {/* <BarChart/> */}
-            <div className='flex items-center justify-between pt-2 pb-14 px-5 shadow-lg' style={{background: `linear-gradient(90deg,#0c2646 0,#204065 60%,#2a5788)` }}>
+            {/* <div className='flex items-center justify-between pt-2 pb-14 px-5 shadow-lg' style={{background: `linear-gradient(90deg,#0c2646 0,#204065 60%,#2a5788)` }}>
                 
-                <BarChart/>
+                <BarChart/> */}
                 {/* <BarChart/> */}
-            </div>
+            {/* </div> */}
         </div>
     );
 };

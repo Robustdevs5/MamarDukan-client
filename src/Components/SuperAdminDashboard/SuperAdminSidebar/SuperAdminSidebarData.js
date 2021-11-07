@@ -105,26 +105,7 @@ export const SidebarData = [
       }
     ]
   },
-  {
-    title: 'Orders',
-    path: '/super-admin/dashboard/orders/overview',
-    icon: <AiIcons.AiFillHome />,
-    iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
-
-    subNav: [
-      {
-        title: 'Order Overview',
-        path: '/super-admin/dashboard/orders/overview',
-        icon: <IoIcons.IoIosPaper />
-      },
-      {
-        title: 'Order Review',
-        path: '/dashboard/overview/review',
-        icon: <IoIcons.IoIosPaper />
-      }
-    ]
-  },
+ 
   {
     title: 'Reports',
     path: '/reports',
@@ -151,16 +132,6 @@ export const SidebarData = [
       //   icon: <IoIcons.IoIosPaper />
       // }
     ]
-  },
-  {
-    title: 'Products',
-    path: '/products',
-    icon: <FaIcons.FaCartPlus />
-  },
-  {
-    title: 'Team',
-    path: '/team',
-    icon: <IoIcons.IoMdPeople />
   },
   {
     title: 'Messages',

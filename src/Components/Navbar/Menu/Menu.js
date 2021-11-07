@@ -129,7 +129,7 @@ const NavbarSection = ({ toggle, closeMobileMenu, isOpen }) => {
                 </Link>
             }
             {
-              user.role === "super-admin" &&  <Link to='/super-admin/dashboard/overview' className="py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg">
+              user.role === "superadmin" &&  <Link to='/super-admin/dashboard/overview' className="py-2  px-3 font-medium hover:bg-red-700 duration-500 hover:text-white rounded-lg">
                     Dashboard
                 </Link>
             }

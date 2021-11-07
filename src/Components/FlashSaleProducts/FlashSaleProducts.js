@@ -98,7 +98,7 @@ const FlashSaleProducts = () => {
                 <Slider {...settings} className="px-10 w-9/12">
                     {
                         shuffleProduct && shuffleProduct.slice(0,32).map(flashSaleProducts =>
-                            <div className="px-2 mb-2 group relative w-full bg-white cursor-pointer">
+                            <div key={flashSaleProducts._id} className="px-2 mb-2 group relative w-full bg-white cursor-pointer">
                                 <div className="overflow-x-hidden relative border-b p-2 border">
                                     <img className="h-48 w-full object-cover" src={flashSaleProducts.img} alt={flashSaleProducts.name} />
                                     

@@ -1,28 +1,26 @@
 import React, { useEffect, useState } from 'react';
+import Navbar from '../../../Navbar/Navbar/Navbar';
+import TopBar from '../../../TopBar/TopBar';
+import { DashboardContainer } from '../../Style/AddSuperAdminStyle';
 import SuperAdminSidebar from '../../SuperAdminSidebar/SuperAdminSidebar';
+import TopbarSuperAdminDashboard from '../../Topbar-SuperAdminDashboard/TopbarSuperAdminDashboard';
 import Review from './Review';
 
 const ReviewSuperAdminDashboard = () => {
 
-    const [Review1 , setReview] = useState([]);
-    useEffect(() => {
-        fetch(`https://mamar-dukan.herokuapp.com/orders`)
-        .then (res => res.json())
-        .then (data => setReview(data.orders))
-    }, [])
+ 
     return (
-        <div className=" bg-gray-800 ">
-        {/* <div className="w-screen h-20 p-6">
-            <Logo />
-        </div> */}
+        <div className=" ">
+            <TopBar/>
+            <Navbar/>
+            <DashboardContainer>
+                <SuperAdminSidebar/>
 
-        <div className="flex flex-wrap">
-            <SuperAdminSidebar/>
-
-            <div className="sm:w-4/5 w-screen mx-4">
-                <Review Data={Review1}/>
-            </div>
-        </div>
+                <div className="md:w-5/6 w-full h-screen scrollBar">
+                    <TopbarSuperAdminDashboard/>
+                    <Review/>
+                </div>
+        </DashboardContainer>
     </div>
     );
 };

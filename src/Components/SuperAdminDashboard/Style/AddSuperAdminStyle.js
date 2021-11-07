@@ -1,9 +1,9 @@
 import tw from 'twin.macro';
 
 // *************** SIdebar ********************
-export const SidebarContainer = tw.div`md:w-1/6 md:h-screen h-full w-full bg-gray-900`;
-export const SidebarDiv = tw.div`h-full md:fixed text-white`;
-export const SidebarBtn = tw.button`bg-gray-500 hover:bg-red-700 focus:bg-blue-500 border-0 m-4 p-4  rounded-2xl`;
+export const SidebarContainer = tw.div`md:w-1/6 md:h-screen h-full w-full bg-gray-900 overflow-y-scroll`;
+export const SidebarDiv = tw.div`h-full md:fixed text-white overflow-y-scroll md:w-1/6`;
+export const SidebarBtn = tw.button`bg-gray-500 hover:bg-red-700 focus:bg-blue-500 border-0 m-4 p-4 rounded-2xl`;
 
 // **************** Table *****************
 export const Table = tw.table`w-full font-medium md:mx-4 mt-20 tracking-tight`;
